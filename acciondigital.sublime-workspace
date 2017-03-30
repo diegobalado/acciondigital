@@ -1,0 +1,899 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"media",
+				"@media\t@media ${1:screen} {\n\t${0}\n}"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"last",
+				"lastpage"
+			],
+			[
+				"set",
+				"setActive"
+			],
+			[
+				"datastart",
+				"datastart-1"
+			],
+			[
+				"disable",
+				"disableArrows"
+			],
+			[
+				"page",
+				"pages_wrapper"
+			],
+			[
+				"first",
+				"firstpage"
+			],
+			[
+				"scroll",
+				"scrollTop\t.scrollTop()"
+			],
+			[
+				"val",
+				"val"
+			],
+			[
+				"btn",
+				"btnNext"
+			],
+			[
+				"remove",
+				"removeClass\t.removeClass()"
+			],
+			[
+				"rows",
+				"rowsperpage"
+			],
+			[
+				"next",
+				"nextPage"
+			],
+			[
+				"id",
+				"idInv"
+			],
+			[
+				"availa",
+				"availableLinks"
+			],
+			[
+				"file",
+				"file_XML"
+			],
+			[
+				"music",
+				"music_player\t(test_dqsv.php)"
+			],
+			[
+				"add",
+				"addClass\t.addClass()"
+			],
+			[
+				"background",
+				"background-size"
+			],
+			[
+				"togg",
+				"toggleClass\t.toggleClass()"
+			],
+			[
+				"tog",
+				"toggleClass\t.toggleClass()"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"to",
+				"toggleClass\t.toggleClass()"
+			],
+			[
+				"ready",
+				"ready\t$(document).ready"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<!DOCTYPE HTML>\n<!--\n\tSnapshot by TEMPLATED\n\ttemplated.co @templatedco\n\tReleased for free under the Creative Commons Attribution 3.0 license (templated.co/license)\n-->\n<html>\n<head>\n\t<title>Acción Digital</title>\n\t<meta charset=\"utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n\t<link rel=\"stylesheet\" href=\"assets/css/main.css\" />\t\n\t<link rel=\"stylesheet\" href=\"carrito/css/bootstrap.min.css\">\n\t<style>\n\t\t.badge-notify{\n\t\t\tbackground:red;\n\t\t\tposition: absolute;\n\t\t\ttop: -10px;\n\t\t\tright: -10px;\n\t\t}\n\t\t/*.my-cart-icon-affix {\n\t\t\tposition: fixed;\n\t\t\tz-index: 999;\n\t\t}*/\n\t</style>\n\t<script src=\"assets/js/jquery.min.js\"></script>\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js\" integrity=\"sha256-1O3BtOwnPyyRzOszK6P+gqaRoXHV6JXj8HkjZmPYhCI=\" crossorigin=\"anonymous\"></script>\n\t<!-- <script src=\"assets/js/plugins.js\"></script> -->\n\n</head>\n<body>\n\t<div class=\"page-wrap\">\n\n\t\t<!-- Nav -->\n\t\t<nav id=\"nav\">\n\t\t\t<ul>\n\t\t\t\t<li><a href=\"index.html\"><span class=\"icon fa-home\"></span></a></li>\n\t\t\t\t<li><a href=\"gallery.html\" class=\"active\"><span class=\"icon fa-camera-retro\"></span></a></li>\n\t\t\t\t<li><a href=\"generic.html\"><span class=\"icon fa-file-text-o\"></span></a></li>\n\t\t\t\t<li><a href=\"#\"><span class=\"glyphicon glyphicon-shopping-cart my-cart-icon\"><span class=\"badge badge-notify my-cart-badge\"></span></span></a></li>\n\t\t\t</ul>\n\t\t</nav>\n\n\t\t<!-- Main -->\n\t\t<section id=\"main\">\n\n\t\t\t<!-- Header -->\n\t\t\t<header id=\"header\">\n\t\t\t\t<!-- <div>Snapshot <span>by TEMPLATED</span></div> -->\n\t\t\t</header>\n\n\t\t\t<!-- Gallery -->\n\t\t\t<section id=\"galleries\">\n\n\t\t\t\t<!-- Photo Galleries -->\n\t\t\t\t<div class=\"gallery\">\n\n\t\t\t\t\t<!-- Filters -->\n\t\t\t\t\t<header>\n\t\t\t\t\t\t<h1>Gallery</h1>\n\t\t\t\t\t\t<ul class=\"tabs\">\n\t\t\t\t\t\t\t<li><a href=\"#\" data-tag=\"all\" class=\"button active\">All</a></li>\n\t\t\t\t\t\t\t<li><a href=\"#\" data-tag=\"people\" class=\"button\">People</a></li>\n\t\t\t\t\t\t\t<li><a href=\"#\" data-tag=\"place\" class=\"button\">Places</a></li>\n\t\t\t\t\t\t\t<li><a href=\"#\" data-tag=\"thing\" class=\"button\">Things</a></li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</header>\n\n\t\t\t\t\t<div id=\"gallery-wrapper\" class=\"gallery-wrapper\"></div>\n\t\t\t\t</div>\n\t\t\t</section>\n\n\t\t\t<!-- Contact -->\n\t\t\t<section id=\"contact\">\n\t\t\t\t<!-- Social -->\n\t\t\t\t<div class=\"social column\">\n\t\t\t\t\t<h3>Nosotros</h3>\n\t\t\t\t\t<p>Mus sed interdum nunc dictum rutrum scelerisque erat a parturient condimentum potenti dapibus vestibulum condimentum per tristique porta. Torquent a ut consectetur a vel ullamcorper a commodo a mattis ipsum class quam sed eros vestibulum quisque a eu nulla scelerisque a elementum vestibulum.</p>\n\t\t\t\t\t<p>Aliquet dolor ultricies sem rhoncus dolor ullamcorper pharetra dis condimentum ullamcorper rutrum vehicula id nisi vel aptent orci litora hendrerit penatibus erat ad sit. In a semper velit eleifend a viverra adipiscing a phasellus urna praesent parturient integer ultrices montes parturient suscipit posuere quis aenean. Parturient euismod ultricies commodo arcu elementum suspendisse id dictumst at ut vestibulum conubia quisque a himenaeos dictum proin dis purus integer mollis parturient eros scelerisque dis libero parturient magnis.</p>\n\t\t\t\t\t<h3>Seguinos</h3>\n\t\t\t\t\t<ul class=\"icons\">\n\t\t\t\t\t\t<li><a href=\"#\" class=\"icon fa-twitter\"><span class=\"label\">Twitter</span></a></li>\n\t\t\t\t\t\t<li><a href=\"#\" class=\"icon fa-facebook\"><span class=\"label\">Facebook</span></a></li>\n\t\t\t\t\t\t<li><a href=\"#\" class=\"icon fa-instagram\"><span class=\"label\">Instagram</span></a></li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\n\t\t\t\t<!-- Form -->\n\t\t\t\t<div class=\"column\">\n\t\t\t\t\t<h3>Get in Touch</h3>\n\t\t\t\t\t<form action=\"#\" method=\"post\">\n\t\t\t\t\t\t<div class=\"field half first\">\n\t\t\t\t\t\t\t<label for=\"name\">Name</label>\n\t\t\t\t\t\t\t<input name=\"name\" id=\"name\" type=\"text\" placeholder=\"Name\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"field half\">\n\t\t\t\t\t\t\t<label for=\"email\">Email</label>\n\t\t\t\t\t\t\t<input name=\"email\" id=\"email\" type=\"email\" placeholder=\"Email\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"field\">\n\t\t\t\t\t\t\t<label for=\"message\">Message</label>\n\t\t\t\t\t\t\t<textarea name=\"message\" id=\"message\" rows=\"6\" placeholder=\"Message\"></textarea>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<ul class=\"actions\">\n\t\t\t\t\t\t\t<li><input value=\"Send Message\" class=\"button\" type=\"submit\"></li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\n\t\t\t</section>\n\n\t\t\t<!-- Footer -->\n\t\t\t<footer id=\"footer\">\n\t\t\t\t<div class=\"copyright\">\n\t\t\t\t\t&copy; Untitled Design: <a href=\"https://templated.co/\">TEMPLATED</a>. Images: <a href=\"https://unsplash.com/\">Unsplash</a>.\n\t\t\t\t</div>\n\t\t\t</footer>\n\t\t</section>\n\t</div>\n\n\t<!-- Scripts -->\n\n\t<script src=\"assets/js/jquery.poptrox.min.js\"></script>\n\t<script src=\"assets/js/jquery.scrolly.min.js\"></script>\n\t<script src=\"assets/js/skel.min.js\"></script>\n\t<script src=\"assets/js/util.js\"></script>\n\t<script src=\"assets/js/main.js\"></script>\n\t<script src=\"js/jquery-2.2.3.min.js\"></script>\n\t  <script type='text/javascript' src=\"assets/js/carrito/bootstrap.min.js\"></script>\n\t  <script type='text/javascript' src=\"assets/js/carrito/jquery.mycart.js\"></script>\n\t  <script type=\"text/javascript\">\n\t  $(function () {\n\n\t    var goToCartIcon = function($addTocartBtn){\n\t      var $cartIcon = $(\".my-cart-icon\");\n\t      var $image = $('<img width=\"30px\" height=\"30px\" src=\"' + $addTocartBtn.data(\"image\") + '\"/>').css({\"position\": \"fixed\", \"z-index\": \"999\"});\n\t      $addTocartBtn.prepend($image);\n\t      var position = $cartIcon.position();\n\t      $image.animate({\n\t        top: position.top,\n\t        left: position.left\n\t      }, 500 , \"linear\", function() {\n\t        $image.remove();\n\t      });\n\t    }\n\n\t    $('.my-cart-btn').myCart({\n\t      currencySymbol: '$',\n\t      classCartIcon: 'my-cart-icon',\n\t      classCartBadge: 'my-cart-badge',\n\t      classProductQuantity: 'my-product-quantity',\n\t      classProductRemove: 'my-product-remove',\n\t      classCheckoutCart: 'my-cart-checkout',\n\t      affixCartIcon: false,\n\t      showCheckoutModal: true,\n\t      cartItems: [],\n\t      clickOnAddToCart: function($addTocart){\n\t        goToCartIcon($addTocart);\n\t      },\n\t      afterAddOnCart: function(products, totalPrice, totalQuantity) {\n\t        console.log(\"afterAddOnCart\", products, totalPrice, totalQuantity);\n\t      },\n\t      clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {\n\t        console.log(\"cart icon clicked\", $cartIcon, products, totalPrice, totalQuantity);\n\t      },\n\t      checkoutCart: function(products, totalPrice, totalQuantity) {\n\t        var checkoutString = \"Total Price: \" + totalPrice + \"\\nTotal Quantity: \" + totalQuantity;\n\t        checkoutString += \"\\n\\n id \\t name \\t summary \\t price \\t quantity \\t image path\";\n\t        $.each(products, function(){\n\t          checkoutString += (\"\\n \" + this.id + \" \\t \" + this.name + \" \\t \" + this.summary + \" \\t \" + this.price + \" \\t \" + this.quantity + \" \\t \" + this.image);\n\t        });\n\t        alert(checkoutString)\n\t        console.log(\"checking out\", products, totalPrice, totalQuantity);\n\t      },\n\t      getDiscountPrice: function(products, totalPrice, totalQuantity) {\n\t        console.log(\"calculating discount\", products, totalPrice, totalQuantity);\n\t        return totalPrice * 0.5;\n\t      }\n\t    });\n\n\t  });\n\t  </script>\n\n\t  <!-- <script type=\"text/javascript\" src=\"data-script.js\"></script> -->\n\n\t  <script id=\"pictures-template\" type=\"text/x-handlebars-template\">\n\t  \t{{#pictures}}\n\t  \t<div class=\"media\">\n\t  \t\t<a href={{href}}>\n\t  \t\t\t<img src={{thumb}} alt=\"\" title=\"This right here is a caption.\" />\n\t  \t\t\t<span class=\"etiqueta\">{{text}}</span>\n\t  \t\t</a>\n\t  \t</div>\n\t  \t{{/pictures}}\n\t  </script>\n\t    \n\t  <script type=\"text/javascript\">\n\t      //wait for page to load\n\t      $(document).ready(function(){\n\t        // Extract the text from the template .html() is the jquery helper method for that\n\t        var raw_template = $('#pictures-template').html();\n\t        // Compile that into an handlebars template\n\t        var template = Handlebars.compile(raw_template);\n\t        // Retrieve the placeHolder where the Posts will be displayed \n\t        var placeHolder = $(\"#gallery-wrapper\");\n\t        // Fetch all Blog Posts data from server in JSON\n\t        $.get(\"pictures.json\", function(data,status,xhr){\n\t          var html = template(JSON.parse(data));\n\t          // Render the posts into the page\n\t          placeHolder.append(html);\n\t        });\n\t      });\n\t    </script>\n\n\t  <!-- <script>\n\t  \tfunction getTemplateAjax(path, callback) {\n\t  \t\tvar source, template;\n\t  \t\tjqueryNoConflict.ajax({\n\t  \t\t\turl: path,\n\t  \t\t\tsuccess: function (data) {\n\t  \t\t\t\tsource = data;\n\t  \t\t\t\ttemplate = Handlebars.compile(source);\n\t  \t\t\t\tif (callback) callback(template);\n\t  \t\t\t}\n\t  \t\t});\n\t  \t}\n\t  \t\n\t  \tfunction renderHandlebarsTemplate(withTemplate,inElement,withData){\n\t  \t\tgetTemplateAjax(withTemplate, function(template) {\n\t  \t\t\tjqueryNoConflict(inElement).html(template(withData));\n\t  \t\t})\n\t  \t};\n\n\t  \tvar source = $(\"#picture-template\").html();\n\t  \tvar template = Handlebars.compile(source);\n\t  \tvar data = { pictures: [ \n\t  \t\t{ \"href\":\"gallery_170301.html\", \"thumb\": \"images/170301/thumbs/01.jpg\", \"text\": \"gallery 1\" },\n\t  \t\t{ \"href\":\"gallery_170302.html\", \"thumb\": \"images/170302/thumbs/01.jpg\", \"text\": \"gallery 2\" },\n\t  \t\t{ \"href\":\"gallery_170303.html\", \"thumb\": \"images/170303/thumbs/01.jpg\", \"text\": \"gallery 3\" },\n\t  \t\t{ \"href\":\"gallery_170304.html\", \"thumb\": \"images/170304/thumbs/01.jpg\", \"text\": \"gallery 4\" },\n\t  \t\t{ \"href\":\"gallery_170305.html\", \"thumb\": \"images/170305/thumbs/01.jpg\", \"text\": \"gallery 5\" },\n\t  \t\t{ \"href\":\"gallery_170306.html\", \"thumb\": \"images/170306/thumbs/01.jpg\", \"text\": \"gallery 6\" },\n\t  \t\t{ \"href\":\"gallery_170307.html\", \"thumb\": \"images/170307/thumbs/01.jpg\", \"text\": \"gallery 7\" },\n\t  \t\t{ \"href\":\"gallery_170308.html\", \"thumb\": \"images/170308/thumbs/01.jpg\", \"text\": \"gallery 8\" },\n\t  \t\t{ \"href\":\"gallery_170309.html\", \"thumb\": \"images/170309/thumbs/01.jpg\", \"text\": \"gallery 9\" },\n\t  \t\t{ \"href\":\"gallery_170310.html\", \"thumb\": \"images/170310/thumbs/01.jpg\", \"text\": \"gallery 10\" },\n\t  \t\t{ \"href\":\"gallery_170311.html\", \"thumb\": \"images/170311/thumbs/01.jpg\", \"text\": \"gallery 11\" },\n\t  \t\t{ \"href\":\"gallery_170312.html\", \"thumb\": \"images/170312/thumbs/01.jpg\", \"text\": \"gallery 12\" },\n\t  \t\t]};\n\t  \t\t$(\"#gallery-wrapper\").html(template(data));\n\t  \t\tconsole.log('compile');\n\t  \t</script> -->\n</body>\n</html>",
+			"file": "gallery_handlebars.html",
+			"file_size": 10925,
+			"file_write_time": 131350208292251889,
+			"settings":
+			{
+				"buffer_size": 10235,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "pictures.json",
+			"settings":
+			{
+				"buffer_size": 795,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "notas.txt",
+			"settings":
+			{
+				"buffer_size": 243,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<script id=\"picture-template\" type=\"text/x-handlebars-template\">\n\t\t{{#pictures}}\n\t\t<div class=\"media\">\n\t\t\t<a href={{href}}>\n\t\t\t\t<img src={{thumb}} alt=\"\" title=\"This right here is a caption.\" />\n\t\t\t\t<span class=\"etiqueta\">{{text}}</span>\n\t\t\t</a>\n\t\t</div>\n\t\t{{/pictures}}\n\t</script>\t<script type=\"text/javascript\" src=\"data-script.js\"></script>",
+			"settings":
+			{
+				"buffer_size": 343,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dataDetailsTemplate.handlebars",
+			"settings":
+			{
+				"buffer_size": 189,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "<div>"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 323.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"lorem",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"block",
+				"Toggle Block Comment"
+			],
+			[
+				"comme",
+				"Toggle Comment"
+			],
+			[
+				"comm",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"upgrade",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"enoc",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"auto",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"encode",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"commen",
+				"Toggle Comment"
+			],
+			[
+				"come",
+				"Toggle Comment"
+			],
+			[
+				"sphp",
+				"Set Syntax: PHP"
+			],
+			[
+				"shtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"scss",
+				"Set Syntax: CSS"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"com",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"comment",
+				"Toggle Comment"
+			],
+			[
+				"tool",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"prefere",
+				"Preferences: Settings - User"
+			],
+			[
+				"commnet",
+				"Toggle Comment"
+			]
+		],
+		"width": 493.0
+	},
+	"console":
+	{
+		"height": 413.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			" import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			" import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital"
+	],
+	"file_history":
+	[
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/data-script.js",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/index.jsx",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/react.html",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/notas.txt",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/assets/css/main.css",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/assets/css/main_backup_flex.css",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/index.html",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/gallery.html",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/react-fetch/build/index.html",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/react-fetch/build/js/bundle.js",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/js/jquery-2.2.3.min.js",
+		"/home/tiago/Dropbox/personal/ACCION DIGITAL/repo_acciondigital/pictures.json",
+		"/opt/lampp/etc/httpd.conf",
+		"/home/tiago/www/repo_react/my-app/node_modules/domhandler/test/cases/01-basic.json",
+		"/opt/lampp/etc/extra/httpd-vhosts.conf",
+		"/home/tiago/.config/sublime-text-3/Packages/User/media query.sublime-snippet",
+		"/home/tiago/www/repo_acciondigital/assets/css/main.css",
+		"/home/tiago/www/repo_acciondigital/index.html",
+		"/home/tiago/www/repo_acciondigital/carrito/index.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170308.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170307.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170306.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170305.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170304.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170303.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170302.html",
+		"/home/tiago/www/repo_acciondigital/gallery_170301.html",
+		"/home/tiago/www/repo_acciondigital/gallery.html",
+		"/home/tiago/www/repo_acciondigital/images/170305/data.json",
+		"/home/tiago/www/repo_acciondigital/images/170304/data.json",
+		"/home/tiago/www/repo_acciondigital/images/170303/data.json",
+		"/home/tiago/www/repo_acciondigital/images/170302/data.json",
+		"/home/tiago/www/repo_acciondigital/images/170301/data.json",
+		"/home/tiago/www/repo_acciondigital/assets/includes/nav.html",
+		"/home/tiago/www/repo_acciondigital/assets/js/carrito/jquery.mycart.js",
+		"/home/tiago/www/repo_acciondigital/images/170306/data.json",
+		"/home/tiago/www/repo_acciondigital/images/170307/data.json",
+		"/home/tiago/www/repo_acciondigital/images/170308/data.json",
+		"/home/tiago/www/repo_acciondigital/assets/js/plugins.js",
+		"/home/tiago/www/repo_acciondigital/carrito/js/jquery.mycart.js",
+		"/home/tiago/www/repo_acciondigital/assets/css/font-awesome.min.css",
+		"/home/tiago/www/repo_acciondigital/assets/js/util.js",
+		"/home/tiago/www/repo_acciondigital/assets/js/main.js",
+		"/home/tiago/www/repo_acciondigital/Simple-Shopping-Cart-Plugin-With-jQuery-Bootstrap-mycart/index.html",
+		"/home/tiago/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/tiago/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/opt/lampp/apps/wordpress/htdocs/index.php",
+		"/home/tiago/www/repo_react_native/ReactNativeSampleApp/android/build.gradle",
+		"/home/tiago/www/repo_react_native/ReactNativeSampleApp/android/gradlew",
+		"/home/tiago/Dropbox/personal/w3/templates_responsive/index_interna.htm",
+		"/home/tiago/Dropbox/personal/w3/templates_responsive/css/fonts.css",
+		"/home/tiago/Dropbox/personal/w3/templates_responsive/index_beneficios.htm",
+		"/home/tiago/Dropbox/personal/w3/templates_responsive/index_women.htm",
+		"/home/tiago/Dropbox/personal/w3/templates_responsive/css/styles.css",
+		"/home/tiago/Dropbox/personal/w3/cadastros/repo_baby/trunk/static/css/content.cadastrados.css",
+		"/home/tiago/.mame/mame.ini",
+		"/home/tiago/Dropbox/personal/w3/cadastros/repo_baby/trunk/pt/papai-manda-bem/resources/css/content.cadastre.css",
+		"/home/tiago/Dropbox/personal/w3/cadastros/repo_baby/trunk/static/js/pagination.js",
+		"/home/tiago/Dropbox/personal/w3/cadastros/repo_baby/trunk/static/js/pagination_back.js",
+		"/home/tiago/www/repo_baby/trunk/pt/papai-manda-bem/estabelecimentos-cadastrados/index.html",
+		"/home/tiago/.config/sublime-text-3/Packages/User/console.log.sublime-snippet",
+		"/home/tiago/Dropbox/personal/w3/cadastros/index.html",
+		"/home/tiago/Dropbox/personal/w3/cadastros/js/pagination.js",
+		"/home/tiago/Dropbox/personal/w3/cadastros/js/tablas_responsive_plug.js",
+		"/home/tiago/Dropbox/personal/w3/cadastros/js/filter_table.js",
+		"/home/tiago/www/repo_dqsv/test_dqsv.php",
+		"/home/tiago/www/repo_dqsv/music_player.xml",
+		"/opt/lampp/htdocs/dqsv/test_dqsv.php",
+		"/home/tiago/.local/share/Steam/steam.sh",
+		"/etc/minidlna.conf",
+		"/home/tiago/Descargas/peliculas/La Vida Secreta de tus Mascotas.2016.DVDRip.Latino/La Vida Secreta de tus Mascotas.2016.DVDRip.Latino/LÉAME.txt",
+		"/run/media/tiago/el pen/utt.txt",
+		"/home/tiago/Descargas/peliculas/The.Farewell.Party.2014.LiMiTED.DVDRip.x264-LPD/the.farewell.party.limited.2014.dvdrip.x264-lpd.srt",
+		"/home/tiago/Descargas/peliculas/The.Lobster.2015.720p.BRRip.x264.AAC-ETRG/The.Lobster.2015.720p.BRRip.x264.AAC-ETRG.txt",
+		"/home/tiago/www/repo_dev/server.js",
+		"/home/tiago/www/repo_dev/app.js",
+		"/opt/ums/renderers/LG-LA6200.conf",
+		"/etc/rygel.conf",
+		"/home/tiago/Descargas/series/twd/TWD16.srt",
+		"/run/media/tiago/Rosa/out5-2.mkv",
+		"/home/tiago/Descargas/series/twd/twd14.srt",
+		"/home/tiago/Descargas/series/twd/The.Walking.Dead.S06E14.HDTV.x264-FLEET.ESP.wWw.SubsTeam.Net.srt",
+		"/home/tiago/www/repo_react/server.php",
+		"/opt/lampp/htdocs/repo_react/public/comments.json",
+		"/opt/lampp/htdocs/repo_react/public/index.html",
+		"/home/tiago/Descargas/temas/bsm/BSM Simple Dark/gtk-2.0/gtkrc",
+		"/home/tiago/Descargas/temas/bsm/BSM Simple Dark/index.theme",
+		"/usr/share/themes/MediterraneanTribute/gtk-2.0/gtkrc",
+		"/usr/share/themes/MediterraneanTribute/gtk-2.0/apps/terminal.rc",
+		"/opt/lampp/htdocs/repo_react/comments.json",
+		"/home/tiago/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/opt/lampp/htdocs/repo_react/public/scripts/example.js",
+		"/opt/lampp/htdocs/repo_react/public/css/base.css",
+		"/opt/lampp/htdocs/repo_react/requirements.txt",
+		"/home/tiago/Documentos/SUPERAR/aviso/style.css",
+		"/home/tiago/Documentos/SUPERAR/aviso/index.php",
+		"/home/tiago/www/repo_dev/timer.js",
+		"/home/tiago/Documentos/SUPERAR/index.html",
+		"/home/tiago/www/repo_dev/timer.css",
+		"/home/tiago/www/patricia-ortiz/index.html",
+		"/home/tiago/www/repo_programa_superar/scripts/include/home/fale-conosco.php",
+		"/home/tiago/Documentos/SUPERAR/repo_programa_superar/static/css/styleGeral.css",
+		"/home/tiago/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/tiago/Documentos/SUPERAR/repo_programa_superar/pt/home/index.html",
+		"/home/tiago/Documentos/SUPERAR/repo_programa_superar/pt/conheca-o-programa/index.html",
+		"/home/tiago/Documentos/cv/Creative_design_One_Page_CV_Resume-PIXEDEN/Text fonts.txt",
+		"/home/tiago/Downloads/the-lobster-spanish-882386/The.Lobster.2015.WEB-DL.x264-FGT.srt",
+		"/home/tiago/Descargas/peliculas/The.Lobster.2015.DVDRip.XviD-EVO/lobster.srt",
+		"/home/tiago/Downloads/The Lobster (2015).srt",
+		"/home/tiago/Downloads/The Lobster (2015) (Español (Latinoamérica)).srt",
+		"/etc/hosts",
+		"/opt/lampp/apache2/conf/httpd.conf",
+		"/opt/lampp/etc/extra/httpd-xampp.conf",
+		"/home/tiago/www/patricia-ortiz/css/style.css",
+		"/home/tiago/Descargas/The Hunger Games Mockingjay - Part 2 2015 HDRip x264-TvTeam/Readme.txt",
+		"/home/tiago/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/tiago/www/patricia-ortiz/js/jquery.carousel.fullscreen.js",
+		"/home/tiago/www/patricia-ortiz/index2.html",
+		"/home/tiago/Descargas/series/twd/Importante para la utilizaci¢n de este archivo.txt",
+		"/home/tiago/Descargas/series/Les.Revenants.The.Returned.S02.Complete.Eng.Subs.HDTV.x264-Zakh/rev0201.srt",
+		"/home/tiago/Descargas/peliculas/www.Torrenting.com - Cashback.2006.BDRip.XviD-WAR/Cashback.LIMITED.DVDRip.XViD-ESPiSE.srt",
+		"/home/tiago/.cache/.fr-nMfIH4/etc/yum.repos.d/adobe-linux-x86_64.repo",
+		"/home/tiago/.cache/.fr-t0lQHd/etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux",
+		"/home/tiago/.cache/.fr-fh8va0/etc/yum.repos.d/adobe-linux-x86_64.repo",
+		"/home/tiago/Descargas/peliculas/www.Torrenting.com - Cashback.2006.BDRip.XviD-WAR/Read me.txt",
+		"/home/tiago/Descargas/repo_patricia-ortiz/css/style.css",
+		"/home/tiago/Descargas/repo_patricia-ortiz/index-2.html"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 103.0,
+		"where_history":
+		[
+			"*.html",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"index",
+			"gallery-wrapper",
+			"}, {",
+			"\t{ \"hr",
+			"”",
+			"json",
+			"text\": \"1ª ",
+			"images/170301",
+			"ry_170301",
+			"301",
+			"gallery_170301",
+			", {",
+			"class",
+			"/>",
+			"drop",
+			"0d1217",
+			"color",
+			"black",
+			"#000",
+			"main",
+			"body",
+			"footer .c",
+			"etiqueta",
+			"768",
+			"#nav",
+			"flex",
+			"logs/dummy-host2.example.com-error_log",
+			"vh",
+			"htdocs",
+			"opt/lampp/htdocs",
+			"opt/lampp",
+			"banner",
+			"page-wrap",
+			"768",
+			"page-wrap",
+			"add to cart",
+			"768px",
+			"736px",
+			"73",
+			"full gallery",
+			"full",
+			"about",
+			">\n",
+			"<!-- Contact -->\n\t\t\t<section id=\"contact\">\n\t\t\t\t<!-- Social -->\n\t\t\t\t<div class=\"social column\">\n\t\t\t\t\t<h3>About Me</h3>\n\t\t\t\t\t<p>Mus sed interdum nunc dictum rutrum scelerisque erat a parturient condimentum potenti dapibus vestibulum condimentum per tristique porta. Torquent a ut consectetur a vel ullamcorper a commodo a mattis ipsum class quam sed eros vestibulum quisque a eu nulla scelerisque a elementum vestibulum.</p>\n\t\t\t\t\t<p>Aliquet dolor ultricies sem rhoncus dolor ullamcorper pharetra dis condimentum ullamcorper rutrum vehicula id nisi vel aptent orci litora hendrerit penatibus erat ad sit. In a semper velit eleifend a viverra adipiscing a phasellus urna praesent parturient integer ultrices montes parturient suscipit posuere quis aenean. Parturient euismod ultricies commodo arcu elementum suspendisse id dictumst at ut vestibulum conubia quisque a himenaeos dictum proin dis purus integer mollis parturient eros scelerisque dis libero parturient magnis.</p>\n\t\t\t\t\t<h3>Follow Me</h3>\n\t\t\t\t\t<ul class=\"icons\">\n\t\t\t\t\t\t<li><a href=\"#\" class=\"icon fa-twitter\"><span class=\"label\">Twitter</span></a></li>\n\t\t\t\t\t\t<li><a href=\"#\" class=\"icon fa-facebook\"><span class=\"label\">Facebook</span></a></li>\n\t\t\t\t\t\t<li><a href=\"#\" class=\"icon fa-instagram\"><span class=\"label\">Instagram</span></a></li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\n\t\t\t\t<!-- Form -->\n\t\t\t\t<div class=\"column\">\n\t\t\t\t\t<h3>Get in Touch</h3>\n\t\t\t\t\t<form action=\"#\" method=\"post\">\n\t\t\t\t\t\t<div class=\"field half first\">\n\t\t\t\t\t\t\t<label for=\"name\">Name</label>\n\t\t\t\t\t\t\t<input name=\"name\" id=\"name\" type=\"text\" placeholder=\"Name\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"field half\">\n\t\t\t\t\t\t\t<label for=\"email\">Email</label>\n\t\t\t\t\t\t\t<input name=\"email\" id=\"email\" type=\"email\" placeholder=\"Email\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"field\">\n\t\t\t\t\t\t\t<label for=\"message\">Message</label>\n\t\t\t\t\t\t\t<textarea name=\"message\" id=\"message\" rows=\"6\" placeholder=\"Message\"></textarea>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<ul class=\"actions\">\n\t\t\t\t\t\t\t<li><input value=\"Send Message\" class=\"button\" type=\"submit\"></li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\n\t\t\t</section>",
+			"about",
+			"Gallery - Snapshot by TEMPLATED",
+			"thumbs/101.jpg",
+			"/thumbs/101.jpg",
+			"170307/",
+			"170306/",
+			"170305/",
+			"170304/",
+			"170303/",
+			"170302/",
+			"17030",
+			"170308/images/",
+			"170308",
+			"gallery_",
+			"images/fulls/",
+			"<a href=\"",
+			"170301",
+			"images/",
+			"src=\"images/thumbs/",
+			"data-image=\"images/",
+			"images/fulls/",
+			"01.jpg\" alt=\"\"",
+			"images/thumbs/",
+			"images/20170307",
+			"<img src=\"",
+			"<span class=\"etiqueta\">",
+			"console.log('***",
+			"$cartBadge",
+			"classCartBadge",
+			".text",
+			"if (ProductManager.getTotalQuantity()>0)",
+			"$cartBadge.text",
+			"text",
+			"badge",
+			"my-cart-badge",
+			"badge-notify",
+			".badge-notify",
+			"products",
+			"afterAddOnCart",
+			"go to cart",
+			"goToCartIcon",
+			"clickOnAddToCart",
+			"cartItems",
+			"data-image=\"images/img_2.png",
+			"<div class=\"cart_btns\">",
+			"fix",
+			"<a href=\"#\" class=\"btn btn-info\">Details</a>",
+			"classCartIcon",
+			"cartIcon",
+			"CartIcon",
+			"cartIcon",
+			"badge-notify",
+			".badge-notify",
+			"affix",
+			"offset",
+			"my-cart-btn",
+			"my-cart-btn\n",
+			"myCart\n\n",
+			"userOptions",
+			"loadMyCartEvent",
+			"$cartIcon =",
+			"$cartIcon.offset",
+			"cartIcon.offset",
+			"float: right",
+			"</a></div>",
+			"<button class=\"btn btn-danger my-cart-btn\" data-id=\"2\" data-name=\"product 2\" data-summary=\"summary 2\" data-price=\"20\" data-quantity=\"1\" data-image=\"images/img_2.png\">Add to Cart</button>\n\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-info\">Details</a>",
+			"/></a>",
+			"fa-camera-retro",
+			"cart",
+			".glyphicon",
+			"glyp",
+			"gly",
+			"glip",
+			"cart",
+			"carr",
+			"generic",
+			"my-cart-icon",
+			"carticon",
+			"carrito/",
+			".js",
+			"offset",
+			"GALERIA",
+			"</a>",
+			"content"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Agregar al carrito",
+			"Acción Digital",
+			"thumbs/01.jpg",
+			"\"},'",
+			"\", \"",
+			": \"",
+			",'+",
+			"'{\"path\":",
+			"\"title\"",
+			"\"path\"",
+			"\"song\"",
+			"'}",
+			"\"{'path':",
+			"'},\"+",
+			"'}",
+			"'},",
+			"{'path': '",
+			"', 'title': '",
+			"'path = ",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "gallery_handlebars.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10235,
+						"regions":
+						{
+							"bookmarks":
+							{
+								"flags": 144,
+								"icon": "bookmark",
+								"regions":
+								[
+									[
+										2124,
+										2124
+									]
+								],
+								"scope": "bookmarks"
+							}
+						},
+						"selection":
+						[
+							[
+								8104,
+								8104
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3203.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "pictures.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 795,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								783,
+								783
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "notas.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								343,
+								343
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dataDetailsTemplate.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<div>",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "acciondigital.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"notas",
+				"notas.txt"
+			],
+			[
+				"pictures",
+				"pictures.json"
+			],
+			[
+				"main.cs",
+				"assets/css/main.css"
+			],
+			[
+				"mycart",
+				"assets/js/carrito/jquery.mycart.js"
+			],
+			[
+				"gallery",
+				"gallery.html"
+			],
+			[
+				"assets/js/main.js",
+				"assets/js/main.js"
+			],
+			[
+				"cadastrcss",
+				"repo_baby/trunk/static/css/content.cadastrados.css"
+			],
+			[
+				"cadascss",
+				"repo_baby/trunk/pt/papai-manda-bem/resources/css/content.cadastre.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 242.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

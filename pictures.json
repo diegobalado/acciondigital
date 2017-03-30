@@ -1,0 +1,11 @@
+{ "pictures": [ 
+	{ "href":"gallery_170301.html", "thumb": "images/170301/thumbs/01.jpg", "text": "gallery 1" },
+	{ "href":"gallery_170302.html", "thumb": "images/170302/thumbs/01.jpg", "text": "gallery 2" },
+	{ "href":"gallery_170303.html", "thumb": "images/170303/thumbs/01.jpg", "text": "gallery 3" },
+	{ "href":"gallery_170304.html", "thumb": "images/170304/thumbs/01.jpg", "text": "gallery 4" },
+	{ "href":"gallery_170305.html", "thumb": "images/170305/thumbs/01.jpg", "text": "gallery 5" },
+	{ "href":"gallery_170306.html", "thumb": "images/170306/thumbs/01.jpg", "text": "gallery 6" },
+	{ "href":"gallery_170307.html", "thumb": "images/170307/thumbs/01.jpg", "text": "gallery 7" },
+	{ "href":"gallery_170308.html", "thumb": "images/170308/thumbs/01.jpg", "text": "gallery 8" }	    		
+]
+}
