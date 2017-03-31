@@ -23,6 +23,7 @@ function getTemplateAjax(path, callback) {
     var source, template;
     jqueryNoConflict.ajax({
         url: path,
+        dataType: 'json',
         success: function (data) {
             console.log('source ' + source);
             source = data;
