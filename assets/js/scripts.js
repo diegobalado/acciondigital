@@ -1,6 +1,6 @@
 /*HANDLEBARS*/
 $('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr'+'ipt>');
-$('#pictures-template').load('dataDetailsTemplate.handlebars');
+$('#pictures-template').load('dataDetailsTemplate.htm', function() {
 //wait for page to load
 $(document).ready(function(){
   // Extract the text from the template .html() is the jquery helper method for that
@@ -15,6 +15,7 @@ $(document).ready(function(){
     // Render the posts into the page
     placeHolder.append(html);
   });
+});  
 });
 
 /*HEADER COLAPSABLE*/
