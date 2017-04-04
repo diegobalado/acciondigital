@@ -1,0 +1,17 @@
+{ 
+	"title": "1ª Fecha Open XCO - 1ª Manga",
+	"pictures": [ 
+		{ "href":"galleries/170301/01.jpg", "thumb": "galleries/170301/thumbs/01.jpg", "text": "gallery 1" },
+		{ "href":"galleries/170301/02.jpg", "thumb": "galleries/170301/thumbs/02.jpg", "text": "gallery 2" },
+		{ "href":"galleries/170301/03.jpg", "thumb": "galleries/170301/thumbs/03.jpg", "text": "gallery 3" },
+		{ "href":"galleries/170301/04.jpg", "thumb": "galleries/170301/thumbs/04.jpg", "text": "gallery 4" },
+		{ "href":"galleries/170301/05.jpg", "thumb": "galleries/170301/thumbs/05.jpg", "text": "gallery 5" },
+		{ "href":"galleries/170301/06.jpg", "thumb": "galleries/170301/thumbs/06.jpg", "text": "gallery 6" },
+		{ "href":"galleries/170301/07.jpg", "thumb": "galleries/170301/thumbs/07.jpg", "text": "gallery 7" },
+		{ "href":"galleries/170301/08.jpg", "thumb": "galleries/170301/thumbs/08.jpg", "text": "gallery 8" }	    		
+	],
+	"ads": [
+		{ "ad":"./images/ads/16-FiglioFebrero.gif"},
+		{ "ad":"./images/ads/234-300x250-Semana-Santa.gif"}
+	]
+}

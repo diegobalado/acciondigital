@@ -1,6 +1,8 @@
 $(function () {
 
 	var goToCartIcon = function($addTocartBtn){
+		console.log('carrito');
+		$('.my-cart-badge.empty').removeClass('empty');
 		var $cartIcon = $(".my-cart-icon");
 		var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
 		$addTocartBtn.prepend($image);

@@ -1,4 +1,5 @@
 { 
+	"title": "Últimos Eventos",
 	"pictures": [ 
 		{ "href":"gallery_170301.html", "thumb": "images/thumbs/170301.jpg", "text": "gallery 1" },
 		{ "href":"gallery_170302.html", "thumb": "images/thumbs/170302.jpg", "text": "gallery 2" },
@@ -8,5 +9,9 @@
 		{ "href":"gallery_170306.html", "thumb": "images/thumbs/170306.jpg", "text": "gallery 6" },
 		{ "href":"gallery_170307.html", "thumb": "images/thumbs/170307.jpg", "text": "gallery 7" },
 		{ "href":"gallery_170308.html", "thumb": "images/thumbs/170308.jpg", "text": "gallery 8" }	    		
+	],
+	"ads": [
+		{ "ad":"./images/ads/16-FiglioFebrero.gif"},
+		{ "ad":"./images/ads/234-300x250-Semana-Santa.gif"}
 	]
 }

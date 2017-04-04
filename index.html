@@ -10,36 +10,18 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="carrito/css/bootstrap.min.css">
-	<style>
-		.badge-notify{
-			background:red;
-			position:absolute;
-			top: -10px;
-			right: 10px;
-		}
-		/*.my-cart-icon-affix {
-			position: fixed;
-			z-index: 999;
-		}*/
-	</style>
+	<link rel="stylesheet" href="assets/css/carrito/bootstrap.min.css">	
+	<script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
-	<!-- <script src="assets/js/plugins.js"></script> -->
 </head>
-<body>
+<body class="home">
 	<div class="page-wrap">
 
-		<!-- Nav -->
-		<nav id="nav">
-			<ul>
-			<li><a href="index.html" class="active"><span class="icon fa-home"></span></a></li>
-				<li><a href="gallery.html"><span class="icon fa-camera-retro"></span></a></li>
-				<li><a href="generic.html"><span class="icon fa-file-text-o"></span></a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span></a></li>
-			</ul>
-		</nav>
+		<header class="header" id="header">
+			<a class="logo" href="/"><img src="images/logo.png" alt="Accion Digital" /></a>
+			<nav id="nav-header" class="nav"></nav>
+		</header>
 
-		<!-- Main -->
 		<section id="main">
 
 			<!-- Banner -->
@@ -63,29 +45,33 @@
 					</header>
 					<div class="gallery-wrapper">
 						<div class="media">
-							<a href="gallery_170301.html"><img src="images/170301/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">1ª Fecha Open XCO<br>1ª Manga</span></a>
+							<a href="gallery.html?g=170301"><img src="images/thumbs/170301.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">1ª Fecha Open XCO<br>1ª Manga</span></a>
 						</div>
 						<div class="media">
-							<a href="gallery_170302.html"><img src="images/170302/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">1ª Fecha Open XCO<br>2ª Manga</span></a>
+							<a href="gallery.html?g=170302"><img src="images/thumbs/170302.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">1ª Fecha Open XCO<br>2ª Manga</span></a>
 						</div>
 						<div class="media">
-							<a href="gallery_170303.html"><img src="images/170303/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Copa CNF<br>Whip Off</span></a>
+							<a href="gallery.html?g=170303"><img src="images/thumbs/170303.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Copa CNF<br>Whip Off</span></a>
 						</div>
 						<div class="media">
-							<a href="gallery_170304.html"><img src="images/170304/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Marathon XC Tandil<br>Cerro Aurora</span></a>
+							<a href="gallery.html?g=170304"><img src="images/thumbs/170304.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Marathon XC Tandil<br>Cerro Aurora</span></a>
 						</div>
 						<div class="media">
-							<a href="gallery_170305.html"><img src="images/170305/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Rally MTB Tandil 2016<br>1ª Parte</span></a>
+							<a href="gallery.html?g=170305"><img src="images/thumbs/170305.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Rally MTB Tandil 2016<br>1ª Parte</span></a>
 						</div>
 						<div class="media">
-							<a href="gallery_170306.html"><img src="images/170306/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Summer Jam<br>BMX</span></a>
+							<a href="gallery.html?g=170306"><img src="images/thumbs/170306.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Summer Jam<br>BMX</span></a>
 						</div>
 						<div class="media">
-							<a href="gallery_170307.html"><img src="images/170307/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Summer Jam<br>Skate</span></a>
+							<a href="gallery.html?g=170307"><img src="images/thumbs/170307.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Summer Jam<br>Skate</span></a>
 						</div>
 						<div class="media">
-							<a href="gallery_170308.html"><img src="images/170308/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Triangulo</span></a>
+							<a href="gallery.html?g=170308"><img src="images/thumbs/170308.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Triangulo</span></a>
 						</div>
+					</div>
+					<div id="gallery-ad" class="gallery-ad">
+						<img src="./images/ads/16-FiglioFebrero.gif" alt="">
+						<img src="./images/ads/234-300x250-Semana-Santa.gif" alt="">
 					</div>
 					<footer>
 						<a href="gallery.html" class="button big">Todos los eventos</a>
@@ -142,15 +128,16 @@
 	</div>
 
 	<!-- Scripts -->
-
-	<script src="assets/js/jquery.poptrox.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/carrito/jquery-2.2.3.min.js"></script>
-	<script type='text/javascript' src="assets/js/carrito/bootstrap.min.js"></script>
-	<script type='text/javascript' src="assets/js/carrito/jquery.mycart.js"></script>
+	<script type="text/javascript" src="assets/js/load_pieces.js"></script>
+	<script type="text/javascript" src="assets/js/scripts.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.poptrox.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.scrolly.min.js"></script>
+	<script type="text/javascript" src="assets/js/skel.min.js"></script>
+	<script type="text/javascript" src="assets/js/util.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/carrito/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/carrito/jquery.mycart.js"></script>
+	<!-- <script type="text/javascript" src="assets/js/carrito/carrito.js"></script> -->
 
 </body>
 </html>

@@ -465,6 +465,7 @@
 		-ms-justify-content: space-between;
 		justify-content: space-between;
 		background: #ececec;
+		margin-top: 40px;
 	}
 
 	#contact form {
@@ -749,14 +750,20 @@
 			opacity: 1;		
 		}
 	}
-
+	.home #galleries {
+		padding-top: 40px;
+	}
 	.gallery {
-		padding: 3.5em;
+		padding: 0 3.5em;
 		position: relative;
 		overflow: hidden;
 		min-height: 37em;
 	}
-
+	.gallery header h2 {
+		margin-top: 40px;
+		text-transform: uppercase;
+		font-family: "Nunito Sans";
+	}
 	@media screen and (max-width: 980px) {
 
 		.gallery {
@@ -808,6 +815,7 @@
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
+		margin-top: 40px;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -819,16 +827,15 @@
 	}
 
 	@media screen and (max-width: 480px) {
-
 		.gallery header h2 {
 			margin-bottom: .5em;
 		}
-
 	}
 
 	.gallery footer {
 		text-align: center;
-		margin-top: 4em;
+		clear: both;
+		padding: 40px;
 	}
 
 	.gallery .gallery-wrapper {
@@ -1498,7 +1505,7 @@
 		float: right;
 		line-height: 21px;
 		margin-right: 30px;
-		margin-top: 100px;
+		margin-top: 80px;
 		position: relative;
 		width: auto;
 		-webkit-transition: all 0.3s;
@@ -1547,7 +1554,7 @@
 	}
 	.nav ul li:before {
 		content: " | ";
-		color: #333;
+		color: #ccc;
 	}
 	.nav ul li:first-child:before {
 		content: "";
@@ -1579,6 +1586,8 @@
 	}
 
 	#nav-header ul li a .text {
+		font-family: "Nunito Sans";
+		font-weight: normal;
 		display: inline;
 		-webkit-transition: all 0.3s;
 		-moz-transition: all 0.3s;
@@ -1724,7 +1733,7 @@
 		background: #e8e8e8;
 		width: auto;
 		order: 1;
-		padding-top: 200px;
+		padding-top: 130px;
 		/*padding-left: 56px;*/
 	}
 	@media screen and (max-width: 768px) {
@@ -1818,9 +1827,9 @@
 	.header {
 		-moz-transition: height 0.3s;
 		-webkit-transition: height 0.3s;
-		background: #ccc;
+		background: #333;
 		color:#fff;
-		height: 160px;
+		height: 130px;
 		left: 0;
 		line-height:160px;
 		overflow: hidden;
@@ -1834,7 +1843,7 @@
 	}
 	.header.shrink {
 		background: #333;
-		height: 100px;
+		height: 80px;
 		line-height:80px;
 		-webkit-transition: all 0.3s;
 		-moz-transition: all 0.3s;
@@ -1857,28 +1866,19 @@
 		transition: all 0.3s;
 	}
 	.header.shrink #nav-header {
-		margin-top: 30px;
+		margin-top: 15px;
 		-webkit-transition: all 0.3s;
 		-moz-transition: all 0.3s;
 		transition: all 0.3s;
 	}
 	#nav-header a {
-		color: #333;
-		-webkit-transition: all 0.3s;
-		-moz-transition: all 0.3s;
-		transition: all 0.3s;
-	}
-	.header.shrink #nav-header a {
 		color: #ccc;
 		-webkit-transition: all 0.3s;
 		-moz-transition: all 0.3s;
 		transition: all 0.3s;
 	}
-	.nav ul li:before {
-		color: #333;
-		-webkit-transition: all 0.3s;
-		-moz-transition: all 0.3s;
-		transition: all 0.3s;
+	#nav-header ul li.active a {
+		color: #FAC200;
 	}
 	.header.shrink .nav ul li:before {
 		display: none;
@@ -1896,14 +1896,14 @@
 	}
 	.header .logo {
 		float: left;
-		margin-top: 30px;
+		margin-top: 15px;
 		margin-left: 30px;
 		-webkit-transition: all 0.3s;
 		-moz-transition: all 0.3s;
 		transition: all 0.3s;
 	}
 	.header.shrink .logo {
-		margin-top: 20px;
+		margin-top: 10px;
 		-webkit-transition: all 0.3s;
 		-moz-transition: all 0.3s;
 		transition: all 0.3s;
@@ -1983,9 +1983,15 @@
 	}
 
 	/*CARRITO*/
-	.badge-notify{
-		background:red;
+	#nav-header .badge-notify {
+		background-color: red;
 		position: absolute;
 		top: -10px;
-		right: -10px;
+		right: 0;
+		padding: 6px 3px;
+		width: 20px;
+		height: 20px;
+	}
+	#nav-header .badge.empty {
+		background-color: transparent;
 	}

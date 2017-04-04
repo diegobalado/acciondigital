@@ -36,19 +36,21 @@
 			<section id="galleries">
 				<form action="#" method="">
 					<div data-role="fieldcontain">
-						<label for="eventCode">Código de evento:</label>
-						<input type="date" name="eventCode" id="date" value=""  /><br /><br />
-						<label for="textarea">carpeta:</label>
-						<input type="date" name="folder" id="folder" value=""  /><br /><br />
-						<!-- <textarea cols="10" rows="1" name="textarea" id="textarea"></textarea> -->
+						<label for="title">Título de evento:</label>
+						<input type="text" name="title" id="title" value=""  /><br /><br />
+						<label for="folder">Carpeta:</label>
+						<input type="text" name="folder" id="folder" value=""  /><br /><br />
+						<label for="ads">Publicidades:</label>
+						<input type="text" name="ads" id="ads" value=""  /><br /><br />
 						<input type="submit" value="Guardar" />
 					</div>      
 				</form>
 
 				<?php
 
-				$directorio = opendir("./images/170301/thumbs/"); //ruta actual
-				
+				if (isset($_GET["folder"])) {
+					$folder = $_GET["folder"];
+				$directorio = opendir("./galleries/".$folder."/thumbs/"); //ruta actual
 				$pics = array();
 
 				while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
@@ -56,30 +58,28 @@
 					if (!is_dir($archivo))				    
 					{
 						array_push($pics, $archivo);
-				        // echo $archivo . "<br />";
 					}
 				}
-				print_r($pics);
-				// $file = 'pictures_php2.json';
-				// file_put_contents($file, json_encode($pics));
-
-				$file = dirname(__FILE__).'/data.json';
+				echo json_encode([$_REQUEST, "pictures"=>$pics]);
+				$file = dirname(__FILE__).'/galleries/'.$folder.'/data.json';
 				file_put_contents($file, json_encode($_REQUEST));
-				?>
+			}
 
-			</section>
+			?>
+
 		</section>
-	</div>
+	</section>
+</div>
 
-	<!-- Scripts -->
+<!-- Scripts -->
 
-	<script src="assets/js/jquery.poptrox.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="js/jquery-2.2.3.min.js"></script>
-	<script type='text/javascript' src="assets/js/carrito/bootstrap.min.js"></script>
-	<script type='text/javascript' src="assets/js/carrito/jquery.mycart.js"></script>
+<script src="assets/js/jquery.poptrox.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/jquery-2.2.3.min.js"></script>
+<script type='text/javascript' src="assets/js/carrito/bootstrap.min.js"></script>
+<script type='text/javascript' src="assets/js/carrito/jquery.mycart.js"></script>
 </body>
 </html>

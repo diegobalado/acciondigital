@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+	<title>Acción Digital</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />	
+	<link rel="stylesheet" href="carrito/css/bootstrap.min.css">
+	<style>
+		.badge-notify{
+			background:red;
+			position: absolute;
+			top: -10px;
+			right: -10px;
+		}
+		/*.my-cart-icon-affix {
+			position: fixed;
+			z-index: 999;
+		}*/
+	</style>
+	<script src="assets/js/jquery.min.js"></script>
+	<!-- <script src="assets/js/plugins.js"></script> -->
+</head>
+<body>
+	<div class="page-wrap">
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="index.html"><span class="icon fa-home"></span></a></li>
+				<li><a href="gallery.html" class="active"><span class="icon fa-camera-retro"></span></a></li>
+				<li><a href="generic.html"><span class="icon fa-file-text-o"></span></a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<section id="main">
+
+			<!-- Header -->
+			<header id="header">
+				<!-- <div>Snapshot <span>by TEMPLATED</span></div> -->
+			</header>
+
+			<!-- Gallery -->
+			<section id="galleries">
+
+							<!-- Photo Galleries -->
+							<div class="gallery">
+								<header class="special">
+									<h2>Todos los Eventos</h2>
+								</header>
+								<div class="gallery-wrapper">
+									<div class="media">
+										<a href="gallery_170301.html"><img src="images/170301/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">1ª Fecha Open XCO<br>1ª Manga</span></a>
+									</div>
+									<div class="media">
+										<a href="gallery_170302.html"><img src="images/170302/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">1ª Fecha Open XCO<br>2ª Manga</span></a>
+									</div>
+									<div class="media">
+										<a href="gallery_170303.html"><img src="images/170303/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Copa CNF<br>Whip Off</span></a>
+									</div>
+									<div class="media">
+										<a href="gallery_170304.html"><img src="images/170304/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Marathon XC Tandil<br>Cerro Aurora</span></a>
+									</div>
+									<div class="media">
+										<a href="gallery_170305.html"><img src="images/170305/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Rally MTB Tandil 2016<br>1ª Parte</span></a>
+									</div>
+									<div class="media">
+										<a href="gallery_170306.html"><img src="images/170306/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Summer Jam<br>BMX</span></a>
+									</div>
+									<div class="media">
+										<a href="gallery_170307.html"><img src="images/170307/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Summer Jam<br>Skate</span></a>
+									</div>
+									<div class="media">
+										<a href="gallery_170308.html"><img src="images/170308/thumbs/01.jpg" alt="" title="This right here is a caption." /><span class="etiqueta">Triangulo</span></a>
+									</div>
+								</div>
+								<!-- <footer>
+									<a href="gallery.html" class="button big">Todos los eventos</a>
+								</footer> -->
+							</div>
+						</section>
+
+			<!-- Contact -->
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>.
+				</div>
+			</footer>
+		</section>
+	</div>
+
+	<!-- Scripts -->
+
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="js/jquery-2.2.3.min.js"></script>
+	  <script type='text/javascript' src="assets/js/carrito/bootstrap.min.js"></script>
+	  <script type='text/javascript' src="assets/js/carrito/jquery.mycart.js"></script>
+	  <script type="text/javascript">
+	  $(function () {
+
+	    var goToCartIcon = function($addTocartBtn){
+	      var $cartIcon = $(".my-cart-icon");
+	      var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
+	      $addTocartBtn.prepend($image);
+	      var position = $cartIcon.position();
+	      $image.animate({
+	        top: position.top,
+	        left: position.left
+	      }, 500 , "linear", function() {
+	        $image.remove();
+	      });
+	    }
+
+	    $('.my-cart-btn').myCart({
+	      currencySymbol: '$',
+	      classCartIcon: 'my-cart-icon',
+	      classCartBadge: 'my-cart-badge',
+	      classProductQuantity: 'my-product-quantity',
+	      classProductRemove: 'my-product-remove',
+	      classCheckoutCart: 'my-cart-checkout',
+	      affixCartIcon: false,
+	      showCheckoutModal: true,
+	      cartItems: [],
+	      clickOnAddToCart: function($addTocart){
+	        goToCartIcon($addTocart);
+	      },
+	      afterAddOnCart: function(products, totalPrice, totalQuantity) {
+	        console.log("afterAddOnCart", products, totalPrice, totalQuantity);
+	      },
+	      clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
+	        console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
+	      },
+	      checkoutCart: function(products, totalPrice, totalQuantity) {
+	        var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
+	        checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path";
+	        $.each(products, function(){
+	          checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
+	        });
+	        alert(checkoutString)
+	        console.log("checking out", products, totalPrice, totalQuantity);
+	      },
+	      getDiscountPrice: function(products, totalPrice, totalQuantity) {
+	        console.log("calculating discount", products, totalPrice, totalQuantity);
+	        return totalPrice * 0.5;
+	      }
+	    });
+
+	  });
+	  </script>
+</body>
+</html>
