@@ -6,13 +6,13 @@
 
 (function($) {
 
-	skel.breakpoints({
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)'
-	});
+	// skel.breakpoints({
+	// 	xlarge: '(max-width: 1680px)',
+	// 	large: '(max-width: 1280px)',
+	// 	medium: '(max-width: 980px)',
+	// 	small: '(max-width: 736px)',
+	// 	xsmall: '(max-width: 480px)'
+	// });
 
 	$(function() {
 
@@ -29,75 +29,95 @@
 			// });
 
 		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+			// $('form').placeholder();
 
 		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+			// skel.on('+medium -medium', function() {
+			// 	$.prioritize(
+			// 		'.important\\28 medium\\29',
+			// 		skel.breakpoint('medium').active
+			// 	);
+			// });
 
 		// Scrolly.
 			$('.scrolly').scrolly();
 
 		// Gallery.
-			$('.gallery').each(function() {
+			// $('.gallery').each(function() {
 
-				var	$gallery = $(this),
-					$content = $gallery.find('.content');
+			// 	var	$gallery = $(this),
+			// 		$content = $gallery.find('.content');
 
-				// Poptrox.
-					$content.poptrox({
-						usePopupCaption: true
-					});
+			// 	// Poptrox.
+			// 		$content.poptrox({
+			// 			usePopupCaption: true
+			// 		});
 
-				// Tabs.
-					$gallery.each( function() {
+			// 	// Tabs.
+			// 		$gallery.each( function() {
 
-						var $this = $(this),
-							$tabs = $this.find('.tabs a'),
-							$media = $this.find('.media');
+			// 			var $this = $(this),
+			// 				$tabs = $this.find('.tabs a'),
+			// 				$media = $this.find('.media');
 
-						$tabs.on('click', function(e) {
+			// 			$tabs.on('click', function(e) {
 
-							var $this = $(this),
-								tag = $this.data('tag');
+			// 				var $this = $(this),
+			// 					tag = $this.data('tag');
 
-							// Prevent default.
-							 	e.preventDefault();
+			// 				// Prevent default.
+			// 				 	e.preventDefault();
 
-							// Remove active class from all tabs.
-								$tabs.removeClass('active');
+			// 				// Remove active class from all tabs.
+			// 					$tabs.removeClass('active');
 
-							// Reapply active class to current tab.
-								$this.addClass('active');
+			// 				// Reapply active class to current tab.
+			// 					$this.addClass('active');
 
-							// Hide media that do not have the same class as the clicked tab.
-								$media
-									.fadeOut('fast')
-									.each(function() {
+			// 				// Hide media that do not have the same class as the clicked tab.
+			// 					$media
+			// 						.fadeOut('fast')
+			// 						.each(function() {
 
-										var $this = $(this);
+			// 							var $this = $(this);
 
-										if ($this.hasClass(tag))
-											$this
-												.fadeOut('fast')
-												.delay(200)
-												.queue(function(next) {
-													$this.fadeIn();
-													next();
-												});
+			// 							if ($this.hasClass(tag))
+			// 								$this
+			// 									.fadeOut('fast')
+			// 									.delay(200)
+			// 									.queue(function(next) {
+			// 										$this.fadeIn();
+			// 										next();
+			// 									});
 
-									});
+			// 						});
 
-						});
+			// 			});
 
-					});
+			// 		});
 
 
-			});
+			// });
+			// $(document).ready(function() {
+			// 	$('.gallery').magnificPopup({
+			// 		delegate: 'a',
+			// 		type: 'image',
+			// 		tLoading: 'Loading image #%curr%...',
+			// 		mainClass: 'mfp-img-mobile',
+			// 		gallery: {
+			// 			enabled: true,
+			// 			navigateByImgClick: true,
+			// 			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+			// 		},
+			// 		image: {
+			// 			tError: '',
+			// 			titleSrc: function(item) {
+			// 				return item.el.attr('title');
+			// 			}
+			// 		}
+			// 	});
+			// });
+			// $('.gallery a').colorbox();
 
 	});
 

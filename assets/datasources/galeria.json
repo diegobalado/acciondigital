@@ -1,0 +1,16 @@
+{ 
+	"pictures": [ 
+		{ "evento": "170301", "thumb": "01", "text": "gallery 1" },
+		{ "evento": "170302", "thumb": "01", "text": "gallery 2" },
+		{ "evento": "170303", "thumb": "01", "text": "gallery 3" },
+		{ "evento": "170304", "thumb": "04", "text": "gallery 4" },
+		{ "evento": "170305", "thumb": "05", "text": "gallery 5" },
+		{ "evento": "170306", "thumb": "06", "text": "gallery 6" },
+		{ "evento": "170307", "thumb": "07", "text": "gallery 7" },
+		{ "evento": "170308", "thumb": "08", "text": "gallery 8" }	    		
+	],
+	"ads": [
+		{ "ad":"16-FiglioFebrero.gif"},
+		{ "ad":"234-300x250-Semana-Santa.gif"}
+	]
+}
