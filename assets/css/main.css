@@ -692,7 +692,7 @@
 	input[type="checkbox"] + label:before,
 	input[type="radio"] + label:before {
 		border-radius: 4px;
-		border: solid 1px;
+		border: solid 2px;
 		content: '';
 		display: inline-block;
 		height: 1.65em;
@@ -2155,7 +2155,106 @@
 		background-color: rgba(250, 194, 0, 0.8);
 		color: #333;
 		border-radius: 40px;
-		padding: 2px 12px 3px;
+		padding: 0px 10px 2px;
 		line-height: 1;
 		cursor: pointer;
+	}
+
+	.form-page {
+		font-size: 18px;
+	}
+	.form-page form {
+		max-width: 480px;
+		margin: 40px auto;
+	}
+	.form-page fieldset {
+		margin-top: 40px;
+	}
+	.form-page select {
+		background-color: #fff; 
+	}
+	.form-page select[multiple] {
+		padding: 1em;
+	}
+	@media screen and (max-width: 600px) {
+		.form-page form {
+			padding: 0 20px;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.form-page {
+			font-size: 16px;
+		}
+		.form-page form {
+			max-width: 90%;
+
+		}
+		.form-page fieldset {
+			margin-top: 20px;
+		}
+		.form-page input[type="submit"] {
+			/*padding: 0 24px;*/
+			width: 100%;
+		}
+	}
+
+	.form-page .select-custom {
+	    background-color: #fff;
+	    height: 50px;
+	    line-height: 1;
+	    border-radius: 4px;
+	}
+	.form-page .select-custom select {
+	    background-color: transparent;
+	    z-index: 5;
+	    position: relative;
+	}
+	.form-page .icon.fa-chevron-down {
+		left: 0;
+		float: right;
+		top: -1.5em;
+		font-size: 1.5em;
+		color: #999;
+	}
+	.form-page .select-custom select option {
+		padding: 0.5em 1.2em;
+	}
+
+	@media screen and (max-width: 480px) {
+		.form-page .select-custom {
+			height: 44px;
+		}
+	}
+
+
+	input[type=checkbox] {
+		visibility: hidden;
+	}
+
+	.checkEvents {
+		width: 30px;	
+		margin: 20px 0 0 0;
+		position: relative;
+		display: block;
+	}
+	.checkEvents input {
+		display: none;
+	}
+	.form-page .checkEvents input[type=checkbox] + label {
+		top: 0;
+		padding-left: 1.6em;
+		padding-right: 0;
+		height: 30px;
+	}
+	.checkEvents input[type=checkbox]:checked + label:after {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		opacity: 1;
+	}
+	.checkLabel {
+		left: 40px;
+		display: block;
+		top: -40px;
+		position: relative;
 	}

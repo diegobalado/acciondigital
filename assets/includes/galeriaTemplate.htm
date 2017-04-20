@@ -1,17 +1,15 @@
 <div id="gallery-wrapper" class="gallery-wrapper content">
-	{{#pictures}}
+	{{#eventos}}
 	<div class="media">
 		<a href={{full_href this}}>
-			<img src={{full_thumb this}} alt="" title={{this.text}} />
+			<img src=/assets/images/eventos/{{this.ID}}/thumbs/portada.jpg alt="" title={{this.text}} />
 			<span class="etiqueta">{{this.text}}</span>
 		</a>
-		<!-- <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id={{this.thumb}} data-name=foto{{this.thumb}} data-summary=summary{{this.thumb}}  data-price={{../precio}} data-quantity="1" data-image=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this.thumb}}.jpg>Agregar al carrito</button>
-		</div> -->
 	</div>
-	{{/pictures}}
+	{{/eventos}}
 </div>
 <div id="gallery-ad" class="gallery-ad">
 	{{#ads}}
-	<img src=/assets/images/ads/{{ad}} alt="">
+	<img src=/assets/images/ads/{{this}} alt="">
 	{{/ads}}
 </div>

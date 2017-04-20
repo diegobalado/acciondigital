@@ -1,3 +1,56 @@
+
+/*CARRITO*/
+function carrito() {
+
+  var goToCartIcon = function($addTocartBtn){
+    $('.my-cart-badge.empty').removeClass('empty');
+    var $cartIcon = $(".my-cart-icon");
+    var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
+    $addTocartBtn.prepend($image);
+    var position = $cartIcon.position();
+    $image.animate({
+      top: position.top,
+      left: position.left
+    }, 500 , "linear", function() {
+      $image.remove();
+    });
+  }
+
+  $('.my-cart-btn').myCart({
+    currencySymbol: '$',
+    classCartIcon: 'my-cart-icon',
+    classCartBadge: 'my-cart-badge',
+    classProductQuantity: 'my-product-quantity',
+    classProductRemove: 'my-product-remove',
+    classCheckoutCart: 'my-cart-checkout',
+    affixCartIcon: false,
+    showCheckoutModal: true,
+    cartItems: [],
+    clickOnAddToCart: function($addTocart){
+      goToCartIcon($addTocart);
+    },
+    afterAddOnCart: function(products, totalPrice, totalQuantity) {
+      console.log("afterAddOnCart", products, totalPrice, totalQuantity);
+    },
+    clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
+      console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
+    },
+    checkoutCart: function(products, totalPrice, totalQuantity) {
+      var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
+      checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path";
+      $.each(products, function(){
+        checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
+      });
+      alert(checkoutString)
+      console.log("checking out", products, totalPrice, totalQuantity);
+    },
+    getDiscountPrice: function(products, totalPrice, totalQuantity) {
+      console.log("calculating discount", products, totalPrice, totalQuantity);
+      return totalPrice * 0.5;
+    }
+  });
+}
+
 /*HANDLEBARS*/
 let $pathname = location.pathname;
 let $section = '';
@@ -9,9 +62,9 @@ $('body').append('<script id="pictures-template" type="text/x-handlebars-templat
 $section = $pathname.includes('/eventos/')?'eventos':($pathname.includes('/inicio/')?'inicio':($pathname.includes('/galeria/')?'galeria':''));
 $template = $section=='eventos'?'eventos':$section;
 
-console.log('$section ' + $section);
-console.log('$json ' + $json);
-console.log('$template ' + $template);
+// console.log('$section ' + $section);
+// console.log('$json ' + $json);
+// console.log('$template ' + $template);
 
 $('#pictures-template').load('/assets/includes/'+$template+'Template.htm', function() {
   $(document).ready(function(){
@@ -22,24 +75,25 @@ $('#pictures-template').load('/assets/includes/'+$template+'Template.htm', funct
     $json = $section=='eventos'?galleries.g:$section;
 
     if ($section == 'galeria' || $section == 'inicio') {
+      console.log('$section ' + $section);
       Handlebars.registerHelper('full_href', function(picture) {
-        return '/eventos/?g=' + picture.evento;
+        return '/eventos/?g=' + picture.ID;
       });
 
-      Handlebars.registerHelper('full_thumb', function(picture) {
-        return '/assets/images/eventos/' + picture.evento + '/thumbs/' + picture.thumb + '.jpg';
-      });
+      // Handlebars.registerHelper('full_thumb', function(picture) {
+      //   return '/assets/images/eventos/' + picture.evento + '/thumbs/' + picture.thumb + '.jpg';
+      // });
     }
 
     $.get("/assets/datasources/"+$json+".json", function(data,status,xhr){
       let html = location.hostname=='localhost'?template(JSON.parse(data)):template(data);
       placeHolder.append(html);
-      $('body').append('<script type="text/javascript" src="/assets/js/carrito/carrito.js"></script>');
-      if ($section == 'eventos') $('body').append('<script type="text/javascript" src="/assets/js/jquery.poptrox.min.js"></script>');
+      // $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
       $('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
       $('body').append('<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>');
       $('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');
       $('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');
+      carrito();
      //  $('#gallery').poptrox({
      //   usePopupCaption: true
      // });
@@ -52,6 +106,8 @@ function getCurrentScroll() {
   return window.pageYOffset || document.documentElement.scrollTop;
 }
 const shrinkHeader = 100;
+
+
 /*HEADER COLAPSABLE*/
 $(function(){
   $(window).scroll(function() {
@@ -88,9 +144,9 @@ function getGET()
     let get = {};
     for(let i = 0, l = GET.length; i < l; i++){
       let tmp = GET[i].split('=');
-      get[tmp[0]] = unescape(decodeURI(tmp[1]));
+      get[tmp[0]] = unescape(decodeURI(tmp[1]).replace('#', ''));
     }
-    console.log('Parametros ' + get.g);
+    // console.log('Parametros ' + get.g);
     return get;
   }
 
@@ -99,7 +155,7 @@ function getGET()
 /*PAGINA ACTIVA*/
 $(function() {
   let $param = location.pathname;
-  console.log('$param ' + $param);
+  // console.log('$param ' + $param);
   switch($param) {
     case '/index.html':
     $('#nav-header ul li.home').addClass('active');
@@ -121,7 +177,7 @@ $(function() {
 /*BUSCADOR*/
 $(function() {
   let $param = location.pathname;
-  console.log('$param ' + $param);
+  // console.log('$param ' + $param);
   if ($param != '/index.html' || $param != '/inicio/') {
     $('#nav-header ul li.toggle_search').removeClass('hidden');
   } 
@@ -133,9 +189,9 @@ $(function() {
 })
 
 function buscar(foto) {
-  console.log('foto ' + foto);
+  // console.log('foto ' + foto);
   let galleries = getGET();
-  console.log('SCRIPTS.JS - galleries ' + JSON.stringify(galleries));
+  // console.log('SCRIPTS.JS - galleries ' + JSON.stringify(galleries));
   $.get("/assets/datasources/"+galleries.g+".json", function(data,status,xhr){
     let html = location.hostname=='localhost'?JSON.parse(data):data;
     let arrFiltro = [];
@@ -148,22 +204,23 @@ function buscar(foto) {
           if (codigo.indexOf(foto) != -1) arrFiltro.push(el);
         }
       });
-    console.log('SCRIPTS - sinCodigo ' + sinCodigo);
+    // console.log('SCRIPTS - sinCodigo ' + sinCodigo);
 
     if (arrFiltro.length != 0) {
       // $('#gallery header')
       let $results = '<h3>Resultado de la búsqueda "'+foto+'": '+ arrFiltro.length + (arrFiltro.length>1?' fotos':' foto')+'</h3><div id="results"></div>';
       $('#gallery-wrapper').html($results);
       arrFiltro.forEach(function(el, index) {
-        $('#results').append('<div class="media"> <a href="/assets/images/eventos/'+galleries.g+'/'+el+'" data-lighter> <img src="/assets/images/eventos/'+galleries.g+'/thumbs/'+el+'" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="3" data-name="product 3" data-summary="summary 3" data-price="20" data-quantity="1" data-image="images/170301/thumbs/03.jpg">Agregar al carrito</button> </div> </div>');
+        $('#results').append('<div class="media"> <a href="/assets/images/eventos/'+galleries.g+'/'+el+'" data-lighter> <img src="/assets/images/eventos/'+galleries.g+'/thumbs/'+el+'" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="'+el+'" data-name="foto_'+el+'" data-summary="foto_'+el+'" data-price="'+html.price+'" data-quantity="1" data-image="/assets/images/eventos/'+galleries.g+'/thumbs/'+el+'">Agregar al carrito</button> </div> </div>');
       })
     } else {
       let $results = '<h3>Su búsqueda "'+foto+'" no produjo resultados</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
       $('#gallery-wrapper').html($results);
       sinCodigo.forEach(function(el, index) {
-        $('#results').append('<div class="media"> <a href="/assets/images/eventos/'+galleries.g+'/'+el+'" data-lighter> <img src="/assets/images/eventos/'+galleries.g+'/thumbs/'+el+'" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="3" data-name="product 3" data-summary="summary 3" data-price="20" data-quantity="1" data-image="images/170301/thumbs/03.jpg">Agregar al carrito</button> </div> </div>');
+        $('#results').append('<div class="media"> <a href="/assets/images/eventos/'+galleries.g+'/'+el+'" data-lighter> <img src="/assets/images/eventos/'+galleries.g+'/thumbs/'+el+'" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="'+el+'" data-name="foto_'+el+'" data-summary="foto_'+el+'" data-price="'+html.price+'" data-quantity="1" data-image="/assets/images/eventos/'+galleries.g+'/thumbs/'+el+'">Agregar al carrito</button> </div> </div>');
       })
     }
+    carrito();
 
   });
 }
@@ -171,3 +228,4 @@ function buscar(foto) {
 /*GENERALES*/
 $('form').placeholder();
 $('.scrolly').scrolly();
+

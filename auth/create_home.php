@@ -109,7 +109,7 @@
 				if (isset($_GET["IdEvento"])) {
 					$idEventos = $_REQUEST[IdEvento];
 
-					$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/galeria.json';
+					$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/inicio.json';
 					$saveFile = [];
 					$eventos = [];
 					foreach ($idEventos as $idEvento) {
