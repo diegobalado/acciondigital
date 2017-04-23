@@ -43,10 +43,10 @@
 	<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>
 	<script type="text/javascript" src="/assets/js/util.js"></script>
 	<script type="text/javascript" src="/assets/js/carrito/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/carrito/jquery.mycart.js"></script>
 	<script type="text/javascript" src="/assets/js/jquery.lighter.js"></script>
 	<link rel="stylesheet" href="/assets/css/jquery.lighter.css" />	
 	<script type="text/javascript" src="/assets/js/load_pieces.js"></script>	
-	<script type="text/javascript" src="/assets/js/carrito/jquery.mycart.js"></script>
 	<!-- <script type="text/javascript" src="/assets/js/jquery.poptrox.min.js"></script> -->
 	<!-- <script type="text/javascript" src="/assets/js/carrito/carrito.js"></script> -->
 	<!-- <script type="text/javascript" src="/assets/js/skel.min.js"></script> -->

@@ -336,9 +336,10 @@
       updateCart();
       options.checkoutCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
       ProductManager.clearProduct();
-      if (ProductManager.getTotalQuantity()>0) {
-        $cartBadge.text(ProductManager.getTotalQuantity());
-      }
+      $cartBadge.text(ProductManager.getTotalQuantity());
+      if (ProductManager.getTotalQuantity() == 0) $cartBadge.hide();
+      // if (ProductManager.getTotalQuantity()>0) {
+      // }
       $("#" + idCartModal).modal("hide");
     });
 
@@ -369,6 +370,7 @@
 
       ProductManager.setProduct(id, name, summary, price, quantity, image);
       if (ProductManager.getTotalQuantity()>0) {
+        $cartBadge.show();
         $cartBadge.text(ProductManager.getTotalQuantity());
       }
 
