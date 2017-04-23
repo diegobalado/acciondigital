@@ -12,8 +12,9 @@
 	<link rel="stylesheet" href="/assets/css/main.css" />	
 	<link rel="stylesheet" href="/assets/css/carrito/bootstrap.min.css">
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	
-	<script src="/assets/js/jquery.min.js"></script>
+	<!-- <script src="/assets/js/jquery.min.js"></script> -->
 
 </head>
 <body class="form-page">
@@ -26,6 +27,8 @@
 
 		<section id="main">
 			<form action="#" method="">
+				<div class="btnGroup"></div>
+				<h2>Crear Página de Inicio</h2>
 				<div data-role="fieldcontain">
 					<fieldset>
 						<label for="IdEvento">Eventos:</label>
@@ -106,34 +109,34 @@
 			</form>
 
 			<?php
-				if (isset($_GET["IdEvento"])) {
-					$idEventos = $_REQUEST[IdEvento];
+			if (isset($_GET["IdEvento"])) {
+				$idEventos = $_REQUEST[IdEvento];
 
-					$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/inicio.json';
-					$saveFile = [];
-					$eventos = [];
-					foreach ($idEventos as $idEvento) {
-						$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/'.$idEvento.'.json');
-						$product = json_decode($data, true) ;
-						$evento = array(
-							'ID' => $idEvento,
-							'text' => $product[title]
+				$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/inicio.json';
+				$saveFile = [];
+				$eventos = [];
+				foreach ($idEventos as $idEvento) {
+					$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/'.$idEvento.'.json');
+					$product = json_decode($data, true) ;
+					$evento = array(
+						'ID' => $idEvento,
+						'text' => $product[title]
 						);
-						array_push($eventos, $evento);
-					}
-					$saveFile = array(
-						'eventos' => $eventos,
-						'ads' => $_REQUEST[ads]
-						);
-					echo json_encode($saveFile);
-					file_put_contents($file, json_encode($saveFile));
+					array_push($eventos, $evento);
 				}
-				?>
-			</section>
-		</div>
+				$saveFile = array(
+					'eventos' => $eventos,
+					'ads' => $_REQUEST[ads]
+					);
+				echo json_encode($saveFile);
+				file_put_contents($file, json_encode($saveFile));
+			}
+			?>
+		</section>
+	</div>
 
-		<!-- Scripts -->
-		<script type="text/javascript" src="/assets/js/load_pieces.js"></script>	
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/js/load_pieces.js"></script>
 
-	</body>
-	</html>
+</body>
+</html>

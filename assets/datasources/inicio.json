@@ -1,16 +1,13 @@
 { 
-	"pictures": [ 
-		{ "evento": "170301", "text": "1ª Fecha Open XCO - 1ª Manga" },
-		{ "evento": "170302", "text": "gallery 2" },
-		{ "evento": "170303", "text": "gallery 3" },
-		{ "evento": "170304", "text": "gallery 4" },
-		{ "evento": "170305", "text": "gallery 5" },
-		{ "evento": "170306", "text": "gallery 6" },
-		{ "evento": "170307", "text": "gallery 7" },
-		{ "evento": "170308", "text": "gallery 8" }	    		
+	"eventos": [ 
+		{ "ID": "170301", "text": "1 Fecha Open XCO - 1 Manga" },
+		{ "ID": "170302", "text": "gallery 2" },
+		{ "ID": "170303", "text": "gallery 3" },
+		{ "ID": "170304", "text": "gallery 4" },
+		{ "ID": "170305", "text": "gallery 5" },
+		{ "ID": "170306", "text": "gallery 6" },
+		{ "ID": "170307", "text": "gallery 7" },
+		{ "ID": "170308", "text": "gallery 8" }	    		
 	],
-	"ads": [
-		{ "ad":"16-FiglioFebrero.gif"},
-		{ "ad":"234-300x250-Semana-Santa.gif"}
-	]
+	"ads": ["figlio.gif", "casino.gif"]
 }

@@ -12,9 +12,7 @@
 	<link rel="stylesheet" href="/assets/css/main.css" />	
 	<link rel="stylesheet" href="/assets/css/carrito/bootstrap.min.css">
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
-	
-	<script src="/assets/js/jquery.min.js"></script>
-
+	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 </head>
 <body class="form-page">
 	<div class="page-wrap">
@@ -26,6 +24,8 @@
 
 		<section id="main">
 			<form action="#" method="">
+				<div class="btnGroup"></div>
+				<h2>Crear Evento</h2>
 				<div data-role="fieldcontain">
 					<fieldset>
 						<label for="title">Título del evento:</label>
@@ -77,6 +77,9 @@
 						<!-- <br /><br /> -->
 						<!-- <script>console.log('*'+$('#IdEvento').val()+'*');</script> -->
 
+						<!-- <br /><br /> -->
+						<fieldset><label for="price">Precio de cada foto:</label>
+							<input type="text" name="price" id="price" value="" /></fieldset>
 						<fieldset>
 							<label for="ads">Publicidades:</label>
 							<select multiple name="ads[]" id="ads" value="">  
@@ -104,10 +107,7 @@
 								?>       
 							</select>
 						</fieldset>
-						<!-- <br /><br /> -->
-						<fieldset><label for="price">Precio de cada foto:</label>
-												<input type="text" name="price" id="price" value="" /></fieldset>
-												<!-- <br /><br /> -->
+							<!-- <br /><br /> -->
 					<!-- <label for="ads">Publicidades:</label>
 					<input type="text" name="ads" id="ads" value=""  /><br /><br /> -->
 					<fieldset><input type="submit" value="Guardar" /></fieldset>
