@@ -181,7 +181,7 @@
 
 
     if(userOptions.cartItems && userOptions.cartItems.constructor === Array) {
-      ProductManager.clearProduct();
+      if (!localStorage.products) ProductManager.clearProduct();
       $.each(options.cartItems, function() {
         ProductManager.setProduct(this.id, this.name, this.summary, this.price, this.quantity, this.image);
       });
