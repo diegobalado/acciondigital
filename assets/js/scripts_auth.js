@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	let $btns = '';
 	let $param = location.pathname;
-	let btnHome = '<button class="btnRedirect" data-href="/auth/create_home.php"> Crear página de inicio </button>';
-	let btnGallery = '<button class="btnRedirect" data-href="/auth/create_gallery.php"> Crear galería general </button>';
-	let btnEvent = '<button class="btnRedirect" data-href="/auth/create_event.php"> Crear evento </button>';
+	let btnHome = '<a class="button btnRedirect" href="/auth/create_home.php"> Crear página de inicio </a>';
+	let btnGallery = '<a class="button btnRedirect" href="/auth/create_gallery.php"> Crear galería general </a>';
+	let btnEvent = '<a class="button btnRedirect" href="/auth/create_event.php"> Crear evento </a>';
 	switch($param) {
 		case '/auth/create_home.php':
 		$btns = btnGallery + btnEvent;
@@ -18,7 +18,4 @@ $(document).ready(function() {
 		return false;
 	} 
 	$('.btnGroup').html($btns);
-	$('.btnRedirect').on('click', function(event) {
-		window.location.href = $(this).data('href');
-	})	
 });

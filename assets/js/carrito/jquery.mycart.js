@@ -189,7 +189,7 @@
 
     if (ProductManager.getTotalQuantity()>0) {
       $cartBadge.text(ProductManager.getTotalQuantity());
-    }
+    } else $cartBadge.text('');
 
     if(!$("#" + idCartModal).length) {
       $('body').append(
@@ -301,9 +301,11 @@
       $(this).parent("td").next("." + classProductTotal).text("$" + price * quantity);
       ProductManager.updatePoduct(id, quantity);
 
-      if (ProductManager.getTotalQuantity()>0) {
-      $cartBadge.text(ProductManager.getTotalQuantity());
-    }
+      if (ProductManager.getTotalQuantity() > 0) {
+        $cartBadge.text(ProductManager.getTotalQuantity());
+      } else {
+        $cartBadge.text('');
+      }
       showGrandTotal();
       showDiscountPrice();
     });
@@ -323,6 +325,8 @@
         drawTable();
         if (ProductManager.getTotalQuantity()>0) {
           $cartBadge.text(ProductManager.getTotalQuantity());
+        } else {
+          $cartBadge.text('');
         }
       });
     });
@@ -372,7 +376,9 @@
       if (ProductManager.getTotalQuantity()>0) {
         $cartBadge.show();
         $cartBadge.text(ProductManager.getTotalQuantity());
-      }
+      } else {
+          $cartBadge.text('');
+        }
 
       options.afterAddOnCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
     });

@@ -23,7 +23,7 @@
 		</header>
 
 		<section id="main">
-			<form action="#" method="">
+			<form action="create_event.php" method="post">
 				<div class="btnGroup"></div>
 				<h2>Crear Evento</h2>
 				<div data-role="fieldcontain">
@@ -80,33 +80,33 @@
 						<!-- <br /><br /> -->
 						<fieldset><label for="price">Precio de cada foto:</label>
 							<input type="text" name="price" id="price" value="" /></fieldset>
-						<fieldset>
-							<label for="ads">Publicidades:</label>
-							<select multiple name="ads[]" id="ads" value="">  
-								<?php
-								$adsFolder = opendir($_SERVER["DOCUMENT_ROOT"]."/assets/images/ads/");
-								$ads = array();
-								while ($adFile = readdir($adsFolder))
-								{
-									if (!is_dir($adFile))
+							<fieldset>
+								<label for="ads">Publicidades:</label>
+								<select multiple name="ads[]" id="ads" value="">  
+									<?php
+									$adsFolder = opendir($_SERVER["DOCUMENT_ROOT"]."/assets/images/ads/");
+									$ads = array();
+									while ($adFile = readdir($adsFolder))
 									{
+										if (!is_dir($adFile))
+										{
 									// debug_to_console($adFile);
-										array_push($ads, $adFile);
+											array_push($ads, $adFile);
+										}
 									}
-								}
-								sort($ads);
+									sort($ads);
 							// debug_to_console($ads);
 
-								foreach ($ads as $adFile) {
-									?>
-									<option value="<?php echo $adFile; ?>" >
-										<?php echo $adFile; ?>
-									</option>
-									<?php
-								}
-								?>       
-							</select>
-						</fieldset>
+									foreach ($ads as $adFile) {
+										?>
+										<option value="<?php echo $adFile; ?>" >
+											<?php echo $adFile; ?>
+										</option>
+										<?php
+									}
+									?>       
+								</select>
+							</fieldset>
 							<!-- <br /><br /> -->
 					<!-- <label for="ads">Publicidades:</label>
 					<input type="text" name="ads" id="ads" value=""  /><br /><br /> -->
@@ -115,9 +115,8 @@
 			</form>
 
 			<?php
-
-			if (isset($_GET["IdEvento"])) {
-				$folder = $_GET["IdEvento"];
+			if (isset($_POST["IdEvento"])) {
+				$folder = $_POST["IdEvento"];
 				$directorio = opendir($_SERVER["DOCUMENT_ROOT"]."/assets/images/eventos/".$folder."/");
 				$pics = array();
 				$archivo = "";
@@ -134,7 +133,7 @@
 					}
 				}
 				sort($pics);
-				echo json_encode($pics);
+				// echo json_encode($pics);
 				$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/'.$folder.'.json';
 				$saveFile = [];
 				$saveFile = array(
@@ -145,9 +144,11 @@
 					'price' => $_REQUEST[price]
 					);
 					?>
-					<!-- <script>console.log('json ' + JSON.stringify(<?php echo json_encode($saveFile) ?>));</script> -->
 					<?php
-					file_put_contents($file, json_encode($saveFile));
+					if (file_put_contents($file, json_encode($saveFile)) != false) $message = "El evento se creó correctamente";
+					else $message = "Hubo un error al crear el evento";
+
+					echo "<script type='text/javascript'>alert('$message');</script>";
 				}
 
 				?>

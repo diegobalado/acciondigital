@@ -2,10 +2,9 @@
 function carrito() {
 
   var goToCartIcon = function($addTocartBtn) {
-    $('.my-cart-badge.empty').removeClass('empty');
     var $cartIcon = $(".my-cart-icon");
     var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({
-      "position": "fixed",
+      position: "fixed",
       "z-index": "999"
     });
     $addTocartBtn.prepend($image);
@@ -16,7 +15,7 @@ function carrito() {
     }, 500, "linear", function() {
       $image.remove();
     });
-  }
+  };
 
   $('.my-cart-btn').myCart({
     currencySymbol: '$',
@@ -50,7 +49,7 @@ function carrito() {
       // alert(checkoutString)
 
       $.post('/checkout/index2.php', {
-          'products': JSON.stringify(products)
+          products: JSON.stringify(products)
         })
         .success(function(html) {
           // alert(html); 

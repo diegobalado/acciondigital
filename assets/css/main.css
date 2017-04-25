@@ -2115,9 +2115,6 @@
 			width: 20px;
 			height: 20px;
 		}
-		#nav-header .badge.empty {
-			background-color: transparent;
-		}
 
 		#buscador {
 			width: 35%;
@@ -2160,7 +2157,10 @@
 			cursor: pointer;
 		}
 
-		.form-page {
+		.form-page #header {
+			font-size: 14px;
+		}
+		.form-page #main {
 			font-size: 18px;
 		}
 		.form-page form {
@@ -2282,10 +2282,13 @@
 				display: block;
 			}
 		}
-		form .btnGroup button {
+		form .btnGroup .button {
 			margin-right: 10px;		
 		}
-		form .btnGroup button:last-child {
+		form .btnGroup .button:hover {
+			text-decoration: none;
+		}
+		form .btnGroup .button:last-child {
 			margin-right: 0;		
 		}
 		.form-page form fieldset:last-child {
@@ -2306,7 +2309,7 @@
 		}
 
 		@media screen and (max-width: 480px) {
-			.form-page form .btnGroup button {
+			.form-page form .btnGroup .button {
 				margin-right: 0;
 				width: 100%;
 				margin-bottom: 20px;

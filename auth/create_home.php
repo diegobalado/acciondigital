@@ -26,7 +26,7 @@
 		</header>
 
 		<section id="main">
-			<form action="#" method="">
+			<form action="create_home.php" method="post">
 				<div class="btnGroup"></div>
 				<h2>Crear Página de Inicio</h2>
 				<div data-role="fieldcontain">
@@ -109,7 +109,7 @@
 			</form>
 
 			<?php
-			if (isset($_GET["IdEvento"])) {
+			if (isset($_POST["IdEvento"])) {
 				$idEventos = $_REQUEST[IdEvento];
 
 				$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/inicio.json';
@@ -128,8 +128,10 @@
 					'eventos' => $eventos,
 					'ads' => $_REQUEST[ads]
 					);
-				echo json_encode($saveFile);
-				file_put_contents($file, json_encode($saveFile));
+				if (file_put_contents($file, json_encode($saveFile)) != false) $message = "La página de inicio se creó correctamente";
+				else $message = "Hubo un error al crear la página de inicio";
+
+				echo "<script type='text/javascript'>alert('$message');</script>";
 			}
 			?>
 		</section>

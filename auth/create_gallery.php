@@ -23,8 +23,8 @@
 			<nav id="nav-header" class="nav"></nav>
 		</header>
 
-		<section id="main"></div>
-			<form action="#" method="">
+		<section id="main">
+			<form action="create_gallery.php" method="post">
 				<div class="btnGroup"></div>
 				<h2>Crear Galería General</h2>
 				<div data-role="fieldcontain">
@@ -107,7 +107,7 @@
 			</form>
 
 			<?php
-			if (isset($_GET["IdEvento"])) {
+			if (isset($_POST["IdEvento"])) {
 				$idEventos = $_REQUEST[IdEvento];
 
 				$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/galeria.json';
@@ -126,8 +126,10 @@
 					'eventos' => $eventos,
 					'ads' => $_REQUEST[ads]
 					);
-				echo json_encode($saveFile);
-				file_put_contents($file, json_encode($saveFile));
+				if (file_put_contents($file, json_encode($saveFile)) != false) $message = "La galería se creó correctamente";
+				else $message = "Hubo un error al crear la galería";
+
+				echo "<script type='text/javascript'>alert('$message');</script>";
 			}
 			?>
 		</section>
