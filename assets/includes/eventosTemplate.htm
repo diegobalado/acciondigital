@@ -16,13 +16,26 @@
 <div id="gallery-wrapper" class="gallery-wrapper content">
 	{{#each pictures}}
 	<div class="media">
-		<a href=/assets/images/eventos/{{../IdEvento}}/{{this}} data-lighter>
-			<img src=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this}} alt="" title="" />
+		<a href=#{{../IdEvento}}_{{this}} class="open-popup-link" >
+			<img src=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this}}.jpg alt="" title="" />
 			<!-- <span class="etiqueta">{{text}}</span> -->
 		</a>
 		<div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id={{this}} data-name=foto{{this}} data-summary=foto_{{this}} data-price="{{../price}}" data-quantity="1" data-image=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this}}>Agregar al carrito</button>
 		</div>
 	</div>
+	
+	<div id={{../IdEvento}}_{{this}} class="white-popup mfp-hide">
+	<div class="button-group">
+			<div class="fb-share-button" data-href=/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href=/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg >Compartir</a></div>
+			<div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id={{this}} data-name=foto{{this}} data-summary=foto_{{this}} data-price="{{../price}}" data-quantity="1" data-image=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this}}>Agregar al carrito</button>
+			</div>
+		</div>
+
+	  <div class="img-wrapper">
+	  	<img src=/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg alt="" title="" />
+	  </div>
+	</div>
+
 	{{/each}}
 </div>
 <div id="gallery-ad" class="gallery-ad">

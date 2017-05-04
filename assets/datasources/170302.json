@@ -1,7 +1,7 @@
 { 
 	"IdEvento": "170301",
 	"title": "1ª Fecha Open XCO - 1ª Manga",
-	"pictures": ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg"],
+	"pictures": ["01", "02", "03", "04", "05", "06", "07", "08"],
 	"ads": ["16-FiglioFebrero.gif", "234-300x250-Semana-Santa.gif"],
 	"price": "75"
 }

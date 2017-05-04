@@ -1,7 +1,7 @@
 { 
 	"IdEvento": "170301",
 	"title": "evento 1",
-	"pictures": ["01-234.jpg", "02.jpg", "03.jpg", "04-234.jpg", "05.jpg", "06.jpg", "07-234.jpg", "08-234.jpg"],
+	"pictures": ["01-234", "02", "03", "04-234", "05", "06", "07-234", "08-234"],
 	"ads": ["16-FiglioFebrero.gif", "234-300x250-Semana-Santa.gif"],
 	"price": "75"
 }

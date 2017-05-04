@@ -119,9 +119,15 @@ $('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', f
 			$('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');
 			$('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');
 			carrito();
-			//  $('#gallery').poptrox({
-			//   usePopupCaption: true
-			// });
+/*			 $('#gallery').poptrox({
+			  usePopupCaption: true
+			});*/
+			$('.open-popup-link').magnificPopup({
+			  gallery:{
+			    enabled:true,
+			    preload:0
+			  }
+			});
 		});
 	})
 })
