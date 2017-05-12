@@ -1,0 +1,40 @@
+@import url(magnific-popup.css);
+
+.fb_iframe_widget {
+    left: 0;
+    top: 5px;
+    float: right;
+    vertical-align: middle;
+}
+.white-popup img {
+	max-width: 90%;
+	max-height: 90vh;
+	display: block;
+	margin: 0 auto;
+}
+.mfp-content {
+	max-width: 100%;
+}
+.button-group {
+	position: absolute;
+	bottom: 0;
+	background: rgba(0, 0, 16, 0.8);
+	padding: 20px 20px;
+	width: 320px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	border-radius: 10px 10px 0 0;
+}
+.white-popup .cart_btns {
+	position: relative;
+	text-align: center;
+	top: 0;
+	margin-bottom: 0;
+	float: left;
+	vertical-align: middle;
+}
+.mfp-close-btn-in .mfp-close {
+    color: #fff !important;
+    background-color: #333;
+}

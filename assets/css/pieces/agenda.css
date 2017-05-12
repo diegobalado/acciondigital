@@ -1,0 +1,64 @@
+.cal-event {
+	display: flex;
+	flex-direction: row;
+}
+
+.cal-gallery {
+	padding-right: 5%;
+}
+
+.cal-gallery-month {
+	display: flex;
+	flex-flow: wrap;
+	width: 100%;
+	float: left;
+	border-bottom: dashed 1px #aaa;
+	padding: 0 0 20px 0;
+}
+.cal-gallery-month:last-child {
+    border: none;
+}
+
+.cal-gallery-month li {
+	list-style: none;
+	width: 50%;
+	margin: 10px auto;
+	padding: 0;
+}
+
+.cal-gallery-month li:nth-child(2n) article {
+	float: right;
+	margin-right: 0;
+}
+.cal-gallery-month li:nth-child(2n+1) article {
+	float: left;
+	margin-right: 0;
+}
+.cal-gallery-month article {
+	background: white;
+	box-shadow: 2px 2px 4px #ccc;
+	width: 90%;
+}
+
+.cal-gallery-month img {
+	height: auto;
+	width: 100%;
+}
+
+.cal-gallery-month .borda-foto {
+	width: 33.33%;
+}
+
+.cal-gallery-month .conteudo {
+	width: 66.66%;
+	padding: 20px;
+}
+
+.cal-gallery-month .conteudo h3 {
+	margin-top: 0;
+}
+
+.title-month {
+	clear: both;
+	margin: 20px 0;
+}

@@ -2,15 +2,10 @@
 	<h2>{{title}}</h2>
 	<form id="buscador" action="javascript:buscar(userID.value)" method="" enctype="multipart/form-data">
 		<fieldset>
-			<!-- <label for="userID">Número de corredor:</label> -->
 			<input id="userID" name="userID" type="text" placeholder="Número de corredor" required autofocus>
 			<input name="buscar" type="submit" value="Buscar">
 		</fieldset>
 	</form>
-	<!-- <a class="toggle_search" href="#">
-		<span class="icon fa-times-circle"></span>
-		<span class="text">Buscar</span>
-	</a> -->
 </header>
 
 <div id="gallery-wrapper" class="gallery-wrapper content">
@@ -18,7 +13,6 @@
 	<div class="media">
 		<a href=#{{../IdEvento}}_{{this}} class="open-popup-link" >
 			<img src=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this}}.jpg alt="" title="" />
-			<!-- <span class="etiqueta">{{text}}</span> -->
 		</a>
 		<div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id={{this}} data-name=foto{{this}} data-summary=foto_{{this}} data-price="{{../price}}" data-quantity="1" data-image=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this}}>Agregar al carrito</button>
 		</div>
@@ -38,7 +32,7 @@
 
 	{{/each}}
 </div>
-<div id="gallery-ad" class="gallery-ad">
+<div id="gallery-ad" id="gallery-ad">
 	{{#ads}}
 	<img src=/assets/images/ads/{{this}} alt="">
 	{{/ads}}

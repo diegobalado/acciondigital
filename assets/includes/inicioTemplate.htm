@@ -1,15 +1,18 @@
-<div id="gallery-wrapper" class="gallery-wrapper content">
-	{{#eventos}}
-	<div class="media">
-		<a href={{full_href this}}>
-			<img src=/assets/images/eventos/{{this.ID}}/thumbs/portada.jpg alt="" title={{this.text}} />
-			<span class="etiqueta">{{this.text}}</span>
-		</a>
+	<header>
+		<h2 class="gallery-title">Últimos Eventos</h2>
+	</header>
+	<div id="gallery-wrapper" class="gallery-wrapper content">
+		{{#eventos}}
+		<div class="media">
+			<a href={{full_href this}}>
+				<img src=/assets/images/eventos/{{this.ID}}/thumbs/portada.jpg alt="" title={{this.text}} />
+				<span class="etiqueta">{{this.text}}</span>
+			</a>
+		</div>
+		{{/eventos}}
 	</div>
-	{{/eventos}}
-</div>
-<div id="gallery-ad" class="gallery-ad">
-	{{#ads}}
-	<img src=/assets/images/ads/{{this}} alt="">
-	{{/ads}}
-</div>
+	<div id="gallery-ad" id="gallery-ad">
+		{{#ads}}
+		<img src=/assets/images/ads/{{this}} alt="">
+		{{/ads}}
+	</div>

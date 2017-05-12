@@ -1,0 +1,155 @@
+.form-page #header {
+	font-size: 14px;
+}
+.form-page #main {
+	font-size: 18px;
+}
+.form-page form {
+	max-width: 90%;
+	margin: 40px auto;
+}
+.form-page fieldset {
+	margin-top: 40px;
+	float: left;
+	width: 50%;
+	padding-right: 50px;
+}
+.form-page fieldset:nth-child(2n) {
+	padding-right: 0;
+}
+.form-page select {
+	background-color: #fff; 
+}
+.form-page select[multiple] {
+	padding: 1em;
+}
+@media screen and (max-width: 600px) {
+	.form-page form {
+		padding: 0 20px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.form-page {
+		font-size: 16px;
+	}
+	.form-page form {
+		max-width: 90%;
+
+	}
+	.form-page fieldset {
+		margin-top: 20px;
+	}
+	.form-page input[type="submit"] {
+		/*padding: 0 24px;*/
+		width: 100%;
+	}
+}
+
+.form-page .select-custom {
+	background-color: #fff;
+	height: 50px;
+	line-height: 1;
+	border-radius: 4px;
+}
+.form-page .select-custom select {
+	background-color: transparent;
+	z-index: 5;
+	position: relative;
+}
+.form-page .icon.fa-chevron-down {
+	left: 0;
+	float: right;
+	top: -1.5em;
+	font-size: 1.5em;
+	color: #999;
+}
+.form-page .select-custom select option {
+	padding: 0.5em 1.2em;
+}
+
+@media screen and (max-width: 480px) {
+	.form-page .select-custom {
+		height: 44px;
+	}
+}
+
+
+input[type=checkbox] {
+	visibility: hidden;
+}
+
+.checkEvents {
+	width: 30px;	
+	margin: 20px 0 0 0;
+	position: relative;
+	display: block;
+}
+.checkEvents input {
+	display: none;
+}
+.form-page .checkEvents input[type=checkbox] + label {
+	top: 0;
+	padding-left: 1.6em;
+	padding-right: 0;
+	height: 30px;
+}
+.checkEvents input[type=checkbox]:checked + label:after {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+.checkLabel {
+	left: 40px;
+	display: block;
+	top: -40px;
+	position: relative;
+}
+form h2 {
+	width: auto;
+	display: inline-block;
+}
+form .btnGroup {
+	width: auto;
+	display: inline-block;
+	float: right;																																													
+}
+@media screen and (max-width: 920px) {
+	form .btnGroup {
+		float: none;																																													
+		display: block;
+	}
+}
+form .btnGroup .button {
+	margin-right: 10px;		
+}
+form .btnGroup .button:hover {
+	text-decoration: none;
+}
+form .btnGroup .button:last-child {
+	margin-right: 0;		
+}
+.form-page form fieldset:last-child {
+	clear: both;
+}
+
+@media screen and (max-width: 768px) {
+	#main {
+		padding-bottom: 40px;
+	}
+	.form-page form {
+		max-width: 95%;
+	}
+	.form-page form fieldset {
+		width: 100%;
+		padding-right: 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.form-page form .btnGroup .button {
+		margin-right: 0;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+}

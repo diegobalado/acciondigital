@@ -1,0 +1,28 @@
+/*BUSCADOR*/ 
+#buscador {
+	width: 35%;
+	margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+	#buscador {
+		width: 33.333%;
+		padding: 0 15px;
+	}
+}
+@media screen and (max-width: 768px) {
+	#buscador {
+		width: 100%;
+		padding: 0;
+	}
+}
+#buscador input[name="userID"] {
+	display: inline;
+	width: calc(100% - 100px - 1em);
+}
+#buscador input[name="buscar"] {
+	display: inline;
+	width: 92px;
+	margin-left: 1em;
+	float: right;
+}

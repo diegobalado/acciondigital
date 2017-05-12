@@ -1,0 +1,25 @@
+	<ul class="cal-gallery">
+		{{#eventos}}
+		<li>
+			<article>
+				<a href="#" class="cal-event" title="Milton Guedes (Foto: Bruno Cavalcante/Divulgação)">
+					<div class="borda-foto borda-arredondada">
+						<span>
+						</span>
+						<img alt="" src={{full_href this}} width="250" height="250">
+					</div>
+					<div class="conteudo">
+						<h3>{{this.fecha}}</h3>
+						<h4>{{this.titulo}}</h4>
+						<p class="horario">{{this.lugar}}</p>
+					</div>
+				</a>
+			</article>
+		</li>
+		{{/eventos}}
+	</ul>
+	<div id="gallery-ad" id="gallery-ad">
+	{{#ads}}
+	<img src=/assets/images/ads/{{this}} alt="">
+	{{/ads}}
+</div>

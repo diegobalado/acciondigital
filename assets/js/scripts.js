@@ -85,52 +85,54 @@ let $template = '';
 $('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
 
 $section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/inicio/') ? 'inicio' : ($pathname.includes('/galeria/') ? 'galeria' : ''));
-$template = $section == 'eventos' ? 'eventos' : $section;
+if (!$pathname.includes('/agenda')) {
+	$template = $section == 'eventos' ? 'eventos' : $section;
 
-// console.log('$section ' + $section);
-// console.log('$json ' + $json);
-// console.log('$template ' + $template);
+	console.log('$section ' + $section);
+	// console.log('$json ' + $json);
+	// console.log('$template ' + $template);
 
-$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function() {
-	$(document).ready(function() {
-		let raw_template = $('#pictures-template').html();
-		let template = Handlebars.compile(raw_template);
-		let placeHolder = $("#gallery");
-		let galleries = getGET();
-		$json = $section == 'eventos' ? galleries.g : $section;
+	$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function() {
+		$(document).ready(function() {
+			let raw_template = $('#pictures-template').html();
+			let template = Handlebars.compile(raw_template);
+			let placeHolder = $("#gallery");
+			let galleries = getGET();
+			$json = $section == 'eventos' ? galleries.g : $section;
 
-		if ($section == 'galeria' || $section == 'inicio') {
-			console.log('$section ' + $section);
-			Handlebars.registerHelper('full_href', function(picture) {
-				return '/eventos/?g=' + picture.ID;
-			});
+			if ($section == 'galeria' || $section == 'inicio') {
+				console.log('$section ' + $section);
+				Handlebars.registerHelper('full_href', function(picture) {
+					return '/eventos/?g=' + picture.ID;
+				});
 
-			// Handlebars.registerHelper('full_thumb', function(picture) {
-			//   return '/assets/images/eventos/' + picture.evento + '/thumbs/' + picture.thumb + '.jpg';
-			// });
-		}
+				// Handlebars.registerHelper('full_thumb', function(picture) {
+				//   return '/assets/images/eventos/' + picture.evento + '/thumbs/' + picture.thumb + '.jpg';
+				// });
+			}
 
-		$.get("/assets/datasources/" + $json + ".json", function(data, status, xhr) {
-			let html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
-			placeHolder.append(html);
-			// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
-			$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
-			$('body').append('<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>');
-			$('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');
-			$('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');
-			carrito();
-/*			 $('#gallery').poptrox({
-			  usePopupCaption: true
-			});*/
-			$('.open-popup-link').magnificPopup({
-			  gallery:{
-			    enabled:true,
-			    preload:0
-			  }
-			});
-		});
+			$.get("/assets/datasources/" + $json + ".json", function(data, status, xhr) {
+				let html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
+				placeHolder.append(html);
+				// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
+				$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
+				$('body').append('<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>');
+				$('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');
+				$('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');
+				carrito();
+	/*			 $('#gallery').poptrox({
+				  usePopupCaption: true
+				});*/
+				$('.open-popup-link').magnificPopup({
+				  gallery:{
+				    enabled:true,
+				    preload:0
+				  }
+				})
+			})
+		})
 	})
-})
+}
 
 
 function getCurrentScroll() {
@@ -175,7 +177,8 @@ function getGET() {
 		let get = {};
 		for (let i = 0, l = GET.length; i < l; i++) {
 			let tmp = GET[i].split('=');
-			get[tmp[0]] = unescape(decodeURI(tmp[1]).replace('#', ''));
+			//tomo el parametro sin lo que viene despues del #
+			get[tmp[0]] = unescape(decodeURI(tmp[1])).indexOf('#')!=-1?unescape(decodeURI(tmp[1])).substr(0, unescape(decodeURI(tmp[1])).indexOf('#')):unescape(decodeURI(tmp[1]));
 		}
 		// console.log('Parametros ' + get.g);
 		return get;
@@ -193,6 +196,10 @@ $(function() {
 			break;
 		case '/galeria/':
 			$('#nav-header ul li.gallery').addClass('active');
+			break;
+		case '/agenda/':
+			$('#nav-header ul li.calendar').addClass('active');
+			// carrito();
 			break;
 		case '/eventos/':
 			$('#nav-header ul li.gallery').addClass('active');
@@ -252,7 +259,6 @@ function buscar(foto) {
 			})
 		}
 		carrito();
-
 	});
 }
 
