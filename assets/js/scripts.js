@@ -249,16 +249,22 @@ function buscar(foto) {
 			let $results = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><div id="results"></div>';
 			$('#gallery-wrapper').html($results);
 			arrFiltro.forEach(function(el, index) {
-				$('#results').append('<div class="media"> <a href="/assets/images/eventos/' + galleries.g + '/' + el + '" data-lighter> <img src="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="' + el + '" data-name="foto_' + el + '" data-summary="foto_' + el + '" data-price="' + html.price + '" data-quantity="1" data-image="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '">Agregar al carrito</button> </div> </div>');
+				$('#results').append('<div class="media"> <a href="#' + galleries.g + '_' + el + '" class="open-popup-link" > <img src="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="' + el + '" data-name="foto_' + el + '" data-summary="foto_' + el + '" data-price="' + html.price + '" data-quantity="1" data-image="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg">Agregar al carrito</button> </div> </div> <div id=' + galleries.g + '_' + el + ' class="white-popup mfp-hide"> <div class="button-group"> <div class="fb-share-button" data-href=/assets/images/eventos/' + galleries.g + '_' + el + ' data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href=/assets/images/eventos/' + galleries.g + '_' + el + ' >Compartir</a></div> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + el + ' data-name=foto' + el + ' data-summary=foto_' + el + ' data-price="' + html.price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '>Agregar al carrito</button> </div> </div> <div class="img-wrapper"> <img src=/assets/images/eventos/' + galleries.g + '/' + el + '.jpg alt="" title="" /> </div> </div>');
 			})
 		} else {
 			let $results = '<h3>Su búsqueda "' + foto + '" no produjo resultados</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 			$('#gallery-wrapper').html($results);
 			sinCodigo.forEach(function(el, index) {
-				$('#results').append('<div class="media"> <a href="/assets/images/eventos/' + galleries.g + '/' + el + '" data-lighter> <img src="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="' + el + '" data-name="foto_' + el + '" data-summary="foto_' + el + '" data-price="' + html.price + '" data-quantity="1" data-image="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '">Agregar al carrito</button> </div> </div>');
+				$('#results').append('<div class="media"> <a href="#' + galleries.g + '_' + el + '" class="open-popup-link" > <img src="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg" alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id="' + el + '" data-name="foto_' + el + '" data-summary="foto_' + el + '" data-price="' + html.price + '" data-quantity="1" data-image="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg">Agregar al carrito</button> </div> </div> <div id=' + galleries.g + '_' + el + ' class="white-popup mfp-hide"> <div class="button-group"> <div class="fb-share-button" data-href=/assets/images/eventos/' + galleries.g + '_' + el + ' data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href=/assets/images/eventos/' + galleries.g + '_' + el + ' >Compartir</a></div> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + el + ' data-name=foto' + el + ' data-summary=foto_' + el + ' data-price="' + html.price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '>Agregar al carrito</button> </div> </div> <div class="img-wrapper"> <img src=/assets/images/eventos/' + galleries.g + '/' + el + '.jpg alt="" title="" /> </div> </div>');
 			})
 		}
 		carrito();
+		$('.open-popup-link').magnificPopup({
+		  gallery:{
+		    enabled:true,
+		    preload:0
+		  }
+		})
 	});
 }
 

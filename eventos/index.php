@@ -9,7 +9,7 @@
 	<title>Acción Digital</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/assets/css/secionEvents.css" />	
+	<link rel="stylesheet" href="/assets/css/sectionEvents.css" />	
 	
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
 </head>
