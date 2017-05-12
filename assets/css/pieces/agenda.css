@@ -16,7 +16,7 @@
 	padding: 0 0 20px 0;
 }
 .cal-gallery-month:last-child {
-    border: none;
+	border: none;
 }
 
 .cal-gallery-month li {
@@ -38,15 +38,26 @@
 	background: white;
 	box-shadow: 2px 2px 4px #ccc;
 	width: 90%;
+	height: 135px;
+}
+
+@media screen and (max-width: 1024px) {
+	.cal-gallery-month li {
+		width: 100%;
+		margin: 10px 0;
+	}
+	.cal-gallery-month li:nth-child(2n) article,
+	.cal-gallery-month li:nth-child(2n+1) article,
+	.cal-gallery-month article {
+		margin: 0;
+		float: left;
+		width: 100%;
+	}
 }
 
 .cal-gallery-month img {
-	height: auto;
-	width: 100%;
-}
-
-.cal-gallery-month .borda-foto {
-	width: 33.33%;
+	height: 135px;
+	width: 135px;
 }
 
 .cal-gallery-month .conteudo {
@@ -54,7 +65,17 @@
 	padding: 20px;
 }
 
-.cal-gallery-month .conteudo h3 {
+@media screen and (max-width: 1200px) {
+	.cal-gallery-month .conteudo {
+		padding: 20px 10px;
+	}
+}
+@media screen and (max-width: 320px) {
+	.cal-gallery-month .conteudo {
+		padding: 15px 10px;
+	}
+}
+.cal-gallery-month .conteudo h4 {
 	margin-top: 0;
 }
 

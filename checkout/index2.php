@@ -33,5 +33,4 @@ var_dump($preference_data);
 // $preference_data = array("items" => array(array('title' => $name_prod, 'quantity' => $quantity_prod, "currency_id" => "ARS", 'unit_price' => $price_prod ) ) );
 $preference = $mp->create_preference ($preference_data);
 ?>
-<!-- <script>window.location.href = "<?php echo $preference['response']['sandbox_init_point']; ?>";</script>
- -->
+<script>window.location.href = "<?php echo $preference['response']['sandbox_init_point']; ?>";</script>

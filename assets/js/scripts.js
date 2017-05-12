@@ -199,7 +199,7 @@ $(function() {
 			break;
 		case '/agenda/':
 			$('#nav-header ul li.calendar').addClass('active');
-			// carrito();
+			carrito();
 			break;
 		case '/eventos/':
 			$('#nav-header ul li.gallery').addClass('active');
