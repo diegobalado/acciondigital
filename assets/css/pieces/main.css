@@ -1111,7 +1111,7 @@ table {
 }
 
 table tbody tr {
-	border: solid 1px;
+	border: solid 1px #ddd;
 	border-left: 0;
 	border-right: 0;
 }
@@ -1521,8 +1521,8 @@ img[alt="www.000webhost.com"] {
 }
 @media screen and (max-width: 600px) {
 	#nav-header {
-	    margin: 5px 0 0 0;
-	    float: none;
+		margin: 5px 0 0 0;
+		float: none;
 	}
 }
 
@@ -1598,6 +1598,12 @@ flex-flow: row wrap;
 	.header.shrink .nav ul li {
 		margin: 0;
 	}
+}
+
+
+
+#nav-header ul li a:hover {
+	color: #f09a0d;
 }
 
 #nav-header ul li a .text {
@@ -1771,4 +1777,10 @@ body.is-loading #banner > .inner {
 		font-size: 1.25em;
 	}
 
+}
+
+/*PARCHES CHECKOUT RESPONSIVE*/
+
+.my-product-total, .my-product-quantity, td[title="Quantity"] {
+	display: none;
 }
