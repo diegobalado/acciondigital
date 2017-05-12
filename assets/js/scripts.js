@@ -199,7 +199,6 @@ $(function() {
 			break;
 		case '/agenda/':
 			$('#nav-header ul li.calendar').addClass('active');
-			carrito();
 			break;
 		case '/eventos/':
 			$('#nav-header ul li.gallery').addClass('active');
@@ -210,6 +209,7 @@ $(function() {
 		default:
 			$('#nav-header ul li.home').addClass('active');
 	}
+	carrito();
 })
 
 /*BUSCADOR*/
