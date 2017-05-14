@@ -15,7 +15,8 @@ $(document).ready(function() {
 		$btns = btnHome + btnGallery;
 		break;	    
 		default:
-		return false;
+		$btns = btnHome + btnGallery + btnEvent;
+		break;
 	} 
 	$('.btnGroup').html($btns);
 });

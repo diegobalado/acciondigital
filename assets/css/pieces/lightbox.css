@@ -2,7 +2,7 @@
 
 .fb_iframe_widget {
     left: 0;
-    top: 5px;
+    top: 0;
     float: right;
     vertical-align: middle;
 }
@@ -19,12 +19,12 @@
 	position: absolute;
 	bottom: 0;
 	background: rgba(0, 0, 16, 0.8);
-	padding: 20px 20px;
-	width: 320px;
+	padding: 10px;
+	width: 265px;
 	margin: 0 auto;
 	left: 0;
 	right: 0;
-	border-radius: 10px 10px 0 0;
+	border-radius: 5px 5px 0 0;
 }
 .white-popup .cart_btns {
 	position: relative;
@@ -34,7 +34,24 @@
 	float: left;
 	vertical-align: middle;
 }
+.white-popup .cart_btns .my-cart-btn {
+	padding: 0 5px;
+	line-height: 1;
+	height: 28px;
+	font-size: 13px;
+	font-weight: bold;
+}
 .mfp-close-btn-in .mfp-close {
     color: #fff !important;
     background-color: #333;
+}
+
+@media screen and (max-width: 480px) {
+	.mfp-container {
+	    padding-left: 0;
+	    padding-right: 0;
+	}
+	.white-popup img {
+		max-width: 100%;
+	}
 }

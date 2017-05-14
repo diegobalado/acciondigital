@@ -95,12 +95,20 @@
 										}
 									}
 									sort($ads);
-							// debug_to_console($ads);
 
-									foreach ($ads as $adFile) {
+									$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/ads.json');
+									$adData = json_decode($data, true) ;
+									$adsArr = array();
+
+									foreach ($ads as $ad) {
+										$tempAds = array(
+											'name' => $ad,
+											'href' => $adData[$ad]
+											);
+										array_push($adsArr, $tempAds);
 										?>
-										<option value="<?php echo $adFile; ?>" >
-											<?php echo $adFile; ?>
+										<option value="<?php echo $ad; ?>" >
+											<?php echo $ad; ?>
 										</option>
 										<?php
 									}
@@ -126,9 +134,10 @@
 					if (!is_dir($archivo))
 					{			
 						$parts = explode('.', $archivo);
+						$name = $parts[0];
 						$extension = end($parts);
 						if ($extension == "jpg"  || $extension == "png") {
-							array_push($pics, $archivo);
+							array_push($pics, $name);
 						}
 					}
 				}
@@ -140,7 +149,7 @@
 					'IdEvento' => $_REQUEST[IdEvento],
 					'title' => $_REQUEST[title],
 					'pictures' => $pics,
-					'ads' => $_REQUEST[ads],
+					'ads' => $adsArr,
 					'price' => $_REQUEST[price]
 					);
 					?>

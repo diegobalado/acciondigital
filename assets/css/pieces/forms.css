@@ -114,8 +114,14 @@ form .btnGroup {
 	display: inline-block;
 	float: right;																																													
 }
+.home .btnGroup {
+	float: none;
+	margin: 20px auto;
+	width: 240px;
+	display: block;
+}
 @media screen and (max-width: 920px) {
-	form .btnGroup {
+	form .btnGroup, .home .btnGroup {
 		float: none;																																													
 		display: block;
 	}
@@ -123,10 +129,14 @@ form .btnGroup {
 form .btnGroup .button {
 	margin-right: 10px;		
 }
-form .btnGroup .button:hover {
+.home .btnGroup .button {
+	margin: 20px auto;
+	display: block;
+}
+form .btnGroup .button:hover, .home .btnGroup .button:hover {
 	text-decoration: none;
 }
-form .btnGroup .button:last-child {
+form .btnGroup .button:last-child, .home .btnGroup .button:last-child {
 	margin-right: 0;		
 }
 .form-page form fieldset:last-child {
@@ -147,7 +157,7 @@ form .btnGroup .button:last-child {
 }
 
 @media screen and (max-width: 480px) {
-	.form-page form .btnGroup .button {
+	.form-page form .btnGroup .button, .home .btnGroup .button {
 		margin-right: 0;
 		width: 100%;
 		margin-bottom: 20px;

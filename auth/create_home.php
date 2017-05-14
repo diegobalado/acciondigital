@@ -90,12 +90,19 @@
 								}
 							}
 							sort($ads);
-							// debug_to_console($ads);
+							$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/ads.json');
+							$adData = json_decode($data, true) ;
+							$adsArr = array();
 
-							foreach ($ads as $adFile) {
+							foreach ($ads as $ad) {
+								$tempAds = array(
+									'name' => $ad,
+									'href' => $adData[$ad]
+									);
+								array_push($adsArr, $tempAds);
 								?>
-								<option value="<?php echo $adFile; ?>" >
-									<?php echo $adFile; ?>
+								<option value="<?php echo $ad; ?>" >
+									<?php echo $ad; ?>
 								</option>
 								<?php
 							}
@@ -126,7 +133,7 @@
 				}
 				$saveFile = array(
 					'eventos' => $eventos,
-					'ads' => $_REQUEST[ads]
+					'ads' => $adsArr
 					);
 				if (file_put_contents($file, json_encode($saveFile)) != false) $message = "La página de inicio se creó correctamente";
 				else $message = "Hubo un error al crear la página de inicio";

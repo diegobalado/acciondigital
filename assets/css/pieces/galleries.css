@@ -95,6 +95,7 @@
 	#galleries .gallery header h2 {
 		margin-bottom: .5em;
 		font-size: 24px;
+		text-align: center;
 	}
 }
 
@@ -163,11 +164,15 @@
 		width: 100%;
 		order: 0;
 		flex-direction: row;
+		margin-top: 20px;
+	}
+	#gallery-ad a {
+		width: 50%;
 	}
 	#gallery-ad img {
-		margin: 0 auto;
+		margin: 0 5%;
 		padding: 0px 0.7% 4em;
-		width: 50%;
+		width: 90%;
 		height: auto;
 	}
 	#gallery-ad img:first-child {
@@ -179,11 +184,15 @@
 }
 
 @media screen and (max-width: 480px) {
-	/*#gallery-ad img {
-		width: 100%;
-		padding: 15px 0; 
-		}*/
+	#gallery-ad img {
+		margin: 0 5%;
+		width: 90%;
+		padding: 10px;
 	}
+	#gallery-ad a {
+		width: 50%;
+	}
+}
 
 	#galleries .gallery .gallery-wrapper h3,
 	#galleries .gallery .gallery-wrapper h4 {

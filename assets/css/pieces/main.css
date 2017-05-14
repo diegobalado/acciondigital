@@ -1784,3 +1784,15 @@ body.is-loading #banner > .inner {
 .my-product-total, .my-product-quantity, td[title="Quantity"] {
 	display: none;
 }
+@media screen and (max-width: 480px) {
+	.modal {
+		padding-right: 0 !important;
+	}
+	.modal .modal-dialog {
+		width: 100%;
+		margin: 0;
+	}
+	.modal .modal-dialog .modal-content {
+		border-radius: 0;
+	}
+}

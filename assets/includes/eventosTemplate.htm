@@ -19,21 +19,23 @@
 	</div>
 	
 	<div id={{../IdEvento}}_{{this}} class="white-popup mfp-hide">
-	<div class="button-group">
-			<div class="fb-share-button" data-href=/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href=/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg >Compartir</a></div>
+		<div class="button-group">
+			<iframe class="fb_iframe_widget" src=https://www.facebook.com/plugins/share_button.php?href=http://acciondigital.000webhostapp.com/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg&layout=button&size=large&mobile_iframe=true&width=100&height=28&appId width="100" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 			<div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id={{this}} data-name=foto{{this}} data-summary=foto_{{this}} data-price="{{../price}}" data-quantity="1" data-image=/assets/images/eventos/{{../IdEvento}}/thumbs/{{this}}>Agregar al carrito</button>
 			</div>
 		</div>
 
-	  <div class="img-wrapper">
-	  	<img src=/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg alt="" title="" />
-	  </div>
+		<div class="img-wrapper">
+			<img src=/assets/images/eventos/{{../IdEvento}}/{{this}}.jpg alt="" title="" />
+		</div>
 	</div>
 
 	{{/each}}
 </div>
 <div id="gallery-ad" id="gallery-ad">
 	{{#ads}}
-	<img src=/assets/images/ads/{{this}} alt="">
+	<a href={{this.href}} target="_blank">
+		<img src=/assets/images/ads/{{this.name}} alt="" />
+	</a>
 	{{/ads}}
 </div>
