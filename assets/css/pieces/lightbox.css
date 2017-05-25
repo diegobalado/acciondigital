@@ -34,12 +34,27 @@
 	float: left;
 	vertical-align: middle;
 }
-.white-popup .cart_btns .my-cart-btn {
+.white-popup .cart_btns .my-cart-btn, .white-popup a.btn-facebook {
 	padding: 0 5px;
 	line-height: 1;
 	height: 28px;
 	font-size: 13px;
 	font-weight: bold;
+	float: right;
+	padding: 0 10px;	
+}
+.white-popup a.btn-facebook {
+	background-color: #4267b2;
+	border-color: #4267b2;
+	color: #fff;
+	line-height: 28px;
+}
+.white-popup a.btn-facebook:hover {
+	background-color: #365899;
+	border-color: #365899;
+}
+.white-popup a.btn-facebook i.fa-facebook-square {
+	padding-right: 5px;
 }
 .mfp-close-btn-in .mfp-close {
     color: #fff !important;

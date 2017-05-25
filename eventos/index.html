@@ -18,6 +18,13 @@
 	<link rel="stylesheet" href="/assets/css/sections/sectionEvents.css" />	
 	
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/assets/js/underscore-min.js"></script>
+	<!-- <script type="text/javascript">
+		$(window).load(function() {
+		// Animate loader off screen
+		$(".loading").fadeOut("slow");;
+	});
+	</script> -->
 	<!-- Load Facebook SDK for JavaScript -->
 </head>
 <body class="events-page">
@@ -30,20 +37,34 @@
 		
 		<!-- <nav id="nav" class="nav"></nav> -->
 		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&version=v2.9";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
+		<!-- <script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.async=true;
+			js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&version=v2.9";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script> -->
 		<section id="main">
 
 			<section id="galleries">
 				<div class="buscador hidden">
 					
 				</div>
-				<div class="gallery" id="gallery"></div>
+				<div class="gallery" id="gallery">
+					<header>
+						<h2 id="gallery_title"></h2>
+						<form id="buscador" action="javascript:buscar(userID.value)" method="" enctype="multipart/form-data">
+							<fieldset>
+								<input id="userID" name="userID" type="text" placeholder="Número de corredor" required >
+								<input name="buscar" type="submit" value="Buscar">
+							</fieldset>
+						</form>
+					</header>
+					<div id="gallery-wrapper" class="gallery-wrapper content"></div>
+					<div id="gallery-ad" id="gallery-ad"></div>
+					<div class="loading"></div>
+				</div>
 			</section>
 
 			<section id="contact"></section>

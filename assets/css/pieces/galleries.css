@@ -253,6 +253,7 @@
 		-ms-transition: -ms-transform 0.2s ease-in-out;
 		transition: transform 0.2s ease-in-out;
 		max-width: 100%;
+		width: 350px;
 		height: auto;
 		vertical-align: middle;
 	}

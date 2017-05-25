@@ -205,7 +205,7 @@
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>' +
-        '<button type="button" class="btn btn-primary ' + classCheckoutCart + '">Continuar</button>' +
+        '<button type="button" disabled="true" class="btn btn-primary ' + classCheckoutCart + '">Continuar</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -253,6 +253,14 @@
           '<td></td>' +
           '<td></td>' +
           '<td><strong id="' + idDiscountPrice + '"></strong></td>' +
+          '<td></td>' +
+          '</tr>'
+        );
+      } else {
+        $cartTable.append(
+          '<tr style="color: red">' +
+          '<td></td>' +
+          '<td><strong>Descuento Especial: 5 fotos por $250</strong></td>' +
           '<td></td>' +
           '</tr>'
         );
@@ -362,23 +370,36 @@
     /*
     EVENT
     */
-    $target.click(function(){
+    $target.on('click', function(){
       options.clickOnAddToCart($target);
 
-      var id = $target.data('id');
-      var name = $target.data('name');
-      var summary = $target.data('summary');
-      var price = $target.data('price');
-      var quantity = $target.data('quantity');
-      var image = $target.data('image');
+      let products = ProductManager.getAllProducts();
+      let isProduct = false;
 
-      ProductManager.setProduct(id, name, summary, price, quantity, image);
-      if (ProductManager.getTotalQuantity()>0) {
-        $cartBadge.show();
-        $cartBadge.text(ProductManager.getTotalQuantity());
-      } else {
-          $cartBadge.text('');
+      products.forEach(function(el, index) {
+        if ($target.data('id') == el.id) {
+          isProduct = true;
+          alert('Esta fotografía ya es parte de su compra');
+          return false;
         }
+      })
+
+      if (!isProduct) {
+        var id = $target.data('id');
+        var name = $target.data('name');
+        var summary = $target.data('summary');
+        var price = $target.data('price');
+        var quantity = $target.data('quantity');
+        var image = $target.data('image');
+
+        ProductManager.setProduct(id, name, summary, price, quantity, image);
+        if (ProductManager.getTotalQuantity()>0) {
+          $cartBadge.show();
+          $cartBadge.text(ProductManager.getTotalQuantity());
+        } else {
+          $cartBadge.text('');
+        }        
+      }
 
       options.afterAddOnCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
     });
