@@ -144,12 +144,25 @@
 				sort($pics);
 				// echo json_encode($pics);
 				$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/'.$folder.'.json';
+				$ads = $_REQUEST[ads];
+				$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/ads.json');
+				$adData = json_decode($data, true) ;
+				$adsN = array();
+
+				foreach ($ads as $ad) {
+					$tempAds = array(
+						'name' => $ad,
+						'href' => $adData[$ad]
+						);
+					array_push($adsN, $tempAds);
+				}
+
 				$saveFile = [];
 				$saveFile = array(
 					'IdEvento' => $_REQUEST[IdEvento],
 					'title' => $_REQUEST[title],
 					'pictures' => $pics,
-					'ads' => $adsArr,
+					'ads' => $adsN,
 					'price' => $_REQUEST[price]
 					);
 					?>

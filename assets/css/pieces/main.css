@@ -1632,6 +1632,7 @@ flex-flow: row wrap;
 /*  FOOTER  */
 
 #footer {
+	clear: both;
 	padding: 4em 0 2em 0;
 	background: #f2f2f2;
 }

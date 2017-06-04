@@ -1,70 +1,72 @@
 /*CARRITO*/
 function carrito() {
 
-  var goToCartIcon = function($addTocartBtn) {
-    var $cartIcon = $(".my-cart-icon");
-    var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({
-      position: "fixed",
-      "z-index": "999"
-    });
-    $addTocartBtn.prepend($image);
-    var position = $cartIcon.position();
-    $image.animate({
-      top: position.top,
-      left: position.left
-    }, 500, "linear", function() {
-      $image.remove();
-    });
-  };
+	var goToCartIcon = function($addTocartBtn) {
+		var $cartIcon = $(".my-cart-icon");
+		var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({
+			position: "fixed",
+			"z-index": "999"
+		});
+		$addTocartBtn.prepend($image);
+		var position = $cartIcon.position();
+		$image.animate({
+			top: position.top,
+			left: position.left
+		}, 500, "linear", function() {
+			$image.remove();
+		});
+	};
 
-  $('.my-cart-btn').myCart({
-    currencySymbol: '$',
-    classCartIcon: 'my-cart-icon',
-    classCartBadge: 'my-cart-badge',
-    classProductQuantity: 'my-product-quantity',
-    classProductRemove: 'my-product-remove',
-    classCheckoutCart: 'my-cart-checkout',
-    affixCartIcon: true,
-    showCheckoutModal: true,
-    cartItems: [],
-    clickOnAddToCart: function($addTocart) {
-      goToCartIcon($addTocart);
-    },
-    afterAddOnCart: function(products, totalPrice, totalQuantity) {
-      console.log("afterAddOnCart", products, totalPrice, totalQuantity);
+	$('.my-cart-btn').off();
+	$('.my-cart-btn').myCart({
+		currencySymbol: '$',
+		classCartIcon: 'my-cart-icon',
+		classCartBadge: 'my-cart-badge',
+		classProductQuantity: 'my-product-quantity',
+		classProductRemove: 'my-product-remove',
+		classCheckoutCart: 'my-cart-checkout',
+		affixCartIcon: true,
+		showCheckoutModal: true,
+		cartItems: [],
+		clickOnAddToCart: function($addTocart) {
+			goToCartIcon($addTocart);
+		},
+		afterAddOnCart: function(products, totalPrice, totalQuantity) {
+			// console.log("afterAddOnCart", products, totalPrice, totalQuantity);
       // sessionStorage.setItem('products', JSON.stringify(products));
       // sessionStorage.setItem('price', totalPrice);
       // sessionStorage.setItem('quantity', totalQuantity);
     },
     clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
-      console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
+    	// console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
     },
     checkoutCart: function(products, totalPrice, totalQuantity) {
-      var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
-      checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path";
-      $.each(products, function() {
-        checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
+    	var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
+    	checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path";
+    	$.each(products, function() {
+    		checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
+    	});
+
+      $.post('/checkout/index3.php', {
+      	products: products,
+      	totalPrice: totalPrice
+      })
+      .success(function(html) {
+      	$('#main').html(html);
+      })
+      .error(function() {
+      	alert('ERROR');
       });
-      // window.location.href = "/checkout/?n=fotosAD&p="+totalPrice+"&q="+totalQuantity;
-      // alert(checkoutString)
 
-      $.post('/checkout/index2.php', {
-          products: JSON.stringify(products)
-        })
-        .success(function(html) {
-          // alert(html); 
-          $('body').append(html);
-        })
-        .error(function() {
-          alert('ERROR');
-        });
-
-      console.log('***products ' + JSON.stringify(products));
-      console.log("checking out", products, totalPrice, totalQuantity);
     },
     getDiscountPrice: function(products, totalPrice, totalQuantity) {
-      console.log("calculating discount", products, totalPrice, totalQuantity);
-      return totalPrice * 0.5;
+    	const cantPromo = 5;
+    	let finalPrice = totalPrice;
+    	let unityPrice = totalPrice/totalQuantity;
+    	if (totalQuantity >= cantPromo) {
+    		finalPrice = Math.round(Math.floor(totalQuantity/cantPromo)*unityPrice/1.2*cantPromo + (totalQuantity%cantPromo)*unityPrice);
+    		return finalPrice;
+    	} else return null;
     }
   });
 
@@ -197,8 +199,8 @@ $(function() {
 		case '/galeria/':
 			$('#nav-header ul li.gallery').addClass('active');
 			break;
-		case '/agenda/':
-			$('#nav-header ul li.calendar').addClass('active');
+		case '/amigos/':
+			$('#nav-header ul li.friends').addClass('active');
 			break;
 		case '/eventos/':
 			$('#nav-header ul li.gallery').addClass('active');

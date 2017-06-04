@@ -1,0 +1,162 @@
+.content-wrapper {
+	display: block;
+	width: 90%;
+	margin: 20px auto;
+	overflow: hidden;
+}
+article {
+	border-top: 1px dashed #666;
+	border-bottom: 1px dashed #666;
+	padding: 20px 0;
+	margin: 10px 0;
+	overflow: hidden;
+}
+.content-picture {
+	display: block;
+	width: 66.66%;
+	float: right;
+}
+.content {
+	display: block;
+	width: 33.33%;
+	float: left;
+	margin-top: 3vw;
+}
+.icon:before {
+	font-size: 1.5em;
+	vertical-align: middle;
+	padding-right: 5px;
+	width: 26px;
+}
+.links .link {
+	display: block;
+	padding: 0;
+}
+.links .link a {
+	color: #333;
+	font-size: 1em !important;	
+}
+.links .link a:hover {
+	color: #f09a0d;
+	text-decoration: none;
+}
+.content-wrapper h1 {
+	font-size: 32px;	
+	margin: 20px 0;
+}
+.content-wrapper h2 {
+	font-size: 22px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.content-wrapper h3 {
+	font-size: 18px;
+	margin-top: 10px;
+}
+.content-picture img {
+	float: right;
+}
+
+@media screen and (max-width: 1200px) {
+	.content-picture img {
+		width: 100%;
+	}
+}
+@media screen and (max-width: 1024px) {
+	.content {
+		margin-top: 0; 
+	}
+}
+@media screen and (max-width: 768px) {
+	.content, .content-picture {
+		float: none;
+		margin: 10px auto;
+		text-align: center;
+		width: 100%;
+	}
+}
+/*.cal-event {
+	display: flex;
+	flex-direction: row;
+}
+
+.cal-gallery {
+	padding-right: 5%;
+}
+
+.cal-gallery-month {
+	display: flex;
+	flex-flow: wrap;
+	width: 100%;
+	float: left;
+	border-bottom: dashed 1px #aaa;
+	padding: 0 0 20px 0;
+}
+.cal-gallery-month:last-child {
+	border: none;
+}
+
+.cal-gallery-month li {
+	list-style: none;
+	width: 50%;
+	margin: 10px auto;
+	padding: 0;
+}
+
+.cal-gallery-month li:nth-child(2n) article {
+	float: right;
+	margin-right: 0;
+}
+.cal-gallery-month li:nth-child(2n+1) article {
+	float: left;
+	margin-right: 0;
+}
+.cal-gallery-month article {
+	background: white;
+	box-shadow: 2px 2px 4px #ccc;
+	width: 90%;
+	height: 135px;
+}
+
+@media screen and (max-width: 1024px) {
+	.cal-gallery-month li {
+		width: 100%;
+		margin: 10px 0;
+	}
+	.cal-gallery-month li:nth-child(2n) article,
+	.cal-gallery-month li:nth-child(2n+1) article,
+	.cal-gallery-month article {
+		margin: 0;
+		float: left;
+		width: 100%;
+	}
+}
+
+.cal-gallery-month img {
+	height: 135px;
+	width: 135px;
+}
+
+.cal-gallery-month .content {
+	width: 66.66%;
+	padding: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+	.cal-gallery-month .content {
+		padding: 20px 10px;
+	}
+}
+@media screen and (max-width: 320px) {
+	.cal-gallery-month .content {
+		padding: 15px 10px;
+	}
+}
+.cal-gallery-month .content h4 {
+	margin-top: 0;
+}
+
+.title-month {
+	clear: both;
+	margin: 20px 0;
+}*/

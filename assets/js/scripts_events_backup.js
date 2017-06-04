@@ -32,13 +32,13 @@ function carrito() {
 			goToCartIcon($addTocart);
 		},
 		afterAddOnCart: function(products, totalPrice, totalQuantity) {
-			console.log("afterAddOnCart", products, totalPrice, totalQuantity);
+			// console.log("afterAddOnCart", products, totalPrice, totalQuantity);
       // sessionStorage.setItem('products', JSON.stringify(products));
       // sessionStorage.setItem('price', totalPrice);
       // sessionStorage.setItem('quantity', totalQuantity);
     },
     clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
-    	console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
+    	// console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
     },
     checkoutCart: function(products, totalPrice, totalQuantity) {
     	var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
@@ -46,23 +46,18 @@ function carrito() {
     	$.each(products, function() {
     		checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
     	});
-      // window.location.href = "/checkout/?n=fotosAD&p="+totalPrice+"&q="+totalQuantity;
-      // alert(checkoutString)
 
       $.post('/checkout/index3.php', {
       	products: products,
       	totalPrice: totalPrice
       })
       .success(function(html) {
-      	// console.log('**products ' + JSON.stringify(products)); 
       	$('#main').html(html);
       })
       .error(function() {
       	alert('ERROR');
       });
 
-      // console.log('***products ' + JSON.stringify(products));
-      console.log("checking out", products, totalPrice, totalQuantity);
     },
     getDiscountPrice: function(products, totalPrice, totalQuantity) {
     	const cantPromo = 5;
@@ -70,7 +65,6 @@ function carrito() {
     	let unityPrice = totalPrice/totalQuantity;
     	if (totalQuantity >= cantPromo) {
     		finalPrice = Math.round(Math.floor(totalQuantity/cantPromo)*unityPrice/1.2*cantPromo + (totalQuantity%cantPromo)*unityPrice);
-    		// console.log('***finalPrice ' + finalPrice);
     		return finalPrice;
     	} else return null;
     }
@@ -96,10 +90,6 @@ $section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/i
 if (!$pathname.includes('/agenda')) {
 	$template = $section == 'eventos' ? 'eventos' : $section;
 
-	// console.log('$section ' + $section);
-	// console.log('$json ' + $json);
-	// console.log('$template ' + $template);
-
 	$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function() {
 		$(document).ready(function() {
 			let raw_template = $('#pictures-template').html();
@@ -111,24 +101,13 @@ if (!$pathname.includes('/agenda')) {
 			$json = $section == 'eventos' ? galleries.g : $section;
 
 			if ($section == 'galeria' || $section == 'inicio') {
-				// console.log('$section ' + $section);
 				Handlebars.registerHelper('full_href', function(picture) {
 					return '/eventos/?g=' + picture.ID;
 				});
-
-				// Handlebars.registerHelper('full_thumb', function(picture) {
-				//   return '/assets/images/eventos/' + picture.evento + '/thumbs/' + picture.thumb + '.jpg';
-				// });
 			}
 
 			$.get("/assets/datasources/" + $json + ".json", function(data, status, xhr) {
-				// let html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
-				// data.forEach(function(element){
-				// 	console.log(element);
-				// })
-				// console.log(JSON.parse(data).pictures);
 
-				// console.log('***data ' + data);
 				let IdEvento = location.hostname == 'localhost' ? JSON.parse(data).IdEvento : data.IdEvento;
 				let title = location.hostname == 'localhost' ? JSON.parse(data).title : data.title;
 				let price = location.hostname == 'localhost' ? JSON.parse(data).price : data.price;
@@ -143,7 +122,6 @@ if (!$pathname.includes('/agenda')) {
 				let = lastItem = 0;
 
 				var load_page = function(placeholder, page_start, page_limit, data){
-					// console.log('***arranca ');
 					placeholder.append($('.loading').detach());
 					$('.loading').fadeIn("fast");
 					let pic = '';					
@@ -152,43 +130,18 @@ if (!$pathname.includes('/agenda')) {
 					var i = 0;
 					for (i = page_start; i < page_start+page_limit; i++) {
 						pic = data.pictures[i];
-						// console.log('***title ' + '"['+title+'] foto ' + pic + '"');
-						// console.log('***price ' + '"['+title+'] foto ' + pic + '"');
-						html_element = '<div class="media">  <a href=#' + data.IdEvento + '_' + pic + ' class="open-popup-link" > <img style="background:url(/assets/images/loading.gif) transparent no-repeat" src=/assets/images/eventos/' + data.IdEvento + '/thumbs/' + pic + '.jpg alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + data.price + '" data-quantity="1" data-image=/assets/images/eventos/' + data.IdEvento + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> <div id=' + data.IdEvento + '_' + pic + ' class="white-popup mfp-hide"> <div class="button-group"> <div class="fb-share-button" data-href="http://acciondigitalfoto.com/assets/images/eventos/'+data.IdEvento+'/'+pic+'.jpg" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://acciondigitalfoto.com/assets/images/eventos/'+data.IdEvento+'/'+pic+'.jpg">Compartir</a></div> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + data.price + '" data-quantity="1" data-image=/assets/images/eventos/' + data.IdEvento + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> </div> <div class="img-wrapper"> <img src=/assets/images/eventos/' + data.IdEvento + '/' + pic + '.jpg alt="" title="" /> </div> </div> </div>';
-
+						html_element = '<div class="media">  <a href=#' + data.IdEvento + '_' + pic + ' class="open-popup-link" > <img style="background:url(/assets/images/loading.gif) transparent no-repeat" src=/assets/images/eventos/' + data.IdEvento + '/thumbs/' + pic + '.jpg alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + data.price + '" data-quantity="1" data-image=/assets/images/eventos/' + data.IdEvento + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> <div id=' + data.IdEvento + '_' + pic + ' class="white-popup mfp-hide"> <div class="button-group"> <div class="fb-like" data-href="http://acciondigitalfoto.com/assets/images/events/'+data.IdEvento+'/'+pic+'.jpg" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + data.price + '" data-quantity="1" data-image=/assets/images/eventos/' + data.IdEvento + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> </div> <div class="img-wrapper"> <img src=/assets/images/eventos/' + data.IdEvento + '/' + pic + '.jpg alt="" title="" /> </div> </div> </div>';
 						placeholder.append(html_element);
-						// if ($('#'+ galleries.g + '_' + pic +' .img-wrapper img')[0].complete) $('.'+ galleries.g + '_' + pic).fadeOut("slow");
 						
 					}
 					lastItem = data.IdEvento+'_'+pic;
-					// console.log('***lastItem ' + lastItem);
-					// console.log('***data.pictures[i-1] ' + $('#'+ data.IdEvento + '_' + data.pictures[i-2] +' .img-wrapper img')[0].complete);
-					function loading() {
-					    setTimeout(function () {
-					    	console.log('***intento ');
-					    	if ($('.media a[href="#'+ data.IdEvento + '_' + data.pictures[page_start] +'"] img')[0].complete) {
-					    		$('.loading').fadeOut("fast");
-					    		// clearInterval(load);
-					    	} else {
-					    		console.log('***nones ');
-					        loading();
-					      }
-					    }, 500);
-					}
-
-					// function loading(){
-					// 	var load = setInterval(function(){ 
-					// 		console.log('***intento ');
-					// 		if ($('.media a[href="#'+ data.IdEvento + '_' + data.pictures[page_start] +'"] img')[0].complete) {
-					// 			$('.loading').fadeOut("fast");
-					// 			clearInterval(load);
-					// 		} else console.log('***nones ');
-					// 	}, 10); 						
-					// }
-					loading();
-					// console.log('***data.pictures[i-1] ' + (data.pictures[i-1]));
-					// console.log('***$(data.pictures[i-1] ' + ($('#'+ data.IdEvento + '_' + data.pictures[i-1]+' .img-wrapper img').attr('src')));
-					// console.log('***complete '+ $('#'+ data.IdEvento + '_' + data.pictures[i-1] +' .img-wrapper img')[0].complete);
+					console.log('***lastItem ' + lastItem);
+					let loading = setInterval(function(){ 
+						if ($('#'+ data.IdEvento + '_' + data.pictures[page_start] +' .img-wrapper img')[0].complete) {
+							$('.loading').fadeOut("fast");
+							clearInterval(loading);
+						}
+					}, 500); 
 					carrito();
 					$('.open-popup-link').magnificPopup({
 						gallery:{
@@ -199,7 +152,6 @@ if (!$pathname.includes('/agenda')) {
 				}
 				$('.mfp-arrow-right').on('click', function(event) {
 					event.preventDefault();
-					console.log('***click');
 					let actual_pic = $(this).parent().find('.white-popup').attr('id');
 					if (actual_pic == lastItem) {
 						alert('es');
@@ -224,7 +176,6 @@ if (!$pathname.includes('/agenda')) {
 
 				$('.events-page').on('click', '.mfp-arrow-right', function(event) {
 					event.preventDefault();
-					console.log('***click');
 					let actual_pic = $(this).parent().find('.white-popup').attr('id');
 					if (actual_pic == lastItem) {
 						load_page(events_placeholder, $page_start, $page_limit, json_data);
@@ -243,11 +194,8 @@ if (!$pathname.includes('/agenda')) {
 					if (data.ads) {
 						let ad = '';				
 						
-					// console.log('***data.ads.length ' + data.ads.length);
-
 					for (var i = 0; i < data.ads.length; i++) {
 						ad = data.ads[i];
-						// console.log('***ad.href ' + ad.href);
 						html_ads = '<a href=' + ad.href + ' target="_blank"> <img src=/assets/images/ads/' + ad.name + ' alt="" /> </a>';
 						placeholder.append(html_ads);
 					}
@@ -258,7 +206,6 @@ if (!$pathname.includes('/agenda')) {
 
 				title_placeholder.append(title);
 								
-				// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');
@@ -322,7 +269,6 @@ function getGET() {
 			//tomo el parametro sin lo que viene despues del #
 			get[tmp[0]] = unescape(decodeURI(tmp[1])).indexOf('#')!=-1?unescape(decodeURI(tmp[1])).substr(0, unescape(decodeURI(tmp[1])).indexOf('#')):unescape(decodeURI(tmp[1]));
 		}
-		// console.log('Parametros ' + get.g);
 		return get;
 	}
 
@@ -331,7 +277,6 @@ function getGET() {
 /*PAGINA ACTIVA*/
 $(function() {
 	let $param = location.pathname;
-	// console.log('$param ' + $param);
 	switch ($param) {
 		case '/index.html':
 		$('#nav-header ul li.home').addClass('active');
@@ -357,7 +302,6 @@ $(function() {
 /*BUSCADOR*/
 $(function() {
 	let $param = location.pathname;
-	// console.log('$param ' + $param);
 	if ($param != '/index.html' || $param != '/inicio/') {
 		$('#nav-header ul li.toggle_search').removeClass('hidden');
 	}
@@ -371,15 +315,12 @@ $(function() {
 $(function() {
 	$('#untagged').on('click', function(event) {
 		event.preventDefault();
-		console.log('***toca boton');
 		buscar('untagged');
 	});
 })
 
 function buscar(foto) {
-	// console.log('foto ' + foto);
 	let galleries = getGET();
-	// console.log('SCRIPTS.JS - galleries ' + JSON.stringify(galleries));
 	$.get("/assets/datasources/" + galleries.g + ".json", function(data, status, xhr) {
 		let html = location.hostname == 'localhost' ? JSON.parse(data) : data;
 		let arrFiltro = [];
@@ -394,34 +335,23 @@ function buscar(foto) {
 					codigo = el.substr(el.indexOf('-')+1, el.length);
 					if (codigo.split('-').length > 1) {
 						codigo.split('-').forEach(function(element, i){
-							// console.log('***element ' + element);
 							if (element == foto) arrFiltro.push(el);
 						})
 					} else if (codigo == foto) arrFiltro.push(el);
-					// console.log('***codigo.split(-) ' + codigo.split('-').length);
 				}
 			});
-		// console.log('SCRIPTS - sinCodigo ' + sinCodigo);
 
 		var load_page = function(placeholder, page_start, page_limit, data){
-			// console.log('***data ' + data);
-			// console.log('***JSON.stringify(data) ' + JSON.stringify(data));
 
 			let pic = '';					
 
 			for (var i = page_start; i < page_start+page_limit; i++) {
 				pic = data[i];
 
-				// console.log('***pic ' + pic);
+				html_element = '<div class="media"><a href=#' + galleries.g + '_' + pic + ' class="open-popup-link" > <img style="background:url(/assets/images/loading.gif) transparent no-scroll" src=/assets/images/eventos/' + galleries.g + '/thumbs/' + pic + '.jpg alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> <div id=' + galleries.g + '_' + pic + ' class="white-popup mfp-hide"> <div class="button-group"> <div class="fb-like" data-href="http://acciondigitalfoto.com/assets/images/events/'+galleries.g+'/'+pic+'.jpg" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> </div> <div class="img-wrapper"> <img src=/assets/images/eventos/' + galleries.g + '/' + pic + '.jpg alt="" title="" /> </div> </div> </div>';
 
-				html_element = '<div class="media"><a href=#' + galleries.g + '_' + pic + ' class="open-popup-link" > <img style="background:url(/assets/images/loading.gif) transparent no-scroll" src=/assets/images/eventos/' + galleries.g + '/thumbs/' + pic + '.jpg alt="" title="" /> </a> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> <div id=' + galleries.g + '_' + pic + ' class="white-popup mfp-hide"> <div class="button-group"> <div class="fb-share-button" data-href="http://acciondigitalfoto.com/assets/images/eventos/'+galleries.g+'/'+pic+'.jpg" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://acciondigitalfoto.com/assets/images/eventos/'+galleries.g+'/'+pic+'.jpg">Compartir</a></div> <div class="cart_btns"><button class="btn btn-danger my-cart-btn" data-id=' + pic + ' data-name="['+title+' ] foto ' + pic + '" data-summary=foto_' + pic + ' data-price="' + price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + pic + '.jpg >Agregar al carrito</button> </div> </div> <div class="img-wrapper"> <img src=/assets/images/eventos/' + galleries.g + '/' + pic + '.jpg alt="" title="" /> </div> </div> </div>';
-
-				// console.log('***placeholder ' + placeholder);
-				// console.log('***html_element ' + html_element);
-				
 				$('#results').append(html_element);
 			}
-			// if ($('#'+ galleries.g + '_' + data[i] +' .img-wrapper img')[0].complete) $('.'+ galleries.g + '_' + data[i]).fadeOut("slow");
 			carrito();
 			$('.open-popup-link').magnificPopup({
 				gallery:{
@@ -432,21 +362,14 @@ function buscar(foto) {
 		}
 
 		if (arrFiltro.length != 0) {
-			// console.log('***arrFiltro.length ' + arrFiltro.length);
-			// $('#gallery header')
 			let $results = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><p>Además de estas, puede haber fotos tuyas sin clasificar.</p><div id="results"></div>';
 			
 			let events_placeholder = $('#results');
 
-			// console.log('***events_placeholder ' + events_placeholder);
-
 			$('#gallery-wrapper').addClass('results').html($results);
-			
-			// console.log('***arrFiltro ' + arrFiltro);
 			
 			let IdEvento = html.IdEvento;
 			let title = html.title;
-			// let price = arrFiltro.price;
 			let json_arrFiltro = arrFiltro;
 
 			let html_element = '';
@@ -473,46 +396,19 @@ function buscar(foto) {
 					}
 				}
 			})
-
-			// arrFiltro.forEach(function(el, index) {
-			// 	$('#results').append('<div class="media"> '+
-			// 		'	<a href="#' + galleries.g + '_' + el + '" class="open-popup-link" > '+
-			// 		'		<img src="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg" alt="" title="" /> '+
-			// 		'	</a> '+
-			// 		'	<div class="cart_btns">'+
-			// 		'		<button class="btn btn-danger my-cart-btn" data-id="' + el + '" data-name="foto_' + el + '" data-summary="foto_' + el + '"' + ' data-price="' + html.price + '" data-quantity="1" data-image="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg">Agregar al carrito</button> '+
-			// 		'	</div> '+
-			// 		'</div> '+
-			// 		'<div id=' + galleries.g + '_' + el + ' class="white-popup mfp-hide"> '+
-			// 		'	<div class="button-group"> '+
-			// 		'		<iframe class="fb_iframe_widget" src="https://www.facebook.com/plugins/share_button.php?href=http://acciondigital.000webhostapp.com/assets/images/eventos/' + galleries.g + '/' + el + '.jpg&layout=button&size=large&mobile_iframe=true&width=100&height=28&appId" width="100" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>'+
-			// 		'		<div class="cart_btns">'+
-			// 		'			<button class="btn btn-danger my-cart-btn" data-id=' + el + ' data-name=foto_' + el + ' data-summary=foto_' + el + ' data-price="' +  html.price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '>Agregar al carrito</button> '+ 
-			// 		'		</div> '+
-			// 		'	</div> '+
-			// 		'	<div class="img-wrapper"> '+
-			// 		'		<img src=/assets/images/eventos/' + galleries.g + '/' + el + '.jpg alt="" title="" /> '+
-			// 		'	</div> '+
-			// 		'</div>');
-			// })
 		} else {
 
 			if (foto != 'untagged') {
-				console.log('***no hay');
 				var $results = '<h3>Su búsqueda "' + foto + '" no produjo resultados</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 			} else {
-				console.log('***no busco');
 				var $results = '<h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 			}
 
 			let events_placeholder = $('#results');
 			$('#gallery-wrapper').addClass('results').html($results);
 
-			// console.log('***sinCodigo ' + sinCodigo);
-
 			let IdEvento = html.IdEvento;
 			let title = html.title;
-						// let price = sinCodigo.price;
 						let json_sinCodigo = sinCodigo;
 
 						let html_element = '';
@@ -540,28 +436,6 @@ function buscar(foto) {
 							}
 						})
 
-			// sinCodigo.forEach(function(el, index) {
-			// 	$('#results').append(
-			// 		'<div class="media"> '+
-			// 		'	<a href="#' + galleries.g + '_' + el + '" class="open-popup-link" > '+
-			// 		'		<img src="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg" alt="" title="" /> '+
-			// 		'	</a> '+
-			// 		'	<div class="cart_btns">'+
-			// 		'		<button class="btn btn-danger my-cart-btn" data-id="' + el + '" data-name="foto_' + el + '" data-summary="foto_' + el + '" data-price="' + html.price + '" data-quantity="1" data-image="/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '.jpg">Agregar al carrito</button> '+
-			// 		'	</div> '+
-			// 		'</div> '+
-			// 		'<div id=' + galleries.g + '_' + el + ' class="white-popup mfp-hide"> '+
-			// 		'	<div class="button-group"> '+
-			// 		'		<iframe class="fb_iframe_widget" src="https://www.facebook.com/plugins/share_button.php?href=http://acciondigital.000webhostapp.com/assets/images/eventos/' + galleries.g + '/' + el + '.jpg&layout=button&size=large&mobile_iframe=true&width=100&height=28&appId" width="100" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> '+
-			// 		'		<div class="cart_btns">'+
-			// 		'			<button class="btn btn-danger my-cart-btn" data-id=' + el + ' data-name=foto_' + el + ' data-summary=foto_' + el + ' data-price="' + html.price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '>Agregar al carrito</button> '+
-			// 		'		</div> '+
-			// 		'	</div> '+
-			// 		'	<div class="img-wrapper"> '+
-			// 		'		<img src=/assets/images/eventos/' + galleries.g + '/' + el + '.jpg alt="" title="" /> '+
-			// 		'	</div> '+
-			// 		'</div>');
-			// })
 		}
 		carrito();
 		$('.open-popup-link').magnificPopup({

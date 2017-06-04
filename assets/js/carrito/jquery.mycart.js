@@ -205,7 +205,7 @@
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>' +
-        '<button type="button" disabled="true" class="btn btn-primary ' + classCheckoutCart + '">Continuar</button>' +
+        '<button type="button" /*disabled="true" */ class="btn btn-primary ' + classCheckoutCart + '">Continuar</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -346,7 +346,8 @@
         return ;
       }
       updateCart();
-      options.checkoutCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
+      if (options.getDiscountPrice(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity()) != null) options.checkoutCart(ProductManager.getAllProducts(), options.getDiscountPrice(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity()), ProductManager.getTotalQuantity());
+      else  options.checkoutCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
       ProductManager.clearProduct();
       $cartBadge.text(ProductManager.getTotalQuantity());
       if (ProductManager.getTotalQuantity() == 0) $cartBadge.hide();
