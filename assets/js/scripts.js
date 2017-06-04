@@ -87,7 +87,7 @@ let $template = '';
 $('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
 
 $section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/inicio/') ? 'inicio' : ($pathname.includes('/galeria/') ? 'galeria' : ''));
-if (!$pathname.includes('/agenda')) {
+if (!$pathname.includes('/amigos')) {
 	$template = $section == 'eventos' ? 'eventos' : $section;
 
 	console.log('$section ' + $section);
