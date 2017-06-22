@@ -1,0 +1,1340 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"con",
+				"con\tconsole.log"
+			],
+			[
+				"pag",
+				"page_start"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"RE",
+				"_REQUEST"
+			],
+			[
+				"JSON",
+				"JSON.stringify\t(scripts_events.js)"
+			],
+			[
+				"var",
+				"var_dump($message"
+			],
+			[
+				"foreach",
+				"forEach\t(scripts_events.js)"
+			],
+			[
+				"toal",
+				"totalQuantity"
+			],
+			[
+				"total",
+				"totalPrice"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"post",
+				"post_products"
+			],
+			[
+				"POST",
+				"_POST"
+			],
+			[
+				"for",
+				"forEach\t(scripts_events.js)"
+			],
+			[
+				"page",
+				"page_limit"
+			],
+			[
+				"eve",
+				"events_placeholder"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"pic",
+				"pics_length"
+			],
+			[
+				"console",
+				"console.log"
+			],
+			[
+				"w",
+				"window"
+			],
+			[
+				"load",
+				"load_page"
+			],
+			[
+				"JS",
+				"JSON.stringify"
+			],
+			[
+				"texta",
+				"text-align"
+			],
+			[
+				"ads",
+				"adsHref"
+			],
+			[
+				"img",
+				"images\t(index.html)"
+			],
+			[
+				"local",
+				"localStorage.products"
+			],
+			[
+				"each",
+				"each\t$.each()"
+			],
+			[
+				"is",
+				"is_array\t(create_event.php)"
+			],
+			[
+				"prefe",
+				"preference_data"
+			],
+			[
+				"arr",
+				"array_push\t(create_event.php)"
+			],
+			[
+				"chc",
+				"checkout\t(index.php)"
+			],
+			[
+				"btn",
+				"btnGroup"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"shr",
+				"shrinkHeader"
+			],
+			[
+				"galleries",
+				"galleries.g"
+			],
+			[
+				"togg",
+				"toggle\t.toggle() (show/hide)"
+			],
+			[
+				"inde",
+				"indexOf\t(scripts.js)"
+			],
+			[
+				"write",
+				"writeHead"
+			],
+			[
+				"fnu",
+				"function"
+			],
+			[
+				"has",
+				"hasClass\t.hasClass()"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"texts",
+				"text-transform"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"last",
+				"lastpage"
+			],
+			[
+				"set",
+				"setActive"
+			],
+			[
+				"datastart",
+				"datastart-1"
+			],
+			[
+				"disable",
+				"disableArrows"
+			],
+			[
+				"first",
+				"firstpage"
+			],
+			[
+				"scroll",
+				"scrollTop\t.scrollTop()"
+			],
+			[
+				"val",
+				"val"
+			],
+			[
+				"remove",
+				"removeClass\t.removeClass()"
+			],
+			[
+				"rows",
+				"rowsperpage"
+			],
+			[
+				"next",
+				"nextPage"
+			],
+			[
+				"id",
+				"idInv"
+			],
+			[
+				"availa",
+				"availableLinks"
+			],
+			[
+				"file",
+				"file_XML"
+			],
+			[
+				"music",
+				"music_player\t(test_dqsv.php)"
+			],
+			[
+				"add",
+				"addClass\t.addClass()"
+			],
+			[
+				"background",
+				"background-size"
+			],
+			[
+				"tog",
+				"toggleClass\t.toggleClass()"
+			],
+			[
+				"to",
+				"toggleClass\t.toggleClass()"
+			],
+			[
+				"ready",
+				"ready\t$(document).ready"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "assets/js/load_pieces.js",
+			"settings":
+			{
+				"buffer_size": 100,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "inicio/index.html",
+			"settings":
+			{
+				"buffer_size": 1786,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "eventos/index.html",
+			"settings":
+			{
+				"buffer_size": 2448,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 805 files for \"$cartIcon.offset\"\n\n/home/tiago/www/acciondigital/assets/js/carrito/jquery.mycart.js:\n  291      */\n  292      if(options.affixCartIcon) {\n  293:       var cartIconBottom = $cartIcon.offset().top * 1 + $cartIcon.css(\"height\").match(/\\d+/) * 1;\n  294        var cartIconPosition = $cartIcon.css('position');\n  295        $(window).scroll(function () {\n\n/home/tiago/www/acciondigital/dev/assets/js/carrito/jquery.mycart.js:\n  291      */\n  292      if(options.affixCartIcon) {\n  293:       var cartIconBottom = $cartIcon.offset().top * 1 + $cartIcon.css(\"height\").match(/\\d+/) * 1;\n  294        var cartIconPosition = $cartIcon.css('position');\n  295        $(window).scroll(function () {\n\n/home/tiago/www/acciondigital/temp/carrito/js/jquery.mycart.js:\n  281      */\n  282      if(options.affixCartIcon) {\n  283:       var cartIconBottom = $cartIcon.offset().top * 1 + $cartIcon.css(\"height\").match(/\\d+/) * 1;\n  284        var cartIconPosition = $cartIcon.css('position');\n  285        $(window).scroll(function () {\n\n/home/tiago/www/acciondigital/temp/optimized_contents/js/jquery.mycart.js:\n   19  var showGrandTotal=function(){$(\"#\"+idGrandTotal).text(options.currencySymbol+ProductManager.getTotalPrice());}\n   20  var showDiscountPrice=function(){$(\"#\"+idDiscountPrice).text(options.currencySymbol+options.getDiscountPrice(ProductManager.getAllProducts(),ProductManager.getTotalPrice(),ProductManager.getTotalQuantity()));}\n   21: if(options.affixCartIcon){var cartIconBottom=$cartIcon.offset().top*1+$cartIcon.css(\"height\").match(/\\d+/)*1;var cartIconPosition=$cartIcon.css('position');$(window).scroll(function(){$(window).scrollTop()>=cartIconBottom?$cartIcon.addClass(classAffixMyCartIcon):$cartIcon.removeClass(classAffixMyCartIcon);});}$cartIcon.click(function(){options.showCheckoutModal?showModal():options.clickOnCartIcon($cartIcon,ProductManager.getAllProducts(),ProductManager.getTotalPrice(),ProductManager.getTotalQuantity());});$(document).on(\"input\",\".\"+classProductQuantity,function(){var price=$(this).closest(\"tr\").data(\"price\");var id=$(this).closest(\"tr\").data(\"id\");var quantity=$(this).val();$(this).parent(\"td\").next(\".\"+classProductTotal).text(\"$\"+price*quantity);ProductManager.updatePoduct(id,quantity);if(ProductManager.getTotalQuantity()>0){$cartBadge.text(ProductManager.getTotalQuantity());}else{$cartBadge.text('');}showGrandTotal();showDiscountPrice();});$(document).on('keypress',\".\"+classProductQuantity,function(evt){if(evt.keyCode==38||evt.keyCode==40){return;}evt.preventDefault();});$(document).on('click',\".\"+classProductRemove,function(){var $tr=$(this).closest(\"tr\");var id=$tr.data(\"id\");$tr.hide(500,function(){ProductManager.removeProduct(id);drawTable();if(ProductManager.getTotalQuantity()>0){$cartBadge.text(ProductManager.getTotalQuantity());}else{$cartBadge.text('');}});});$(\".\"+classCheckoutCart).click(function(){var products=ProductManager.getAllProducts();if(!products.length){$(\"#\"+idEmptyCartMessage).fadeTo('fast',0.5).fadeTo('fast',1.0);return;}updateCart();if(options.getDiscountPrice(ProductManager.getAllProducts(),ProductManager.getTotalPrice(),ProductManager.getTotalQuantity())!=null)options.checkoutCart(ProductManager.getAllProducts(),options.getDiscountPrice(ProductManager.getAllProducts(),ProductManager.getTotalPrice(),ProductManager.getTotalQuantity()),ProductManager.getTotalQuantity());else options.checkoutCart(ProductManager.getAllProducts(),ProductManager.getTotalPrice(),ProductManager.getTotalQuantity());ProductManager.clearProduct();$cartBadge.text(ProductManager.getTotalQuantity());if(ProductManager.getTotalQuantity()==0)$cartBadge.hide();$(\"#\"+idCartModal).modal(\"hide\");});}\n   22  var MyCart=function(target,userOptions){var $target=$(target);var options=OptionManager.getOptions(userOptions);var $cartIcon=$(\".\"+options.classCartIcon);var $cartBadge=$(\".\"+options.classCartBadge);$target.on('click',function(){options.clickOnAddToCart($target);let products=ProductManager.getAllProducts();let isProduct=false;products.forEach(function(el,index){if($target.data('id')==el.id){isProduct=true;alert('Esta fotografía ya es parte de su compra');return false;}})\n   23  if(!isProduct){var id=$target.data('id');var name=$target.data('name');var summary=$target.data('summary');var price=$target.data('price');var quantity=$target.data('quantity');var image=$target.data('image');ProductManager.setProduct(id,name,summary,price,quantity,image);if(ProductManager.getTotalQuantity()>0){$cartBadge.show();$cartBadge.text(ProductManager.getTotalQuantity());}else{$cartBadge.text('');}}options.afterAddOnCart(ProductManager.getAllProducts(),ProductManager.getTotalPrice(),ProductManager.getTotalQuantity());});}\n\n4 matches across 4 files\n",
+			"settings":
+			{
+				"buffer_size": 4742,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"contents": ", function() {\n\tif (!location.pathname.includes('/auth/') && !location.pathname.includes('/eventos/') && !location.pathname.includes('/individual/')) {\n\t\t$('body').append('<script type=\"text/javascript\" src=\"/assets/js/scripts.min.js\"></script>');\t\n\t} else if (location.pathname.includes('/eventos/')) {\n\t\t$('body').append('<script type=\"text/javascript\" src=\"/assets/js/scripts_events.min.js\"></script>');\t\t\t\n\t}",
+			"settings":
+			{
+				"buffer_size": 412,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 330.0,
+		"last_filter": "modifi",
+		"selected_items":
+		[
+			[
+				"modifi",
+				"Modific: Show uncommitted files"
+			],
+			[
+				"minif",
+				"Minify::Minify File"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"mini",
+				"Minify::Minify File"
+			],
+			[
+				"mo",
+				"Modific: Show uncommitted files"
+			],
+			[
+				"eslin",
+				"ESLint"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"minify",
+				"Minify::Minify File"
+			],
+			[
+				"beaut",
+				"Javascript Beautify"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"pret",
+				"HTMLPrettify"
+			],
+			[
+				"modific",
+				"Modific: Revert modified part"
+			],
+			[
+				"mod",
+				"Modific: Show uncommitted files"
+			],
+			[
+				"set babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"lorem",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"block",
+				"Toggle Block Comment"
+			],
+			[
+				"comme",
+				"Toggle Comment"
+			],
+			[
+				"comm",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"upgrade",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"enoc",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"auto",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"encode",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"commen",
+				"Toggle Comment"
+			],
+			[
+				"come",
+				"Toggle Comment"
+			],
+			[
+				"sphp",
+				"Set Syntax: PHP"
+			],
+			[
+				"shtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"scss",
+				"Set Syntax: CSS"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"com",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"comment",
+				"Toggle Comment"
+			],
+			[
+				"tool",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"prefere",
+				"Preferences: Settings - User"
+			],
+			[
+				"commnet",
+				"Toggle Comment"
+			]
+		],
+		"width": 493.0
+	},
+	"console":
+	{
+		"height": 413.0,
+		"history":
+		[
+			"sublime.log_commands(True)",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			" import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			" import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/tiago/www/acciondigital",
+		"/home/tiago/www/acciondigital/assets",
+		"/home/tiago/www/acciondigital/assets/css",
+		"/home/tiago/www/acciondigital/assets/css/pieces",
+		"/home/tiago/www/acciondigital/assets/js",
+		"/home/tiago/www/acciondigital/auth",
+		"/home/tiago/www/acciondigital/eventos",
+		"/home/tiago/www/acciondigital/inicio"
+	],
+	"file_history":
+	[
+		"/home/tiago/www/acciondigital/assets/css/pieces/main.css",
+		"/home/tiago/www/acciondigital/assets/css/pieces/main.min.css",
+		"/home/tiago/www/acciondigital/assets/css/pieces/galleries.css",
+		"/home/tiago/www/acciondigital/assets/css/pieces/galleries.min.css",
+		"/home/tiago/www/acciondigital/dev/inicio/index.html",
+		"/home/tiago/www/acciondigital/dev/individual/index.html",
+		"/home/tiago/www/acciondigital/dev/galeria/index.html",
+		"/home/tiago/www/acciondigital/dev/eventos/index_backup.html",
+		"/home/tiago/www/acciondigital/dev/eventos/index.php",
+		"/home/tiago/www/acciondigital/dev/eventos/index.html",
+		"/home/tiago/www/acciondigital/dev/contacto/index.php",
+		"/home/tiago/www/acciondigital/dev/contacto/index.html",
+		"/home/tiago/www/acciondigital/dev/checkout/index.php",
+		"/home/tiago/www/acciondigital/dev/auth/index.html",
+		"/home/tiago/www/acciondigital/dev/auth/create_home.php",
+		"/home/tiago/www/acciondigital/dev/auth/create_gallery_2.php",
+		"/home/tiago/www/acciondigital/dev/auth/create_gallery.php",
+		"/home/tiago/www/acciondigital/dev/auth/create_event.php",
+		"/home/tiago/www/acciondigital/dev/auth/create_agenda.php",
+		"/home/tiago/www/acciondigital/dev/amigos/index.html",
+		"/home/tiago/www/acciondigital/dev/agenda/index.html",
+		"/home/tiago/www/acciondigital/contacto/index.php",
+		"/home/tiago/www/acciondigital/contacto/index.html",
+		"/home/tiago/www/acciondigital/checkout/index.php",
+		"/home/tiago/www/acciondigital/auth/index.html",
+		"/home/tiago/www/acciondigital/auth/create_home.php",
+		"/home/tiago/www/acciondigital/auth/create_gallery_2.php",
+		"/home/tiago/www/acciondigital/auth/create_gallery.php",
+		"/home/tiago/www/acciondigital/auth/create_event.php",
+		"/home/tiago/www/acciondigital/auth/create_agenda.php",
+		"/home/tiago/www/acciondigital/amigos/index.html",
+		"/home/tiago/www/acciondigital/agenda/index.html",
+		"/home/tiago/www/acciondigital/individual/index.html",
+		"/home/tiago/www/acciondigital/galeria/index.html",
+		"/home/tiago/www/acciondigital/eventos/index_backup.html",
+		"/home/tiago/www/acciondigital/eventos/index.php",
+		"/home/tiago/www/acciondigital/eventos/index.min.html",
+		"/home/tiago/www/acciondigital/inicio/index.min.html",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionEvents.css",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionHome.css",
+		"/home/tiago/www/acciondigital/assets/js/scripts_events.min.js",
+		"/home/tiago/www/acciondigital/assets/js/scripts_events.js",
+		"/home/tiago/www/acciondigital/dev/assets/js/scripts_events.js",
+		"/home/tiago/www/acciondigital/assets/js/scripts.js",
+		"/home/tiago/www/acciondigital/dev/assets/js/scripts.js",
+		"/home/tiago/www/acciondigital/checkout/checkout.php",
+		"/home/tiago/www/acciondigital/assets/js/scripts.min.js",
+		"/home/tiago/www/acciondigital/.htaccess",
+		"/home/tiago/www/acciondigital/inicio/index.html",
+		"/home/tiago/www/acciondigital/eventos/index.html",
+		"/home/tiago/www/acciondigital/assets/css/pieces/lightbox.css",
+		"/home/tiago/www/acciondigital/assets/js/load_pieces.js",
+		"/home/tiago/www/acciondigital/assets/js/util.min.js",
+		"/home/tiago/www/acciondigital/assets/js/jquery.magnific-popup.min.js",
+		"/home/tiago/www/acciondigital/assets/js/carrito/jquery.mycart.min.js",
+		"/home/tiago/www/acciondigital/assets/js/scripts_individual.js",
+		"/home/tiago/www/acciondigital/checkout/confirm.php",
+		"/home/tiago/www/acciondigital/checkout/index3.php",
+		"/home/tiago/www/acciondigital/assets/datasources/170301.json",
+		"/home/tiago/www/acciondigital/assets/css/pieces/individual.css",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionIndividual.css",
+		"/home/tiago/www/acciondigital/assets/datasources/individual.json",
+		"/home/tiago/www/acciondigital/assets/js/carrito/jquery.mycart.js",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionCheckout.css",
+		"/home/tiago/www/acciondigital/assets/css/pieces/amigos.css",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionAmigos.css",
+		"/home/tiago/www/acciondigital/assets/js/scripts_events_backup.js",
+		"/home/tiago/www/acciondigital/assets/includes/nav.htm",
+		"/home/tiago/www/acciondigital/assets/datasources/170303.json",
+		"/home/tiago/www/acciondigital/assets/js/scripts_auth.js",
+		"/home/tiago/www/acciondigital/assets/js/magnific/jquery.magnific-popup.js",
+		"/home/tiago/www/acciondigital/assets/css/pieces/buscador.css",
+		"/home/tiago/www/acciondigital/assets/css/pieces/checkout.css",
+		"/home/tiago/www/acciondigital/temp/gallery_170301.html",
+		"/home/tiago/www/acciondigital/assets/includes/eventosTemplate.htm",
+		"/home/tiago/www/acciondigital/assets/css/pieces/bootstrap.min.css",
+		"/home/tiago/www/acciondigital/assets/datasources/170304.json",
+		"/home/tiago/www/acciondigital/assets/datasources/Rally2016web.json",
+		"/home/tiago/www/acciondigital/assets/js/magnific/Magnific-Popup-master/libs/jquery/jquery.js",
+		"/home/tiago/www/acciondigital/assets/datasources/1XC2016.json",
+		"/home/tiago/.bashrc",
+		"/home/tiago/.config/sublime-text-3/Packages/User/consoleLog.sublime-snippet",
+		"/home/tiago/.config/sublime-text-3/Packages/User/console.log.sublime-snippet",
+		"/home/tiago/www/acciondigital/assets/js/waypoint.js",
+		"/home/tiago/www/acciondigital/eventos/index2.html",
+		"/home/tiago/www/prodigy/prodigy-framework-website/src/shared/Login/components/LoginModalNew.jsx",
+		"/home/tiago/www/prodigy/prodigy-framework-website/src/shared/Dashboard/components/Investor/Dashboard.jsx",
+		"/home/tiago/www/prodigy/prodigy-framework-website/src/shared/Dashboard/components/Investor/DashboardSlider.jsx",
+		"/home/tiago/www/prodigy/prodigy-framework-website/src/shared/Common/components/ReadyView.jsx",
+		"/home/tiago/www/acciondigital/assets/datasources/Marathon XC  2016.json",
+		"/home/tiago/www/prodigy/prodigy-framework-website/src/shared/HomePage/containers/HomePageContainer.jsx",
+		"/home/tiago/www/prodigy/prodigy-framework-website/node_modules/babel-register/package.json",
+		"/home/tiago/www/prodigy/prodigy-framework-website/node_modules/babel-register/README.md",
+		"/home/tiago/www/prodigy/prodigy-framework-website/.env",
+		"/home/tiago/www/prodigy/prodigy-framework-website/env",
+		"/home/tiago/www/acciondigital/checkout/index2.php",
+		"/home/tiago/.config/sublime-text-3/Packages/User/conp.sublime-snippet",
+		"/home/tiago/.config/inkscape/preferences.xml",
+		"/home/tiago/www/acciondigital/assets/js/magnific/Magnific-Popup-master/src/css/main.scss",
+		"/home/tiago/www/acciondigital/assets/datasources/ads.json",
+		"/home/tiago/www/acciondigital/assets/datasources/inicio.json",
+		"/home/tiago/www/acciondigital/assets/datasources/galeria.json",
+		"/home/tiago/www/acciondigital/assets/includes/agendaTemplate.htm",
+		"/home/tiago/www/acciondigital/assets/includes/inicioTemplate.htm",
+		"/home/tiago/www/acciondigital/assets/includes/galeriaTemplate.htm",
+		"/home/tiago/www/acciondigital/assets/css/pieces/forms.css",
+		"/home/tiago/www/acciondigital/assets/js/carrito/carrito.js",
+		"/home/tiago/www/acciondigital/assets/js/carrito/jquery-2.2.3.min.js",
+		"/home/tiago/www/acciondigital/assets/js/carrito/bootstrap.min.js",
+		"/home/tiago/www/acciondigital/assets/includes/footer.htm",
+		"/home/tiago/www/acciondigital/assets/css/pieces/agenda.css",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionAgenda.css",
+		"/home/tiago/www/acciondigital/assets/css/pieces/bootstrap.min.css.map",
+		"/home/tiago/www/acciondigital/assets/css/pieces/fonts.css",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionContact.css",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionForms.css",
+		"/home/tiago/www/acciondigital/assets/css/sections/sectionGalleries.css",
+		"/home/tiago/www/acciondigital/assets/css/main.css",
+		"/home/tiago/www/acciondigital/assets/css/main.min.css",
+		"/home/tiago/www/acciondigital/assets/css/sectionHome.css",
+		"/home/tiago/www/acciondigital/assets/css/sectionGalleries.css",
+		"/home/tiago/www/acciondigital/assets/css/sectionForms.css",
+		"/home/tiago/www/acciondigital/assets/css/sectionEvents.css",
+		"/home/tiago/www/acciondigital/assets/css/base.css",
+		"/home/tiago/www/acciondigital/assets/css/sectionContact.css",
+		"/home/tiago/www/acciondigital/assets/css/sectionAgenda.css",
+		"/home/tiago/www/acciondigital/assets/css/nav.css",
+		"/home/tiago/www/acciondigital/assets/css/footer.css"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 125.0,
+		"where_history":
+		[
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js, -/temp/*.*, -*/css/fonts/*.*, -*/bootstrap*.*",
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js, -/temp/*.*, -*/css/fonts/*.*, -*/bootstrap*.*, *.html, *.php",
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js, -/temp/*.*, -*/css/fonts/*.*, -*/bootstrap*.*",
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js, -/temp/*.*, -*/css/fonts/*.*, -*/bootstrap*.*, *.html",
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js, -/temp/*.*, -*/css/fonts/*.*, -*/bootstrap*.*",
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js, -/temp/*.*, -*/css/fonts/*.*",
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js, -/temp/*.*",
+			" -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js",
+			"-*jquery*.js, -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js",
+			"-/home/tiago/www/acciondigital/assets/js/jquery-2.2.3.min.js, -/home/tiago/www/acciondigital/assets/js/jquery.magnific-popup.min.js, -/home/tiago/www/acciondigital/assets/js/handlebars.min.js, -*.min.js",
+			"-/home/tiago/www/acciondigital/assets/js/jquery-2.2.3.min.js, -/home/tiago/www/acciondigital/assets/js/jquery.magnific-popup.min.js, -/home/tiago/www/acciondigital/assets/js/handlebars.min.js",
+			"-/home/tiago/www/acciondigital/assets/js/jquery-2.2.3.min.js, -/home/tiago/www/acciondigital/assets/js/jquery.magnific-popup.min.js",
+			"-/home/tiago/www/acciondigital/assets/js/jquery-2.2.3.min.js, -/home/tiago/www/acciondigital/assets/js/jquery.magnific-popup.min.js, *.json",
+			"-/home/tiago/www/acciondigital/assets/js/jquery-2.2.3.min.js, -/home/tiago/www/acciondigital/assets/js/jquery.magnific-popup.min.js",
+			"-/home/tiago/www/acciondigital/assets/js/jquery-2.2.3.min.js",
+			"",
+			"*datasources/",
+			"/datasources/",
+			"*/datasources/",
+			"",
+			"*.jsx",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"$cartIcon.offset",
+			"/assets/js/jquery-2.2.3.min.js",
+			"@import url(",
+			"css",
+			"conso",
+			"post",
+			"gmail",
+			"util.js",
+			"main.js",
+			"util.js",
+			"underscore",
+			"load_pieces",
+			"consol",
+			"post",
+			"gmail",
+			"post",
+			"form",
+			"><",
+			"> <",
+			"gallery_title",
+			"title_placeholder",
+			"thumbs",
+			"magnific",
+			"<!",
+			"magnificPopup",
+			"let price",
+			"let title",
+			"data.",
+			"data",
+			"loading",
+			">\n\n",
+			"\n<",
+			"<",
+			">",
+			"request",
+			"sort",
+			"su pe",
+			"accion",
+			"message",
+			"su ",
+			"adem",
+			"su ",
+			"su",
+			"corred",
+			"agenda",
+			"fb",
+			"facebook",
+			"app_id",
+			"app",
+			"face",
+			"fb",
+			"facebook",
+			"><",
+			"html_element",
+			"html_",
+			"events",
+			"html_element",
+			"app",
+			"html_element",
+			"face",
+			".button-group",
+			"facebook",
+			"><",
+			"xito",
+			"complete",
+			"sort",
+			"widows",
+			"span",
+			"inline",
+			"borda",
+			"conteudo",
+			"horario",
+			"<ul class=\"cal-gallery-month\">\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<article>\n\t\t\t\t\t\t\t\t\t<span class=\"cal-event\" title=\"Milton Guedes (Foto: Bruno Cavalcante/Divulgação)\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"borda-foto borda-arredondada\">\n\t\t\t\t\t\t\t\t\t\t\t<img alt=\"\" src=\"/assets/images/agenda/170301.jpg\" width=\"250\" height=\"250\">\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"conteudo\">\n\t\t\t\t\t\t\t\t\t\t\t<h4>SÁBADO 01/01</h4>\n\t\t\t\t\t\t\t\t\t\t\t<h5>Marathon XC Tandil - Cerro Aurora</h5>\n\t\t\t\t\t\t\t\t\t\t\t<p class=\"horario\">Tandil</p>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t</article>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<article>\n\t\t\t\t\t\t\t\t\t<span class=\"cal-event\" title=\"Milton Guedes (Foto: Bruno Cavalcante/Divulgação)\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"borda-foto borda-arredondada\">\n\t\t\t\t\t\t\t\t\t\t\t<img alt=\"\" src=\"/assets/images/agenda/170302.jpg\" width=\"250\" height=\"250\">\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"conteudo\">\n\t\t\t\t\t\t\t\t\t\t\t<h4>SÁBADO 01/01</h4>\n\t\t\t\t\t\t\t\t\t\t\t<h5>Copa CNF - 2ª Manga</h5>\n\t\t\t\t\t\t\t\t\t\t\t<p class=\"horario\">Tandil</p>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t</article>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<article>\n\t\t\t\t\t\t\t\t\t<span class=\"cal-event\" title=\"Milton Guedes (Foto: Bruno Cavalcante/Divulgação)\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"borda-foto borda-arredondada\">\n\t\t\t\t\t\t\t\t\t\t\t<img alt=\"\" src=\"/assets/images/agenda/170303.jpg\" width=\"250\" height=\"250\">\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"conteudo\">\n\t\t\t\t\t\t\t\t\t\t\t<h4>SÁBADO 01/01</h4>\n\t\t\t\t\t\t\t\t\t\t\t<h5>Marathon XC Tandil - Pioneros</h5>\n\t\t\t\t\t\t\t\t\t\t\t<p class=\"horario\">Tandil</p>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t</article>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<article>\n\t\t\t\t\t\t\t\t\t<span class=\"cal-event\" title=\"Milton Guedes (Foto: Bruno Cavalcante/Divulgação)\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"borda-foto borda-arredondada\">\n\t\t\t\t\t\t\t\t\t\t\t<img alt=\"\" src=\"/assets/images/agenda/170304.jpg\" width=\"250\" height=\"250\">\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"conteudo\">\n\t\t\t\t\t\t\t\t\t\t\t<h4>SÁBADO 01/01</h4>\n\t\t\t\t\t\t\t\t\t\t\t<h5>titulo 4</h5>\n\t\t\t\t\t\t\t\t\t\t\t<p class=\"horario\">Tandil</p>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t</article>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>",
+			"carrito",
+			"// ",
+			"console.log(",
+			"console.log('***",
+			"next",
+			"arrowRight",
+			"tNext",
+			"next",
+			"fadeOut",
+			"fadeIn",
+			"load_page",
+			"preload:0",
+			"parse",
+			"load_page",
+			"parse",
+			"clasifica",
+			"clasificar",
+			"proton",
+			"checkoutCart",
+			"totalPrice",
+			"clickOnAddToCart",
+			"getDiscountPrice",
+			"getTotalPrice",
+			"Discount",
+			"checkoutCart",
+			"getDiscountPrice",
+			"checkoutCart",
+			"totalPrice",
+			"DiscountPrice",
+			"idDiscountPrice",
+			"discountPrice",
+			"getDiscountPrice",
+			"price",
+			"agenda",
+			"clasificadas",
+			"buscar",
+			"$results",
+			"sinc",
+			"buscar",
+			"<input name=\"untagged\" type=\"submit\" value=\"Fotos no clasificadas\">",
+			"Resultado de la búsqueda",
+			"buscar",
+			"tabs",
+			"buscar",
+			"tab",
+			"actions",
+			"complete",
+			"enviar",
+			"console.log('***",
+			"***title",
+			"contact",
+			"load",
+			"message",
+			"post_products",
+			"\\r\\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"https://code.jquery.com/jquery-2.2.3.min.js",
+			"/assets/css/pieces/bootstrap.min.css",
+			"css/sections/section",
+			"",
+			"id=\"gallery-ad\"",
+			"price",
+			"\"pictures\": [\"01.jpg\", \"02.jpg\", \"03.jpg\", \"04.jpg\", \"05.jpg\", \"06.jpg\", \"07.jpg\", \"08.jpg\"],\n\t\"ads\": [\"16-FiglioFebrero.gif\", \"234-300x250-Semana-Santa.gif\"],",
+			"\t],\n\t\"ads\": [",
+			"],",
+			"\"pictures\": [ \n\t\t{ \"href\":\"01.jpg\", \"text\": \"gallery 1\" },\n\t\t{ \"href\":\"02.jpg\", \"text\": \"gallery 2\" },\n\t\t{ \"href\":\"03.jpg\", \"text\": \"gallery 3\" },\n\t\t{ \"href\":\"04.jpg\", \"text\": \"gallery 4\" },\n\t\t{ \"href\":\"05.jpg\", \"text\": \"gallery 5\" },\n\t\t{ \"href\":\"06.jpg\", \"text\": \"gallery 6\" },\n\t\t{ \"href\":\"07.jpg\", \"text\": \"gallery 7\" },\n\t\t{ \"href\":\"08.jpg\", \"text\": \"gallery 8\" }\t    \t\t\n\t],",
+			"/assets/images/ads/",
+			"import React from 'react';",
+			"\"},'",
+			"\", \"",
+			": \"",
+			",'+",
+			"'{\"path\":",
+			"\"title\"",
+			"\"path\"",
+			"\"song\"",
+			"'}",
+			"\"{'path':",
+			"'},\"+",
+			"'}",
+			"'},",
+			"{'path': '",
+			"', 'title': '",
+			"'path = ",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "assets/js/load_pieces.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 100,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								100,
+								100
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai Bright.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "inicio/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1786,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1279,
+								1279
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai Bright.tmTheme",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 510.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "eventos/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2402,
+								2402
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai Bright.tmTheme",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 516.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4742,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										197,
+										213
+									],
+									[
+										533,
+										549
+									],
+									[
+										863,
+										879
+									],
+									[
+										1505,
+										1521
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/home/tiago/www/acciondigital",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 412,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								403,
+								403
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai Bright.tmTheme",
+							"default_dir": "/home/tiago/www/acciondigital",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 24.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 104.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "AD1.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"galleries",
+				"assets/css/pieces/galleries.css"
+			],
+			[
+				"main",
+				"assets/css/pieces/main.css"
+			],
+			[
+				"load",
+				"assets/js/load_pieces.js"
+			],
+			[
+				"scripts",
+				"assets/js/scripts.js"
+			],
+			[
+				"index3",
+				"checkout/index3.php"
+			],
+			[
+				"scriptsbackup",
+				"assets/js/scripts_events_backup.js"
+			],
+			[
+				"lightbox",
+				"assets/css/pieces/lightbox.css"
+			],
+			[
+				"createhome",
+				"auth/create_home.php"
+			],
+			[
+				"create",
+				"auth/create_event.php"
+			],
+			[
+				"nav",
+				"assets/includes/nav.htm"
+			],
+			[
+				"agenda",
+				"assets/css/pieces/agenda.css"
+			],
+			[
+				"magin",
+				"assets/js/magnific/jquery.magnific-popup.js"
+			],
+			[
+				"buscador",
+				"assets/css/pieces/buscador.css"
+			],
+			[
+				"event",
+				"assets/includes/eventosTemplate.htm"
+			],
+			[
+				"css",
+				"assets/css/pieces/lightbox.css"
+			],
+			[
+				"assets/js/waypoint.js",
+				"assets/js/waypoint.js"
+			],
+			[
+				"main.css",
+				"assets/css/pieces/main.css"
+			],
+			[
+				"creaeve",
+				"auth/create_event.php"
+			],
+			[
+				"maincss",
+				"assets/css/pieces/main.css"
+			],
+			[
+				"agendacss",
+				"assets/css/pieces/agenda.css"
+			],
+			[
+				"gallercss",
+				"assets/css/pieces/galleries.css"
+			],
+			[
+				"agenda.css",
+				"assets/css/pieces/agenda.css"
+			],
+			[
+				"assets/css/pieces/bootstrap.min.css",
+				"assets/css/pieces/bootstrap.min.css"
+			],
+			[
+				"mains",
+				"assets/js/magnific/Magnific-Popup-master/src/css/main.scss"
+			],
+			[
+				"magnific",
+				"assets/js/jquery.magnific-popup.js"
+			],
+			[
+				"jquerymycart",
+				"assets/js/carrito/jquery.mycart.js"
+			],
+			[
+				"/js/load_pieces.js",
+				"assets/js/load_pieces.js"
+			],
+			[
+				"carrito",
+				"assets/js/carrito/carrito.js"
+			],
+			[
+				"cripts",
+				"assets/js/scripts.js"
+			],
+			[
+				"1703",
+				"assets/datasources/170301.json"
+			],
+			[
+				"assets/js/carrito/carrito.js",
+				"assets/js/carrito/carrito.js"
+			],
+			[
+				"eventos",
+				"eventos/index.html"
+			],
+			[
+				"galeria",
+				"galeria/index.html"
+			],
+			[
+				"inicio",
+				"inicio/index.html"
+			],
+			[
+				"util",
+				"assets/js/util.js"
+			],
+			[
+				"jquery.lig",
+				"assets/css/jquery.lighter.css"
+			],
+			[
+				"main.",
+				"assets/js/main.js"
+			],
+			[
+				"eventoste",
+				"assets/includes/eventosTemplate.htm"
+			],
+			[
+				"iniciotem",
+				"assets/includes/inicioTemplate.htm"
+			],
+			[
+				"iniico",
+				"assets/datasources/inicio.json"
+			],
+			[
+				".json",
+				"temp/galleries/170301/data.json"
+			],
+			[
+				"nav.ht",
+				"assets/includes/nav.htm"
+			],
+			[
+				"data.json",
+				"galleries/170301/data.json"
+			],
+			[
+				"assets/js/scripts.js",
+				"assets/js/scripts.js"
+			],
+			[
+				"index.js",
+				"src/index.js"
+			],
+			[
+				"externalmodulefactoryplugin",
+				"node_modules/react-scripts/node_modules/webpack/lib/ExternalModuleFactoryPlugin.js"
+			],
+			[
+				"json",
+				"galleries/170301/data.json"
+			],
+			[
+				"main.js",
+				"assets/js/main.js"
+			],
+			[
+				"assets/js/main.js",
+				"assets/js/main.js"
+			],
+			[
+				"cadastrcss",
+				"repo_baby/trunk/static/css/content.cadastrados.css"
+			],
+			[
+				"cadascss",
+				"repo_baby/trunk/pt/papai-manda-bem/resources/css/content.cadastre.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 234.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

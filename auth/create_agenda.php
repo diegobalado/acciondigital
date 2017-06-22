@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/assets/css/sections/sectionForms.css" />	
 	<link rel="stylesheet" href="/assets/css/jquery-ui.css">
 	
-	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	<script src="/assets/js/jquery-ui.js"></script>
 	<script>

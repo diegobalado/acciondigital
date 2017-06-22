@@ -261,7 +261,7 @@ function buscar(foto) {
 					'</div> '+
 					'<div id=' + galleries.g + '_' + el + ' class="white-popup mfp-hide"> '+
 					'	<div class="button-group"> '+
-					'		<iframe class="fb_iframe_widget" src="https://www.facebook.com/plugins/share_button.php?href=http://acciondigital.000webhostapp.com/assets/images/eventos/' + galleries.g + '/' + el + '.jpg&layout=button&size=large&mobile_iframe=true&width=100&height=28&appId" width="100" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>'+
+					'		<iframe class="fb_iframe_widget" src="https://www.facebook.com/plugins/share_button.php?href=http://www.acciondigitalfoto.com/assets/images/eventos/' + galleries.g + '/' + el + '.jpg&layout=button&size=large&mobile_iframe=true&width=100&height=28&appId" width="100" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>'+
 					'		<div class="cart_btns">'+
 					'			<button class="btn btn-danger my-cart-btn" data-id=' + el + ' data-name=foto' + el + ' data-summary=foto_' + el + ' data-price="' +  html.price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '>Agregar al carrito</button> '+ 
 					'		</div> '+
@@ -272,7 +272,7 @@ function buscar(foto) {
 					'</div>');
 			})
 		} else {
-			let $results = '<h3>Su búsqueda "' + foto + '" no produjo resultados</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
+			let $results = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 			$('#gallery-wrapper').html($results);
 			sinCodigo.forEach(function(el, index) {
 				$('#results').append(
@@ -286,7 +286,7 @@ function buscar(foto) {
 					'</div> '+
 					'<div id=' + galleries.g + '_' + el + ' class="white-popup mfp-hide"> '+
 					'	<div class="button-group"> '+
-					'		<iframe class="fb_iframe_widget" src="https://www.facebook.com/plugins/share_button.php?href=http://acciondigital.000webhostapp.com/assets/images/eventos/' + galleries.g + '/' + el + '.jpg&layout=button&size=large&mobile_iframe=true&width=100&height=28&appId" width="100" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> '+
+					'		<iframe class="fb_iframe_widget" src="https://www.facebook.com/plugins/share_button.php?href=http://www.acciondigitalfoto.com/assets/images/eventos/' + galleries.g + '/' + el + '.jpg&layout=button&size=large&mobile_iframe=true&width=100&height=28&appId" width="100" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> '+
 					'		<div class="cart_btns">'+
 					'			<button class="btn btn-danger my-cart-btn" data-id=' + el + ' data-name=foto' + el + ' data-summary=foto_' + el + ' data-price="' + html.price + '" data-quantity="1" data-image=/assets/images/eventos/' + galleries.g + '/thumbs/' + el + '>Agregar al carrito</button> '+
 					'		</div> '+

@@ -31,7 +31,7 @@ if (isset($_POST["products"])) {
 	$confirmData = str_replace("+", "<br />", $pictures);
 ?>
 <div class="social column">
-	<h2>Por favor confirme los datos de su compra:</h2>
+	<h2>Por favor confirmá los datos de tu compra:</h2>
 	<h3>Fotos:</h3>
 	
 	<p>
@@ -46,7 +46,7 @@ if (isset($_POST["products"])) {
 	<form action="/checkout/index3.php" method="post">
 		<div class="field half first">
 			<label for="name">Nombre y Apellido</label>
-			<input name="name" id="name" type="text" placeholder="Name">
+			<input name="name" id="name" type="text" placeholder="Nombre">
 		</div>
 		<div class="field half">
 			<label for="email">Email</label>
@@ -54,7 +54,7 @@ if (isset($_POST["products"])) {
 		</div>
 		<div class="field">
 			<label for="message">Observaciones</label>
-			<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+			<textarea name="message" id="message" rows="6" placeholder="Mensaje"></textarea>
 		</div>
 		<ul class="actions">
 			<li><input value="Cancelar" id="cancel" class="button" type="cancel"></li>

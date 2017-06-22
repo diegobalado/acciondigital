@@ -1,3 +1,6 @@
 /temp/*
+/dev/*
+/backup_ibumu/*
 /assets/images/ads/*
 /assets/images/eventos/*
+*.sublime-project

@@ -17,7 +17,7 @@
 	
 	<link rel="stylesheet" href="/assets/css/sections/sectionEvents.css" />	
 	
-	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 	<!-- Load Facebook SDK for JavaScript -->
 </head>
 <body class="events-page">

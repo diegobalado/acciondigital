@@ -241,7 +241,7 @@
         '<td><strong id="' + idGrandTotal + '"></strong></td>' +
         '<td></td>' +
         '</tr>'
-        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Su pedido está vacío</div>'
+        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Tu pedido está vacío</div>'
       );
 
       var discountPrice = options.getDiscountPrice(products, ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());

@@ -129,7 +129,7 @@
 						);
 					array_push($eventos, $evento);
 				}
-
+				rsort($eventos);
 				$ads = $_REQUEST[ads];
 				$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/ads.json');
 				$adData = json_decode($data, true) ;
