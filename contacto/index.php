@@ -1,17 +1,16 @@
 <!DOCTYPE HTML>
-<!--
-	Snapshot by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html>
 <head>
 	<title>Acción Digital</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/assets/css/sections/sectionContact.css" />
+	<meta name="description" content="Acción Digital Foto. Fotografía de eventos deportivos.">
+	<link rel="canonical" href="http://www.acciondigitalfoto.com" />
 
-	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
+	<!-- <link rel="stylesheet" href="/assets/css/sections/sectionContact.css" /> -->
+	<link rel="stylesheet" href="/assets/css/pieces/main.min.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/contact.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/bootstrap.min.css" />
 
 	<!-- Facebook Pixel Code -->
 	<script>
@@ -43,22 +42,6 @@
 		</header>
 
 		<section id="main">
-
-			<!-- Banner -->
-			<!-- <section id="banner">
-				<div class="inner">
-					<h1>Bienvenido a Acción Digital</h1>
-					<p>Fotografía de eventos deportivos.</p>
-					<ul class="actions">
-						<li><a href="#galleries" class="button alt scrolly big">Continuar</a></li>
-					</ul>
-				</div>
-			</section> -->
-
-			<!-- Gallery -->
-			<!-- <section id="galleries">
-				<div class="gallery" id="gallery"></div>
-			</section> -->
 
 			<section id="contact">
 				<!-- Social -->
@@ -118,12 +101,14 @@
 	</div>
 
 	<!-- Scripts -->
-	<script type="text/javascript" src="/assets/js/load_pieces.js"></script>	
-	<script type="text/javascript" src="/assets/js/handlebars.min.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="/assets/js/load_pieces.1706220037.js"></script>
+	<script type="text/javascript" src="/assets/js/plugins.min.js"></script>	
+<!-- 	<script type="text/javascript" src="/assets/js/handlebars.min.js"></script>
 	<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>
 	<script type="text/javascript" src="/assets/js/util.js"></script>
 	<script type="text/javascript" src="/assets/js/carrito/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/assets/js/carrito/jquery.mycart.js"></script>
+	<script type="text/javascript" src="/assets/js/carrito/jquery.mycart.js"></script> -->
 	<!-- <script type="text/javascript" src="/assets/js/jquery.poptrox.min.js"></script> -->
 	<!-- <script type="text/javascript" src="/assets/js/carrito/carrito.js"></script> -->
 	<!-- <script type="text/javascript" src="/assets/js/skel.min.js"></script> -->

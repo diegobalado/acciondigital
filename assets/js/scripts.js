@@ -90,7 +90,7 @@ $section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/i
 if (!$pathname.includes('/amigos')) {
 	$template = $section == 'eventos' ? 'eventos' : $section;
 
-	console.log('$section ' + $section);
+	// console.log('$section ' + $section);
 	// console.log('$json ' + $json);
 	// console.log('$template ' + $template);
 
@@ -103,7 +103,7 @@ if (!$pathname.includes('/amigos')) {
 			$json = $section == 'eventos' ? galleries.g : $section;
 
 			if ($section == 'galeria' || $section == 'inicio') {
-				console.log('$section ' + $section);
+				// console.log('$section ' + $section);
 				Handlebars.registerHelper('full_href', function(picture) {
 					return '/eventos/?g=' + picture.ID;
 				});
@@ -117,20 +117,20 @@ if (!$pathname.includes('/amigos')) {
 				let html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
 				placeHolder.append(html);
 				// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
-				$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
+				/*$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');
-				$('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');
+				$('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');*/
 				carrito();
 	/*			 $('#gallery').poptrox({
 				  usePopupCaption: true
 				});*/
-				$('.open-popup-link').magnificPopup({
-				  gallery:{
-				    enabled:true,
-				    preload:0
-				  }
-				})
+				// $('.open-popup-link').magnificPopup({
+				//   gallery:{
+				//     enabled:true,
+				//     preload:0
+				//   }
+				// })
 			})
 		})
 	})
@@ -298,12 +298,12 @@ function buscar(foto) {
 			})
 		}
 		carrito();
-		$('.open-popup-link').magnificPopup({
+		/*$('.open-popup-link').magnificPopup({
 		  gallery:{
 		    enabled:true,
 		    preload:0
 		  }
-		})
+		})*/
 	});
 }
 

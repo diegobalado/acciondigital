@@ -32,13 +32,13 @@ function carrito() {
 			goToCartIcon($addTocart);
 		},
 		afterAddOnCart: function(products, totalPrice, totalQuantity) {
-			console.log("afterAddOnCart", products, totalPrice, totalQuantity);
+			// console.log("afterAddOnCart", products, totalPrice, totalQuantity);
       // sessionStorage.setItem('products', JSON.stringify(products));
       // sessionStorage.setItem('price', totalPrice);
       // sessionStorage.setItem('quantity', totalQuantity);
     },
     clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
-    	console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
+    	// console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
     },
     checkoutCart: function(products, totalPrice, totalQuantity) {
     	var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
@@ -62,7 +62,7 @@ function carrito() {
       });
 
       // console.log('***products ' + JSON.stringify(products));
-      console.log("checking out", products, totalPrice, totalQuantity);
+      // console.log("checking out", products, totalPrice, totalQuantity);
     },
     getDiscountPrice: function(products, totalPrice, totalQuantity) {
     	const cantPromo = 5;
@@ -165,12 +165,12 @@ if (!$pathname.includes('/agenda')) {
 					// console.log('***data.pictures[i-1] ' + $('#'+ data.IdEvento + '_' + data.pictures[i-2] +' .img-wrapper img')[0].complete);
 					function loading() {
 					    setTimeout(function () {
-					    	console.log('***intento ');
+					    	// console.log('***intento ');
 					    	if ($('.media a[href="#'+ data.IdEvento + '_' + data.pictures[page_start] +'"] img')[0].complete) {
 					    		$('.loading').fadeOut("fast");
 					    		// clearInterval(load);
 					    	} else {
-					    		console.log('***nones ');
+					    		// console.log('***nones ');
 					        loading();
 					      }
 					    }, 500);
@@ -199,7 +199,7 @@ if (!$pathname.includes('/agenda')) {
 				}
 				$('.mfp-arrow-right').on('click', function(event) {
 					event.preventDefault();
-					console.log('***click');
+					// console.log('***click');
 					let actual_pic = $(this).parent().find('.white-popup').attr('id');
 					if (actual_pic == lastItem) {
 						alert('es');
@@ -224,7 +224,7 @@ if (!$pathname.includes('/agenda')) {
 
 				$('.events-page').on('click', '.mfp-arrow-right', function(event) {
 					event.preventDefault();
-					console.log('***click');
+					// console.log('***click');
 					let actual_pic = $(this).parent().find('.white-popup').attr('id');
 					if (actual_pic == lastItem) {
 						load_page(events_placeholder, $page_start, $page_limit, json_data);
@@ -259,10 +259,10 @@ if (!$pathname.includes('/agenda')) {
 				title_placeholder.append(title);
 								
 				// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
-				$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
+				/*$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');
-				$('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');
+				$('body').append('<script type="text/javascript" src="/assets/js/main.js"></script>');*/
 				
 				carrito();
 				$('.open-popup-link').magnificPopup({
@@ -371,7 +371,7 @@ $(function() {
 $(function() {
 	$('#untagged').on('click', function(event) {
 		event.preventDefault();
-		console.log('***toca boton');
+		// console.log('***toca boton');
 		buscar('untagged');
 	});
 })
@@ -498,10 +498,10 @@ function buscar(foto) {
 		} else {
 
 			if (foto != 'untagged') {
-				console.log('***no hay');
+				// console.log('***no hay');
 				var $results = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 			} else {
-				console.log('***no busco');
+				// console.log('***no busco');
 				var $results = '<h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 			}
 
