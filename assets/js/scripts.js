@@ -61,8 +61,8 @@ function carrito() {
     },
     getDiscountPrice: function(products, totalPrice, totalQuantity) {
     	const cantPromo = 5;
-    	let finalPrice = totalPrice;
-    	let unityPrice = totalPrice/totalQuantity;
+    	var finalPrice = totalPrice;
+    	var unityPrice = totalPrice/totalQuantity;
     	if (totalQuantity >= cantPromo) {
     		finalPrice = Math.round(Math.floor(totalQuantity/cantPromo)*unityPrice/1.2*cantPromo + (totalQuantity%cantPromo)*unityPrice);
     		return finalPrice;
@@ -79,10 +79,10 @@ function carrito() {
 }
 
 /*HANDLEBARS*/
-let $pathname = location.pathname;
-let $section = '';
-let $json = '';
-let $template = '';
+var $pathname = location.pathname;
+var $section = '';
+var $json = '';
+var $template = '';
 
 $('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
 
@@ -96,10 +96,10 @@ if (!$pathname.includes('/amigos')) {
 
 	$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function() {
 		$(document).ready(function() {
-			let raw_template = $('#pictures-template').html();
-			let template = Handlebars.compile(raw_template);
-			let placeHolder = $("#gallery");
-			let galleries = getGET();
+			var raw_template = $('#pictures-template').html();
+			var template = Handlebars.compile(raw_template);
+			var placeHolder = $("#gallery");
+			var galleries = getGET();
 			$json = $section == 'eventos' ? galleries.g : $section;
 
 			if ($section == 'galeria' || $section == 'inicio') {
@@ -114,7 +114,7 @@ if (!$pathname.includes('/amigos')) {
 			}
 
 			$.get("/assets/datasources/" + $json + ".json", function(data, status, xhr) {
-				let html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
+				var html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
 				placeHolder.append(html);
 				// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
 				/*$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
@@ -146,7 +146,7 @@ const shrinkHeader = 100;
 /*HEADER COLAPSABLE*/
 $(function() {
 	$(window).scroll(function() {
-		let scroll = getCurrentScroll();
+		var scroll = getCurrentScroll();
 		if (scroll >= shrinkHeader) {
 			$('#header').addClass('shrink');
 			$('#btnTop').show('400');
@@ -170,15 +170,15 @@ $(document).ready(function() {
 
 /*PARAMETROS*/
 function getGET() {
-	let loc = document.location.href;
+	var loc = document.location.href;
 	if (loc.indexOf('?') > 0)
 
 	{
-		let getString = loc.split('?')[1];
-		let GET = getString.split('&');
-		let get = {};
-		for (let i = 0, l = GET.length; i < l; i++) {
-			let tmp = GET[i].split('=');
+		var getString = loc.split('?')[1];
+		var GET = getString.split('&');
+		var get = {};
+		for (var i = 0, l = GET.length; i < l; i++) {
+			var tmp = GET[i].split('=');
 			//tomo el parametro sin lo que viene despues del #
 			get[tmp[0]] = unescape(decodeURI(tmp[1])).indexOf('#')!=-1?unescape(decodeURI(tmp[1])).substr(0, unescape(decodeURI(tmp[1])).indexOf('#')):unescape(decodeURI(tmp[1]));
 		}
@@ -190,7 +190,7 @@ function getGET() {
 
 /*PAGINA ACTIVA*/
 $(function() {
-	let $param = location.pathname;
+	var $param = location.pathname;
 	// console.log('$param ' + $param);
 	switch ($param) {
 		case '/index.html':
@@ -216,7 +216,7 @@ $(function() {
 
 /*BUSCADOR*/
 $(function() {
-	let $param = location.pathname;
+	var $param = location.pathname;
 	// console.log('$param ' + $param);
 	if ($param != '/index.html' || $param != '/inicio/') {
 		$('#nav-header ul li.toggle_search').removeClass('hidden');
@@ -230,13 +230,13 @@ $(function() {
 
 function buscar(foto) {
 	// console.log('foto ' + foto);
-	let galleries = getGET();
+	var galleries = getGET();
 	// console.log('SCRIPTS.JS - galleries ' + JSON.stringify(galleries));
 	$.get("/assets/datasources/" + galleries.g + ".json", function(data, status, xhr) {
-		let html = location.hostname == 'localhost' ? JSON.parse(data) : data;
-		let arrFiltro = [];
-		let sinCodigo = [];
-		let codigo = '';
+		var html = location.hostname == 'localhost' ? JSON.parse(data) : data;
+		var arrFiltro = [];
+		var sinCodigo = [];
+		var codigo = '';
 		html.pictures.forEach(function(el, index) {
 			if (el.indexOf('-') == -1) sinCodigo.push(el)
 			else {
@@ -248,7 +248,7 @@ function buscar(foto) {
 
 		if (arrFiltro.length != 0) {
 			// $('#gallery header')
-			let $results = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><div id="results"></div>';
+			var $results = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><div id="results"></div>';
 			$('#gallery-wrapper').html($results);
 			arrFiltro.forEach(function(el, index) {
 				$('#results').append('<div class="media"> '+
@@ -272,7 +272,7 @@ function buscar(foto) {
 					'</div>');
 			})
 		} else {
-			let $results = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
+			var $results = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 			$('#gallery-wrapper').html($results);
 			sinCodigo.forEach(function(el, index) {
 				$('#results').append(

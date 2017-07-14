@@ -47,3 +47,9 @@ ExpiresDefault "access plus 2 days"
   Header append Vary User-Agent
 </IfModule>
 ## COMPRESSION ##
+
+RewriteEngine on
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+RewriteRule .* ? [F,L]
+RewriteCond %{HTTP_HOST} !^www.acciondigitalfoto.com$ [NC]
+RewriteRule ^(.*)$ http://www.acciondigitalfoto.com/$1 [L,R=301]

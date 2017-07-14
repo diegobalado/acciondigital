@@ -1,0 +1,11 @@
+/home/tiago/.config/sublime-text-3/Packages/Take-Notes/take_note.py - 542
+
+fullname)
+        if not notepad.is_loading():
+            for region in self.view.sel():
+                self.view.window().set_view_index(notepad, 0, 0)
+                start_point = len(notepad)
+                if not start_point == 0:
+                    divider = "\n\n"
+
+/******************************************************************************/
