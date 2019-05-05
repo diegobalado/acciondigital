@@ -146,8 +146,8 @@
 					'eventos' => $eventos,
 					'ads' => $adsN
 					);
-				if (file_put_contents($file, json_encode($saveFile)) != false) $message = "La galería se creó correctamente";
-				else $message = "Hubo un error al crear la galería";
+				if (file_put_contents($file, json_encode($saveFile)) != false) $message = "La galer\u00eda se cre\u00f3 correctamente";
+				else $message = "Hubo un error al crear la galer\u00eda";
 
 				echo "<script type='text/javascript'>alert('$message');</script>";
 			}

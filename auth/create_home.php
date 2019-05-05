@@ -1,15 +1,11 @@
 <!DOCTYPE HTML>
-<!--
-	Snapshot by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html>
 <head>
 	<title>Acción Digital</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/assets/css/sections/sectionForms.css" />	
+	<link rel="stylesheet" href="/assets/css/sections/sectionForms.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/multi-select.dev.css" />	
 	
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
@@ -26,7 +22,7 @@
 		</header>
 
 		<section id="main">
-			<form action="create_home.php" method="post">
+			<form action="save_home.php" method="post">
 				<div class="btnGroup"></div>
 				<h2>Crear Página de Inicio</h2>
 				<div data-role="fieldcontain">
@@ -95,11 +91,6 @@
 							$adsArr = array();
 
 							foreach ($ads as $ad) {
-								$tempAds = array(
-									'name' => $ad,
-									'href' => $adData[$ad]
-									);
-								array_push($adsArr, $tempAds);
 								?>
 								<option value="<?php echo $ad; ?>" >
 									<?php echo $ad; ?>
@@ -108,57 +99,33 @@
 							}
 							?>       
 						</select>
+						<input type="hidden" name="adsOrdered" id="adsOrdered">
 					</fieldset>
 					<!-- <br /><br /> -->
 					
 					<fieldset><input type="submit" value="Guardar" /></fieldset>
 				</div>      
 			</form>
-
-			<?php
-			if (isset($_POST["IdEvento"])) {
-				$idEventos = $_REQUEST[IdEvento];
-
-				$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/inicio.json';
-				$saveFile = [];
-				$eventos = [];
-				foreach ($idEventos as $idEvento) {
-					$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/'.$idEvento.'.json');
-					$product = json_decode($data, true) ;
-					$evento = array(
-						'ID' => $idEvento,
-						'text' => $product[title]
-						);
-					array_push($eventos, $evento);
-				}
-				rsort($eventos);
-				$ads = $_REQUEST[ads];
-				$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/ads.json');
-				$adData = json_decode($data, true) ;
-				$adsN = array();
-
-				foreach ($ads as $ad) {
-					$tempAds = array(
-						'name' => $ad,
-						'href' => $adData[$ad]
-						);
-					array_push($adsN, $tempAds);
-				}
-				$saveFile = array(
-					'eventos' => $eventos,
-					'ads' => $adsN
-					);
-				if (file_put_contents($file, json_encode($saveFile)) != false) $message = "La página de inicio se creó correctamente";
-				else $message = "Hubo un error al crear la página de inicio";
-
-				echo "<script type='text/javascript'>alert('$message');</script>";
-			}
-			?>
 		</section>
 	</div>
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="/assets/js/load_pieces.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.multi-select.js"></script>
+	<script type="text/javascript">
+		var adsFinal = []
+		$('#ads').multiSelect({
+			keepOrder: true,
+			afterSelect: function(values){
+				adsFinal.push(values[0])
+				$('#adsOrdered').val(JSON.stringify(adsFinal))
+			},
+			afterDeselect: function(values){
+				adsFinal.splice(adsFinal.indexOf(values.toString()), 1)
+				$('#adsOrdered').val(JSON.stringify(adsFinal))
+			}
+		});
+	</script>
 
 </body>
 </html>

@@ -110,9 +110,11 @@ form h2 {
 	display: inline-block;
 }
 form .btnGroup {
-	width: auto;
+	/*width: auto;
 	display: inline-block;
-	float: right;																																													
+	float: right;*/																																							
+	width: 100%;
+	text-align: right;						
 }
 .home .btnGroup {
 	float: none;

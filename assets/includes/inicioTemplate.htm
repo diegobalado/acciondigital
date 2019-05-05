@@ -1,17 +1,19 @@
-	<div id="gallery-wrapper" class="gallery-wrapper content">
+	<div id='gallery-wrapper' class='gallery-wrapper content'>
 		{{#eventos}}
-		<div class="media">
-			<a href={{full_href this}}>
-				<img src=/assets/images/eventos/{{this.ID}}/thumbs/portada.jpg alt="" title={{this.text}} />
-				<span class="etiqueta">{{this.text}}</span>
+		<div class='media'>
+			<a href={{full_href this}} onclick="gtag('event', 'Eventos', {'event_category': 'Inicio', 'event_label': '{{this.text}}' });">
+				<img src=/assets/images/eventos/{{this.ID}}/thumbs/portada.jpg alt='' title='{{this.text}}' />
+				<span class='etiqueta'>{{this.text}}</span>
 			</a>
 		</div>
 		{{/eventos}}
 	</div>
-	<div id="gallery-ad" id="gallery-ad">
-		{{#ads}}
-		<a href={{this.href}} target="_blank">
-			<img src=/assets/images/ads/{{this.name}} alt="" />
-		</a>
-		{{/ads}}
+	<div id='gallery-ad' id='gallery-ad'>
+		<div id='ads-block'>
+			{{#ads}}
+			<a href={{this.href}} target={{this.target}} onclick="gtag('event', 'Publicidades', {'event_category': 'Inicio', 'event_label': '{{this.name}}' });">
+				<img src=/assets/images/ads/{{this.name}} alt='' />
+			</a>
+			{{/ads}}
+		</div>
 	</div>
