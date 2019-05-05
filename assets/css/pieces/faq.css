@@ -1,0 +1,137 @@
+.accordion, .accordion * {
+  -webkit-box-sizing:border-box; 
+  -moz-box-sizing:border-box; 
+  box-sizing:border-box;
+}
+
+.accordion {
+  overflow:hidden;
+  box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+  border-radius:3px;
+  background:#f7f7f7;
+  width: 75%;
+  margin: 20px auto;
+}
+
+.accordion-section-title {
+  width:100%;
+  padding:15px;
+  display:inline-block;
+  border-bottom:1px solid #1a1a1a;
+  background:#333;
+  transition:all linear 0.15s;
+  font-size:1.200em;
+  text-shadow:0px 1px 0px #1a1a1a;
+  color:#fff;
+}
+
+.accordion a:focus, .accordion a:hover {
+  color: #ccc;
+}
+
+a.accordion-section-title.active, a.accordion-section-title:hover {
+  background: #4c4c4c;
+  text-decoration:none;
+}
+
+a.accordion-section-title:hover {
+  color: #f09a0d;
+}
+
+a.accordion-section-title.active {
+  color: #FAC200;
+}
+
+.accordion-section:last-child .accordion-section-title {
+  border-bottom:none;
+}
+
+.accordion-section-content {
+  padding: 20px 0;
+  display: none;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.accordion-section-content li, .accordion-section-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.accordion-section-content li .ttip {
+  display: inline-block;
+  font-weight: 700;
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-color: #f66;
+}
+
+.accordion-section-content ul.short {
+ list-style-type: disclosure-closed;
+}
+
+.accordion-section-content ul.short li {
+ margin: 10px 0;
+}
+
+.accordion-section-content .tooltip_templates {
+  display: none;
+}
+
+.tooltipster-content span img {
+  width: 100%;
+}
+
+.content-wrapper {
+  padding-bottom: 150px;
+}
+
+.content-wrapper header {
+  padding: 0 3.5em;
+  margin: 2em 0 0.5em;
+}
+
+.content-wrapper header h1 {
+  font-size: 30px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-family: "Nunito Sans";
+  width: 50%;
+  line-height: 1;
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, .15);
+  padding: 1.5em 0 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .accordion {
+    width: 100%;
+  }
+  #footer {
+    padding: 1em 0 0;
+  }
+  #footer .copyright {
+    margin-bottom: 1em;
+  }
+
+  #footer p {
+    margin-bottom: 5px;
+  }
+  .content-wrapper header {
+    text-align: center; 
+    padding: 0;
+  }
+  .content-wrapper header h1 {
+    width: 100%;
+    font-size: 22px;
+  }
+}

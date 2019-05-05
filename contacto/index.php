@@ -26,9 +26,19 @@
 	<meta name="theme-color" content="#ffffff">
 
 	<!-- <link rel="stylesheet" href="/assets/css/sections/sectionContact.css" /> -->
-	<link rel="stylesheet" href="/assets/css/pieces/main.min.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/main.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/contact.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/bootstrap.min.css" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119356545-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-119356545-1');
+	</script>
 
 	<!-- Facebook Pixel Code -->
 	<script>
@@ -66,7 +76,7 @@
 				<div class="social column">
 					<h3>Nosotros</h3>
 					<p>Fotografía de deportes</p>
-					<p>Javier Piva Flos y Guillermo Silva</p>
+					<p>Javier Piva Flos</p>
 					<h4>Teléfono</h4>
 					<p>0249 450-3791</p>
 					<h3>Seguinos</h3>
@@ -87,8 +97,8 @@
 							<input name="name" id="name" type="text" placeholder="Nombre">
 						</div>
 						<div class="field half">
-							<label for="email">Email</label>
-							<input name="email" id="email" type="email" placeholder="Email">
+							<label for="email">Email<span style="color:red">*</span></label>
+							<input name="email" id="email" type="email" placeholder="Email" required="true" oninvalid="this.setCustomValidity('Por favor, ingresá tu casilla de e-mail.')" oninput="setCustomValidity('')">
 						</div>
 						<div class="field">
 							<label for="message">Mensaje</label>
@@ -106,7 +116,7 @@
 						$headers = 'From: ' . $_REQUEST[email] . "\r\n" .
 						'Reply-To: ' . $_REQUEST[email] . "\r\n" .
 						'X-Mailer: PHP/' . phpversion();
-						if (mail($to, $subject, $message, $headers)) echo "<script type='text/javascript'>alert('El mensaje fue enviado con éxito');</script>";
+						if (mail($to, $subject, $message, $headers)) echo "<script type='text/javascript'>alert('El mensaje fue enviado con \u00e9xito');</script>";
 						else echo "<script type='text/javascript'>alert('Hubo un error al enviar el mensaje.');</script>";
 					}
 					?> 

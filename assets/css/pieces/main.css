@@ -5,7 +5,7 @@
 Snapshot by TEMPLATED
 templated.co @templatedco
 Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
- */
+*/
 
 /*  Reset  */
 
@@ -67,11 +67,11 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	html, body {
 		min-width: 320px;
 	}
-
+	
 }
 
 body {
@@ -104,43 +104,43 @@ body, input, select, textarea {
 }
 
 @media screen and (max-width: 1680px) {
-
+	
 	body, input, select, textarea {
 		font-size: 11pt;
 	}
-
+	
 }
 
 @media screen and (max-width: 1280px) {
-
+	
 	body, input, select, textarea {
 		font-size: 11pt;
 	}
-
+	
 }
 
 @media screen and (max-width: 980px) {
-
+	
 	body, input, select, textarea {
 		font-size: 11pt;
 	}
-
+	
 }
 
 @media screen and (max-width: 768px) {
-
+	
 	body, input, select, textarea {
 		font-size: 12pt;
 	}
-
+	
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	body, input, select, textarea {
 		font-size: 12pt;
 	}
-
+	
 }
 
 a {
@@ -181,11 +181,11 @@ h1 {
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	h1 {
 		font-size: 1.5em;
 	}
-
+	
 }
 
 h2 {
@@ -193,11 +193,11 @@ h2 {
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	h2 {
 		font-size: 1.4em;
 	}
-
+	
 }
 
 h3 {
@@ -444,7 +444,7 @@ button:disabled,
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
@@ -452,7 +452,7 @@ button:disabled,
 	.button {
 		padding: 0;
 	}
-
+	
 }
 
 
@@ -477,16 +477,16 @@ form .field.half.first {
 }
 
 @media screen and (max-width: 980px) {
-
+	
 	form .field.half {
 		display: block;
 		width: 100%;
 	}
-
+	
 	form .field.half.first {
 		margin-right: 0;
 	}
-
+	
 }
 
 label {
@@ -500,7 +500,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 select,
-textarea {
+textarea, .ms-list {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
@@ -713,9 +713,9 @@ input[type="radio"] + label:before {
 	text-transform: none !important;
 }
 /* @media screen and (max-width: 920px) {
-.icon:before {
-font-size: 1.5em;
-}
+	.icon:before {
+		font-size: 1.5em;
+	}
 } */
 
 .icon > .label {
@@ -743,12 +743,12 @@ font-size: 1.5em;
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	.image.left, .image.right {
 		max-width: 100%;
 		width: 100%;
 	}
-
+	
 }
 
 .image.left {
@@ -758,12 +758,12 @@ font-size: 1.5em;
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	.image.left {
 		float: none;
 		margin: 0 0 1em 0;
 	}
-
+	
 }
 
 .image.right {
@@ -773,12 +773,12 @@ font-size: 1.5em;
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	.image.right {
 		float: none;
 		margin: 0 0 1em 0;
 	}
-
+	
 }
 
 .image.fit {
@@ -857,25 +857,25 @@ ul.tabs li:first-child {
 }
 
 @media screen and (max-width: 768px) {
-
+	
 	ul.tabs li {
 		display: block;
 		margin: 0 0 .25em 0;
 		padding: 0;
 	}
-
+	
 	ul.tabs li .button {
 		width: 100%;
 	}
-
+	
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	ul.tabs {
 		margin-bottom: 1em;
 	}
-
+	
 }
 
 ul.icons {
@@ -965,39 +965,39 @@ ul.actions.fit.small li {
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	ul.actions {
 		margin: 0 0 2em 0;
 	}
-
+	
 	ul.actions li {
 		padding: 1em 0 0 0;
 		display: block;
 		text-align: center;
 		width: 100%;
 	}
-
+	
 	ul.actions li:first-child {
 		padding-top: 0;
 	}
-
+	
 	ul.actions li > * {
 		width: 100%;
 		margin: 0 !important;
 	}
-
+	
 	ul.actions li > *.icon:before {
 		margin-left: -2em;
 	}
-
+	
 	ul.actions.small li {
 		padding: 0.5em 0 0 0;
 	}
-
+	
 	ul.actions.small li:first-child {
 		padding-top: 0;
 	}
-
+	
 }
 
 dl {
@@ -1027,23 +1027,23 @@ section .inner, article .inner {
 }
 
 @media screen and (max-width: 980px) {
-
+	
 	section .inner, article .inner {
 		padding: 2em 0 0.1em 0;
 		padding-right: 2em;
 		padding-left: 2em;
 	}
-
+	
 }
 
 @media screen and (max-width: 480px) {
-
+	
 	section .inner, article .inner {
 		padding: 1em 0 0.1em 0;
 		padding-right: 1em;
 		padding-left: 1em;
 	}
-
+	
 }
 
 section .columns, article .columns {
@@ -1068,12 +1068,12 @@ article .columns.double .column {
 }
 
 @media screen and (max-width: 980px) {
-
+	
 	section .columns.double .column, 
 	article .columns.double .column {
 		width: 100%;
 	}
-
+	
 }
 
 header p {
@@ -1196,19 +1196,19 @@ table.alt tfoot {
 }
 
 @media screen and (max-width: 1280px) {
-
+	
 	.wrapper > .inner {
 		width: 65em;
 	}
-
+	
 }
 
 @media screen and (max-width: 980px) {
-
+	
 	.wrapper > .inner {
 		width: 100%;
 	}
-
+	
 }
 
 /*  Main  */
@@ -1249,12 +1249,19 @@ table.alt tfoot {
 	border-radius: 0 5px 5px 0;
 }
 
-.cart_btns {
+.mfp-content .cart_btns {
 	position: relative;
 	text-align: center;
 	top: -50px;
 	margin-bottom: -40px;
-}					
+}
+.media .cart_btns {
+	position: relative;
+	text-align: center;
+	bottom: -10px;
+	margin-bottom: 0;
+	padding-bottom: 10px;
+}				
 
 #btnTop {
 	position: fixed;
@@ -1290,19 +1297,19 @@ img[alt="www.000webhost.com"] {
 }
 
 @media screen and (max-width: 980px) {
-
+	
 	#main #header {
 		padding: 1.15em 2em;
 	}
-
+	
 }
 
 @media screen and (max-width: 768px) {
-
+	
 	#main #header {
 		text-align: center;
 	}
-
+	
 }
 
 /* BANNER COLAPSABLE */
@@ -1507,7 +1514,7 @@ img[alt="www.000webhost.com"] {
 	#nav-header {
 		margin-top: 40px;
 	}
-
+	
 }
 @media screen and (max-width: 768px) {
 	.nav {
@@ -1538,9 +1545,9 @@ img[alt="www.000webhost.com"] {
 }
 
 /* 	@media screen and (max-width: 768px) {
-.nav ul {
-flex-flow: row wrap;
-}
+	.nav ul {
+		flex-flow: row wrap;
+	}
 } */
 
 .nav ul li {
@@ -1646,11 +1653,11 @@ flex-flow: row wrap;
 }
 
 @media screen and (max-width: 768px) {
-
+	
 	#footer {
 		padding: 3em 0 1em 0;
 	}
-
+	
 }
 
 /*  Banner  */
@@ -1757,27 +1764,27 @@ body.is-loading #banner > .inner {
 }
 
 @media screen and (max-width: 1280px) {
-
+	
 	#banner .title {
 		font-size: 3.5em;
 	}
-
+	
 }
 
 @media screen and (max-width: 768px) {
-
+	
 	#banner {
 		background-attachment: scroll;
 	}
-
+	
 	#banner .title {
 		font-size: 2.25em;
 	}
-
+	
 	#banner p {
 		font-size: 1.25em;
 	}
-
+	
 }
 
 /* PARCHES CHECKOUT RESPONSIVE */
@@ -1811,4 +1818,10 @@ body.is-loading #banner > .inner {
 	display: block;
 	clear: both;
 	padding: 80px 0;
+}
+
+/*MY CART MODAL*/
+
+#my-cart-table td[title='Unit Price'], #my-cart-table td[title='Total Price'], #my-cart-table td[title='Discount Price'] {
+	text-align: right;
 }

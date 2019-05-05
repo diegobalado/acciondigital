@@ -16,7 +16,7 @@
 	-ms-justify-content: space-between;
 	justify-content: space-between;
 	background: #ececec;
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 }
 
 #checkout form {
@@ -27,6 +27,13 @@
 	width: 120px;
 }
 
+#checkout h2 {
+	width: 100%;
+	margin: 0;
+	padding: 1em 1.5em;
+	background-color: #e6e6e6;
+}
+
 #checkout .icons {
 	margin-bottom: 1em;
 }
@@ -35,11 +42,73 @@
 	padding: 3.5em 0 1.5em 0;
 	padding-left: 3.5em;
 	padding-right: 3.5em;
-	width: 50%;
 }
-
+#checkout .column.form-page {
+	width: 67%;
+}
 #checkout .column.social {
 	background: #e6e6e6;
+	width: 33%;
+}
+
+#checkout .select-custom {
+	height: 38px;
+}
+
+.ttip {
+	display: block;
+	font-size: 24px;
+	color: #f09a0d;
+	position: relative;
+	top: -36px;
+	left: 100%;
+	border-radius: 11px;
+}
+.ttip-body {
+	display: none;
+	position: absolute;
+	width: 200px;
+	height: auto;
+	background-color: #f6f6f6;
+	top: 25px;
+	left: calc(100% + 35px);
+	padding: 20px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px 2px #ccc;
+	text-align: center;
+}
+.ttip-body p {
+	margin: 0;
+}
+h3 { 
+	margin-bottom: 30px;
+}
+h4 + p > span {
+	width: 20px; 
+	display: inline-block;
+}
+.modales {
+	padding: 20px;
+	background-color: white;
+	margin-top: 40px;
+}
+.modales h4 {
+	vertical-align: middle;
+	text-transform: uppercase;
+	line-height: 24px;
+	text-align: center;
+	margin-bottom: 20px;			
+}
+.modales .icon {
+	font-size: 24px;
+	color: red;
+}
+.modales .icon::before {
+	vertical-align: middle;			
+}
+hr {
+	border-top: 1px solid #fff;
 }
 
 @media screen and (max-width: 980px) {
@@ -53,22 +122,31 @@
 }
 
 @media screen and (max-width: 768px) {
-
-	#checkout .column {
-		width: 100%;
+	#checkout form {
+		max-width: 100%;
+		padding: 0;
 	}
 
+	#checkout .column.form-page, #checkout .column.social {
+		width: 100%;
+	}
+	#checkout .column {
+		width: 100%;
+		padding: 1em 2em 0.1em 2em;
+	}
+
+	#checkout h2 {
+		font-size: 28px;
+	}
 }
 
 @media screen and (max-width: 480px) {
 
-	#checkout .column {
-		padding: 1em 0 0.1em 0;
-		padding-left: 1em;
-		padding-right: 1em;
-	}
 	#checkout form .actions input {
 		width: 100%;
+	}
+	#checkout .select-custom {
+		height: 44px;
 	}
 
 }

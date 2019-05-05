@@ -2,9 +2,19 @@
 	$('body').append('''/assets/css/pieces/checkout.css');
 </script> -->
 <link rel="stylesheet" href="/assets/css/sections/sectionCheckout.css" />
+<link rel="stylesheet" href="/assets/css/pieces/forms.css" />
+<script type="text/javascript">
+	$('.ttip').on('mouseover', ()=>{
+		$('.ttip-body').show()
+	})
+	$('.ttip').on('mouseout', ()=>{
+		$('.ttip-body').hide()
+	})
+</script>
 <section id="checkout">
+	<h2>Por favor confirmá los datos de tu compra:</h2>
 <?php
-require_once "../assets/lib/mercadopago.php";
+// require_once "../assets/lib/mercadopago.php";
 
 // if (isset($_GET["n"]) && isset($_GET["p"]) && isset($_GET["q"])) {
 
@@ -14,115 +24,152 @@ require_once "../assets/lib/mercadopago.php";
 
 // }
 
-$mp = new MP ("4083212776112832", "E76Ta738sO6HsDeWRTnJzuq5CAAEM0jh");
-
 if (isset($_POST["products"])) {
 
 	$prod_array = (array) $_POST['products']; // los datos de los productos que llegan del checkout
-	// echo('<script>console.log("*Prodarray "+'.count($prod_array).');</script>');
-	$pre_data = [];
 	$precioTotal = $_POST['totalPrice'];
 	$pictures = '';
-	foreach((array) $_POST['products'] as $picture) {
-		$pictures = $pictures.'+'.$picture["name"];		
+	$title = '';
+	$events = [];
+	$products = (array) $_POST['products'];
+	sort($products);
+	$title = $products[0]["name"];
+	$ph = $products[0]["ph"];
+	$pictures = '<h4>'.$title.':</h4><p>';
+	foreach($products as $picture) {
+		if ($picture["name"] == $title) {
+			$pictures = $pictures.'<span></span>'.$picture["summary"].'<br />';
+		} else {
+			$title = $picture["name"];
+			$pictures = $pictures.'</p><br /><h4>'.$title.':</h4><p><span></span>'.$picture["summary"].'<br />';
+		}
 	}
+	$pictures = $pictures.'</p>';
 	$picturesLength = count((array) $_POST['products']);
-
-	$confirmData = str_replace("+", "<br />", $pictures);
 ?>
 <div class="social column">
-	<h2>Por favor confirmá los datos de tu compra:</h2>
 	<h3>Fotos:</h3>
-	
 	<p>
+		<?php 
+			if ($ph === "JPF") {
+				echo 'Fotógrafo';
+			} else {
+				echo 'Fotógrafa';
+			}
+		?>: <strong><?php echo $ph?></strong>
+	</p>	
 	<?php 
-		echo $confirmData;
+		echo $pictures;
 	?>
+	<hr>
+	<p>Total:
+		$<strong>
+			<?php 
+				echo $precioTotal;
+			?>			
+		</strong>
 	</p>
-</div>
 
-<div class="column">
-	<h2>Datos de Contacto</h2>
-	<form action="/checkout/index3.php" method="post">
+	<div class="modales hidden">
+		<h4><span class="icon fa-exclamation-triangle"></span> Importante</h4>		
+		<div class="mod mod-mp hidden">
+			<p>Eligiendo Mercado Pago como forma de pago, al hacer click en Confirmar la página se redirige automáticamente al sitio de Mercado Pago para completar los datos correspondientes para realizar el pago.</p>
+		</div>
+
+		<div class="mod mod-cbu hidden">
+			<p>Eligiendo Transferencia Bancaria como forma de pago, al hacer click en Confirmar vas a recibir un email en la dirección indicada con los datos necesarios para realizar la transferencia.</p>
+		</div>
+	</div>
+</div>
+<div class="column form-page">
+	<h3>Datos de Contacto</h3>
+	<form action="/checkout/checkout.php" method="post">
+		<?php
+			$customValidityMsg = "Por favor, seleccioná un medio de pago.";
+			$payType = '<div class="field half first" style="position:relative;"> 
+				<label for="payment">Forma de pago<span style="color:red">*</span></label>
+				<div class="select-custom">
+					<select name="payment" id="payment" value="" onChange="handleOnChange()" required="true" oninvalid="this.setCustomValidity('.$customValidityMsg.')" oninput="setCustomValidity()">  
+						<option value=""></option>
+						<option value="mp">Mercado Pago</option>
+						<option value="cbu">Transferencia Bancaria</option>
+					</select>
+					<span class="icon fa-chevron-down"></span>
+				</div>
+
+				<span class="ttip hidden icon fa-question-circle"></span>
+				<div class="ttip-body"></div>
+			</div>';
+
+			if ($ph === 'JPF') {
+				echo $payType;
+			} else {
+				echo'<input type="hidden" id="payment" name="payment" value="cbu">';
+			}
+		?>
+		<div class="field">
+			<label for="name">Nombre y Apellido<span style="color:red">*</span></label>
+			<input name="name" id="name" type="text" placeholder="Nombre y Apellido" required="true" oninvalid="this.setCustomValidity('Por favor, completá tu nombre y apellido.')" oninput="setCustomValidity('')">
+		</div>
 		<div class="field half first">
-			<label for="name">Nombre y Apellido</label>
-			<input name="name" id="name" type="text" placeholder="Nombre">
+			<label for="email">Email<span style="color:red">*</span></label>
+			<input name="email" id="email" type="email" placeholder="Email" required="true" oninvalid="this.setCustomValidity('Por favor, ingresá tu casilla de e-mail.')" oninput="setCustomValidity('')">
 		</div>
 		<div class="field half">
-			<label for="email">Email</label>
-			<input name="email" id="email" type="email" placeholder="Email">
+			<label for="email">Confirmar Email<span style="color:red">*</span></label>
+			<input name="emailConfirm" id="emailConfirm" type="email" placeholder="Confirmar Email" required="true" oninvalid="this.setCustomValidity('Las casillas de e-mail no coinciden.')" oninput="check(this)">
+		</div>
+		<div class="field half">
+			<label for="phone">Teléfono <span style="font-weight: normal; color: #8e8e8e;">(Opcional)</span></label>
+			<input name="phone" id="phone" type="text" placeholder="Teléfono">
 		</div>
 		<div class="field">
-			<label for="message">Observaciones</label>
+			<label for="message">Observaciones <span style="font-weight: normal; color: #8e8e8e;">(Opcional)</span></label>
 			<textarea name="message" id="message" rows="6" placeholder="Mensaje"></textarea>
 		</div>
 		<ul class="actions">
 			<li><input value="Cancelar" id="cancel" class="button" type="cancel"></li>
-			<li><input value="Enviar" class="button" type="submit"></li>
+			<li><input value="Confirmar" id="confirmar" class="button" type="submit"></li>
 		</ul>
 		<script>
 			$('.actions #cancel').on('click', function(event) {
 				event.preventDefault();
+				gtag('event', 'CancelCheckout', {'event_category': 'Checkout', 'event_label': 'Compra Cancelada' });
 				window.location.href = '/inicio';
 			});
+			function check(input) {				
+				if (input.value !== document.getElementById('email').value) {
+					input.setCustomValidity('Las casillas de e-mail no coinciden.');
+				} else {
+					input.setCustomValidity('');
+				}
+			}
+		</script>
+		<script type="text/javascript">
+			handleOnChange = () => {
+				let value = $('#payment').val();
+				$('.modales').removeClass('hidden')
+				$('.mod').addClass('hidden')
+				$('.mod-'+value).removeClass('hidden')
+				var ttipBody = ''
+				if (value === 'cbu')
+					ttipBody = '<p>Vas a recibir en tu casilla de email los datos necesarios para realizar la transferencia.</p>'
+				else if (value === 'mp')
+					ttipBody = '<p>Al hacer click en Confirmar, la página se redirige automáticamente hacia el sitio de Mercado Pago para completar el pago.</p>'
+				else 
+					$('.modales').addClass('hidden')
+				$('.ttip-body').html(ttipBody)
+			}
 		</script>
 		<?php 
 		echo'<input type="hidden" id="post_products" name="post_products" value="'.$pictures.'" >';
 		echo'<input type="hidden" id="post_totalQuantity" name="post_totalQuantity" value="'. $picturesLength .'">';
 		echo'<input type="hidden" id="post_totalPrice" name="post_totalPrice" value="'. $precioTotal .'">';
+		echo'<input type="hidden" id="ph" name="ph" value="'. $ph .'">';
 		?>
 	</form>
 </div>
 <?php
 	}
-?>
-
-
-<?php
-if (isset($_POST["email"])) {
-	$to      = 'acciondigitalfoto@gmail.com, jdiegomdq@gmail.com';
-	$subject = 'Pedido de compra de '.$_REQUEST['name'].' desde www.acciondigitalfoto.com';
-	
-	// $message = json_encode(json_encode($pre_data))."\r\n";
-	$message = "Nombre: ".$_REQUEST['name']."\r\n"."Email: ".$_REQUEST['email']."\r\n\r\n"."Fotos: ".str_replace("+", "\r\n", $_POST['post_products'])."\r\n\r\n"."Observaciones: ".$_REQUEST["message"];
-
-	if($_POST['post_totalQuantity'] > 1) $title = 'Pack de '.$_POST['post_totalQuantity'].' fotos - Acción Digital';
-	else $title = 'Foto - Acción Digital';
-
-	// echo('<script>console.log("***message " + '.$message.');</script>');
-
-	$pre_data = array(
-		'title' => $title,
-		'quantity' => 1,
-		'currency_id' => "ARS",
-		'unit_price' => intval($_POST['post_totalPrice'])
-		);
-
-	// echo('<script>console.log("*$pre_data " + '.json_encode(json_encode($pre_data)).');</script>');
-	echo "\r\n";
-
-	$preference_data = array(
-		'items' => array(
-			$pre_data
-			)
-		);
-	$headers = 'From: ' . $_REQUEST['email'] . "\r\n" .
-	'Reply-To: ' . $_REQUEST['email'] . "\r\n" .
-	'X-Mailer: PHP/' . phpversion();
-
-	if (mail($to, $subject, $message, $headers)) {
-		$aviso = iconv("UTF-8", "ISO-8859-1", 'El aviso de compra fue enviado con éxito');
-		echo "<script type='text/javascript'>alert('".$aviso."');</script>";
-	}	else echo "<script type='text/javascript'>alert('Hubo un error al enviar el pedido.');</script>";
-	
-	$preference = $mp->create_preference ($preference_data);
-	?>
-	<script>
-		$href = "<?php echo $preference['response']['init_point']; ?>";	
-		// window.open($href, 'MercadoPago', 'width=400,height=200,scrollbars=yes');		
-		window.location.href = $href;	
-	</script>
-	<?php
-}
 ?>
 </section>

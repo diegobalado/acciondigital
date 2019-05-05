@@ -1,10 +1,10 @@
 @import url(/assets/css/pieces/magnific-popup.min.css);
 
 .fb_iframe_widget {
-    left: 0;
-    top: 0;
-    float: right;
-    vertical-align: middle;
+	left: 0;
+	top: 0;
+	float: right;
+	vertical-align: middle;
 }
 .white-popup img {
 	max-width: 90%;
@@ -15,17 +15,29 @@
 .mfp-content {
 	max-width: 100%;
 }
-.button-group {
+/* .button-group {
 	position: absolute;
 	bottom: 0;
 	background: rgba(0, 0, 16, 0.8);
 	padding: 10px;
-	width: 265px;
+	width: 278px;
 	margin: 0 auto;
 	left: 0;
 	right: 0;
 	border-radius: 5px 5px 0 0;
+} */
+.button-group {
+	position: absolute;
+	bottom: 20%;
+	background: rgba(0, 0, 16, 0.4);
+	padding: 5px;
+	width: 278px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	border-radius: 5px;
 }
+
 .white-popup .cart_btns {
 	position: relative;
 	text-align: center;
@@ -57,14 +69,14 @@
 	padding-right: 5px;
 }
 .mfp-close-btn-in .mfp-close {
-    color: #fff !important;
-    background-color: #333;
+	color: #fff !important;
+	background-color: #333;
 }
 
 @media screen and (max-width: 480px) {
 	.mfp-container {
-	    padding-left: 0;
-	    padding-right: 0;
+		padding-left: 0;
+		padding-right: 0;
 	}
 	.white-popup img {
 		max-width: 100%;
