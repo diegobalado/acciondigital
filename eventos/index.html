@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="/assets/css/pieces/main.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/bootstrap.min.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/buscador.css" />
-	<link rel="stylesheet" href="/assets/css/pieces/galleries.min.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/galleries.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/lightbox.css" />
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -128,6 +128,7 @@
 				<div class="gallery" id="gallery">
 					<header>
 						<h1 id="gallery_title"></h1>
+						<h2 data-subtitle="gallery_subtitle" class="only-mobile"></h2>
 						<form id="buscador" action="javascript:buscar(userID.value)" method="" enctype="multipart/form-data">
 							<fieldset>
 								<input id="userID" name="userID" type="text" placeholder="Número de corredor/a" required >
@@ -136,6 +137,7 @@
 							</fieldset>
 						</form>
 					</header>
+					<h2 data-subtitle="gallery_subtitle" class="only-desktop"></h2>
 					<div id="gallery-wrapper" class="gallery-wrapper content"></div>
 					<div id="gallery-ad" id="gallery-ad"><div id="ads-block"></div></div>
 					<div class="loading"></div>

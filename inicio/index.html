@@ -27,8 +27,9 @@
 
 	<!-- <link rel="stylesheet" href="/assets/css/sections/sectionHome.css" /> -->
 	<link rel="stylesheet" href="/assets/css/pieces/main.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/forms.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/bootstrap.min.css" />
-	<link rel="stylesheet" href="/assets/css/pieces/galleries.min.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/galleries.css" />
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119356545-1"></script>
@@ -136,7 +137,15 @@
 					<header>
 						<h1 class="gallery-title">Últimos Eventos</h1>
 						<h2 class="hidden">Últimos Eventos</h2>
+						<fieldset>
+							<label for="ph">Fotografía:</label>
+							<div class="select-custom">
+								<select name="ph" id="ph" value=""></select>
+								<span class="icon fa-chevron-down"></span>
+							</div>
+						</fieldset>
 					</header>
+					<section id="homeGallery"></section>
 				</div>
 			</section>
 

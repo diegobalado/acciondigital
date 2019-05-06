@@ -1,3 +1,14 @@
+const phs = {
+	default: {
+		value: 'JPF',
+		label: 'Javier Piva Flos'
+	},
+	JPF: {
+		value: 'JPF',
+		label: 'Javier Piva Flos'
+	}
+}
+
 /*CARRITO*/
 function carrito() {
 
@@ -67,52 +78,66 @@ function carrito() {
   });
 }
 
-/*HANDLEBARS*/
-var $pathname = location.pathname;
-var $section = '';
-var $json = '';
-var $template = '';
+const loadEvents = (json, filter) => {
+	const parsedJson = {
+		ads: json.ads,
+		eventos: filter !== 'all' ? json.eventos.filter(e => (e.ph === filter || (filter === phs.default.value && !e.ph))) : json.eventos
+	}
+	var placeHolder = $("#homeGallery");
+	var raw_template = $('#pictures-template').html();
+	var template = Handlebars.compile(raw_template);
 
-$('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
-
-$section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/inicio/') ? 'inicio' : ($pathname.includes('/galeria/') ? 'galeria' : ''));
-if (!$pathname.includes('/amigos')) {
-	$template = $section == 'eventos' ? 'eventos' : $section;
-
-	$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function() {
-		$(document).ready(function() {
-			var raw_template = $('#pictures-template').html();
-			var template = Handlebars.compile(raw_template);
-			var placeHolder = $("#gallery");
-			var galleries = getGET();
-			$json = $section == 'eventos' ? galleries.g : $section;
-
-			if ($section == 'galeria' || $section == 'inicio') {
-				Handlebars.registerHelper('full_href', function(picture) {
-					return '/eventos/?g=' + picture.ID;
-				});
-			}
-
-			$.get("/assets/datasources/" + $json + ".json", function(data, status, xhr) {
-				let json_data = location.hostname === 'localhost' ? JSON.parse(data) : data;
-				json_data.ads.forEach(ad => {
-					if (!ad.href) ad.href = '#';
-					ad.target = (ad.href!=='#')?'_blank':'_self'
-				})
-				var html = template(json_data);
-				placeHolder.append(html);
-				carrito();
-			})
-		})
+	parsedJson.ads.forEach(ad => {
+		if (!ad.href) ad.href = '#';
+		ad.target = (ad.href !== '#') ? '_blank' : '_self'
 	})
+	var html = template(parsedJson);
+	placeHolder.html(html);
+	carrito();
 }
 
+var json_data = '';
+/*HANDLEBARS*/
+const loadGallery = (filter = 'all') => {
+	var $pathname = location.pathname;
+	var $section = '';
+	var $json = '';
+	var $template = '';
+
+	$('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
+
+	$section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/inicio/') ? 'inicio' : ($pathname.includes('/galeria/') ? 'galeria' : ''));
+	if (!$pathname.includes('/amigos')) {
+		$template = $section == 'eventos' ? 'eventos' : $section;
+
+		$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function () {
+			$(document).ready(function () {
+				var galleries = getGET();
+				$json = $section === 'eventos' ? galleries.g : $section;
+
+				if ($section == 'galeria' || $section == 'inicio') {
+					Handlebars.registerHelper('full_href', function (picture) {
+						return '/eventos/?g=' + picture.ID;
+					});
+				}
+
+				if (json_data === '') {
+					$.get("/assets/datasources/" + $json + ".json", function (data, status, xhr) {
+						json_data = location.hostname === 'localhost' ? JSON.parse(data) : data;
+						loadEvents(json_data, filter);
+					})
+				} else {
+					loadEvents(json_data, filter);				
+				}
+			})
+		})
+	}
+}
 
 function getCurrentScroll() {
 	return window.pageYOffset || document.documentElement.scrollTop;
 }
 const shrinkHeader = 100;
-
 
 /*HEADER COLAPSABLE*/
 $(function() {
@@ -137,6 +162,12 @@ $(document).ready(function() {
 		}, 400);
 		return false;
 	});
+	$('select#ph').append('<option value="all">Todos</option>')
+	Object.keys(phs).map(ph => {
+		ph !== 'default' && $('select#ph').append(`<option value="${phs[ph].value}">${phs[ph].label}</option>`)
+	})
+	loadGallery();
+	$('select#ph').on('change', event => loadGallery(event.target.value));
 });
 
 /*PARAMETROS*/

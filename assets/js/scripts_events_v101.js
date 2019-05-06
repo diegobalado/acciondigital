@@ -1,3 +1,14 @@
+const phs = {
+	default: {
+		value: 'JPF',
+		label: 'Javier Piva Flos'
+	},
+	JPF: {
+		value: 'JPF',
+		label: 'Javier Piva Flos'
+	}
+}
+
 /*CARRITO*/
 function carrito() {
 
@@ -103,6 +114,7 @@ if (!$pathname.includes('/agenda')) {
 			let template = Handlebars.compile(raw_template);
 			let events_placeholder = $("#gallery-wrapper");
 			let title_placeholder = $("#gallery_title");
+			let subtitle_placeholder = $("[data-subtitle='gallery_subtitle']");
 			let ads_placeHolder = $("#ads-block");
 			let galleries = getGET();
 			$json = $section == 'eventos' ? galleries.g : $section;
@@ -133,7 +145,7 @@ if (!$pathname.includes('/agenda')) {
 				let pics_length = location.hostname == 'localhost' ? JSON.parse(data).pictures.length : data.pictures.length;*/
 				let json_data = location.hostname == 'localhost' ? JSON.parse(data) : data;
 				let IdEvento = json_data.IdEvento;
-				let ph = json_data.ph ? json_data.ph : 'JPF';
+				let ph = json_data.ph ? json_data.ph : phs.default.value;
 				let title = json_data.title;
 				let price = json_data.price;
 				json_data.promo = json_data.promo ? json_data.promo : 0;
@@ -157,7 +169,7 @@ if (!$pathname.includes('/agenda')) {
 					let pic = '';
 					let title = data.title;
 					let price = data.price;
-					let ph = data.ph ? data.ph : "JPF";
+					let ph = data.ph ? data.ph : phs.default.value;
 					var i = 0;
 					for (i = page_start; i < page_start + page_limit; i++) {
 						pic = data.pictures[i];
@@ -296,6 +308,7 @@ if (!$pathname.includes('/agenda')) {
 				load_ads(ads_placeHolder, json_data);
 
 				title_placeholder.append(title);
+				subtitle_placeholder.append(phs[ph].label);
 
 				// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
@@ -422,7 +435,7 @@ function buscar(foto) {
 		let sinCodigo = [];
 		let title = html.title;
 		let price = html.price;
-		let ph = html.ph ? html.ph : "JPF";
+		let ph = html.ph ? html.ph : phs.default.value;
 		let codigo = '';
 		html.promo = html.promo ? html.promo : 0;
 		let promo = html.promo ? html.promo : 0;
@@ -516,7 +529,7 @@ function buscar(foto) {
 			$('#gallery-wrapper').addClass('results').html($results);
 
 			let IdEvento = html.IdEvento;
-			let ph = html.ph ? html.ph : "JPF";
+			let ph = html.ph ? html.ph : phs.default.value;
 			let title = html.title;
 			// let price = arrFiltro.price;
 			let json_arrFiltro = arrFiltro;

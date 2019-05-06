@@ -27,7 +27,8 @@ if (isset($_POST["IdEvento"])) {
         $product = json_decode($data, true) ;
         $evento = array(
             'ID' => $idEvento,
-            'text' => $product['title']
+            'text' => $product['title'],
+            'ph' => $product['ph']
             );
         array_push($eventos, $evento);
     }

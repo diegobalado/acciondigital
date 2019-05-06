@@ -2,7 +2,6 @@ $(document).ready(function() {
   // $('#nav').load('assets/includes/nav.html');
 
   var goToCartIcon = function($addTocartBtn){
-    console.log('***GO to cart');
     var $cartIcon = $(".my-cart-icon");
     var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
     $addTocartBtn.prepend($image);
