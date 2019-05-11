@@ -43,7 +43,6 @@ function carrito() {
 			goToCartIcon($addTocart);
 		},
 		afterAddOnCart: function (products, totalPrice, totalQuantity) {
-			// console.log("afterAddOnCart", products, totalPrice, totalQuantity);
 			// sessionStorage.setItem('products', JSON.stringify(products));
 			// sessionStorage.setItem('price', totalPrice);
 			// sessionStorage.setItem('quantity', totalQuantity);
@@ -57,14 +56,11 @@ function carrito() {
 			$.each(products, function () {
 				checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image + " \t " + this.ph);
 			});
-			// window.location.href = "/checkout/?n=fotosAD&p="+totalPrice+"&q="+totalQuantity;
-			// alert(checkoutString)
 			$.post('/checkout/index.php', {
 				products: products,
 				totalPrice: totalPrice
 			})
 				.success(function (html) {
-					// console.log('**products ' + JSON.stringify(products)); 
 					$('#main').html(html);
 				})
 				.error(function () {
@@ -77,19 +73,11 @@ function carrito() {
 			let finalPrice = totalPrice;
 			let unityPrice = totalPrice / totalQuantity;
 			if (totalQuantity >= cantPromo) {
-				// finalPrice = Math.round(Math.floor(totalQuantity/cantPromo)*unityPrice/1.2*cantPromo + (totalQuantity%cantPromo)*unityPrice);
 				finalPrice = 0
 				return finalPrice;
 			} else return null;
 		}
 	});
-
-	// if (sessionStorage.getItem('products') && sessionStorage.getItem('price') && sessionStorage.getItem('quantity')) {
-	//   if (sessionStorage.getItem('quantity') > 0) $('.my-cart-badge').removeClass('empty').html(sessionStorage.getItem('quantity'));
-	//   console.log('price ' + sessionStorage.getItem('price'));
-	//   console.log('quantity ' + sessionStorage.getItem('quantity'));
-	//   console.log('products ' + sessionStorage.getItem('products'));
-	// }
 }
 
 /*HANDLEBARS*/
@@ -104,10 +92,6 @@ $section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/i
 if (!$pathname.includes('/agenda')) {
 	$template = $section == 'eventos' ? 'eventos' : $section;
 
-	// console.log('$section ' + $section);
-	// console.log('$json ' + $json);
-	// console.log('$template ' + $template);
-
 	$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function () {
 		$(document).ready(function () {
 			let raw_template = $('#pictures-template').html();
@@ -120,7 +104,6 @@ if (!$pathname.includes('/agenda')) {
 			$json = $section == 'eventos' ? galleries.g : $section;
 
 			if ($section == 'galeria' || $section == 'inicio') {
-				// console.log('$section ' + $section);
 				Handlebars.registerHelper('full_href', function (picture) {
 					return '/eventos/?g=' + picture.ID;
 				});
@@ -133,9 +116,7 @@ if (!$pathname.includes('/agenda')) {
 			$.get("/assets/datasources/" + $json + ".json", function (data, status, xhr) {
 				// let html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
 				// data.forEach(function(element){
-				// 	console.log(element);
 				// })
-				// console.log(JSON.parse(data).pictures);
 
 				/*let IdEvento = location.hostname == 'localhost' ? JSON.parse(data).IdEvento : data.IdEvento;
 				let title = location.hostname == 'localhost' ? JSON.parse(data).title : data.title;
@@ -224,15 +205,12 @@ if (!$pathname.includes('/agenda')) {
 							</div>`;
 
 						placeholder.append(html_element);
-						// if ($('#'+ galleries.g + '_' + pic +' .img-wrapper img')[0].complete) $('.'+ galleries.g + '_' + pic).fadeOut("slow");
-
 					}
 					lastItem = data.IdEvento + '_' + pic;
 					function loading() {
 						setTimeout(function () {
 							if ($('.media a[href="#' + data.IdEvento + '_' + data.pictures[page_start] + '"] img')[0].complete) {
 								$('.loading').fadeOut("fast");
-								// clearInterval(load);
 							} else {
 								loading();
 							}
@@ -371,7 +349,6 @@ function getGET() {
 			//tomo el parametro sin lo que viene despues del #
 			get[tmp[0]] = unescape(decodeURI(tmp[1])).indexOf('#') != -1 ? unescape(decodeURI(tmp[1])).substr(0, unescape(decodeURI(tmp[1])).indexOf('#')) : unescape(decodeURI(tmp[1]));
 		}
-		// console.log('Parametros ' + get.g);
 		return get;
 	}
 
@@ -380,7 +357,6 @@ function getGET() {
 /*PAGINA ACTIVA*/
 $(function () {
 	let $param = location.pathname;
-	// console.log('$param ' + $param);
 	switch ($param) {
 		case '/index.html':
 			$('#nav-header ul li.home').addClass('active');
@@ -406,7 +382,6 @@ $(function () {
 /*BUSCADOR*/
 $(function () {
 	let $param = location.pathname;
-	// console.log('$param ' + $param);
 	if ($param != '/index.html' || $param != '/inicio/') {
 		$('#nav-header ul li.toggle_search').removeClass('hidden');
 	}
@@ -425,9 +400,7 @@ $(function () {
 })
 
 function buscar(foto) {
-	// console.log('foto ' + foto);
 	let galleries = getGET();
-	// console.log('SCRIPTS.JS - galleries ' + JSON.stringify(galleries));
 	$.get("/assets/datasources/" + galleries.g + ".json", function (data, status, xhr) {
 		let html = location.hostname == 'localhost' ? JSON.parse(data) : data;
 		let arrFiltro = [];
@@ -449,7 +422,6 @@ function buscar(foto) {
 				} else if (codigo == foto) arrFiltro.push(el);
 			}
 		});
-		// console.log('SCRIPTS - sinCodigo ' + sinCodigo);
 
 		/*CARGA PARA LA BUSQUEDA*/
 		var load_page = function (placeholder, page_start, page_limit, data) {
@@ -509,7 +481,6 @@ function buscar(foto) {
 
 				$('#results').append(html_element);
 			}
-			// if ($('#'+ galleries.g + '_' + data[i] +' .img-wrapper img')[0].complete) $('.'+ galleries.g + '_' + data[i]).fadeOut("slow");
 			carrito();
 			$('.open-popup-link').magnificPopup({
 				gallery: {
@@ -520,7 +491,6 @@ function buscar(foto) {
 		}
 
 		if (arrFiltro.length != 0) {
-			// $('#gallery header')
 			let $results = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><p>Además de éstas, puede haber fotos tuyas sin clasificar.</p><div id="results"></div>';
 
 			let events_placeholder = $('#results');
@@ -530,7 +500,6 @@ function buscar(foto) {
 			let IdEvento = html.IdEvento;
 			let ph = html.ph ? html.ph : phs.default.value;
 			let title = html.title;
-			// let price = arrFiltro.price;
 			let json_arrFiltro = arrFiltro;
 
 			let html_element = '';
@@ -574,7 +543,6 @@ function buscar(foto) {
 
 			let IdEvento = html.IdEvento;
 			let title = html.title;
-			// let price = sinCodigo.price;
 			let json_sinCodigo = sinCodigo;
 
 			let html_element = '';
@@ -613,5 +581,4 @@ function buscar(foto) {
 }
 
 /*GENERALES*/
-// $('form').length>0 && $('form').placeholder();
 $('.scrolly').length > 0 && $('.scrolly').scrolly();
