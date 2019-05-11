@@ -61,7 +61,6 @@
       return productIndex;
     }
     var setAllProducts = function(products){
-      // console.log('***mycart products: ' + JSON.stringify(products, null, 2))
       localStorage.products = JSON.stringify(products);
     }
     var addProduct = function(id, name, summary, price, quantity, image, event, promo, ph) {
@@ -167,7 +166,6 @@
     }
 
     var getDiscountPrice = function(){
-      // console.log('***getDiscountPrice')
       const promoQuantity = 5
       let products = getAllProducts();
       let events = []
@@ -190,7 +188,6 @@
         if (event.promo!==0) finalPrice += (Math.floor(quantity/promoQuantity)*event.promo + (quantity%promoQuantity)*event.price)
           else finalPrice += quantity*event.price
       })
-      // console.log('*** finalPrice: ' + finalPrice)
       return finalPrice
     }
 
@@ -380,7 +377,6 @@
     }
 
     $cartIcon.click(function(){
-      // console.log('***click')
       options.showCheckoutModal ? showModal() : options.clickOnCartIcon($cartIcon, ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
     });
 
@@ -492,9 +488,6 @@
         var ph = $target.data('ph');
         var type = $target.data('type');
 
-        // console.log('*** promo: ' + promo)
-        // console.log('*** event: ' + event)
-        // console.log('*** name: ' + name)
 
 
         ProductManager.setProduct(id, name, summary, price, quantity, image, event, promo, ph);
