@@ -1,0 +1,697 @@
+[14-Nov-2017 23:01:25 America/New_York] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so' - /opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[14-Nov-2017 23:02:46 America/New_York] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so' - /opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[14-Nov-2017 23:02:47 America/New_York] PHP Fatal error:  Call to undefined function iconv() in /home/acciondi/public_html/checkout/index3.php on line 114
+[14-Nov-2017 23:03:14 America/New_York] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so' - /opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[15-Nov-2017 22:08:46 America/New_York] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so' - /opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[15-Nov-2017 22:09:15 America/New_York] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so' - /opt/cpanel/ea-php56/root/usr/lib64/php/modules/imagick.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[16-Nov-2017 07:32:30 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 07:32:30 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 07:37:29 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 07:54:25 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 08:15:08 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 12:13:56 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 12:15:23 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 12:27:02 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2017 12:27:56 America/New_York] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[27-Mar-2018 11:10:46 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'internal_error' in /home/acciondi/public_html/assets/lib/mercadopago.php:528
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(67): MPRestClient::post(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(210): MP->get_access_token()
+#3 /home/acciondi/public_html/checkout/index3.php(118): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 528
+[22-Apr-2018 02:48:55 America/New_York] PHP Fatal error:  Undefined constant 'r\n' in /home/acciondi/public_html/checkout/checkout.php on line 62
+[22-Apr-2018 03:23:53 America/New_York] PHP Notice:  Undefined index: products in /home/acciondi/public_html/checkout/checkout.php on line 65
+[24-Apr-2018 22:50:24 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(41): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[24-Apr-2018 22:52:30 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(41): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 07:23:22 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(41): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 07:31:34 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(41): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 09:17:21 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(41): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 09:57:32 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(41): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 10:02:41 America/New_York] PHP Parse error:  syntax error, unexpected 'require_once' (T_REQUIRE_ONCE) in /home/acciondi/public_html/checkout/checkout.php on line 16
+[25-Apr-2018 10:13:32 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(44): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 10:20:10 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(45): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 10:22:28 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(38): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 10:34:30 America/New_York] PHP Notice:  Array to string conversion in /home/acciondi/public_html/checkout/checkout.php on line 35
+[25-Apr-2018 10:34:30 America/New_York] PHP Notice:  Array to string conversion in /home/acciondi/public_html/checkout/checkout.php on line 35
+[25-Apr-2018 10:34:31 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(46): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[25-Apr-2018 10:36:23 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'JSON Error [5] - Data: ' in /home/acciondi/public_html/assets/lib/mercadopago.php:486
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(502): MPRestClient::build_request(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#3 /home/acciondi/public_html/checkout/checkout.php(46): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 486
+[17-May-2018 01:11:25 America/New_York] PHP Parse error:  syntax error, unexpected '$subject' (T_VARIABLE) in /home/acciondi/public_html/checkout/checkout.php on line 55
+[14-Jun-2018 14:00:45 America/New_York] PHP Fatal error:  Uncaught exception 'MercadoPagoException' with message 'unit_price invalid' in /home/acciondi/public_html/assets/lib/mercadopago.php:528
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(215): MPRestClient::post(Array)
+#2 /home/acciondi/public_html/checkout/checkout.php(44): MP->create_preference(Array)
+#3 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 528
+[23-Jul-2018 16:52:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Jul-2018 16:53:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Jul-2018 20:04:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Jul-2018 20:04:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Jul-2018 20:04:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Jul-2018 20:04:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 04:13:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 04:15:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 04:18:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 04:20:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 04:21:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 13:17:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 13:18:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 14:03:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 14:03:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 14:09:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 14:09:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Jul-2018 14:09:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Aug-2018 21:27:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Aug-2018 15:28:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[28-Aug-2018 22:32:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:38:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:39:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:39:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:40:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:40:42 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:44:42 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:44:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 02:44:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 10:30:04 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 10:30:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 10:35:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 10:36:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 10:49:39 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:05:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:06:04 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:10:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:22:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:39:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:40:20 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:47:11 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:48:09 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 11:53:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:01:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:05:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:06:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:19:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:20:49 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:37:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:38:20 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:48:11 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 12:49:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 13:01:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 13:03:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 13:15:42 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 14:26:10 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 14:26:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 14:42:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 14:42:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 15:51:37 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 16:29:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 16:33:16 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 16:44:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 16:53:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 16:54:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 16:57:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 17:46:11 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 18:18:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 19:25:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 19:25:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 19:34:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 19:35:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 19:56:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 19:58:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 20:08:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 20:09:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 20:33:48 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 20:34:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 22:01:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 22:02:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Aug-2018 22:35:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 00:21:11 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 00:22:54 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 00:54:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 00:55:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 01:02:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 02:50:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 10:09:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 10:23:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 10:24:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 17:00:42 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 17:13:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 18:24:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 19:01:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 19:01:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 19:04:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 19:05:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 19:12:44 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 21:34:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 21:34:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 21:40:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Aug-2018 21:41:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 00:45:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 02:13:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 02:14:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 03:22:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 03:24:16 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 11:08:19 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 11:28:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 11:31:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 12:57:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 12:57:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 13:20:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 13:20:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 15:51:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 15:51:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 16:01:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Aug-2018 16:01:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 12:08:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 12:09:20 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 14:01:39 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 14:02:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 18:50:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 18:51:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 23:02:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 23:04:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Sep-2018 23:04:19 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Sep-2018 18:54:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Sep-2018 18:55:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 09:51:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 09:52:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 11:27:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 11:28:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 14:05:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 20:58:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 20:59:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 21:31:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Sep-2018 21:33:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 00:45:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 00:46:42 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 10:45:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 10:46:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 11:44:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 11:46:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 13:57:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 13:59:09 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 21:45:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 21:46:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 22:45:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Sep-2018 22:46:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Sep-2018 11:05:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Sep-2018 11:06:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Sep-2018 13:11:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Sep-2018 13:11:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Sep-2018 19:13:10 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Sep-2018 19:13:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Sep-2018 15:45:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Sep-2018 15:46:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Sep-2018 15:48:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 00:53:08 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 03:06:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 03:07:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 11:05:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 11:06:16 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 13:05:03 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 13:06:11 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 13:20:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 13:21:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 15:23:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 17:17:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 17:17:44 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 20:24:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 20:24:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 21:09:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 21:10:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 21:16:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 21:16:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 21:16:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 21:16:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 22:49:48 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Sep-2018 22:53:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 10:32:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 15:38:54 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 15:39:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 19:19:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 19:20:54 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 19:27:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 19:27:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 21:09:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 21:11:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Sep-2018 21:12:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[12-Sep-2018 02:02:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[14-Sep-2018 10:36:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[14-Sep-2018 10:37:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 16:05:20 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 16:06:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 16:51:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 16:52:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 17:02:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 17:02:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 17:02:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 17:02:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 18:30:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 18:30:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 20:17:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 20:19:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 20:21:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 20:22:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 20:36:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 20:38:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Sep-2018 20:38:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[18-Sep-2018 00:28:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[19-Sep-2018 00:40:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[19-Sep-2018 00:41:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[19-Sep-2018 12:13:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[19-Sep-2018 12:20:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[19-Sep-2018 18:22:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[19-Sep-2018 18:23:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Sep-2018 22:45:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Sep-2018 22:47:10 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Sep-2018 22:52:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Sep-2018 22:52:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Sep-2018 22:52:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 11:30:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 11:31:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 12:15:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 12:16:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:04:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:05:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:16:09 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:16:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:40:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:46:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:49:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:49:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 13:50:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:11:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:11:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:11:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:22:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:23:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:28:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:29:49 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:30:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:41:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 14:42:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 15:06:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 15:07:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 15:14:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 18:42:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 18:43:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 20:44:03 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 20:44:44 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 21:38:13 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 21:38:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 22:34:37 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 22:35:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 23:05:09 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 23:07:10 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 23:43:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Sep-2018 23:44:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 00:19:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 00:20:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 00:31:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 01:07:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 01:10:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 02:21:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 02:22:39 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 03:42:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 03:43:20 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 04:19:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 04:21:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 12:11:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 12:13:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 14:22:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 14:31:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 14:32:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 15:08:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 15:09:13 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 16:32:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 16:33:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 17:41:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 17:42:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 17:50:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 17:51:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 23:39:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[25-Sep-2018 23:40:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[26-Sep-2018 13:00:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[26-Sep-2018 13:01:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[26-Sep-2018 14:23:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[26-Sep-2018 22:41:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[26-Sep-2018 22:42:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[27-Sep-2018 00:51:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[27-Sep-2018 00:51:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[28-Sep-2018 00:42:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[28-Sep-2018 00:44:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[28-Sep-2018 11:46:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[28-Sep-2018 11:55:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[28-Sep-2018 12:13:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[28-Sep-2018 12:14:03 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Sep-2018 18:30:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 00:10:48 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 00:11:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 02:14:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 02:14:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 10:26:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 10:26:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 10:40:49 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 10:58:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 11:13:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 11:13:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 11:23:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 11:24:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 11:38:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 11:39:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 12:42:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 12:44:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 12:44:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 12:44:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 12:47:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 12:47:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 13:08:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 13:08:48 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 13:33:42 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 13:34:19 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 14:34:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 14:58:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 14:58:44 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 18:53:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 19:02:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 19:03:13 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 20:09:03 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[01-Oct-2018 20:09:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 11:59:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 12:01:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 12:05:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 12:06:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 13:10:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 13:10:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 14:23:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 14:27:04 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 16:11:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 16:12:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 16:52:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 23:35:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[02-Oct-2018 23:35:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Oct-2018 20:15:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Oct-2018 20:16:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Oct-2018 21:45:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 18:51:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 18:55:09 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 18:55:41 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 19:04:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 19:04:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 19:04:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 19:04:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 19:51:49 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 19:52:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 20:17:19 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Oct-2018 20:17:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Oct-2018 18:13:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Oct-2018 18:19:09 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Oct-2018 18:20:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Oct-2018 01:23:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Oct-2018 22:26:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Oct-2018 22:39:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Oct-2018 22:51:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[24-Oct-2018 22:53:08 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 11:28:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 11:28:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 13:51:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 13:52:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 14:20:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 14:41:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 14:42:04 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 17:37:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 17:37:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 17:37:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 17:37:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 18:57:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 22:24:20 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 22:28:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 23:11:49 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[29-Oct-2018 23:12:36 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Oct-2018 14:15:30 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Oct-2018 14:16:13 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Oct-2018 01:27:08 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Oct-2018 01:27:38 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Oct-2018 01:49:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Oct-2018 01:50:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Oct-2018 12:51:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[31-Oct-2018 12:52:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:46:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:47:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:49:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:50:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:53:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:54:08 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:54:11 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:58:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:58:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:58:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:58:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 17:59:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 19:04:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 19:05:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 19:20:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 19:21:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 19:21:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 19:23:03 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:00:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:00:48 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:04:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:05:08 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:20:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:36:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:37:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:37:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:38:08 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:40:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 20:41:39 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 21:13:40 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 21:14:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 21:41:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:32:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:33:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:34:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:35:13 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:39:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:40:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:49:54 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 22:50:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 23:20:39 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 23:21:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 23:21:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 23:30:22 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Nov-2018 23:31:39 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 00:00:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 00:00:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 00:28:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 00:39:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 00:50:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 00:54:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 01:22:44 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 01:23:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 01:37:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 01:38:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 02:19:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 02:21:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 03:37:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 11:15:16 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 11:45:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 11:46:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 11:52:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 12:16:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 12:31:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 12:33:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 15:17:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 15:18:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 15:39:01 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 15:40:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 17:14:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 17:15:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 17:35:09 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 17:36:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 18:55:19 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 18:56:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 18:56:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 21:15:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 22:47:31 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 23:18:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 23:42:16 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 23:42:49 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Nov-2018 23:44:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 00:05:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 00:06:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 00:12:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 00:28:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 00:29:15 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 01:11:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 01:33:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 01:34:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 02:00:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 02:01:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 02:39:21 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 11:38:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 11:39:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 12:43:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 12:45:51 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 12:46:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 14:14:04 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 14:15:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 14:42:49 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 14:44:52 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 16:17:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 16:42:28 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 16:46:58 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 18:02:57 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 18:06:32 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 18:29:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 18:39:56 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 18:40:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 22:29:55 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[07-Nov-2018 22:30:23 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 00:36:02 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 15:07:17 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 15:07:42 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 16:41:18 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 16:42:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 19:23:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 20:01:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 20:01:48 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 20:57:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[08-Nov-2018 20:58:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Nov-2018 13:48:46 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Nov-2018 13:49:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Nov-2018 14:02:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Nov-2018 20:48:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[11-Nov-2018 13:22:24 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[12-Nov-2018 20:35:20 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:16:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:17:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:20:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:22:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:22:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:22:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:22:53 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:23:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 21:23:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 22:30:26 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[13-Nov-2018 22:43:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[15-Nov-2018 14:59:50 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[15-Nov-2018 15:00:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[15-Nov-2018 15:05:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[15-Nov-2018 15:05:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[15-Nov-2018 15:05:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[15-Nov-2018 15:05:45 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2018 16:56:05 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2018 16:58:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2018 23:05:34 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[16-Nov-2018 23:05:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Nov-2018 15:47:04 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Nov-2018 15:48:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Nov-2018 10:48:15 America/New_York] PHP Fatal error:  Uncaught MercadoPagoException: Failed to connect to api.mercadopago.com port 443: Connection refused in /home/acciondi/public_html/assets/lib/mercadopago.php:508
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(62): MPRestClient::post(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(210): MP->get_access_token()
+#3 /home/acciondi/public_html/checkout/checkout.php(44): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 508
+[17-Nov-2018 20:26:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Nov-2018 20:26:47 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[17-Nov-2018 15:26:49 America/New_York] PHP Fatal error:  Uncaught MercadoPagoException: Failed to connect to api.mercadopago.com port 443: Connection refused in /home/acciondi/public_html/assets/lib/mercadopago.php:508
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(62): MPRestClient::post(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(210): MP->get_access_token()
+#3 /home/acciondi/public_html/checkout/checkout.php(44): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 508
+[19-Nov-2018 04:57:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[19-Nov-2018 04:59:25 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[18-Nov-2018 23:59:28 America/New_York] PHP Fatal error:  Uncaught MercadoPagoException: Failed to connect to api.mercadopago.com port 443: Connection refused in /home/acciondi/public_html/assets/lib/mercadopago.php:508
+Stack trace:
+#0 /home/acciondi/public_html/assets/lib/mercadopago.php(557): MPRestClient::exec(Array)
+#1 /home/acciondi/public_html/assets/lib/mercadopago.php(62): MPRestClient::post(Array)
+#2 /home/acciondi/public_html/assets/lib/mercadopago.php(210): MP->get_access_token()
+#3 /home/acciondi/public_html/checkout/checkout.php(44): MP->create_preference(Array)
+#4 {main}
+  thrown in /home/acciondi/public_html/assets/lib/mercadopago.php on line 508
+[20-Nov-2018 23:07:59 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[20-Nov-2018 23:09:00 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0

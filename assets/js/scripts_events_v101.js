@@ -59,7 +59,7 @@ function carrito() {
 			});
 			// window.location.href = "/checkout/?n=fotosAD&p="+totalPrice+"&q="+totalQuantity;
 			// alert(checkoutString)
-			$.post('/checkout/index3.php', {
+			$.post('/checkout/index.php', {
 				products: products,
 				totalPrice: totalPrice
 			})
@@ -310,7 +310,6 @@ if (!$pathname.includes('/agenda')) {
 				title_placeholder.append(title);
 				subtitle_placeholder.append(phs[ph].label);
 
-				// $('body').append('<script type="text/javascript" class="scriptCarrito" src="/assets/js/carrito/carrito.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/skel.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>');
 				$('body').append('<script type="text/javascript" src="/assets/js/util.js"></script>');

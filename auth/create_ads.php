@@ -4,14 +4,12 @@
 	<title>Acción Digital</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!-- <link rel="stylesheet" href="/assets/css/sections/sectionForms.css" /> -->
 	<link rel="stylesheet" href="/assets/css/sections/sectionCheckout.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/forms.css" />
 	
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	
-	<!-- <script src="/assets/js/jquery.min.js"></script> -->
 	<style type="text/css">
 		.form-page fieldset:nth-child(2n) {
 			padding-right: 50px;
