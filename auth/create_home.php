@@ -10,8 +10,6 @@
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	
-	<!-- <script src="/assets/js/jquery.min.js"></script> -->
-
 </head>
 <body class="form-page">
 	<div class="page-wrap">

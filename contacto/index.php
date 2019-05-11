@@ -25,7 +25,6 @@
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="theme-color" content="#ffffff">
 
-	<!-- <link rel="stylesheet" href="/assets/css/sections/sectionContact.css" /> -->
 	<link rel="stylesheet" href="/assets/css/pieces/main.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/contact.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/bootstrap.min.css" />
@@ -132,14 +131,5 @@
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/assets/js/load_pieces.min.1706250246.js"></script>
 	<script type="text/javascript" src="/assets/js/plugins.min.js"></script>	
-<!-- 	<script type="text/javascript" src="/assets/js/handlebars.min.js"></script>
-	<script type="text/javascript" src="/assets/js/jquery.scrolly.min.js"></script>
-	<script type="text/javascript" src="/assets/js/util.js"></script>
-	<script type="text/javascript" src="/assets/js/carrito/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/assets/js/carrito/jquery.mycart.js"></script> -->
-	<!-- <script type="text/javascript" src="/assets/js/jquery.poptrox.min.js"></script> -->
-	<!-- <script type="text/javascript" src="/assets/js/carrito/carrito.js"></script> -->
-	<!-- <script type="text/javascript" src="/assets/js/skel.min.js"></script> -->
-	<!-- <script type="text/javascript" src="/assets/js/main.js"></script> -->
 </body>
 </html>
