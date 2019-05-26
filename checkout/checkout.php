@@ -44,15 +44,15 @@
 			$preference = $mp->create_preference ($preference_data);
 			?>
 			<script>
-				$href = "<?php echo $preference['response']['init_point']; ?>";	
-				window.location.href = $href;	
+				$href = "<?php echo $preference['response']['init_point']; ?>";
+				window.location.href = $href;
 			</script>
 	<?php
 	} else {
 		$ph = $_REQUEST['ph'];
 		$to = 'acciondigitalfoto@gmail.com, jdiegomdq@gmail.com';
-		if ($ph !== 'JPF' && $ph !== '') {
-			$to = $to.', jdiegomdq+01@gmail.com, javierpivaflos@gmail.com';
+		if ($ph === 'MR') {
+			$to = $to.', maribel02_11@hotmail.com';
 		}
 		$pictures = str_replace(['<span></span>', '</h4>', '</p>'], '', $_POST['post_products']);
 		$pictures = str_replace(['<br /><h4>', '<br />', '<p>', '<h4>'], "\r\n", $pictures);

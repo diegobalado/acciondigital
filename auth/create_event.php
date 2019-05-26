@@ -9,9 +9,9 @@
 	<title>Acción Digital</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/assets/css/sections/sectionForms.css" />	
-	<link rel="stylesheet" href="/assets/css/pieces/multi-select.dev.css" />	
-	
+	<link rel="stylesheet" href="/assets/css/sections/sectionForms.css" />
+	<link rel="stylesheet" href="/assets/css/pieces/multi-select.dev.css" />
+
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 </head>
@@ -38,9 +38,9 @@
 					<fieldset>
 						<label for="IdEvento">Carpeta:</label>
 						<div class="select-custom">
-							<select name="IdEvento" id="IdEvento" value="">  
+							<select name="IdEvento" id="IdEvento" value="">
 
-								<?php 
+								<?php
 								error_reporting (E_ALL ^ E_NOTICE);
 								function debug_to_console($msg, $data) {
 									$output = $data;
@@ -49,7 +49,7 @@
 
 									echo "<script>console.log( 'Debug " . $msg . ": " . $output . "' );</script>";
 								}
-								?> 
+								?>
 
 								<?php
 								$directorio = opendir($_SERVER["DOCUMENT_ROOT"]."/assets/images/eventos/");
@@ -70,7 +70,7 @@
 									</option>
 									<?php
 								}
-								?>       
+								?>
 							</select>
 							<span class="icon fa-chevron-down"></span>
 						</div>
@@ -103,9 +103,9 @@
 					<fieldset>
 						<label for="ph">Fotógrafo:</label>
 						<div class="select-custom">
-							<select name="ph" id="ph" value="">  
+							<select name="ph" id="ph" value="">
 								<option value="JPF">Javier</option>
-								<option value="Otro">Otro</option>
+								<option value="MR">Maribel</option>
 							</select>
 							<span class="icon fa-chevron-down"></span>
 						</div>
@@ -113,7 +113,7 @@
 
 					<fieldset>
 						<label for="ads">Publicidades:</label>
-						<select multiple name="ads[]" id="ads" value="">  
+						<select multiple name="ads[]" id="ads" value="">
 							<?php
 							$adsFolder = opendir($_SERVER["DOCUMENT_ROOT"]."/assets/images/ads/");
 							$ads = array();
@@ -133,13 +133,13 @@
 								</option>
 								<?php
 							}
-							?>       
+							?>
 						</select>
 						<input type="hidden" name="adsOrdered" id="adsOrdered">
 					</fieldset>
 
 					<fieldset><input type="submit" value="Guardar" /></fieldset>
-				</div>      
+				</div>
 			</form>
 			</section>
 		</div>

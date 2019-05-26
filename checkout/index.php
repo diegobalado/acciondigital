@@ -50,36 +50,36 @@ if (isset($_POST["products"])) {
 <div class="social column">
 	<h3>Fotos:</h3>
 	<p>
-		<?php 
-			if ($ph === "JPF") {
-				echo 'Fotógrafo';
-			} else {
+		<?php
+			if ($ph === "MR") {
 				echo 'Fotógrafa';
+			} else {
+				echo 'Fotógrafo';
 			}
 		?>: <strong>
-			<?php 
-				if ($ph === "JPF") {
-					echo 'Javier Piva Flos';
+			<?php
+				if ($ph === "MR") {
+					echo 'Maribel Rodríguez';
 				} else {
-					echo $ph;
+					echo 'Javier Piva Flos';
 				}
 			?>
 		</strong>
-	</p>	
-	<?php 
+	</p>
+	<?php
 		echo $pictures;
 	?>
 	<hr>
 	<p>Total:
 		$<strong>
-			<?php 
+			<?php
 				echo $precioTotal;
-			?>			
+			?>
 		</strong>
 	</p>
 
 	<div class="modales hidden">
-		<h4><span class="icon fa-exclamation-triangle"></span> Importante</h4>		
+		<h4><span class="icon fa-exclamation-triangle"></span> Importante</h4>
 		<div class="mod mod-mp hidden">
 			<p>Eligiendo Mercado Pago como forma de pago, al hacer click en Confirmar la página se redirige automáticamente al sitio de Mercado Pago para completar los datos correspondientes para realizar el pago.</p>
 		</div>
@@ -94,10 +94,10 @@ if (isset($_POST["products"])) {
 	<form action="/checkout/checkout.php" method="post">
 		<?php
 			$customValidityMsg = "Por favor, seleccioná un medio de pago.";
-			$payType = '<div class="field half first" style="position:relative;"> 
+			$payType = '<div class="field half first" style="position:relative;">
 				<label for="payment">Forma de pago<span style="color:red">*</span></label>
 				<div class="select-custom">
-					<select name="payment" id="payment" value="" onChange="handleOnChange()" required="true" oninvalid="this.setCustomValidity('.$customValidityMsg.')" oninput="setCustomValidity()">  
+					<select name="payment" id="payment" value="" onChange="handleOnChange()" required="true" oninvalid="this.setCustomValidity('.$customValidityMsg.')" oninput="setCustomValidity()">
 						<option value=""></option>
 						<option value="mp">Mercado Pago</option>
 						<option value="cbu">Transferencia Bancaria</option>
@@ -145,7 +145,7 @@ if (isset($_POST["products"])) {
 				gtag('event', 'CancelCheckout', {'event_category': 'Checkout', 'event_label': 'Compra Cancelada' });
 				window.location.href = '/inicio';
 			});
-			function check(input) {				
+			function check(input) {
 				if (input.value !== document.getElementById('email').value) {
 					input.setCustomValidity('Las casillas de e-mail no coinciden.');
 				} else {
@@ -164,12 +164,12 @@ if (isset($_POST["products"])) {
 					ttipBody = '<p>Vas a recibir en tu casilla de email los datos necesarios para realizar la transferencia.</p>'
 				else if (value === 'mp')
 					ttipBody = '<p>Al hacer click en Confirmar, la página se redirige automáticamente hacia el sitio de Mercado Pago para completar el pago.</p>'
-				else 
+				else
 					$('.modales').addClass('hidden')
 				$('.ttip-body').html(ttipBody)
 			}
 		</script>
-		<?php 
+		<?php
 		echo'<input type="hidden" id="post_products" name="post_products" value="'.$pictures.'" >';
 		echo'<input type="hidden" id="post_totalQuantity" name="post_totalQuantity" value="'. $picturesLength .'">';
 		echo'<input type="hidden" id="post_totalPrice" name="post_totalPrice" value="'. $precioTotal .'">';

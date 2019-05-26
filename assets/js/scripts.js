@@ -6,7 +6,11 @@ const phs = {
 	JPF: {
 		value: 'JPF',
 		label: 'Javier Piva Flos'
-	}
+	},
+	// MR: {
+	// 	value: 'MR',
+	// 	label:  'Maribel Rodríguez'
+	// }
 }
 
 /*CARRITO*/
