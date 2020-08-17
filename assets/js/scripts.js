@@ -118,7 +118,8 @@ if (!$pathname.includes('/agenda')) {
 			}
 
 			$.get("/assets/datasources/" + $json + ".json", function (data, status, xhr) {
-				let json_data = location.hostname == 'localhost' ? JSON.parse(data) : data;
+				//let json_data = location.hostname == 'localhost' ? JSON.parse(data) : data;
+				let json_data = data;
 				let ph = json_data.ph ? json_data.ph : phs.default.value;
 				let title = json_data.title;
 				json_data.promo = json_data.promo ? json_data.promo : 0;
@@ -348,22 +349,23 @@ $(function () {
 })
 
 /*BUSCADOR*/
-$(function () {
-	let $param = location.pathname;
-	if ($param != '/index.html' || $param != '/inicio/') {
-		$('#nav-header ul li.toggle_search').removeClass('hidden');
-	}
-	$('.toggle_search').on('click', function (event) {
-		event.preventDefault();
-		$('#nav-header ul').toggleClass('shown').toggleClass('hidden');
-		$('#nav-header .buscador').toggleClass('hidden').toggleClass('shown');
-	});
-})
+// $(function () {
+// 		let $param = location.pathname;
+// 		if ($param != '/index.html' || $param != '/inicio/') {
+// 			$('#nav-header ul li.toggle_search').removeClass('hidden');
+// 		} 
+// 		$('.toggle_search').on('click', function (event) {
+// 			event.preventDefault();
+// 			$('#nav-header ul').toggleClass('shown').toggleClass('hidden');
+// 		 	$('#nav-header .buscador').toggleClass('hidden').toggleClass('shown');
+// 		});
+// })
 
 function buscar(foto) {
 	let galleries = getGET();
 	$.get("/assets/datasources/" + galleries.g + ".json", function (data, status, xhr) {
-		let html = location.hostname == 'localhost' ? JSON.parse(data) : data;
+		//let html = location.hostname == 'localhost' ? JSON.parse(data) : data;
+		let html = data;
 		let arrFiltro = [];
 		let sinCodigo = [];
 		let title = html.title;
@@ -594,7 +596,12 @@ const loadGallery = (filter = 'all') => {
 
 				if (json_data === '') {
 					$.get("/assets/datasources/" + $json + ".json", function (data, status, xhr) {
-						json_data = location.hostname === 'localhost' ? JSON.parse(data) : data;
+						//json_data = location.hostname === 'localhost' ? JSON.parse(data) : data;
+						let search = data.search || data.search === undefined;
+						if (search) {
+							$('#buscador').removeClass('hidden');
+						}
+						json_data = data;
 						loadEvents(json_data, filter);
 					})
 				} else {

@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 function search($array, $key, $value) /* para buscar en arreglos multidimensionales*/
 {
@@ -78,6 +78,7 @@ if (isset($_POST["IdEvento"])) {
         'ads' => $adsComplete,
         'price' => $_REQUEST["price"],
         'promo' => $_REQUEST["promo"],
+        'search' => $_REQUEST["search"],
         'ph' => $_REQUEST["ph"]
     );
 

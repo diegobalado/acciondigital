@@ -101,13 +101,23 @@
 					</fieldset>
 
 					<fieldset>
-						<label for="ph">Fotógrafo:</label>
-						<div class="select-custom">
-							<select name="ph" id="ph" value="">
-								<option value="JPF">Javier</option>
-								<option value="MR">Maribel</option>
-							</select>
-							<span class="icon fa-chevron-down"></span>
+						<div>
+							<label for="ph">Fotógrafo:</label>
+							<div class="select-custom">
+								<select name="ph" id="ph" value="">
+									<option value="JPF">Javier</option>
+									<option value="MR">Maribel</option>
+								</select>
+								<span class="icon fa-chevron-down"></span>
+							</div>
+						</div>
+					
+						<div style="padding-top: 40px;">
+							<label for="search">Habilitar buscador:</label>
+							<div class="search">
+								<input type="checkbox" value="true" id="search" name="search" checked />
+								<label for="search"></label>
+							</div>
 						</div>
 					</fieldset>
 
