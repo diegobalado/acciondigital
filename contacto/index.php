@@ -65,7 +65,47 @@
 
 		<header class="header" id="header">
 			<a class="logo" href="/"><img src="/assets/images/logo.png" alt="Accion Digital" /></a>
-			<nav id="nav-header" class="nav"></nav>
+			<nav id="nav-header" class="nav">
+				<ul class="shown">
+					<li class="home">
+						<a href="/inicio/">
+							<span class="icon fa-home">
+							</span>
+							<span class="text">Inicio</span>
+						</a>
+					</li>
+					<li class="friends">
+						<a href="/amigos/">
+							<span class="icon fa-users">
+							</span>
+							<span class="text">Amigos</span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="/contacto/">
+							<span class="icon fa-envelope">
+							</span>
+							<span class="text">Contacto</span>
+						</a>
+					</li>
+					<li class="faq">
+						<a href="/faq/">
+							<span class="icon fa-question-circle">
+							</span>
+							<span class="text">Ayuda</span>
+						</a>
+					</li>
+					<!-- <li class="cart">
+						<a href="#" class="my-cart-icon">
+							<span class="icon fa-shopping-cart my-cart-icon">
+								<span class="badge badge-notify my-cart-badge empty">
+								</span>
+							</span>
+							<span class="text">Mis fotos</span>
+						</a>
+					</li> -->
+				</ul>
+			</nav>
 		</header>
 
 		<section id="main">
@@ -130,6 +170,7 @@
 	<!-- Scripts -->
 	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="/assets/js/load_pieces.js"></script>
+	<script type="text/javascript" src="/assets/js/scripts.js"></script>
 	<script type="text/javascript" src="/assets/js/plugins.min.js"></script>	
 </body>
 </html>
