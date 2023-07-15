@@ -248,11 +248,6 @@
                     </div>
                     <div class="modal-body">
                         <table class="table table-hover table-responsive" id="${idCartTable}"></table>
-                        <div style="">
-                            <strong>¡También podés tener tus fotos impresas!</strong>
-                            <br />
-                            Envianos tu consulta para conocer los precios y tamaños disponibles haciendo click <a href="/contacto" onclick="gtag('event', 'Contacto', {'event_category': 'Carrito', 'event_label': 'Consulta Fotos Impresas' });">acá</a>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
