@@ -2,6 +2,11 @@
     padding-top: 40px;
 }
 
+#galleries section {
+    display: flex;
+    flex-flow: row;
+}
+
 #galleries .gallery {
     padding: 0 3.5em;
     position: relative;
@@ -86,6 +91,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    #galleries section {
+        flex-flow: column;
+    }
+    
     #galleries .gallery {
         display: flex;
         flex-direction: column;

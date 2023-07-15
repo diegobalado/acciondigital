@@ -12,3 +12,6 @@ Allow: /amigos/
 Allow: /contacto/
 
 Sitemap: http://www.acciondigitalfoto.com/sitemap.xml
+User-agent: *
+Allow: /
+Crawl-delay: 36000

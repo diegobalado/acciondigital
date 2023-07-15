@@ -2063,7 +2063,8 @@ td[title="Quantity"] {
     opacity: .85;
 }
 #banner .inner.note .note-container .note-content {
-    padding: 2%;
+    padding: 2rem;
+    text-align: center;
 }
 #banner .inner.note .note-container .note-content a.fb-link {
     text-decoration: underline;
