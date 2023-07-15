@@ -6,10 +6,6 @@ const phs = {
 	JPF: {
 		value: 'JPF',
 		label: 'Javier Piva Flos'
-	},
-	MC: {
-		value: 'MC',
-		label:  'Manuela Colavita'
 	}
 }
 
@@ -118,15 +114,31 @@ if (!$pathname.includes('/agenda')) {
 			}
 
 			$.get("/assets/datasources/" + $json + ".json", function (data, status, xhr) {
-				//let json_data = location.hostname == 'localhost' ? JSON.parse(data) : data;
-				let json_data = data;
+				// let html = location.hostname == 'localhost' ? template(JSON.parse(data)) : template(data);
+				// data.forEach(function(element){
+				// })
+
+				/*let IdEvento = location.hostname == 'localhost' ? JSON.parse(data).IdEvento : data.IdEvento;
+				let title = location.hostname == 'localhost' ? JSON.parse(data).title : data.title;
+				let title = location.hostname == 'localhost' ? JSON.parse(data).title : data.title;
+				let price = location.hostname == 'localhost' ? JSON.parse(data).price : data.price;
+				let html_element = '';
+				let pics_length = location.hostname == 'localhost' ? JSON.parse(data).pictures.length : data.pictures.length;*/
+				let json_data = location.hostname == 'localhost' ? JSON.parse(data) : data;
+				let IdEvento = json_data.IdEvento;
 				let ph = json_data.ph ? json_data.ph : phs.default.value;
 				let title = json_data.title;
+				let price = json_data.price;
 				json_data.promo = json_data.promo ? json_data.promo : 0;
+				let promo = json_data.promo ? json_data.promo : 0;
+
+				// let json_data = data;
 				let html_element = '';
-				let pics_length = json_data?.pictures?.length;
+				let pics_length = json_data.pictures.length;
+				let index = 0;
+
 				let $page_start = 0;
-				let $page_limit = json_data?.pictures?.length < 9 ? json_data?.pictures?.length : 9;
+				let $page_limit = json_data.pictures.length < 9 ? json_data.pictures.length : 9;
 
 				let = lastItem = 0;
 
@@ -137,10 +149,11 @@ if (!$pathname.includes('/agenda')) {
 					$('.loading').fadeIn("fast");
 					let pic = '';
 					let title = data.title;
+					let price = data.price;
 					let ph = data.ph ? data.ph : phs.default.value;
 					var i = 0;
 					for (i = page_start; i < page_start + page_limit; i++) {
-						pic = data?.pictures?.[i];
+						pic = data.pictures[i];
 						html_element = `
 							<div class="media">
 								<div class="media-wrapper">
@@ -196,7 +209,7 @@ if (!$pathname.includes('/agenda')) {
 					lastItem = data.IdEvento + '_' + pic;
 					function loading() {
 						setTimeout(function () {
-							if ($('.media a[href="#' + data.IdEvento + '_' + data.pictures?.[page_start] + '"] img')[0]?.complete) {
+							if ($('.media a[href="#' + data.IdEvento + '_' + data.pictures[page_start] + '"] img')[0].complete) {
 								$('.loading').fadeOut("fast");
 							} else {
 								loading();
@@ -223,6 +236,7 @@ if (!$pathname.includes('/agenda')) {
 
 				load_page(events_placeholder, $page_start, $page_limit, json_data);
 				$page_start += $page_limit;
+				let $pagina = 1;
 
 				$(window).on('scroll', _.debounce(function () {
 					if ($page_start + $page_limit <= pics_length && $page_limit != 0 && !$('#gallery-wrapper').hasClass('results')) {
@@ -291,10 +305,12 @@ if (!$pathname.includes('/agenda')) {
 	})
 }
 
+
 function getCurrentScroll() {
 	return window.pageYOffset || document.documentElement.scrollTop;
 }
 const shrinkHeader = 100;
+
 
 /*HEADER COLAPSABLE*/
 $(function () {
@@ -307,6 +323,17 @@ $(function () {
 			$('#header').removeClass('shrink');
 			$('#btnTop').hide('400');
 		}
+	});
+});
+
+$(document).ready(function () {
+	$('body').append('<div id="btnTop"><span class="fa fa-angle-up "></span></div>');
+	if (getCurrentScroll() <= shrinkHeader) $('#btnTop').hide();
+	$('#btnTop').click(function () {
+		$('html,body').animate({
+			scrollTop: 0
+		}, 400);
+		return false;
 	});
 });
 
@@ -329,10 +356,16 @@ function getGET() {
 
 /*PAGINA ACTIVA*/
 $(function () {
-	var $param = location.pathname;
+	let $param = location.pathname;
 	switch ($param) {
-		case '/amigos/':
-			$('#nav-header ul li.friends').addClass('active');
+		case '/index.html':
+			$('#nav-header ul li.home').addClass('active');
+			break;
+		case '/galeria/':
+			$('#nav-header ul li.gallery').addClass('active');
+			break;
+		case '/agenda/':
+			$('#nav-header ul li.calendar').addClass('active');
 			break;
 		case '/eventos/':
 			$('#nav-header ul li.gallery').addClass('active');
@@ -340,32 +373,36 @@ $(function () {
 		case '/contacto/':
 			$('#nav-header ul li.contact').addClass('active');
 			break;
-		case '/faq/':
-			$('#nav-header ul li.faq').addClass('active');
-			break;
 		default:
 			$('#nav-header ul li.home').addClass('active');
 	}
+	carrito();
 })
 
 /*BUSCADOR*/
-// $(function () {
-// 		let $param = location.pathname;
-// 		if ($param != '/index.html' || $param != '/inicio/') {
-// 			$('#nav-header ul li.toggle_search').removeClass('hidden');
-// 		} 
-// 		$('.toggle_search').on('click', function (event) {
-// 			event.preventDefault();
-// 			$('#nav-header ul').toggleClass('shown').toggleClass('hidden');
-// 		 	$('#nav-header .buscador').toggleClass('hidden').toggleClass('shown');
-// 		});
-// })
+$(function () {
+	let $param = location.pathname;
+	if ($param != '/index.html' || $param != '/inicio/') {
+		$('#nav-header ul li.toggle_search').removeClass('hidden');
+	}
+	$('.toggle_search').on('click', function (event) {
+		event.preventDefault();
+		$('#nav-header ul').toggleClass('shown').toggleClass('hidden');
+		$('#nav-header .buscador').toggleClass('hidden').toggleClass('shown');
+	});
+})
+
+$(function () {
+	$('#untagged').on('click', function (event) {
+		event.preventDefault();
+		buscar('untagged');
+	});
+})
 
 function buscar(foto) {
 	let galleries = getGET();
 	$.get("/assets/datasources/" + galleries.g + ".json", function (data, status, xhr) {
-		//let html = location.hostname == 'localhost' ? JSON.parse(data) : data;
-		let html = data;
+		let html = location.hostname == 'localhost' ? JSON.parse(data) : data;
 		let arrFiltro = [];
 		let sinCodigo = [];
 		let title = html.title;
@@ -543,97 +580,5 @@ function buscar(foto) {
 	});
 }
 
-$(function () {
-	$('#untagged').on('click', function (event) {
-		event.preventDefault();
-		buscar('untagged');
-	});
-})
-
-/* CARGA DE EVENTOS*/
-const loadEvents = (json, filter) => {
-	const parsedJson = {
-		ads: json.ads,
-		eventos: filter !== 'all' ? json.eventos.filter(e => (e.ph === filter || (filter === phs.default.value && !e.ph))) : json.eventos
-	}
-	var placeHolder = $("#homeGallery");
-	var raw_template = $('#pictures-template').html();
-	var template = Handlebars.compile(raw_template);
-
-	parsedJson.ads.forEach(ad => {
-		if (!ad.href) ad.href = '#';
-		ad.target = (ad.href !== '#') ? '_blank' : '_self'
-	})
-	var html = template(parsedJson);
-	placeHolder.html(html);
-}
-
-var json_data = '';
-
-/*HANDLEBARS*/
-const loadGallery = (filter = 'all') => {
-	var $pathname = location.pathname;
-	var $section = '';
-	var $json = '';
-	var $template = '';
-
-	$('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
-
-	$section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/inicio/') ? 'inicio' : ($pathname.includes('/galeria/') ? 'galeria' : ''));
-	if (!$pathname.includes('/amigos')) {
-		$template = $section == 'eventos' ? 'eventos' : $section;
-
-		$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function () {
-			$(document).ready(function () {
-				var galleries = getGET();
-				$json = $section === 'eventos' ? galleries.g : $section;
-
-				if ($section == 'galeria' || $section == 'inicio') {
-					Handlebars.registerHelper('full_href', function (picture) {
-						return '/eventos/?g=' + picture.ID;
-					});
-				}
-
-				if (json_data === '') {
-					$.get("/assets/datasources/" + $json + ".json", function (data, status, xhr) {
-						//json_data = location.hostname === 'localhost' ? JSON.parse(data) : data;
-						let search = data.search || data.search === undefined;
-						if (search) {
-							$('#buscador').removeClass('hidden');
-						}
-						json_data = data;
-						loadEvents(json_data, filter);
-					})
-				} else {
-					loadEvents(json_data, filter);
-				}
-			})
-		})
-	}
-}
-
-
 /*GENERALES*/
-$(document).ready(function () {
-	$('form').length > 0 && $('form').placeholder();
-	$('.scrolly').length > 0 && $('.scrolly').scrolly();
-
-	$('body').append('<div id="btnTop"><span class="fa fa-angle-up "></span></div>');
-	// if (getCurrentScroll() <= shrinkHeader) $('#btnTop').hide();
-
-	$('#btnTop').click(function () {
-		$('html,body').animate({
-			scrollTop: 0
-		}, 400);
-		return false;
-	});
-
-	$('select#ph').append('<option value="all">Todos</option>')
-	Object.keys(phs).map(ph => {
-		ph !== 'default' && $('select#ph').append(`<option value="${phs[ph].value}">${phs[ph].label}</option>`)
-	})
-
-	loadGallery();
-	$('select#ph').on('change', event => loadGallery(event.target.value));
-	carrito();
-});
+$('.scrolly').length > 0 && $('.scrolly').scrolly();

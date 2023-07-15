@@ -51,15 +51,15 @@ if (isset($_POST["products"])) {
 	<h3>Fotos:</h3>
 	<p>
 		<?php
-			if ($ph === "MR") {
+			if ($ph === "MC") {
 				echo 'Fotógrafa';
 			} else {
 				echo 'Fotógrafo';
 			}
 		?>: <strong>
 			<?php
-				if ($ph === "MR") {
-					echo 'Maribel Rodríguez';
+				if ($ph === "MC") {
+					echo 'Manuela Colavita';
 				} else {
 					echo 'Javier Piva Flos';
 				}
@@ -85,7 +85,11 @@ if (isset($_POST["products"])) {
 		</div>
 
 		<div class="mod mod-cbu hidden">
-			<p>Eligiendo Transferencia Bancaria como forma de pago, al hacer click en Confirmar vas a recibir un email en la dirección indicada con los datos necesarios para realizar la transferencia.</p>
+			<p>Eligiendo Cuenta DNI o Transferencia Bancaria como forma de pago, al hacer click en Confirmar vas a recibir un email o Whatsapp en la dirección o el número de teléfono indicados con los datos necesarios para completar el pago.</p>
+		</div>
+		
+        <div class="mod mod-ctadni hidden">
+			<p>Eligiendo Cuenta DNI o Transferencia Bancaria como forma de pago, al hacer click en Confirmar vas a recibir un email o Whatsapp en la dirección o el número de teléfono indicados con los datos necesarios para completar el pago.</p>
 		</div>
 	</div>
 </div>
@@ -101,6 +105,7 @@ if (isset($_POST["products"])) {
 						<option value=""></option>
 						<option value="mp">Mercado Pago</option>
 						<option value="cbu">Transferencia Bancaria</option>
+						<option value="ctadni">Cuenta DNI</option>
 					</select>
 					<span class="icon fa-chevron-down"></span>
 				</div>
@@ -125,11 +130,15 @@ if (isset($_POST["products"])) {
 		</div>
 		<div class="field half">
 			<label for="email">Confirmar Email<span style="color:red">*</span></label>
-			<input name="emailConfirm" id="emailConfirm" type="email" placeholder="Confirmar Email" required="true" oninvalid="this.setCustomValidity('Las casillas de e-mail no coinciden.')" oninput="check(this)">
+			<input name="emailConfirm" id="emailConfirm" type="email" placeholder="Confirmar Email" required="true" oninvalid="this.setCustomValidity('Las casillas de e-mail no coinciden.')" oninput="check(this, 'email')">
+		</div>
+		<div class="field half first">
+			<label for="phone">Teléfono<span style="color:red">*</span></label>
+			<input name="phone" id="phone" type="text" placeholder="Teléfono" required="true" oninvalid="this.setCustomValidity('Por favor, ingresá tu número de teléfono.')" oninput="setCustomValidity('')">
 		</div>
 		<div class="field half">
-			<label for="phone">Teléfono <span style="font-weight: normal; color: #8e8e8e;">(Opcional)</span></label>
-			<input name="phone" id="phone" type="text" placeholder="Teléfono">
+			<label for="phoneConfirm">Confirmar Teléfono<span style="color:red">*</span></label>
+			<input name="phoneConfirm" id="phoneConfirm" type="text" placeholder="Confirmar Teléfono" required="true" oninvalid="this.setCustomValidity('Las números de teléfono no coinciden.')" oninput="check(this, 'phone')">
 		</div>
 		<div class="field">
 			<label for="message">Observaciones <span style="font-weight: normal; color: #8e8e8e;">(Opcional)</span></label>
@@ -145,9 +154,9 @@ if (isset($_POST["products"])) {
 				gtag('event', 'CancelCheckout', {'event_category': 'Checkout', 'event_label': 'Compra Cancelada' });
 				window.location.href = '/inicio';
 			});
-			function check(input) {
-				if (input.value !== document.getElementById('email').value) {
-					input.setCustomValidity('Las casillas de e-mail no coinciden.');
+			function check(input, field) {
+				if (input.value !== document.getElementById(field).value) {
+					input.setCustomValidity('Los valores no coinciden.');
 				} else {
 					input.setCustomValidity('');
 				}
@@ -161,9 +170,11 @@ if (isset($_POST["products"])) {
 				$('.mod-'+value).removeClass('hidden')
 				var ttipBody = ''
 				if (value === 'cbu')
-					ttipBody = '<p>Vas a recibir en tu casilla de email los datos necesarios para realizar la transferencia.</p>'
+					ttipBody = '<p>Vas a recibir en tu casilla de email o Whatsapp los datos necesarios para realizar la transferencia.</p>'
 				else if (value === 'mp')
 					ttipBody = '<p>Al hacer click en Confirmar, la página se redirige automáticamente hacia el sitio de Mercado Pago para completar el pago.</p>'
+				else if (value === 'ctadni')
+				    ttipBody = '<p>Vas a recibir en tu casilla de email o Whatsapp los datos necesarios para completar el pago con Cuenta DNI.</p>'
 				else
 					$('.modales').addClass('hidden')
 				$('.ttip-body').html(ttipBody)
