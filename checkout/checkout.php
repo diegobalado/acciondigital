@@ -1,4 +1,4 @@
-<section id="checkout">
+﻿<section id="checkout">
 	<?php
 	// error_reporting(E_ALL);
 	if (isset($_POST["email"])) {
@@ -7,7 +7,7 @@
 		if ($payment == 'mp') {
 			require_once "../assets/lib/mercadopago.php";
 			$mp = new MP ("4083212776112832", "E76Ta738sO6HsDeWRTnJzuq5CAAEM0jh");
-			$to      = 'acciondigitalfoto@gmail.com, diego.balado@electric.ai';
+			$to      = 'xgpf@hotmail.com, jdiegomdq@hotmail.com';
 			$subject = 'Pedido de compra de '.$_REQUEST['name'].' - Mercado Pago';
 			$pictures = str_replace(['<span></span>', '</h4>', '</p>'], '', $_POST['post_products']);
 			$pictures = str_replace(['<br /><h4>', '<br />', '<p>', '<h4>'], "\r\n", $pictures);
@@ -32,6 +32,7 @@
 					)
 				);
 
+			$message = utf8_decode($message);
 			$headers = 'From: ' . $_REQUEST['email'] . "\r\n" .
 			'Reply-To: ' . $_REQUEST['email'] . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
@@ -50,14 +51,15 @@
 	<?php
 		} else if ($payment == 'ctadni') {
 		$ph = $_REQUEST['ph'];
-		$to = 'acciondigitalfoto@gmail.com, diego.balado@electric.ai';
+		$to = 'xgpf@hotmail.com, jdiegomdq@hotmail.com';
 		if ($ph === 'MC') {
-			$to = $to.', manucolavita@gmail.com';
+			$to = $to.', manu_colavita@outlook.com';
 		}
 		$pictures = str_replace(['<span></span>', '</h4>', '</p>'], '', $_POST['post_products']);
 		$pictures = str_replace(['<br /><h4>', '<br />', '<p>', '<h4>'], "\r\n", $pictures);
 		$subject = 'Pedido de compra de '.$_REQUEST['name'].' - Cuenta DNI';
 		$message = "Fotógrafo/a: ".$_REQUEST['ph']."\r\n"."Nombre: ".$_REQUEST['name']."\r\n"."Email: ".$_REQUEST['email']."\r\n"."Teléfono: ".$_REQUEST['phone']."\r\n\r\n"."Fotos: ".$pictures."\r\n"."Total: $".$_POST['post_totalPrice']."\r\n\r\n"."Forma de Pago: Cuenta DNI"."\r\n\r\n"."Observaciones: ".$_REQUEST["message"];
+		$message = utf8_decode($message);
 		$headers = 'From: ' . $_REQUEST['email'] . "\r\n" .
 		'Reply-To: ' . $_REQUEST['email'] . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
@@ -71,15 +73,16 @@
 	<?php
     	} else {
     		$ph = $_REQUEST['ph'];
-    		$to = 'acciondigitalfoto@gmail.com, diego.balado@electric.ai';
+    		$to = 'xgpf@hotmail.com, jdiegomdq@hotmail.com';
     		if ($ph === 'MC') {
-    			$to = $to.', manucolavita@gmail.com';
+    			$to = $to.', manu_colavita@outlook.com';
     		}
     		$pictures = str_replace(['<span></span>', '</h4>', '</p>'], '', $_POST['post_products']);
     		$pictures = str_replace(['<br /><h4>', '<br />', '<p>', '<h4>'], "\r\n", $pictures);
     		$subject = 'Pedido de compra de '.$_REQUEST['name'].' - Transferencia Bancaria';
     		$message = "Fotógrafo/a: ".$_REQUEST['ph']."\r\n"."Nombre: ".$_REQUEST['name']."\r\n"."Email: ".$_REQUEST['email']."\r\n"."Teléfono: ".$_REQUEST['phone']."\r\n\r\n"."Fotos: ".$pictures."\r\n"."Total: $".$_POST['post_totalPrice']."\r\n\r\n"."Forma de Pago: Transferencia Bancaria"."\r\n\r\n"."Observaciones: ".$_REQUEST["message"];
-    		$headers = 'From: ' . $_REQUEST['email'] . "\r\n" .
+			$message = utf8_decode($message);
+			$headers = 'From: ' . $_REQUEST['email'] . "\r\n" .
     		'Reply-To: ' . $_REQUEST['email'] . "\r\n" .
     		'X-Mailer: PHP/' . phpversion();
     
