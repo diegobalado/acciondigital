@@ -149,7 +149,7 @@
 					</form>
 					<?php
 					if (isset($_POST["email"])) {
-						$to      = 'acciondigitalfoto@gmail.com, jdiegomdq@gmail.com';
+						$to      = 'xgpf@hotmail.com, jdiegomdq@hotmail.com';
 						$subject = 'Nuevo mensaje de '.$_REQUEST[name].' desde www.acciondigitalfoto.com';
 						$message = $_REQUEST[message];
 						$headers = 'From: ' . $_REQUEST[email] . "\r\n" .
