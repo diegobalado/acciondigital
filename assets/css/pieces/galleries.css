@@ -393,6 +393,9 @@
     width: 350px;
     height: auto;
     vertical-align: middle;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    object-position: 50% 25%;
 }
 
 #galleries .gallery .gallery-wrapper .media:hover img {

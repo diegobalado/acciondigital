@@ -40,3 +40,7 @@
   padding:15px;
   display:none;
 }
+
+.accordion.open .accordion-section-content.active {
+  display: block;
+}
