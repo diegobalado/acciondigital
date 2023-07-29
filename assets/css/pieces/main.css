@@ -112,6 +112,10 @@ section {
     display: block;
 }
 
+html, body, .page-wrap {
+    height: 100%;
+}
+
 body {
     line-height: 1;
 }
@@ -1361,6 +1365,9 @@ table.alt tfoot {
     order: 1;
     padding-top: 130px;
     /* padding-left: 56px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 768px) {
