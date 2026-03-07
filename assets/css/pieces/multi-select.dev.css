@@ -1,6 +1,6 @@
 /* line 1, ../scss/multi-select.scss */
 .ms-container {
-  background: transparent url("../img/switch.png") no-repeat 50% 50%;
+  background: transparent none;
   width: 100%;
 }
 

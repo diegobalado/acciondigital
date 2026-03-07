@@ -10,9 +10,6 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="/assets/css/sections/sectionForms.css" />	
-	
-	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 
 </head>
 <body class="form-page">
@@ -156,7 +153,9 @@
 	</div>
 
 	<!-- Scripts -->
-	<script type="text/javascript" src="/assets/js/load_pieces.js"></script>	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="/assets/js/modules/ui.js"></script>
+	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('#checkEvents').on('change', function(event) {

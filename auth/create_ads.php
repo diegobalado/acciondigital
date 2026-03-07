@@ -6,10 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="/assets/css/sections/sectionCheckout.css" />
 	<link rel="stylesheet" href="/assets/css/pieces/forms.css" />
-	
-	<script type="text/javascript" src="/assets/js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
-	
+
 	<style type="text/css">
 		.form-page fieldset:nth-child(2n) {
 			padding-right: 50px;
@@ -149,7 +146,9 @@
 	</div>
 
 	<!-- Scripts -->
-	<script type="text/javascript" src="/assets/js/load_pieces.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="/assets/js/modules/ui.js"></script>
+	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	
 	<script type="text/javascript">
 		loadAds = ads => {
