@@ -112,7 +112,7 @@
 
 			<?php
 			if (isset($_POST["IdEvento"])) {
-				$idEventos = $_REQUEST[IdEvento];
+				$idEventos = $_REQUEST['IdEvento'];
 
 				$file = $_SERVER["DOCUMENT_ROOT"].'/assets/datasources/galeria.json';
 				$saveFile = [];
@@ -122,12 +122,12 @@
 					$product = json_decode($data, true) ;
 					$evento = array(
 						'ID' => $idEvento,
-						'text' => $product[title]
+						'text' => $product['title']
 						);
 					array_push($eventos, $evento);
 				}
 				rsort($eventos);
-				$ads = $_REQUEST[ads];
+				$ads = $_REQUEST['ads'];
 				$data = file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/datasources/ads.json');
 				$adData = json_decode($data, true) ;
 				$adsN = array();
@@ -143,7 +143,7 @@
 					'eventos' => $eventos,
 					'ads' => $adsN
 					);
-				if (file_put_contents($file, json_encode($saveFile)) != false) $message = "La galer\u00eda se cre\u00f3 correctamente";
+				if (file_put_contents($file, json_encode($saveFile)) !== false) $message = "La galer\u00eda se cre\u00f3 correctamente";
 				else $message = "Hubo un error al crear la galer\u00eda";
 
 				echo "<script type='text/javascript'>alert('$message');</script>";
@@ -158,11 +158,14 @@
 	<script type="text/javascript" src="/assets/js/modules/ui.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	<script>
-		$(document).ready(function() {
-			$('#checkEvents').on('change', function(event) {
-				if ($(this).is(':checked')) $("#IdEvento option").attr("selected","selected")
-					else $("#IdEvento option").attr("selected",false)
-				});
+		$(document).ready(function () {
+			$('#checkEvents').on('change', function () {
+				if ($(this).is(':checked')) {
+					$('#IdEvento option').attr('selected', 'selected');
+				} else {
+					$('#IdEvento option').attr('selected', false);
+				}
+			});
 		});
 	</script>
 
