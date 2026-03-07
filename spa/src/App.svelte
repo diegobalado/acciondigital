@@ -1,5 +1,5 @@
 <script>
-	import { APP_SUBTITLE, APP_TITLE } from './shared/migration';
+	import { APP_SUBTITLE, APP_TITLE } from './app/config/migration';
 </script>
 
 <main class="shell">

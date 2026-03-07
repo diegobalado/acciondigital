@@ -25,3 +25,33 @@ Registro iterativo de avances de la migracion SPA.
 ### Proximo paso
 
 - Fase 1: definir estructura de carpetas y primer cliente de datos para JSON legacy.
+
+## Iteracion 1 - Infra compartida (Fase 1.1)
+
+- Fecha: 2026-03-07
+- Branch: `spa-svelte-migration`
+- Objetivo: cerrar infraestructura inicial para consumo de datos legacy y mapeo de modelo home.
+
+### Hecho
+
+- Estructura base agregada:
+	- `src/app/config/`
+	- `src/features/home/`
+	- `src/services/`
+	- `src/shared/models/`
+- Cliente inicial de datos legacy implementado: `src/services/legacyDataClient.js`.
+- Helper de normalizacion agregado: `src/shared/models/legacyNormalization.js`.
+- Mapeo inicial de home implementado: `src/features/home/homeModelMapper.js`.
+- Tests unitarios agregados:
+	- `src/shared/models/legacyNormalization.test.js`
+	- `src/features/home/homeModelMapper.test.js`
+	- `src/app/config/migration.test.js` (reubicacion desde `src/shared/` a `src/app/config/`)
+
+### Verificacion
+
+- `npm run test`: OK (3 files, 5 tests).
+- `npm run build`: OK.
+
+### Proximo paso
+
+- Fase 2.1: iniciar migracion de Home con carga real de `inicio.json`, estados de UI y pruebas de render.

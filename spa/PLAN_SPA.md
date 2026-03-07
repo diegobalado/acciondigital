@@ -15,6 +15,40 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 4. Cada feature relevante migrada debe incluir tests unitarios.
 5. Priorizar mantenibilidad antes que optimizacion.
 
+## Acuerdos operativos (continuidad)
+
+1. Trabajar siempre sobre la branch `spa-svelte-migration`.
+2. Mantener la migracion aislada dentro de `spa/` salvo necesidad explicita de integrar con legacy.
+3. No romper el sitio legacy durante la migracion.
+4. Cada iteracion debe ser pequena, verificable y con commit propio.
+5. En cada iteracion correr validaciones minimas en `spa/`:
+	- `npm run test`
+	- `npm run build`
+6. Registrar al cierre de cada iteracion:
+	- Cambios realizados
+	- Tests agregados/actualizados
+	- Resultado de verificaciones
+	- Proximo paso
+7. Al finalizar iteracion: `git add` + `git commit` + `git push`.
+
+## Definicion de iteracion (DoD)
+
+Una iteracion se considera cerrada solo si cumple todo lo siguiente:
+
+1. Objetivo funcional concreto completado.
+2. Tests unitarios relevantes creados/ajustados.
+3. `PLAN_SPA.md` y `PROGRESO_SPA.md` actualizados.
+4. `npm run test` y `npm run build` en verde.
+5. Commit y push en `spa-svelte-migration`.
+
+## Estado actual de arranque
+
+1. Branch activa de migracion creada: `spa-svelte-migration`.
+2. SPA base creada en `spa/` con Svelte + Vite.
+3. Testing base configurado con Vitest.
+4. Documentos de seguimiento creados y versionados.
+5. Primer commit de bootstrap ya publicado.
+
 ## Fases
 
 ### Fase 0 - Setup base
@@ -26,10 +60,23 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 
 ### Fase 1 - Infra compartida
 
-- [ ] Definir estructura base de carpetas (`app`, `features`, `shared`, `services`).
-- [ ] Implementar cliente de datos para JSON legacy.
-- [ ] Definir capa de mapeo de modelos (legacy -> SPA).
-- [ ] Tests unitarios de utilidades y mapeos.
+- [x] Definir estructura base de carpetas (`app`, `features`, `shared`, `services`).
+- [x] Implementar cliente de datos para JSON legacy.
+- [x] Definir capa de mapeo de modelos (legacy -> SPA).
+- [x] Tests unitarios de utilidades y mapeos.
+
+#### Proxima iteracion sugerida (Fase 1.1)
+
+1. Iteracion cerrada el 2026-03-07:
+	- estructura base creada (`app`, `features/home`, `services`, `shared/models`)
+	- `legacyDataClient` inicial implementado
+	- mapeo base de home implementado (`mapLegacyHomeEvent`)
+	- tests unitarios de helper y mapeo agregados
+2. Proxima iteracion sugerida (Fase 2.1):
+	- comenzar migracion de vista Home con estados `loading`, `error` y `empty`
+	- conectar carga de `inicio.json` via `legacyDataClient`
+	- renderizar primer listado minimo de eventos mapeados
+	- tests unitarios del flujo de carga y render inicial
 
 ### Fase 2 - Home
 
@@ -81,3 +128,13 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 - `feat(spa-<feature>): ...` para migraciones funcionales.
 - `test(spa-<feature>): ...` para iteraciones de pruebas.
 - `docs(spa): ...` para cambios en plan/progreso.
+
+## Comandos utiles
+
+Ejecutar desde `spa/`:
+
+- `npm install`
+- `npm run dev`
+- `npm run test`
+- `npm run test:coverage`
+- `npm run build`
