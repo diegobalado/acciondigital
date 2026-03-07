@@ -39,13 +39,6 @@
 
 								<?php
 								error_reporting (E_ALL ^ E_NOTICE);
-								function debug_to_console($msg, $data) {
-									$output = $data;
-									if ( is_array( $output ) )
-										$output = implode( ',', $output);
-
-									echo "<script>console.log( 'Debug " . $msg . ": " . $output . "' );</script>";
-								}
 								?>
 
 								<?php
@@ -73,7 +66,6 @@
 						</div>
 					</fieldset>
 					<!-- <br /><br /> -->
-					<!-- <script>console.log('*'+$('#IdEvento').val()+'*');</script> -->
 
 					<!-- <br /><br /> -->
 

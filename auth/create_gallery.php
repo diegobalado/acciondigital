@@ -29,16 +29,9 @@
 						<label for="IdEvento">Eventos:</label>
 						<select multiple name="IdEvento[]" id="IdEvento" value="">  
 
-							<?php 
+							<?php
 							error_reporting (E_ALL ^ E_NOTICE);
-							function debug_to_console($data) {
-								$output = $data;
-								if ( is_array( $output ) )
-									$output = implode( ',', $output);
-
-								echo "<script>console.log( 'Debug: " . $output . "' );</script>";
-							}
-							?> 
+							?>
 
 							<?php
 							$directorio = opendir($_SERVER["DOCUMENT_ROOT"]."/assets/images/eventos/");
@@ -68,7 +61,6 @@
 						<span class="checkLabel">Todos los eventos</span>
 					</fieldset>
 					<!-- <br /><br /> -->
-					<!-- <script>console.log('*'+$('#IdEvento').val()+'*');</script> -->
 
 					<fieldset>
 						<label for="ads">Publicidades:</label>
@@ -80,7 +72,6 @@
 							{
 								if (!is_dir($adFile))
 								{
-									// debug_to_console($adFile);
 									array_push($ads, $adFile);
 								}
 							}
