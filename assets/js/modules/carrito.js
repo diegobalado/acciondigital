@@ -5,14 +5,14 @@
 
 function carrito() {
 
-	var goToCartIcon = function ($addTocartBtn) {
-		var $cartIcon = $(".my-cart-icon");
-		var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({
+	const goToCartIcon = function ($addTocartBtn) {
+		const $cartIcon = $('.my-cart-icon');
+		const $image = $(`<img width="30px" height="30px" src="${$addTocartBtn.data('image')}"/>`).css({
 			position: "fixed",
 			"z-index": "999"
 		});
 		$addTocartBtn.prepend($image);
-		var position = $cartIcon.position();
+		const position = $cartIcon.position();
 		$image.animate({
 			top: position.top,
 			right: position.right
@@ -44,7 +44,7 @@ function carrito() {
 			// console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
 		},
 		checkoutCart: function (products, totalPrice, totalQuantity) {
-			var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
+			let checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
 			checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path \t ph";
 			$.each(products, function () {
 				checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image + " \t " + this.ph);
@@ -64,9 +64,8 @@ function carrito() {
 		getDiscountPrice: function (products, totalPrice, totalQuantity) {
 			const cantPromo = 5;
 			let finalPrice = totalPrice;
-			let unityPrice = totalPrice / totalQuantity;
 			if (totalQuantity >= cantPromo) {
-				finalPrice = 0
+				finalPrice = 0;
 				return finalPrice;
 			} else return null;
 		}
