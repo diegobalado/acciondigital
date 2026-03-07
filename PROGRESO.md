@@ -195,4 +195,5 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 - 2026-03-07: `search.js` simplificado para mantenibilidad: extracción de helper único de render+paginación (`renderSearchResults`) y eliminación de bloques duplicados entre flujo con resultados y sin resultados.
 - 2026-03-07: `gallery.js` (flujo `/eventos/`) refactorizado para mantenibilidad: helpers dedicados para popup/carrito, construcción de item, carga por página, render de ads e infinite scroll namespaced; removido código debug/duplicado.
 - 2026-03-07: Extraído `modules/renderers.js` para centralizar construcción de HTML compartido (cards de foto y links de ads) y reemplazada duplicación en `gallery.js` + `search.js`.
+- 2026-03-07: Homogeneización de estilo/naming en módulos JS (principalmente `search.js` y `gallery.js`): `const/let` consistentes, nombres más descriptivos y comparaciones estrictas para facilitar lectura y mantenimiento.
 
