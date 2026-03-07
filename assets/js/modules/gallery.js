@@ -58,6 +58,12 @@ function registerGalleryHrefHelper(section) {
 	});
 }
 
+function getAppState() {
+	window.App = window.App || {};
+	window.App.state = window.App.state || {};
+	return window.App.state;
+}
+
 /* CARGA DE EVENTOS - Función para home/inicio */
 const loadEvents = (json, filter) => {
 	const parsedJson = {
@@ -76,11 +82,9 @@ const loadEvents = (json, filter) => {
 	placeHolder.html(html);
 }
 
-var json_data = '';
-var last_data_url = '';
-
 /*HANDLEBARS - Carga de galería principal */
 const loadGallery = (filter = 'all') => {
+	const state = getAppState();
 	var $pathname = location.pathname;
 	var $section = '';
 	var $json = '';
@@ -99,7 +103,7 @@ const loadGallery = (filter = 'all') => {
 
 			const dataUrl = buildDataUrl($section, $json);
 
-			if (json_data === '' || last_data_url !== dataUrl) {
+			if (!state.galleryDataCache || state.galleryDataUrl !== dataUrl) {
 				$.get(dataUrl, function (data) {
 					const parsedData = normalizeJsonPayload(data);
 					if (!parsedData) {
@@ -110,12 +114,16 @@ const loadGallery = (filter = 'all') => {
 					if (search) {
 						$('#buscador').removeClass('hidden');
 					}
-					json_data = parsedData;
-					last_data_url = dataUrl;
-					loadEvents(json_data, filter);
+					state.galleryDataCache = parsedData;
+					state.galleryDataUrl = dataUrl;
+					if ($section === 'eventos') {
+						state.currentEventData = parsedData;
+						state.currentEventId = String(parsedData.IdEvento || '');
+					}
+					loadEvents(state.galleryDataCache, filter);
 				})
 			} else {
-				loadEvents(json_data, filter);
+				loadEvents(state.galleryDataCache, filter);
 			}
 		})
 	}
@@ -123,6 +131,7 @@ const loadGallery = (filter = 'all') => {
 
 /* EVENT PAGE - Carga específica para página de eventos */
 $(document).ready(function () {
+	const state = getAppState();
 	let $pathname = location.pathname;
 	let $section = '';
 	let $json = '';
@@ -153,14 +162,16 @@ $(document).ready(function () {
 					return;
 				}
 
-				let json_data = parsedData;
-					let ph = json_data.ph ? json_data.ph : phs.default.value;
-					let title = json_data.title;
-					json_data.promo = json_data.promo ? json_data.promo : 0;
+				let eventData = parsedData;
+				state.currentEventData = eventData;
+				state.currentEventId = String(eventData.IdEvento || '');
+					let ph = eventData.ph ? eventData.ph : phs.default.value;
+					let title = eventData.title;
+					eventData.promo = eventData.promo ? eventData.promo : 0;
 					let html_element = '';
-					let pics_length = json_data?.pictures?.length;
+					let pics_length = eventData?.pictures?.length;
 					let $page_start = 0;
-					let $page_limit = json_data?.pictures?.length < 9 ? json_data?.pictures?.length : 9;
+					let $page_limit = eventData?.pictures?.length < 9 ? eventData?.pictures?.length : 9;
 
 					let = lastItem = 0;
 
@@ -255,13 +266,13 @@ $(document).ready(function () {
 						}
 					});
 
-					load_page(events_placeholder, $page_start, $page_limit, json_data);
+					load_page(events_placeholder, $page_start, $page_limit, eventData);
 					$page_start += $page_limit;
 
 					$(window).on('scroll', _.debounce(function () {
 						if ($page_start + $page_limit <= pics_length && $page_limit != 0 && !$('#gallery-wrapper').hasClass('results')) {
 							if (($(window).outerHeight(true) + $(window).scrollTop()) > ($('#gallery-wrapper').height() - 200)) {
-								load_page(events_placeholder, $page_start, $page_limit, json_data);
+								load_page(events_placeholder, $page_start, $page_limit, eventData);
 
 								$page_start += $page_limit;
 
@@ -274,7 +285,7 @@ $(document).ready(function () {
 						event.preventDefault();
 						let actual_pic = $(this).parent().find('.white-popup').attr('id');
 						if (actual_pic == lastItem) {
-							load_page(events_placeholder, $page_start, $page_limit, json_data);
+							load_page(events_placeholder, $page_start, $page_limit, eventData);
 							$('.open-popup-link').magnificPopup({
 								gallery: {
 									enabled: true,
@@ -303,7 +314,7 @@ $(document).ready(function () {
 						}
 					}
 
-					load_ads(ads_placeHolder, json_data);
+					load_ads(ads_placeHolder, eventData);
 
 					title_placeholder.append(title);
 					subtitle_placeholder.append(phs[ph].label);

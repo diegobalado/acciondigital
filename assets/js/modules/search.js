@@ -12,19 +12,41 @@ function getSearchDataUrl(galleryId) {
 	return "/assets/datasources/" + galleryId + ".json";
 }
 
+function getAppState() {
+	window.App = window.App || {};
+	window.App.state = window.App.state || {};
+	return window.App.state;
+}
+
 function withEventData(galleries, onSuccess) {
+	const state = getAppState();
 	const sameEventLoaded =
-		typeof json_data === 'object' &&
-		json_data !== null &&
-		String(json_data.IdEvento) === String(galleries.g);
+		typeof state.currentEventData === 'object' &&
+		state.currentEventData !== null &&
+		String(state.currentEventId) === String(galleries.g);
 
 	if (sameEventLoaded) {
-		onSuccess(json_data);
+		onSuccess(state.currentEventData);
 		return;
 	}
 
 	$.get(getSearchDataUrl(galleries.g), function (data) {
-		onSuccess(data);
+		let parsed = data;
+		if (typeof parsed === 'string') {
+			try {
+				parsed = JSON.parse(parsed);
+			} catch (e) {
+				return;
+			}
+		}
+
+		if (!parsed) {
+			return;
+		}
+
+		state.currentEventData = parsed;
+		state.currentEventId = String(parsed.IdEvento || '');
+		onSuccess(parsed);
 	});
 }
 
