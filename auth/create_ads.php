@@ -147,6 +147,7 @@
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="/assets/js/modules/core.js"></script>
 	<script type="text/javascript" src="/assets/js/modules/ui.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	
