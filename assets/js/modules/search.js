@@ -14,6 +14,28 @@ function bindSearchScrollHandler(handler) {
 	$(window).on('scroll' + SEARCH_SCROLL_NS, handler);
 }
 
+function renderSearchResults(wrapperHtml, items, loadPage) {
+	$('#gallery-wrapper').addClass('results').html(wrapperHtml);
+
+	var eventsPlaceholder = $('#results');
+	var pageStart = 0;
+	var pageLimit = Math.min(9, items.length);
+	var picsLength = items.length;
+
+	loadPage(eventsPlaceholder, pageStart, pageLimit, items);
+	pageStart += pageLimit;
+
+	bindSearchScrollHandler(function () {
+		if (pageStart + pageLimit <= picsLength && pageLimit !== 0) {
+			if (($(window).outerHeight(true) + $(window).scrollTop()) > ($(document).height() - 300)) {
+				loadPage(eventsPlaceholder, pageStart, pageLimit, items);
+				pageStart += pageLimit;
+				pageLimit = (pageStart + pageLimit > picsLength) ? (picsLength - pageStart) : pageLimit;
+			}
+		}
+	});
+}
+
 function getSearchDataUrl(galleryId) {
 	const params = new URLSearchParams(location.search);
 	const mirrorParam = params.get('mirror') === 'home5';
@@ -170,7 +192,7 @@ function buscar(foto) {
 						</div>
 					</div>`;
 
-				$('#results').append(html_element);
+				placeholder.append(html_element);
 			}
 			carrito();
 			$('.open-popup-link').magnificPopup({
@@ -182,77 +204,27 @@ function buscar(foto) {
 		}
 
 		if (arrFiltro.length != 0) {
-			let $results = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><p>Además de éstas, puede haber fotos tuyas sin clasificar.</p><div id="results"></div>';
+			let resultsHtml = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><p>Además de éstas, puede haber fotos tuyas sin clasificar.</p><div id="results"></div>';
+			renderSearchResults(resultsHtml, arrFiltro, load_page);
 
-			let events_placeholder = $('#results');
-
-			$('#gallery-wrapper').addClass('results').html($results);
-
-			let ph = html.ph ? html.ph : phs.default.value;
-			let pics_length = arrFiltro.length;
-
-			let $page_start = 0;
-			let $page_limit = 9;
-
-			$page_limit = ($page_limit > pics_length) ? pics_length : $page_limit;
-
-			load_page(events_placeholder, $page_start, $page_limit, arrFiltro);
-			$page_start += $page_limit;
-			$page_limit = ($page_start + $page_limit > pics_length) ? (pics_length - $page_start) : $page_limit;
-			let $pagina = 1;
-
-			bindSearchScrollHandler(function () {
-				if ($page_start + $page_limit <= pics_length && $page_limit != 0) {
-					if (($(window).outerHeight(true) + $(window).scrollTop()) > ($(document).height() - 300)) {
-						load_page(events_placeholder, $page_start, $page_limit, arrFiltro);
-
-						$page_start += $page_limit;
-
-						$page_limit = ($page_start + $page_limit > pics_length) ? (pics_length - $page_start) : $page_limit;
-					}
-				}
-			});
 			if (typeof gtag === 'function') {
 				gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda con resultados' });
 			}
 		} else {
-
+			let resultsHtml = '';
 			if (foto != 'untagged') {
-				var $results = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
+				resultsHtml = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 				if (typeof gtag === 'function') {
 					gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda sin resultados' });
 				}
 			} else {
-				var $results = '<h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
+				resultsHtml = '<h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 				if (typeof gtag === 'function') {
 					gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Sin Clasificar' });
 				}
 			}
 
-			let events_placeholder = $('#results');
-			$('#gallery-wrapper').addClass('results').html($results);
-			let pics_length = sinCodigo.length;
-
-			let $page_start = 0;
-			let $page_limit = 9;
-
-			$page_limit = ($page_limit > pics_length) ? pics_length : $page_limit;
-
-			load_page(events_placeholder, $page_start, $page_limit, sinCodigo);
-			$page_start += $page_limit;
-			let $pagina = 1;
-
-			bindSearchScrollHandler(function () {
-				if ($page_start + $page_limit <= pics_length && $page_limit != 0) {
-					if (($(window).outerHeight(true) + $(window).scrollTop()) > ($(document).height() - 300)) {
-						load_page(events_placeholder, $page_start, $page_limit, sinCodigo);
-
-						$page_start += $page_limit;
-
-						$page_limit = ($page_start + $page_limit > pics_length) ? (pics_length - $page_start) : $page_limit;
-					}
-				}
-			});
+			renderSearchResults(resultsHtml, sinCodigo, load_page);
 		}
 		carrito();
 		$('.open-popup-link').magnificPopup({

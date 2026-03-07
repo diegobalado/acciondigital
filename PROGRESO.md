@@ -192,4 +192,5 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 - 2026-03-07: Introducido `modules/core.js` para centralizar estado/utilidades compartidas (`phs`, `getGET`, `getCurrentScroll`), removida duplicación en `ui.js`/`carrito.js` y aplicado orden de carga `core -> módulos` en 11 páginas.
 - 2026-03-07: Estado compartido migrado a `App.state` (`galleryDataCache`, `galleryDataUrl`, `currentEventData`, `currentEventId`) y adaptados `gallery.js` + `search.js` para eliminar dependencia implícita del global `json_data`.
 - 2026-03-07: `search.js` ahora usa binding de scroll namespaced y único por búsqueda (evita acumulación de handlers y llamadas duplicadas tras múltiples búsquedas).
+- 2026-03-07: `search.js` simplificado para mantenibilidad: extracción de helper único de render+paginación (`renderSearchResults`) y eliminación de bloques duplicados entre flujo con resultados y sin resultados.
 
