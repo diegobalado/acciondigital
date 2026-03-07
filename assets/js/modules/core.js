@@ -5,6 +5,12 @@
 (function (window) {
 	window.App = window.App || {};
 	window.App.config = window.App.config || {};
+	window.App.state = window.App.state || {};
+
+	window.App.state.galleryDataCache = window.App.state.galleryDataCache || null;
+	window.App.state.galleryDataUrl = window.App.state.galleryDataUrl || '';
+	window.App.state.currentEventData = window.App.state.currentEventData || null;
+	window.App.state.currentEventId = window.App.state.currentEventId || '';
 
 	window.App.config.phs = {
 		default: {
