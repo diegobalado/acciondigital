@@ -33,6 +33,11 @@ function buscar(foto) {
 		return;
 	}
 
+	foto = String(foto).trim();
+	if (!foto) {
+		return;
+	}
+
 	let galleries = getGET();
 	if (!galleries || !galleries.g) {
 		return;
@@ -40,6 +45,18 @@ function buscar(foto) {
 
 	withEventData(galleries, function (data) {
 		let html = data;
+		if (typeof html === 'string') {
+			try {
+				html = JSON.parse(html);
+			} catch (e) {
+				return;
+			}
+		}
+
+		if (!html || !Array.isArray(html.pictures)) {
+			return;
+		}
+
 		let arrFiltro = [];
 		let sinCodigo = [];
 		let title = html.title;
@@ -55,9 +72,9 @@ function buscar(foto) {
 				codigo = pic.substr(pic.indexOf('-') + 1, pic.length);
 				if (codigo.split('-').length > 1) {
 					codigo.split('-').forEach(function (element, i) {
-						if (element == foto) arrFiltro.push(pic);
+						if (String(element).trim() == foto) arrFiltro.push(pic);
 					})
-				} else if (codigo == foto) arrFiltro.push(pic);
+				} else if (String(codigo).trim() == foto) arrFiltro.push(pic);
 			}
 		});
 
@@ -160,15 +177,21 @@ function buscar(foto) {
 					}
 				}
 			})
-			gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda con resultados' });
+			if (typeof gtag === 'function') {
+				gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda con resultados' });
+			}
 		} else {
 
 			if (foto != 'untagged') {
 				var $results = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
-				gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda sin resultados' });
+				if (typeof gtag === 'function') {
+					gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda sin resultados' });
+				}
 			} else {
 				var $results = '<h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
-				gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Sin Clasificar' });
+				if (typeof gtag === 'function') {
+					gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Sin Clasificar' });
+				}
 			}
 
 			let events_placeholder = $('#results');
@@ -207,7 +230,12 @@ function buscar(foto) {
 }
 
 $(function () {
-	$('#untagged').on('click', function (event) {
+	$(document).on('submit', 'form#buscador', function (event) {
+		event.preventDefault();
+		buscar($('#userID').val());
+	});
+
+	$(document).on('click', '#untagged', function (event) {
 		event.preventDefault();
 		buscar('untagged');
 	});
