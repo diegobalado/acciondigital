@@ -193,4 +193,5 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 - 2026-03-07: Estado compartido migrado a `App.state` (`galleryDataCache`, `galleryDataUrl`, `currentEventData`, `currentEventId`) y adaptados `gallery.js` + `search.js` para eliminar dependencia implícita del global `json_data`.
 - 2026-03-07: `search.js` ahora usa binding de scroll namespaced y único por búsqueda (evita acumulación de handlers y llamadas duplicadas tras múltiples búsquedas).
 - 2026-03-07: `search.js` simplificado para mantenibilidad: extracción de helper único de render+paginación (`renderSearchResults`) y eliminación de bloques duplicados entre flujo con resultados y sin resultados.
+- 2026-03-07: `gallery.js` (flujo `/eventos/`) refactorizado para mantenibilidad: helpers dedicados para popup/carrito, construcción de item, carga por página, render de ads e infinite scroll namespaced; removido código debug/duplicado.
 
