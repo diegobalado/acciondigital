@@ -56,6 +56,34 @@ Registro iterativo de avances de la migracion SPA.
 
 - Fase 2.1: iniciar migracion de Home con carga real de `inicio.json`, estados de UI y pruebas de render.
 
+## Iteracion 4 - Home mirror+ads (Fase 2.2)
+
+- Fecha: 2026-03-07
+- Branch: `spa-svelte-migration`
+- Objetivo: agregar soporte inicial de `mirror=home5` e integracion de ads en el listado Home.
+
+### Hecho
+
+- API Home extendida en `src/features/home/homeApi.js`:
+	- resolucion de datasource por query param (`inicio.json` vs `mirror/home-5/inicio.5.json`)
+	- mapeo inicial de ads legacy (`name`, `href`, `target`, `imageUrl`)
+	- retorno de `feed` mixto (eventos + ads)
+- Helper de insercion agregado: `src/features/home/homeFeed.js`.
+- Home actualizada para render de feed mixto en `src/features/home/HomePage.svelte`.
+- Tests unitarios agregados/actualizados:
+	- `src/features/home/homeFeed.test.js`
+	- `src/features/home/homeApi.test.js` (mirror + ads)
+	- `src/features/home/HomePage.test.js` (render de ads)
+
+### Verificacion
+
+- `pnpm test`: OK (6 files, 19 tests).
+- `pnpm build`: OK.
+
+### Proximo paso
+
+- Fase 2.3: aproximar estructura visual de Home a template legacy y desacoplar tracking de clics.
+
 ## Iteracion 3 - Home base (Fase 2.1)
 
 - Fecha: 2026-03-07

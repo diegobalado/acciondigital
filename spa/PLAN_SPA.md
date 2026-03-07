@@ -81,15 +81,19 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 ### Fase 2 - Home
 
 - [x] Migrar vista de inicio y listado de eventos.
-- [ ] Soportar modo mirror (`mirror=home5`).
+- [x] Soportar modo mirror (`mirror=home5`).
 - [x] Tests unitarios para render y estados vacios/error.
 
 #### Proxima iteracion sugerida (Fase 2.2)
 
-1. Conectar Home a templates reales de cards/fotos segun `eventosTemplate.htm` legacy.
-2. Agregar integracion inicial de ads en listado de Home.
-3. Incorporar soporte de query param `mirror=home5`.
-4. Agregar tests unitarios para mirror y reglas basicas de insercion.
+1. Iteracion cerrada el 2026-03-07:
+	- soporte `mirror=home5` en datasource de Home
+	- integracion inicial de ads en feed de Home
+	- tests de mirror y helper de insercion de ads
+2. Proxima iteracion sugerida (Fase 2.3):
+	- acercar render visual de Home a `inicioTemplate.htm` (thumb + etiqueta)
+	- incluir primer tracking/event hooks desacoplados para clic en eventos/ads
+	- definir contrato de card reutilizable para futuras secciones
 
 ### Fase 3 - Eventos/Galeria
 

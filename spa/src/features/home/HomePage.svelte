@@ -1,17 +1,22 @@
 <script>
 	import { onMount } from 'svelte';
 	import { APP_SUBTITLE, APP_TITLE } from '../../app/config/migration';
-	import { loadHomeEvents } from './homeApi';
+	import { loadHomeContent } from './homeApi';
 
-	export let loadEvents = loadHomeEvents;
+	export let loadHome = loadHomeContent;
 
 	let events = [];
+	let ads = [];
+	let feed = [];
 	let status = 'loading';
 
 	onMount(async () => {
 		try {
-			events = await loadEvents();
-			status = events.length > 0 ? 'ready' : 'empty';
+			const result = await loadHome({ search: window.location.search });
+			events = result.events;
+			ads = result.ads;
+			feed = result.feed;
+			status = feed.length > 0 ? 'ready' : 'empty';
 		} catch {
 			status = 'error';
 		}
@@ -31,14 +36,29 @@
 	{:else if status === 'empty'}
 		<p data-testid="home-empty">No hay eventos disponibles por el momento.</p>
 	{:else}
+		<p class="home-summary" data-testid="home-summary">
+			Eventos: {events.length} | Ads: {ads.length}
+		</p>
 		<ul class="home-events" data-testid="home-events-list">
-			{#each events as event}
-				<li>
-					<a href={event.eventUrl || '#'}>{event.title}</a>
-					{#if event.photographer}
-						<small>Foto: {event.photographer}</small>
-					{/if}
-				</li>
+			{#each feed as item}
+				{#if item.type === 'event'}
+					<li>
+						<a href={item.event.eventUrl || '#'}>{item.event.title}</a>
+						{#if item.event.photographer}
+							<small>Foto: {item.event.photographer}</small>
+						{/if}
+					</li>
+				{:else}
+					<li class="home-ad" data-testid="home-ad-item">
+						<a href={item.ad.href} target={item.ad.target} rel="noreferrer noopener">
+							{#if item.ad.imageUrl}
+								<img src={item.ad.imageUrl} alt={item.ad.name || 'Publicidad'} />
+							{:else}
+								Publicidad
+							{/if}
+						</a>
+					</li>
+				{/if}
 			{/each}
 		</ul>
 	{/if}
@@ -78,6 +98,22 @@
 		border-radius: 0.5rem;
 		display: grid;
 		gap: 0.25rem;
+	}
+
+	.home-summary {
+		margin: 0 0 0.75rem;
+		font-size: 0.9rem;
+		opacity: 0.8;
+	}
+
+	.home-ad {
+		background: #f2f7fb;
+	}
+
+	.home-ad img {
+		display: block;
+		max-width: 100%;
+		height: auto;
 	}
 
 	a {
