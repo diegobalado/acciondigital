@@ -97,7 +97,7 @@
 									if (!is_dir($adFile))
 										array_push($ads, $adFile);
 								}
-								usort($ads, function ($a, $b) { return strcasecmp($a["name"], $b["name"]); }); 
+								usort($ads, function ($a, $b) { return strcasecmp($a, $b); });
 
 								foreach ($ads as $ad) {
 									?>
@@ -152,78 +152,99 @@
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	
 	<script type="text/javascript">
-		loadAds = ads => {
-			ads.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase())
-			var tableAds = ''
-			for (var ad in ads) {
-				let isNew = ads[ad].isNew?' style="background-color: #ccc"':''
-				let dataId = `data-id="${ads[ad].name.replace('.', '_').toLowerCase()}"`
+		function loadAds(ads) {
+			ads.sort(function (a, b) {
+				return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+			});
+
+			let tableAds = '';
+			for (let adIndex = 0; adIndex < ads.length; adIndex++) {
+				const ad = ads[adIndex];
+				const isNew = ad.isNew ? ' style="background-color: #ccc"' : '';
 				tableAds += `<tr ${isNew}>
-				<td><img src='/assets/images/ads/${ads[ad].name}' style="height: 75px; width: auto" /></td>
-				<td>${ads[ad].name}</td>
-				<td><a href="${ads[ad].href}" target="_blank">${ads[ad].href}</a></td>
-				</tr>`
+				<td><img src='/assets/images/ads/${ad.name}' style="height: 75px; width: auto" /></td>
+				<td>${ad.name}</td>
+				<td><a href="${ad.href}" target="_blank">${ad.href}</a></td>
+				</tr>`;
 			}
-			$('#loadedAds').html(tableAds)
-			return ads
+
+			$('#loadedAds').html(tableAds);
+			return ads;
 		}
 
-		handleCancel = () => {
+		function handleCancel() {
 			window.location.href = '/auth/';
 		}
 
-		handleSubmit = data => {
-			let adData = data.map(ad=>Object.assign({}, {}, {'name': ad.name, 'href': ad.href}))
+		function handleSubmit(data) {
+			const adData = data.map(function (ad) {
+				return Object.assign({}, {}, { name: ad.name, href: ad.href });
+			});
 
 			$.ajax({
-			    data: 'adData=' + JSON.stringify(adData),
-			    url: 'save_ads.php',
-			    method: 'POST', 
-			    success: function(msg) {
-			        if (msg == 200) {
-			        	alert("La publicidad se cargó correctamente.");
-			        	window.location.href = '/auth/';
-			        } else {
-			        	alert("Hubo un error al cargar la publicidad.\nPor favor intentá de nuevo.")
-			        	window.location.href = '/';
-			        }
-			    }
-			})
+				data: 'adData=' + JSON.stringify(adData),
+				url: 'save_ads.php',
+				method: 'POST',
+				success: function (msg) {
+					if (msg == 200) {
+						alert('La publicidad se cargó correctamente.');
+						window.location.href = '/auth/';
+					} else {
+						alert('Hubo un error al cargar la publicidad.\nPor favor intentá de nuevo.');
+						window.location.href = '/';
+					}
+				}
+			});
 		}
 
-		$(document).ready(function() {
-			var state = {
-				adData: []			
-			}
-			$.get( "/assets/datasources/ads.json", function( data ) {
-				state.adData = data.map(ad=>Object.assign({}, {}, {'_id': ad.name.replace('.', '_').toLowerCase(), 'name': ad.name, 'href': ad.href}))
-				state.adData = loadAds(state.adData)
+		$(document).ready(function () {
+			const state = {
+				adData: []
+			};
+
+			$.get('/assets/datasources/ads.json', function (data) {
+				state.adData = data.map(function (ad) {
+					return Object.assign({}, {}, {
+						_id: ad.name.replace('.', '_').toLowerCase(),
+						name: ad.name,
+						href: ad.href
+					});
+				});
+				state.adData = loadAds(state.adData);
 			}, "json");
 
-			$('#addButton').click(function() {
-				let $ad = $('#ad')
-				let $href = $('#href')
-				let name = $ad.val()
-				let href = $href.val()
-				let adIndex = null
-				
-				state.adData.forEach((ad, i)=>{adIndex=(ad.name===name)?i:adIndex})
-				if (adIndex!==null) {
-					var msg = window.confirm("La publicidad ya existe.\n¿Querés sobreescribirla?");
-					if (msg)
-						state.adData[adIndex] = {name, href, isNew: true}
-				}
-				else 
-					state.adData.push({name, href, isNew: true})
-				
-				state.adData = loadAds(state.adData)				
-				$ad.val('')
-				$href.val('')
-			})
+			$('#addButton').click(function () {
+				const $ad = $('#ad');
+				const $href = $('#href');
+				const name = $ad.val();
+				const href = $href.val();
+				let adIndex = null;
 
-			$('.cancelBtn').click(()=>handleCancel())
-			$('.submitBtn').click(()=>handleSubmit(state.adData))
-		})
+				state.adData.forEach(function (ad, index) {
+					adIndex = ad.name === name ? index : adIndex;
+				});
+				if (adIndex !== null) {
+					const confirmOverwrite = window.confirm('La publicidad ya existe.\n¿Querés sobreescribirla?');
+					if (confirmOverwrite) {
+						state.adData[adIndex] = { name: name, href: href, isNew: true };
+					}
+				}
+				else {
+					state.adData.push({ name: name, href: href, isNew: true });
+				}
+
+				state.adData = loadAds(state.adData);
+				$ad.val('');
+				$href.val('');
+			});
+
+			$('.cancelBtn').click(function () {
+				handleCancel();
+			});
+			$('.submitBtn').click(function () {
+				handleSubmit(state.adData);
+			});
+		});
 	</script>
 </body>
 </html>
