@@ -80,9 +80,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 ### Fase 2 - Home
 
-- [ ] Migrar vista de inicio y listado de eventos.
+- [x] Migrar vista de inicio y listado de eventos.
 - [ ] Soportar modo mirror (`mirror=home5`).
-- [ ] Tests unitarios para render y estados vacios/error.
+- [x] Tests unitarios para render y estados vacios/error.
+
+#### Proxima iteracion sugerida (Fase 2.2)
+
+1. Conectar Home a templates reales de cards/fotos segun `eventosTemplate.htm` legacy.
+2. Agregar integracion inicial de ads en listado de Home.
+3. Incorporar soporte de query param `mirror=home5`.
+4. Agregar tests unitarios para mirror y reglas basicas de insercion.
 
 ### Fase 3 - Eventos/Galeria
 

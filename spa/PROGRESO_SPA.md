@@ -56,6 +56,39 @@ Registro iterativo de avances de la migracion SPA.
 
 - Fase 2.1: iniciar migracion de Home con carga real de `inicio.json`, estados de UI y pruebas de render.
 
+## Iteracion 3 - Home base (Fase 2.1)
+
+- Fecha: 2026-03-07
+- Branch: `spa-svelte-migration`
+- Objetivo: implementar flujo inicial de Home con carga real de `inicio.json` y estados de UI.
+
+### Hecho
+
+- Nueva API de Home: `src/features/home/homeApi.js`.
+	- lectura de `inicio.json` via `legacyDataClient`
+	- mapeo de `eventos` con `mapLegacyHomeEvent`
+- Mapper Home ajustado al formato real legacy (`ID`, `text`, `ph`) con fallback de URL.
+- Componente de Home inicial agregado: `src/features/home/HomePage.svelte`.
+	- estados: `loading`, `error`, `empty`, `ready`
+	- render inicial de listado de eventos
+- `App.svelte` actualizado para montar `HomePage`.
+- Ajuste de `vite.config.js` para tests de componentes Svelte en entorno browser (`resolve.conditions`).
+
+### Tests unitarios
+
+- `src/features/home/homeApi.test.js`
+- `src/features/home/HomePage.test.js`
+- `src/features/home/homeModelMapper.test.js` actualizado
+
+### Verificacion
+
+- `pnpm test`: OK (5 files, 12 tests).
+- `pnpm build`: OK.
+
+### Proximo paso
+
+- Fase 2.2: soporte `mirror=home5`, estructura visual mas cercana a legacy e insercion inicial de ads.
+
 ## Iteracion 2 - Tooling pnpm
 
 - Fecha: 2026-03-07
