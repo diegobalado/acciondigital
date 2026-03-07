@@ -3,6 +3,17 @@
  * Maneja la funcionalidad de búsqueda de fotos por número de corredor
  */
 
+const SEARCH_SCROLL_NS = '.searchResults';
+
+function clearSearchScrollHandler() {
+	$(window).off('scroll' + SEARCH_SCROLL_NS);
+}
+
+function bindSearchScrollHandler(handler) {
+	clearSearchScrollHandler();
+	$(window).on('scroll' + SEARCH_SCROLL_NS, handler);
+}
+
 function getSearchDataUrl(galleryId) {
 	const params = new URLSearchParams(location.search);
 	const mirrorParam = params.get('mirror') === 'home5';
@@ -51,6 +62,8 @@ function withEventData(galleries, onSuccess) {
 }
 
 function buscar(foto) {
+	clearSearchScrollHandler();
+
 	if (!foto) {
 		return;
 	}
@@ -188,7 +201,7 @@ function buscar(foto) {
 			$page_limit = ($page_start + $page_limit > pics_length) ? (pics_length - $page_start) : $page_limit;
 			let $pagina = 1;
 
-			$(window).scroll(function () {
+			bindSearchScrollHandler(function () {
 				if ($page_start + $page_limit <= pics_length && $page_limit != 0) {
 					if (($(window).outerHeight(true) + $(window).scrollTop()) > ($(document).height() - 300)) {
 						load_page(events_placeholder, $page_start, $page_limit, arrFiltro);
@@ -198,7 +211,7 @@ function buscar(foto) {
 						$page_limit = ($page_start + $page_limit > pics_length) ? (pics_length - $page_start) : $page_limit;
 					}
 				}
-			})
+			});
 			if (typeof gtag === 'function') {
 				gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda con resultados' });
 			}
@@ -229,7 +242,7 @@ function buscar(foto) {
 			$page_start += $page_limit;
 			let $pagina = 1;
 
-			$(window).scroll(function () {
+			bindSearchScrollHandler(function () {
 				if ($page_start + $page_limit <= pics_length && $page_limit != 0) {
 					if (($(window).outerHeight(true) + $(window).scrollTop()) > ($(document).height() - 300)) {
 						load_page(events_placeholder, $page_start, $page_limit, sinCodigo);
@@ -239,7 +252,7 @@ function buscar(foto) {
 						$page_limit = ($page_start + $page_limit > pics_length) ? (pics_length - $page_start) : $page_limit;
 					}
 				}
-			})
+			});
 		}
 		carrito();
 		$('.open-popup-link').magnificPopup({
