@@ -22,8 +22,8 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 3. No romper el sitio legacy durante la migracion.
 4. Cada iteracion debe ser pequena, verificable y con commit propio.
 5. En cada iteracion correr validaciones minimas en `spa/`:
-	- `npm run test`
-	- `npm run build`
+	- `pnpm test`
+	- `pnpm build`
 6. Registrar al cierre de cada iteracion:
 	- Cambios realizados
 	- Tests agregados/actualizados
@@ -38,7 +38,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 1. Objetivo funcional concreto completado.
 2. Tests unitarios relevantes creados/ajustados.
 3. `PLAN_SPA.md` y `PROGRESO_SPA.md` actualizados.
-4. `npm run test` y `npm run build` en verde.
+4. `pnpm test` y `pnpm build` en verde.
 5. Commit y push en `spa-svelte-migration`.
 
 ## Estado actual de arranque
@@ -133,8 +133,8 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 Ejecutar desde `spa/`:
 
-- `npm install`
-- `npm run dev`
-- `npm run test`
-- `npm run test:coverage`
-- `npm run build`
+- `pnpm install`
+- `pnpm dev`
+- `pnpm test`
+- `pnpm test:coverage`
+- `pnpm build`

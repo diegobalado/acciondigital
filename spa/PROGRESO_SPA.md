@@ -55,3 +55,24 @@ Registro iterativo de avances de la migracion SPA.
 ### Proximo paso
 
 - Fase 2.1: iniciar migracion de Home con carga real de `inicio.json`, estados de UI y pruebas de render.
+
+## Iteracion 2 - Tooling pnpm
+
+- Fecha: 2026-03-07
+- Branch: `spa-svelte-migration`
+- Objetivo: unificar el package manager de la SPA en `pnpm`.
+
+### Hecho
+
+- Migracion de lockfile: eliminado `package-lock.json` y generado `pnpm-lock.yaml`.
+- `package.json` actualizado con `packageManager: pnpm@10.30.3`.
+- `PLAN_SPA.md` actualizado para ejecutar validaciones con `pnpm`.
+
+### Verificacion
+
+- `pnpm test`: OK (3 files, 5 tests).
+- `pnpm build`: OK.
+
+### Proximo paso
+
+- Fase 2.1: iniciar migracion de Home con carga real de `inicio.json`, estados de UI y pruebas de render.

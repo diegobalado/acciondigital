@@ -1,6 +1,36 @@
-# Svelte + Vite
+# SPA Accion Digital (Svelte + Vite)
 
-This template should help get you started developing with Svelte in Vite.
+Proyecto SPA de migracion incremental para Accion Digital.
+
+## Requisitos
+
+- Node.js 20+
+- `pnpm` (si no esta instalado globalmente, usar `npx pnpm`)
+
+## Comandos
+
+Ejecutar desde `spa/`:
+
+- `pnpm install`
+- `pnpm dev`
+- `pnpm test`
+- `pnpm build`
+
+Fallback sin instalacion global de pnpm:
+
+- `npx pnpm install`
+- `npx pnpm dev`
+- `npx pnpm test`
+- `npx pnpm build`
+
+## Notas
+
+- Mantener un solo package manager en la rama para evitar conflictos de lockfile.
+- Archivo lock oficial: `pnpm-lock.yaml`.
+
+---
+
+Base template details:
 
 ## Recommended IDE Setup
 
