@@ -1,0 +1,7 @@
+/**
+ * Bundle: Contacto
+ * Incluye: main, contact, bootstrap
+ */
+@import url(/assets/css/pieces/main.css);
+@import url(/assets/css/pieces/contact.css);
+@import url(/assets/css/pieces/bootstrap.min.css);
