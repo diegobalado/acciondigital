@@ -11,7 +11,7 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 | ------- | ---------------------------- | ------------ |
 | CSS     | 1.4 (variables CSS)          | ✅ Completado |
 | Datos   | mirror home (5 eventos)      | ✅ Completado |
-| Scripts | 2.4 (orden de carga estándar) | ✅ Completado |
+| Scripts | 2.5 (carga estática de scripts) | ✅ Completado |
 
 
 ---
@@ -19,6 +19,15 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 ## Historial detallado
 
 ### Scripts
+
+#### Fase 2.5 – Reemplazar carga dinámica por estática ✅
+
+- **Objetivo**: Evitar inyección dinámica de scripts y definir carga explícita en HTML.
+- **Cambios realizados**:
+  - En `inicio/index.html` se agregaron en forma estática: `skel.min.js`, `jquery.scrolly.min.js`, `util.js`, `main.js`.
+  - En `eventos/index.html` se agregaron en forma estática: `skel.min.js`, `jquery.scrolly.min.js`, `util.js`, `main.js`.
+  - Se mantiene el orden de carga con jQuery al inicio y módulos del refactor al final.
+- **Fecha**: 2026-03-07
 
 #### Fase 2.4 – Definir orden de carga estándar ✅
 
