@@ -157,17 +157,7 @@
 	<script type="text/javascript" src="/assets/js/modules/core.js"></script>
 	<script type="text/javascript" src="/assets/js/modules/ui.js"></script>
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
-	<script>
-		$(document).ready(function () {
-			$('#checkEvents').on('change', function () {
-				if ($(this).is(':checked')) {
-					$('#IdEvento option').attr('selected', 'selected');
-				} else {
-					$('#IdEvento option').attr('selected', false);
-				}
-			});
-		});
-	</script>
+	<script type="text/javascript" src="/assets/js/modules/auth-events-select-all.js"></script>
 
 </body>
 </html>
