@@ -3,9 +3,42 @@
  * Maneja la funcionalidad de búsqueda de fotos por número de corredor
  */
 
+function getSearchDataUrl(galleryId) {
+	const params = new URLSearchParams(location.search);
+	const mirrorParam = params.get('mirror') === 'home5';
+	if (mirrorParam) {
+		return "/assets/datasources/mirror/home-5/" + galleryId + ".json";
+	}
+	return "/assets/datasources/" + galleryId + ".json";
+}
+
+function withEventData(galleries, onSuccess) {
+	const sameEventLoaded =
+		typeof json_data === 'object' &&
+		json_data !== null &&
+		String(json_data.IdEvento) === String(galleries.g);
+
+	if (sameEventLoaded) {
+		onSuccess(json_data);
+		return;
+	}
+
+	$.get(getSearchDataUrl(galleries.g), function (data) {
+		onSuccess(data);
+	});
+}
+
 function buscar(foto) {
+	if (!foto) {
+		return;
+	}
+
 	let galleries = getGET();
-	$.get("/assets/datasources/" + galleries.g + ".json", function (data, status, xhr) {
+	if (!galleries || !galleries.g) {
+		return;
+	}
+
+	withEventData(galleries, function (data) {
 		let html = data;
 		let arrFiltro = [];
 		let sinCodigo = [];
@@ -16,20 +49,22 @@ function buscar(foto) {
 		html.promo = html.promo ? html.promo : 0;
 		let promo = html.promo ? html.promo : 0;
 		html.pictures.forEach(function (el, index) {
-			if (el.indexOf('-') == -1) sinCodigo.push(el)
+			const pic = String(el);
+			if (pic.indexOf('-') == -1) sinCodigo.push(pic)
 			else {
-				codigo = el.substr(el.indexOf('-') + 1, el.length);
+				codigo = pic.substr(pic.indexOf('-') + 1, pic.length);
 				if (codigo.split('-').length > 1) {
 					codigo.split('-').forEach(function (element, i) {
-						if (element == foto) arrFiltro.push(el);
+						if (element == foto) arrFiltro.push(pic);
 					})
-				} else if (codigo == foto) arrFiltro.push(el);
+				} else if (codigo == foto) arrFiltro.push(pic);
 			}
 		});
 
 		/*CARGA PARA LA BUSQUEDA*/
 		var load_page = function (placeholder, page_start, page_limit, data) {
 			let pic = '';
+			let html_element = '';
 
 			for (var i = page_start; i < page_start + page_limit; i++) {
 				pic = data[i];
@@ -101,14 +136,8 @@ function buscar(foto) {
 
 			$('#gallery-wrapper').addClass('results').html($results);
 
-			let IdEvento = html.IdEvento;
 			let ph = html.ph ? html.ph : phs.default.value;
-			let title = html.title;
-			let json_arrFiltro = arrFiltro;
-
-			let html_element = '';
 			let pics_length = arrFiltro.length;
-			let index = 0;
 
 			let $page_start = 0;
 			let $page_limit = 9;
@@ -144,14 +173,7 @@ function buscar(foto) {
 
 			let events_placeholder = $('#results');
 			$('#gallery-wrapper').addClass('results').html($results);
-
-			let IdEvento = html.IdEvento;
-			let title = html.title;
-			let json_sinCodigo = sinCodigo;
-
-			let html_element = '';
 			let pics_length = sinCodigo.length;
-			let index = 0;
 
 			let $page_start = 0;
 			let $page_limit = 9;
