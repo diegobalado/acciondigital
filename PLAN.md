@@ -102,4 +102,5 @@ Documento de referencia para las mejoras iterativas del sitio. Usar junto con `P
 2. Actualizar `PROGRESO.md` tras cada mejora.
 3. Probar en las páginas afectadas antes de dar por cerrada una fase.
 4. En cada iteración, crear un commit con los cambios y hacer push a la rama activa (actualmente `refactor`).
+5. Priorizar legibilidad y mantenibilidad antes que performance: primero simplificar y eliminar complejidad innecesaria, luego optimizar rendimiento.
 
