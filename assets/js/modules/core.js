@@ -32,15 +32,15 @@
 	};
 
 	window.App.getGET = function () {
-		var loc = document.location.href;
+		const loc = document.location.href;
 		if (loc.indexOf('?') > 0) {
-			var getString = loc.split('?')[1];
-			var GET = getString.split('&');
-			var get = {};
-			for (var i = 0, l = GET.length; i < l; i++) {
-				var tmp = GET[i].split('=');
-				var value = unescape(decodeURI(tmp[1] || ''));
-				var hashIndex = value.indexOf('#');
+			const getString = loc.split('?')[1];
+			const queryPairs = getString.split('&');
+			const get = {};
+			for (let i = 0, length = queryPairs.length; i < length; i++) {
+				const tmp = queryPairs[i].split('=');
+				const value = unescape(decodeURI(tmp[1] || ''));
+				const hashIndex = value.indexOf('#');
 				get[tmp[0]] = hashIndex !== -1 ? value.substr(0, hashIndex) : value;
 			}
 			return get;

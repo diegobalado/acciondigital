@@ -12,7 +12,7 @@ const shrinkHeader = 100;
 /*HEADER COLAPSABLE*/
 $(function () {
 	$(window).scroll(function () {
-		let scroll = getCurrentScroll();
+		const scroll = getCurrentScroll();
 		if (scroll >= shrinkHeader) {
 			$('#header').addClass('shrink');
 			$('#btnTop').show('400');
@@ -25,8 +25,8 @@ $(function () {
 
 /*PAGINA ACTIVA*/
 $(function () {
-	var $param = location.pathname;
-	switch ($param) {
+	const pathname = location.pathname;
+	switch (pathname) {
 		case '/amigos/':
 			$('#nav-header ul li.friends').addClass('active');
 			break;
@@ -42,7 +42,7 @@ $(function () {
 		default:
 			$('#nav-header ul li.home').addClass('active');
 	}
-})
+});
 
 /*GENERALES*/
 $(document).ready(function () {
@@ -58,8 +58,10 @@ $(document).ready(function () {
 		return false;
 	});
 
-	$('select#ph').append('<option value="all">Todos</option>')
-	Object.keys(phs).map(ph => {
-		ph !== 'default' && $('select#ph').append(`<option value="${phs[ph].value}">${phs[ph].label}</option>`)
-	})
+	$('select#ph').append('<option value="all">Todos</option>');
+	Object.keys(phs).forEach(function (phKey) {
+		if (phKey !== 'default') {
+			$('select#ph').append(`<option value="${phs[phKey].value}">${phs[phKey].label}</option>`);
+		}
+	});
 });
