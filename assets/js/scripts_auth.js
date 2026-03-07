@@ -1,26 +1,26 @@
-$(document).ready(function() {
-	let $btns = '';
-	let $param = location.pathname;
-	let btnHome = '<a class="button btnRedirect" href="/auth/create_home.php"> Crear página de inicio </a>';
+$(document).ready(function () {
+	let buttonsHtml = '';
+	const pathname = location.pathname;
+	const btnHome = '<a class="button btnRedirect" href="/auth/create_home.php"> Crear página de inicio </a>';
 	// let btnGallery = '<a class="button btnRedirect" href="/auth/create_gallery.php"> Crear galería general </a>';
-	let btnEvent = '<a class="button btnRedirect" href="/auth/create_event.php"> Crear evento </a>';
-	let btnAds = '<a class="button btnRedirect" href="/auth/create_ads.php"> Linkear Publicidad </a>';
-	switch($param) {
+	const btnEvent = '<a class="button btnRedirect" href="/auth/create_event.php"> Crear evento </a>';
+	const btnAds = '<a class="button btnRedirect" href="/auth/create_ads.php"> Linkear Publicidad </a>';
+	switch (pathname) {
 		case '/auth/create_home.php':
-		$btns = btnEvent + btnAds;
-		break;
+			buttonsHtml = btnEvent + btnAds;
+			break;
 		/*case '/auth/create_gallery.php':
-		$btns = btnHome + btnEvent + btnAds;
+		buttonsHtml = btnHome + btnEvent + btnAds;
 		break;*/
 		case '/auth/create_event.php':
-		$btns = btnHome + btnAds;
-		break;	    
+			buttonsHtml = btnHome + btnAds;
+			break;
 		case '/auth/create_ads.php':
-		$btns = btnHome + btnEvent;
-		break;	    
+			buttonsHtml = btnHome + btnEvent;
+			break;
 		default:
-		$btns = btnHome + btnEvent + btnAds;
-		break;
-	} 
-	$('.btnGroup').html($btns);
+			buttonsHtml = btnHome + btnEvent + btnAds;
+			break;
+	}
+	$('.btnGroup').html(buttonsHtml);
 });

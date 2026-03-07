@@ -197,4 +197,5 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 - 2026-03-07: Extraído `modules/renderers.js` para centralizar construcción de HTML compartido (cards de foto y links de ads) y reemplazada duplicación en `gallery.js` + `search.js`.
 - 2026-03-07: Homogeneización de estilo/naming en módulos JS (principalmente `search.js` y `gallery.js`): `const/let` consistentes, nombres más descriptivos y comparaciones estrictas para facilitar lectura y mantenimiento.
 - 2026-03-07: Homogeneización adicional de estilo en módulos compartidos (`ui.js`, `carrito.js`, `core.js`): variables/constantes consistentes y cleanup de naming para mejorar mantenibilidad sin cambios funcionales.
+- 2026-03-07: Homogeneización de estilo en flujo auth (`scripts_auth.js`, inline JS de `create_home.php` y `create_event.php`): naming más descriptivo y consistencia de `const`/punto y coma sin cambios funcionales.
 

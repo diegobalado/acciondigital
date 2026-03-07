@@ -111,16 +111,16 @@
 	<script type="text/javascript" src="/assets/js/scripts_auth.js"></script>
 	<script type="text/javascript" src="/assets/js/jquery.multi-select.js"></script>
 	<script type="text/javascript">
-		var adsFinal = []
+		const adsFinal = [];
 		$('#ads').multiSelect({
 			keepOrder: true,
-			afterSelect: function(values){
-				adsFinal.push(values[0])
-				$('#adsOrdered').val(JSON.stringify(adsFinal))
+			afterSelect: function (values) {
+				adsFinal.push(values[0]);
+				$('#adsOrdered').val(JSON.stringify(adsFinal));
 			},
-			afterDeselect: function(values){
-				adsFinal.splice(adsFinal.indexOf(values.toString()), 1)
-				$('#adsOrdered').val(JSON.stringify(adsFinal))
+			afterDeselect: function (values) {
+				adsFinal.splice(adsFinal.indexOf(values.toString()), 1);
+				$('#adsOrdered').val(JSON.stringify(adsFinal));
 			}
 		});
 	</script>
