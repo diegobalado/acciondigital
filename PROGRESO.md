@@ -203,4 +203,5 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 - 2026-03-07: Eliminada duplicación de `multiSelect` en auth: nuevo módulo compartido `modules/auth-ads-multiselect.js` reutilizado en `create_home.php` y `create_event.php`.
 - 2026-03-07: Extraída la lógica inline de `auth/create_ads.php` a `modules/auth-ads-links.js` para reducir complejidad de la vista y centralizar manejo de ads en auth.
 - 2026-03-07: Extraído el inline JS de `auth/create_gallery.php` a `modules/auth-events-select-all.js` para centralizar la lógica del checkbox "Todos los eventos".
+- 2026-03-07: Limpieza final en formularios auth (`create_home.php`, `create_event.php`, `create_gallery.php`): removidas funciones/comentarios de debug sin uso para reducir ruido y facilitar mantenimiento.
 
