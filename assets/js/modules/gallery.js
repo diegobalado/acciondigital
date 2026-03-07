@@ -76,58 +76,6 @@ function initPopupAndCart() {
 	});
 }
 
-function buildEventMediaHtml(pic, data, title, ph) {
-	return `
-		<div class="media">
-			<div class="media-wrapper">
-				<a href=#${data.IdEvento}_${pic} class="open-popup-link" >
-					<img style="background:url(/assets/images/loading.gif) transparent no-repeat" src=/assets/images/eventos/${data.IdEvento}/thumbs/${pic}.jpg alt="" title="" />
-				</a>
-			</div>
-			<div class="cart_btns">
-				<button
-					class="btn btn-danger my-cart-btn"
-					data-id='${pic}'
-					data-name='${title}'
-					data-summary='foto_${pic}'
-					data-price='${data.price}'
-					data-promo='${data.promo}'
-					data-quantity="1"
-					data-event='${data.IdEvento}'
-					data-ph='${ph}'
-					data-image='/assets/images/eventos/${data.IdEvento}/thumbs/${pic}.jpg'
-					data-type='Galeria'
-				>Agregar al carrito</button>
-			</div>
-			<div id=${data.IdEvento}_${pic} class="white-popup mfp-hide">
-				<div class="button-group">
-					<a class="fb-xfbml-parse-ignore btn btn-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://acciondigitalfoto.com/assets/images/eventos/${data.IdEvento}/${pic}.jpg">
-						<i class="fa fa-facebook-square"></i>
-						Compartir
-					</a>
-					<div class="cart_btns">
-						<button
-							class="btn btn-danger my-cart-btn"
-							data-id='${pic}'
-							data-name='${title}'
-							data-summary='foto_${pic}'
-							data-price='${data.price}'
-							data-promo='${data.promo}'
-							data-quantity="1"
-							data-event='${data.IdEvento}'
-							data-ph='${ph}'
-							data-image='/assets/images/eventos/${data.IdEvento}/thumbs/${pic}.jpg'
-							data-type='Zoom'
-						>Agregar al carrito</button>
-					</div>
-				</div>
-				<div class="img-wrapper">
-					<img src=/assets/images/eventos/${data.IdEvento}/${pic}.jpg alt="" title="" />
-				</div>
-			</div>
-		</div>`;
-}
-
 function appendEventPage(placeholder, pageStart, pageLimit, data) {
 	placeholder.append($('.loading').detach());
 	$('.loading').fadeIn('fast');
@@ -142,7 +90,16 @@ function appendEventPage(placeholder, pageStart, pageLimit, data) {
 			continue;
 		}
 		lastPic = pic;
-		placeholder.append(buildEventMediaHtml(pic, data, title, ph));
+		placeholder.append(window.App.renderers.buildPhotoMediaItem({
+			eventId: data.IdEvento,
+			pic: pic,
+			title: title,
+			price: data.price,
+			promo: data.promo,
+			ph: ph,
+			galleryType: 'Galeria',
+			zoomType: 'Zoom'
+		}));
 	}
 
 	const firstPic = data?.pictures?.[pageStart];
@@ -174,9 +131,7 @@ function renderEventAds(placeholder, data) {
 
 	for (let i = 0; i < data.ads.length; i++) {
 		let ad = data.ads[i];
-		if (!ad.href) ad.href = '#';
-		const adTarget = ad.href !== '#' ? 'target="_blank"' : '';
-		const htmlAd = `<a href="${ad.href}" ${adTarget} > <img src="/assets/images/ads/${ad.name}" alt="" onclick="ga('send', 'event', 'Ad Link Event', 'Ad', 'Ad Event');" /> </a>`;
+		const htmlAd = window.App.renderers.buildAdLinkHtml(ad);
 		placeholder.append(htmlAd);
 	}
 }

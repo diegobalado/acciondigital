@@ -142,55 +142,16 @@ function buscar(foto) {
 
 			for (var i = page_start; i < page_start + page_limit; i++) {
 				pic = data[i];
-				html_element = `
-					<div class="media">
-						<div class="media-wrapper">
-							<a href=#${galleries.g}_${pic} class="open-popup-link">
-								<img style="background:url(/assets/images/loading.gif) transparent no-scroll" src=/assets/images/eventos/${galleries.g}/thumbs/${pic}.jpg alt="" title="" />
-							</a>
-						</div>
-						<div class="cart_btns">
-							<button
-								class="btn btn-danger my-cart-btn"
-								data-id='${pic}'
-								data-name='${title}'
-								data-summary='foto_${pic}'
-								data-ph='${ph}'
-								data-price='${price}'
-								data-promo='${promo}'
-								data-quantity="1"
-								data-event='${galleries.g}'
-								data-image='/assets/images/eventos/${galleries.g}/thumbs/${pic}.jpg'
-								data-type='Galeria - Filtro'
-							>Agregar al carrito</button>
-						</div>
-						<div id=${galleries.g}_${pic} class="white-popup mfp-hide">
-							<div class="button-group">
-								<a class="fb-xfbml-parse-ignore btn btn-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://acciondigitalfoto.com/assets/images/eventos/${galleries.g}/${pic}.jpg">
-									<i class="fa fa-facebook-square"></i>
-									Compartir
-								</a>
-								<div class="cart_btns">
-									<button
-										class="btn btn-danger my-cart-btn"
-										data-id='${pic}'
-										data-name='${title}'
-										data-summary='foto_${pic}'
-										data-ph='${ph}'
-										data-price='${price}'
-										data-promo='${promo}'
-										data-quantity="1"
-										data-event='${galleries.g}'
-										data-image='/assets/images/eventos/${galleries.g}/thumbs/${pic}.jpg'
-										data-type='Zoom - Filtro'
-									>Agregar al carrito</button>
-								</div>
-							</div>
-							<div class="img-wrapper">
-								<img src=/assets/images/eventos/${galleries.g}/${pic}.jpg alt="" title="" />
-							</div>
-						</div>
-					</div>`;
+				html_element = window.App.renderers.buildPhotoMediaItem({
+					eventId: galleries.g,
+					pic: pic,
+					title: title,
+					price: price,
+					promo: promo,
+					ph: ph,
+					galleryType: 'Galeria - Filtro',
+					zoomType: 'Zoom - Filtro'
+				});
 
 				placeholder.append(html_element);
 			}
