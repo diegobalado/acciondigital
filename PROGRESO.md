@@ -188,4 +188,5 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 - 2026-02-28: CSS 1.2 completado: multi-select (switch.png) y jQuery UI (ui-icons).
 - 2026-02-28: CSS 1.3 completado: main.css separado en base.css, components.css, layout.css.
 - 2026-03-07: Hotfix búsqueda en `/eventos/`: `modules/search.js` ahora reutiliza el datasource del evento cargado, soporta `?mirror=home5` y robusteció filtro por código/sin clasificar.
+- 2026-03-07: Simplificación estructural en `modules/gallery.js`: extracción de helpers comunes (sección actual, datasource mirror/local, template tag, parseo JSON, helper de links) y eliminación de duplicación interna sin cambio funcional.
 

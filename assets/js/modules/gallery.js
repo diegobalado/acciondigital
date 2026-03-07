@@ -3,6 +3,61 @@
  * Maneja la carga de galerías, templates Handlebars, scroll infinito y lightbox
  */
 
+function getCurrentSection(pathname) {
+	if (pathname.includes('/eventos/')) return 'eventos';
+	if (pathname.includes('/inicio/')) return 'inicio';
+	if (pathname.includes('/galeria/')) return 'galeria';
+	return '';
+}
+
+function ensurePicturesTemplateTag() {
+	if ($('#pictures-template').length === 0) {
+		$('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
+	}
+}
+
+function normalizeJsonPayload(data) {
+	if (typeof data === 'string') {
+		try {
+			return JSON.parse(data);
+		} catch (e) {
+			return null;
+		}
+	}
+	return data;
+}
+
+function buildDataUrl(section, jsonName) {
+	const params = new URLSearchParams(location.search);
+	const isLocalHost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+	const mirrorParam = params.get('mirror') === 'home5';
+	const useMirrorHome5Home = section === 'inicio' && (mirrorParam || isLocalHost);
+	const useMirrorHome5Event = section === 'eventos' && mirrorParam;
+
+	if (useMirrorHome5Home) {
+		return '/assets/datasources/mirror/home-5/inicio.5.json';
+	}
+
+	if (useMirrorHome5Event) {
+		return '/assets/datasources/mirror/home-5/' + jsonName + '.json';
+	}
+
+	return '/assets/datasources/' + jsonName + '.json';
+}
+
+function registerGalleryHrefHelper(section) {
+	if (section !== 'galeria' && section !== 'inicio') {
+		return;
+	}
+
+	Handlebars.registerHelper('full_href', function (picture) {
+		const params = new URLSearchParams(location.search);
+		const isLocalHost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+		const shouldMirrorHome5 = section === 'inicio' && (params.get('mirror') === 'home5' || isLocalHost);
+		return '/eventos/?g=' + picture.ID + (shouldMirrorHome5 ? '&mirror=home5' : '');
+	});
+}
+
 /* CARGA DE EVENTOS - Función para home/inicio */
 const loadEvents = (json, filter) => {
 	const parsedJson = {
@@ -31,58 +86,37 @@ const loadGallery = (filter = 'all') => {
 	var $json = '';
 	var $template = '';
 
-	// Evitar duplicar template
-	if ($('#pictures-template').length === 0) {
-		$('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
-	}
+	ensurePicturesTemplateTag();
 
-	$section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/inicio/') ? 'inicio' : ($pathname.includes('/galeria/') ? 'galeria' : ''));
+	$section = getCurrentSection($pathname);
 	if (!$pathname.includes('/amigos')) {
 		$template = $section == 'eventos' ? 'eventos' : $section;
 
 		$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function () {
-			$(document).ready(function () {
-				var galleries = getGET();
-				$json = $section === 'eventos' ? galleries.g : $section;
+			var galleries = getGET();
+			$json = $section === 'eventos' ? galleries.g : $section;
+			registerGalleryHrefHelper($section);
 
-				if ($section == 'galeria' || $section == 'inicio') {
-					Handlebars.registerHelper('full_href', function (picture) {
-						const params = new URLSearchParams(location.search);
-						const isLocalHost =
-							location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-						const shouldMirrorHome5 =
-							$section === 'inicio' && (params.get('mirror') === 'home5' || isLocalHost);
-						return '/eventos/?g=' + picture.ID + (shouldMirrorHome5 ? '&mirror=home5' : '');
-					});
-				}
+			const dataUrl = buildDataUrl($section, $json);
 
-				const params = new URLSearchParams(location.search);
-				const isLocalHost =
-					location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-				const mirrorParam = params.get('mirror') === 'home5';
-				const useMirrorHome5Home = $section === 'inicio' && (mirrorParam || isLocalHost);
-				const useMirrorHome5Event = $section === 'eventos' && mirrorParam;
+			if (json_data === '' || last_data_url !== dataUrl) {
+				$.get(dataUrl, function (data) {
+					const parsedData = normalizeJsonPayload(data);
+					if (!parsedData) {
+						return;
+					}
 
-				const dataUrl = useMirrorHome5Home
-					? "/assets/datasources/mirror/home-5/inicio.5.json"
-					: (useMirrorHome5Event
-						? ("/assets/datasources/mirror/home-5/" + $json + ".json")
-						: ("/assets/datasources/" + $json + ".json"));
-
-				if (json_data === '' || last_data_url !== dataUrl) {
-					$.get(dataUrl, function (data, status, xhr) {
-						let search = data.search || data.search === undefined;
-						if (search) {
-							$('#buscador').removeClass('hidden');
-						}
-						json_data = data;
-						last_data_url = dataUrl;
-						loadEvents(json_data, filter);
-					})
-				} else {
+					let search = parsedData.search || parsedData.search === undefined;
+					if (search) {
+						$('#buscador').removeClass('hidden');
+					}
+					json_data = parsedData;
+					last_data_url = dataUrl;
 					loadEvents(json_data, filter);
-				}
-			})
+				})
+			} else {
+				loadEvents(json_data, filter);
+			}
 		})
 	}
 }
@@ -94,51 +128,32 @@ $(document).ready(function () {
 	let $json = '';
 	let $template = '';
 
-	if (!$('#pictures-template').length) {
-		$('body').append('<script id="pictures-template" type="text/x-handlebars-template"></scr' + 'ipt>');
-	}
+	ensurePicturesTemplateTag();
 
-	$section = $pathname.includes('/eventos/') ? 'eventos' : ($pathname.includes('/inicio/') ? 'inicio' : ($pathname.includes('/galeria/') ? 'galeria' : ''));
+	$section = getCurrentSection($pathname);
 	if (!$pathname.includes('/agenda')) {
 		$template = $section == 'eventos' ? 'eventos' : $section;
 
 		$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function () {
-			$(document).ready(function () {
-				let raw_template = $('#pictures-template').html();
-				let template = Handlebars.compile(raw_template);
-				let events_placeholder = $("#gallery-wrapper");
-				let title_placeholder = $("#gallery_title");
-				let subtitle_placeholder = $("[data-subtitle='gallery_subtitle']");
-				let ads_placeHolder = $("#ads-block");
-				let galleries = getGET();
-				$json = $section == 'eventos' ? galleries.g : $section;
+			let raw_template = $('#pictures-template').html();
+			let template = Handlebars.compile(raw_template);
+			let events_placeholder = $("#gallery-wrapper");
+			let title_placeholder = $("#gallery_title");
+			let subtitle_placeholder = $("[data-subtitle='gallery_subtitle']");
+			let ads_placeHolder = $("#ads-block");
+			let galleries = getGET();
+			$json = $section == 'eventos' ? galleries.g : $section;
+			registerGalleryHrefHelper($section);
 
-				if ($section == 'galeria' || $section == 'inicio') {
-					Handlebars.registerHelper('full_href', function (picture) {
-						const params = new URLSearchParams(location.search);
-						const isLocalHost =
-							location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-						const shouldMirrorHome5 =
-							$section === 'inicio' && (params.get('mirror') === 'home5' || isLocalHost);
-						return '/eventos/?g=' + picture.ID + (shouldMirrorHome5 ? '&mirror=home5' : '');
-					});
+			const dataUrl = buildDataUrl($section, $json);
+
+			$.get(dataUrl, function (data) {
+				let parsedData = normalizeJsonPayload(data);
+				if (!parsedData) {
+					return;
 				}
 
-				const params = new URLSearchParams(location.search);
-				const isLocalHost =
-					location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-				const mirrorParam = params.get('mirror') === 'home5';
-				const useMirrorHome5Home = $section === 'inicio' && (mirrorParam || isLocalHost);
-				const useMirrorHome5Event = $section === 'eventos' && mirrorParam;
-
-				const dataUrl = useMirrorHome5Home
-					? "/assets/datasources/mirror/home-5/inicio.5.json"
-					: (useMirrorHome5Event
-						? ("/assets/datasources/mirror/home-5/" + $json + ".json")
-						: ("/assets/datasources/" + $json + ".json"));
-
-				$.get(dataUrl, function (data, status, xhr) {
-					let json_data = data;
+				let json_data = parsedData;
 					let ph = json_data.ph ? json_data.ph : phs.default.value;
 					let title = json_data.title;
 					json_data.promo = json_data.promo ? json_data.promo : 0;
@@ -301,7 +316,6 @@ $(document).ready(function () {
 						}
 					})
 				})
-			})
 		})
 	}
 });
