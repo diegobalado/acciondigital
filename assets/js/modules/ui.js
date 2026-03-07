@@ -7,10 +7,6 @@
 $(document).ready(function () {
 	$('#footer').load('/assets/includes/footer.htm');
 });
-
-function getCurrentScroll() {
-	return window.pageYOffset || document.documentElement.scrollTop;
-}
 const shrinkHeader = 100;
 
 /*HEADER COLAPSABLE*/
@@ -26,23 +22,6 @@ $(function () {
 		}
 	});
 });
-
-/*PARAMETROS*/
-function getGET() {
-	let loc = document.location.href;
-	if (loc.indexOf('?') > 0) {
-		let getString = loc.split('?')[1];
-		let GET = getString.split('&');
-		let get = {};
-		for (let i = 0, l = GET.length; i < l; i++) {
-			let tmp = GET[i].split('=');
-			//tomo el parametro sin lo que viene despues del #
-			get[tmp[0]] = unescape(decodeURI(tmp[1])).indexOf('#') != -1 ? unescape(decodeURI(tmp[1])).substr(0, unescape(decodeURI(tmp[1])).indexOf('#')) : unescape(decodeURI(tmp[1]));
-		}
-		return get;
-	}
-
-}
 
 /*PAGINA ACTIVA*/
 $(function () {

@@ -3,21 +3,6 @@
  * Maneja la funcionalidad del carrito de compras
  */
 
-const phs = {
-	default: {
-		value: 'JPF',
-		label: 'Javier Piva Flos'
-	},
-	JPF: {
-		value: 'JPF',
-		label: 'Javier Piva Flos'
-	},
-	MC: {
-		value: 'MC',
-		label: 'Manuela Colavita'
-	}
-};
-
 function carrito() {
 
 	var goToCartIcon = function ($addTocartBtn) {
