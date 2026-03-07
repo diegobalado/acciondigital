@@ -146,39 +146,39 @@ const loadEvents = (json, filter) => {
 	const parsedJson = {
 		ads: json.ads,
 		eventos: filter !== 'all' ? json.eventos.filter(e => (e.ph === filter || (filter === phs.default.value && !e.ph))) : json.eventos
-	}
-	var placeHolder = $("#homeGallery");
-	var raw_template = $('#pictures-template').html();
-	var template = Handlebars.compile(raw_template);
+	};
+	const placeHolder = $('#homeGallery');
+	const rawTemplate = $('#pictures-template').html();
+	const template = Handlebars.compile(rawTemplate);
 
 	parsedJson.ads.forEach(ad => {
 		if (!ad.href) ad.href = '#';
-		ad.target = (ad.href !== '#') ? '_blank' : '_self'
-	})
-	var html = template(parsedJson);
+		ad.target = (ad.href !== '#') ? '_blank' : '_self';
+	});
+	const html = template(parsedJson);
 	placeHolder.html(html);
-}
+};
 
 /*HANDLEBARS - Carga de galería principal */
 const loadGallery = (filter = 'all') => {
 	const state = getAppState();
-	var $pathname = location.pathname;
-	var $section = '';
-	var $json = '';
-	var $template = '';
+	const pathname = location.pathname;
+	let section = '';
+	let jsonName = '';
+	let templateName = '';
 
 	ensurePicturesTemplateTag();
 
-	$section = getCurrentSection($pathname);
-	if (!$pathname.includes('/amigos')) {
-		$template = $section == 'eventos' ? 'eventos' : $section;
+	section = getCurrentSection(pathname);
+	if (!pathname.includes('/amigos')) {
+		templateName = section === 'eventos' ? 'eventos' : section;
 
-		$('#pictures-template').load('/assets/includes/' + $template + 'Template.htm', function () {
-			var galleries = getGET();
-			$json = $section === 'eventos' ? galleries.g : $section;
-			registerGalleryHrefHelper($section);
+		$('#pictures-template').load('/assets/includes/' + templateName + 'Template.htm', function () {
+			const galleries = getGET();
+			jsonName = section === 'eventos' ? galleries.g : section;
+			registerGalleryHrefHelper(section);
 
-			const dataUrl = buildDataUrl($section, $json);
+			const dataUrl = buildDataUrl(section, jsonName);
 
 			if (!state.galleryDataCache || state.galleryDataUrl !== dataUrl) {
 				$.get(dataUrl, function (data) {
@@ -187,24 +187,24 @@ const loadGallery = (filter = 'all') => {
 						return;
 					}
 
-					let search = parsedData.search || parsedData.search === undefined;
-					if (search) {
+					const searchEnabled = parsedData.search || parsedData.search === undefined;
+					if (searchEnabled) {
 						$('#buscador').removeClass('hidden');
 					}
 					state.galleryDataCache = parsedData;
 					state.galleryDataUrl = dataUrl;
-					if ($section === 'eventos') {
+					if (section === 'eventos') {
 						state.currentEventData = parsedData;
 						state.currentEventId = String(parsedData.IdEvento || '');
 					}
 					loadEvents(state.galleryDataCache, filter);
-				})
+				});
 			} else {
 				loadEvents(state.galleryDataCache, filter);
 			}
-		})
+		});
 	}
-}
+};
 
 /* EVENT PAGE - Carga específica para página de eventos */
 $(document).ready(function () {

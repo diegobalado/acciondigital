@@ -17,10 +17,10 @@ function bindSearchScrollHandler(handler) {
 function renderSearchResults(wrapperHtml, items, loadPage) {
 	$('#gallery-wrapper').addClass('results').html(wrapperHtml);
 
-	var eventsPlaceholder = $('#results');
-	var pageStart = 0;
-	var pageLimit = Math.min(9, items.length);
-	var picsLength = items.length;
+	const eventsPlaceholder = $('#results');
+	let pageStart = 0;
+	let pageLimit = Math.min(9, items.length);
+	const picsLength = items.length;
 
 	loadPage(eventsPlaceholder, pageStart, pageLimit, items);
 	pageStart += pageLimit;
@@ -51,19 +51,19 @@ function getAppState() {
 	return window.App.state;
 }
 
-function withEventData(galleries, onSuccess) {
+function withEventData(queryParams, onSuccess) {
 	const state = getAppState();
 	const sameEventLoaded =
 		typeof state.currentEventData === 'object' &&
 		state.currentEventData !== null &&
-		String(state.currentEventId) === String(galleries.g);
+		String(state.currentEventId) === String(queryParams.g);
 
 	if (sameEventLoaded) {
 		onSuccess(state.currentEventData);
 		return;
 	}
 
-	$.get(getSearchDataUrl(galleries.g), function (data) {
+	$.get(getSearchDataUrl(queryParams.g), function (data) {
 		let parsed = data;
 		if (typeof parsed === 'string') {
 			try {
@@ -90,60 +90,64 @@ function buscar(foto) {
 		return;
 	}
 
-	foto = String(foto).trim();
-	if (!foto) {
+	const photoCode = String(foto).trim();
+	if (!photoCode) {
 		return;
 	}
 
-	let galleries = getGET();
-	if (!galleries || !galleries.g) {
+	const queryParams = getGET();
+	if (!queryParams || !queryParams.g) {
 		return;
 	}
 
-	withEventData(galleries, function (data) {
-		let html = data;
-		if (typeof html === 'string') {
+	withEventData(queryParams, function (data) {
+		let eventData = data;
+		if (typeof eventData === 'string') {
 			try {
-				html = JSON.parse(html);
+				eventData = JSON.parse(eventData);
 			} catch (e) {
 				return;
 			}
 		}
 
-		if (!html || !Array.isArray(html.pictures)) {
+		if (!eventData || !Array.isArray(eventData.pictures)) {
 			return;
 		}
 
-		let arrFiltro = [];
-		let sinCodigo = [];
-		let title = html.title;
-		let price = html.price;
-		let ph = html.ph ? html.ph : phs.default.value;
-		let codigo = '';
-		html.promo = html.promo ? html.promo : 0;
-		let promo = html.promo ? html.promo : 0;
-		html.pictures.forEach(function (el, index) {
+		const filteredPics = [];
+		const untaggedPics = [];
+		const title = eventData.title;
+		const price = eventData.price;
+		const ph = eventData.ph ? eventData.ph : phs.default.value;
+		let bibCodeSuffix = '';
+		eventData.promo = eventData.promo ? eventData.promo : 0;
+		const promo = eventData.promo ? eventData.promo : 0;
+
+		eventData.pictures.forEach(function (el) {
 			const pic = String(el);
-			if (pic.indexOf('-') == -1) sinCodigo.push(pic)
-			else {
-				codigo = pic.substr(pic.indexOf('-') + 1, pic.length);
-				if (codigo.split('-').length > 1) {
-					codigo.split('-').forEach(function (element, i) {
-						if (String(element).trim() == foto) arrFiltro.push(pic);
+			if (pic.indexOf('-') === -1) {
+				untaggedPics.push(pic);
+			} else {
+				bibCodeSuffix = pic.substr(pic.indexOf('-') + 1, pic.length);
+				if (bibCodeSuffix.split('-').length > 1) {
+					bibCodeSuffix.split('-').forEach(function (element) {
+						if (String(element).trim() === photoCode) filteredPics.push(pic);
 					})
-				} else if (String(codigo).trim() == foto) arrFiltro.push(pic);
+				} else if (String(bibCodeSuffix).trim() === photoCode) {
+					filteredPics.push(pic);
+				}
 			}
 		});
 
 		/*CARGA PARA LA BUSQUEDA*/
-		var load_page = function (placeholder, page_start, page_limit, data) {
+		const loadPage = function (placeholder, pageStart, pageLimit, dataSet) {
 			let pic = '';
-			let html_element = '';
+			let htmlElement = '';
 
-			for (var i = page_start; i < page_start + page_limit; i++) {
-				pic = data[i];
-				html_element = window.App.renderers.buildPhotoMediaItem({
-					eventId: galleries.g,
+			for (let i = pageStart; i < pageStart + pageLimit; i++) {
+				pic = dataSet[i];
+				htmlElement = window.App.renderers.buildPhotoMediaItem({
+					eventId: queryParams.g,
 					pic: pic,
 					title: title,
 					price: price,
@@ -153,7 +157,7 @@ function buscar(foto) {
 					zoomType: 'Zoom - Filtro'
 				});
 
-				placeholder.append(html_element);
+				placeholder.append(htmlElement);
 			}
 			carrito();
 			$('.open-popup-link').magnificPopup({
@@ -161,20 +165,20 @@ function buscar(foto) {
 					enabled: true,
 					preload: 1
 				}
-			})
-		}
+			});
+		};
 
-		if (arrFiltro.length != 0) {
-			let resultsHtml = '<h3>Resultado de la búsqueda "' + foto + '": ' + arrFiltro.length + (arrFiltro.length > 1 ? ' fotos' : ' foto') + '</h3><p>Además de éstas, puede haber fotos tuyas sin clasificar.</p><div id="results"></div>';
-			renderSearchResults(resultsHtml, arrFiltro, load_page);
+		if (filteredPics.length !== 0) {
+			const resultsHtml = '<h3>Resultado de la búsqueda "' + photoCode + '": ' + filteredPics.length + (filteredPics.length > 1 ? ' fotos' : ' foto') + '</h3><p>Además de éstas, puede haber fotos tuyas sin clasificar.</p><div id="results"></div>';
+			renderSearchResults(resultsHtml, filteredPics, loadPage);
 
 			if (typeof gtag === 'function') {
 				gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda con resultados' });
 			}
 		} else {
 			let resultsHtml = '';
-			if (foto != 'untagged') {
-				resultsHtml = '<h3>Tu búsqueda "' + foto + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
+			if (photoCode !== 'untagged') {
+				resultsHtml = '<h3>Tu búsqueda "' + photoCode + '" no produjo resultados.</h3><h4>Las siguientes fotos no tienen código asignado:</h4><div id="results"></div>';
 				if (typeof gtag === 'function') {
 					gtag('event', 'Filtros', { 'event_category': 'Evento', 'event_label': 'Búsqueda sin resultados' });
 				}
@@ -185,15 +189,8 @@ function buscar(foto) {
 				}
 			}
 
-			renderSearchResults(resultsHtml, sinCodigo, load_page);
+			renderSearchResults(resultsHtml, untaggedPics, loadPage);
 		}
-		carrito();
-		$('.open-popup-link').magnificPopup({
-			gallery: {
-				enabled: true,
-				preload: 1
-			}
-		})
 	});
 }
 
