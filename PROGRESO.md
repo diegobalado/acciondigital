@@ -202,4 +202,5 @@ Registro de avances para mantener el contexto entre sesiones. Referenciar `PLAN.
 - 2026-03-07: Cleanup de mantenibilidad en `auth/create_gallery.php`: índices de arrays PHP explicitados (`$_REQUEST['IdEvento']`, `$_REQUEST['ads']`, `$product['title']`), comparación estricta en guardado y normalización del inline JS del selector de eventos.
 - 2026-03-07: Eliminada duplicación de `multiSelect` en auth: nuevo módulo compartido `modules/auth-ads-multiselect.js` reutilizado en `create_home.php` y `create_event.php`.
 - 2026-03-07: Extraída la lógica inline de `auth/create_ads.php` a `modules/auth-ads-links.js` para reducir complejidad de la vista y centralizar manejo de ads en auth.
+- 2026-03-07: Extraído el inline JS de `auth/create_gallery.php` a `modules/auth-events-select-all.js` para centralizar la lógica del checkbox "Todos los eventos".
 
