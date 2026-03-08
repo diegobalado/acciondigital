@@ -90,10 +90,26 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- soporte `mirror=home5` en datasource de Home
 	- integracion inicial de ads en feed de Home
 	- tests de mirror y helper de insercion de ads
-2. Proxima iteracion sugerida (Fase 2.3):
-	- acercar render visual de Home a `inicioTemplate.htm` (thumb + etiqueta)
-	- incluir primer tracking/event hooks desacoplados para clic en eventos/ads
-	- definir contrato de card reutilizable para futuras secciones
+2. Iteracion cerrada el 2026-03-08 (Fase 2.3):
+	- render Home aproximado al template legacy `inicioTemplate.htm` (thumb + etiqueta)
+	- tracking desacoplado para clic en eventos/ads (`homeTracking`)
+	- contrato de card reutilizable para futuras secciones (`MediaCard`)
+	- tests unitarios de tracking e integracion de Home actualizados
+3. Proxima iteracion sugerida (Fase 3.1):
+	- iniciar migracion de pagina `eventos` con carga de datasource legacy
+	- definir mapper base para cards de evento/galeria
+	- incorporar estado inicial de paginacion (page 1) sin infinite scroll
+	- tests unitarios del mapper y de estados `loading/error/empty`
+4. Iteracion cerrada el 2026-03-08 (Fase 3.1):
+	- nueva feature `events` con mapper, API y `EventsPage`
+	- paginacion inicial implementada en catalogo de eventos
+	- ruteo SPA minimo por `pathname` para `/eventos`
+	- tests unitarios de mapper, API y pagina de eventos
+5. Proxima iteracion sugerida (Fase 3.2):
+	- incorporar insercion de ads en la grilla de `eventos`
+	- preparar contrato para paginado progresivo (base de infinite scroll)
+	- agregar tracking desacoplado de clics en cards de eventos
+	- cubrir nuevos helpers con tests unitarios
 
 ### Fase 3 - Eventos/Galeria
 

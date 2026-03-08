@@ -2,6 +2,68 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 6 - Eventos base (Fase 3.1)
+
+- Fecha: 2026-03-08
+- Branch: `spa-svelte-migration`
+- Objetivo: iniciar migracion de pagina `eventos` con datasource legacy, mapper y paginacion inicial.
+
+### Hecho
+
+- Nueva feature `events` agregada en `src/features/events/`:
+	- `eventsModelMapper.js`
+	- `eventsApi.js`
+	- `EventsPage.svelte`
+- Catalogo de eventos conectado a `galeria.json` con mapeo legacy (`ID`/`text`).
+- Paginacion inicial implementada (page/pageSize/totalPages) con botones `Anterior`/`Siguiente`.
+- `App.svelte` actualizado para ruteo minimo por `pathname`:
+	- `/eventos` renderiza `EventsPage`
+	- resto de paths renderiza `HomePage`
+- Tests unitarios agregados:
+	- `src/features/events/eventsModelMapper.test.js`
+	- `src/features/events/eventsApi.test.js`
+	- `src/features/events/EventsPage.test.js`
+
+### Verificacion
+
+- `pnpm test`: OK (10 files, 32 tests).
+- `pnpm build`: OK.
+
+### Proximo paso
+
+- Fase 3.2: agregar ads en feed de eventos + tracking desacoplado + base de paginado progresivo.
+
+## Iteracion 5 - Home visual+tracking (Fase 2.3)
+
+- Fecha: 2026-03-08
+- Branch: `spa-svelte-migration`
+- Objetivo: acercar Home al template legacy, desacoplar tracking y definir card reutilizable.
+
+### Hecho
+
+- Nuevo componente reutilizable `MediaCard` en `src/shared/components/MediaCard.svelte`.
+- Home actualizada en `src/features/home/HomePage.svelte`:
+	- render de feed con contrato de card reutilizable
+	- estructura visual alineada con legacy (imagen + etiqueta)
+	- tracking de clic desacoplado via adaptador inyectable
+- Modulo de tracking agregado en `src/features/home/homeTracking.js`.
+- Mapper Home ajustado para fallback de miniatura legacy por `ID`:
+	- `thumbnailUrl` en `src/features/home/homeModelMapper.js`.
+- Tests unitarios agregados/actualizados:
+	- `src/features/home/homeTracking.test.js`
+	- `src/features/home/HomePage.test.js`
+	- `src/features/home/homeApi.test.js`
+	- `src/features/home/homeModelMapper.test.js`
+
+### Verificacion
+
+- `pnpm test`: OK (7 files, 23 tests).
+- `pnpm build`: OK.
+
+### Proximo paso
+
+- Fase 3.1: iniciar migracion de `eventos` con datasource legacy, mapper base y paginacion inicial.
+
 ## Iteracion 0 - Bootstrap SPA
 
 - Fecha: 2026-03-07

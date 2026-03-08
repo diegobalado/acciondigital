@@ -18,6 +18,7 @@ describe('mapLegacyHomeEvent', () => {
 			photographer: 'JPF',
 			description: 'Circuito tecnico',
 			imageUrl: '/assets/images/eventos/17.jpg',
+			thumbnailUrl: '/assets/images/eventos/17.jpg',
 			eventUrl: '/eventos/17',
 			isPublished: true
 		});
@@ -36,6 +37,7 @@ describe('mapLegacyHomeEvent', () => {
 			photographer: '',
 			description: '',
 			imageUrl: '/assets/images/eventos/default.jpg',
+			thumbnailUrl: '/assets/images/eventos/default.jpg',
 			eventUrl: '',
 			isPublished: false
 		});
@@ -48,5 +50,6 @@ describe('mapLegacyHomeEvent', () => {
 		});
 
 		expect(mapped.eventUrl).toBe('/eventos/?id=abc_123');
+		expect(mapped.thumbnailUrl).toBe('/assets/images/eventos/abc_123/thumbs/portada.jpg');
 	});
 });

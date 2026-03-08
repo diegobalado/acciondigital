@@ -31,6 +31,7 @@ describe('loadHomeContent', () => {
 				photographer: 'JPF',
 				description: '',
 				imageUrl: '',
+				thumbnailUrl: '/assets/images/eventos/evt_1/thumbs/portada.jpg',
 				eventUrl: '/eventos/?id=evt_1',
 				isPublished: true
 			}

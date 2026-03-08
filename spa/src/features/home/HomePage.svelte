@@ -2,13 +2,18 @@
 	import { onMount } from 'svelte';
 	import { APP_SUBTITLE, APP_TITLE } from '../../app/config/migration';
 	import { loadHomeContent } from './homeApi';
+	import MediaCard from '../../shared/components/MediaCard.svelte';
+	import { createHomeClickTracker, trackHomeClickEvent } from './homeTracking';
 
 	export let loadHome = loadHomeContent;
+	export let trackEvent = trackHomeClickEvent;
+	export let createTracker = createHomeClickTracker;
 
 	let events = [];
 	let ads = [];
 	let feed = [];
 	let status = 'loading';
+	$: tracker = createTracker({ trackEvent });
 
 	onMount(async () => {
 		try {
@@ -21,6 +26,28 @@
 			status = 'error';
 		}
 	});
+
+	function getCardProps(item) {
+		if (item.type === 'event') {
+			return {
+				variant: 'event',
+				href: item.event.eventUrl || '#',
+				title: item.event.title,
+				label: item.event.title,
+				imageUrl: item.event.thumbnailUrl || item.event.imageUrl || '',
+				target: '_self'
+			};
+		}
+
+		return {
+			variant: 'ad',
+			href: item.ad?.href || '#',
+			title: item.ad?.name || 'Publicidad',
+			label: item.ad?.name || 'Publicidad',
+			imageUrl: item.ad?.imageUrl || '',
+			target: item.ad?.target || '_self'
+		};
+	}
 </script>
 
 <main class="home-shell">
@@ -41,24 +68,16 @@
 		</p>
 		<ul class="home-events" data-testid="home-events-list">
 			{#each feed as item}
-				{#if item.type === 'event'}
-					<li>
-						<a href={item.event.eventUrl || '#'}>{item.event.title}</a>
-						{#if item.event.photographer}
-							<small>Foto: {item.event.photographer}</small>
-						{/if}
-					</li>
-				{:else}
-					<li class="home-ad" data-testid="home-ad-item">
-						<a href={item.ad.href} target={item.ad.target} rel="noreferrer noopener">
-							{#if item.ad.imageUrl}
-								<img src={item.ad.imageUrl} alt={item.ad.name || 'Publicidad'} />
-							{:else}
-								Publicidad
-							{/if}
-						</a>
-					</li>
-				{/if}
+				<li class:item-ad={item.type === 'ad'} data-testid={item.type === 'ad' ? 'home-ad-item' : undefined}>
+					<MediaCard
+						{...getCardProps(item)}
+						trackingPayload={item}
+						onTrack={tracker.trackFeedClick}
+					/>
+					{#if item.type === 'event' && item.event.photographer}
+						<small>Foto: {item.event.photographer}</small>
+					{/if}
+				</li>
 			{/each}
 		</ul>
 	{/if}
@@ -93,9 +112,6 @@
 	}
 
 	li {
-		padding: 0.75rem;
-		border: 1px solid #d7d7d7;
-		border-radius: 0.5rem;
 		display: grid;
 		gap: 0.25rem;
 	}
@@ -106,24 +122,9 @@
 		opacity: 0.8;
 	}
 
-	.home-ad {
+	li.item-ad {
 		background: #f2f7fb;
-	}
-
-	.home-ad img {
-		display: block;
-		max-width: 100%;
-		height: auto;
-	}
-
-	a {
-		color: #0d4a84;
-		font-weight: 600;
-		text-decoration: none;
-	}
-
-	a:hover {
-		text-decoration: underline;
+		border-radius: 0.5rem;
 	}
 
 	small {
