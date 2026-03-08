@@ -19,6 +19,9 @@ Registro iterativo de avances de la migracion SPA.
 - `App.svelte` actualizado para ruteo minimo por `pathname`:
 	- `/eventos` renderiza `EventsPage`
 	- resto de paths renderiza `HomePage`
+- Ajuste de entorno dev en `vite.config.js`:
+	- middleware `legacy-assets-bridge` para servir `/assets/*` desde la carpeta legacy real
+	- Home deja de caer en estado de error por 404 de `inicio.json` durante `pnpm dev`
 - Tests unitarios agregados:
 	- `src/features/events/eventsModelMapper.test.js`
 	- `src/features/events/eventsApi.test.js`
