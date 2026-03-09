@@ -14,6 +14,10 @@ describe('loadEventsCatalog', () => {
 
 		expect(dataClient).toHaveBeenCalledWith(EVENTS_CATALOG_DATASOURCE_URL);
 		expect(result.events.map((item) => item.id)).toEqual(['evt_1', 'evt_2']);
+		expect(result.feed).toEqual([
+			{ type: 'event', event: result.events[0] },
+			{ type: 'event', event: result.events[1] }
+		]);
 		expect(result.pagination).toEqual({
 			page: 1,
 			pageSize: 2,
@@ -22,6 +26,7 @@ describe('loadEventsCatalog', () => {
 			hasPreviousPage: false,
 			hasNextPage: true
 		});
+		expect(result.progressive).toEqual({ nextPage: 2, canLoadMore: true });
 	});
 
 	it('returns requested page when in range', async () => {
@@ -39,6 +44,7 @@ describe('loadEventsCatalog', () => {
 		expect(result.pagination.page).toBe(2);
 		expect(result.pagination.hasPreviousPage).toBe(true);
 		expect(result.pagination.hasNextPage).toBe(false);
+		expect(result.progressive).toEqual({ nextPage: null, canLoadMore: false });
 	});
 
 	it('returns empty result for payload without eventos', async () => {
@@ -47,7 +53,29 @@ describe('loadEventsCatalog', () => {
 		const result = await loadEventsCatalog({ dataClient });
 
 		expect(result.events).toEqual([]);
+		expect(result.feed).toEqual([]);
 		expect(result.pagination.totalItems).toBe(0);
 		expect(result.pagination.totalPages).toBe(1);
+		expect(result.progressive).toEqual({ nextPage: null, canLoadMore: false });
+	});
+
+	it('maps ads and exposes them in the page feed', async () => {
+		const dataClient = vi.fn().mockResolvedValue({
+			eventos: Array.from({ length: 6 }).map((_, index) => ({ ID: `evt_${index + 1}`, text: `Evento ${index + 1}` })),
+			ads: [{ name: 'sponsor.jpg', href: 'https://sponsor.test' }]
+		});
+
+		const result = await loadEventsCatalog({ dataClient, pageSize: 6 });
+
+		expect(result.ads).toEqual([
+			{
+				id: 'sponsor.jpg',
+				name: 'sponsor.jpg',
+				href: 'https://sponsor.test',
+				target: '_blank',
+				imageUrl: '/assets/images/ads/sponsor.jpg'
+			}
+		]);
+		expect(result.feed[result.feed.length - 1].type).toBe('ad');
 	});
 });

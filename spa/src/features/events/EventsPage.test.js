@@ -21,6 +21,7 @@ describe('EventsPage', () => {
 
 		deferred.resolve({
 			events: [],
+			feed: [],
 			pagination: {
 				page: 1,
 				pageSize: 12,
@@ -28,7 +29,8 @@ describe('EventsPage', () => {
 				totalPages: 1,
 				hasPreviousPage: false,
 				hasNextPage: false
-			}
+			},
+			progressive: { nextPage: null, canLoadMore: false }
 		});
 		await screen.findByTestId('events-empty');
 	});
@@ -43,6 +45,7 @@ describe('EventsPage', () => {
 			loadEvents: () =>
 				Promise.resolve({
 					events: [],
+							feed: [],
 					pagination: {
 						page: 1,
 						pageSize: 12,
@@ -50,18 +53,25 @@ describe('EventsPage', () => {
 						totalPages: 1,
 						hasPreviousPage: false,
 						hasNextPage: false
-					}
+							},
+							progressive: { nextPage: null, canLoadMore: false }
 				})
 		});
 
 		expect(await screen.findByTestId('events-empty')).toBeTruthy();
 	});
 
-	it('renders events and paginates to next page', async () => {
+	it('renders feed and loads next page with progressive button', async () => {
 		const loadEvents = vi
 			.fn()
 			.mockResolvedValueOnce({
 				events: [{ id: 'evt_1', title: 'Evento 1', eventUrl: '/eventos/?id=evt_1', coverImageUrl: '/1.jpg' }],
+				feed: [
+					{
+						type: 'event',
+						event: { id: 'evt_1', title: 'Evento 1', eventUrl: '/eventos/?id=evt_1', coverImageUrl: '/1.jpg' }
+					}
+				],
 				pagination: {
 					page: 1,
 					pageSize: 1,
@@ -69,10 +79,17 @@ describe('EventsPage', () => {
 					totalPages: 2,
 					hasPreviousPage: false,
 					hasNextPage: true
-				}
+				},
+				progressive: { nextPage: 2, canLoadMore: true }
 			})
 			.mockResolvedValueOnce({
 				events: [{ id: 'evt_2', title: 'Evento 2', eventUrl: '/eventos/?id=evt_2', coverImageUrl: '/2.jpg' }],
+				feed: [
+					{
+						type: 'event',
+						event: { id: 'evt_2', title: 'Evento 2', eventUrl: '/eventos/?id=evt_2', coverImageUrl: '/2.jpg' }
+					}
+				],
 				pagination: {
 					page: 2,
 					pageSize: 1,
@@ -80,7 +97,8 @@ describe('EventsPage', () => {
 					totalPages: 2,
 					hasPreviousPage: true,
 					hasNextPage: false
-				}
+				},
+				progressive: { nextPage: null, canLoadMore: false }
 			});
 
 		render(EventsPage, { loadEvents });
@@ -88,12 +106,69 @@ describe('EventsPage', () => {
 		expect(await screen.findByTestId('events-list')).toBeTruthy();
 		expect(screen.getByRole('link', { name: 'Evento 1' }).getAttribute('href')).toBe('/eventos/?id=evt_1');
 
-		const nextButton = screen.getByRole('button', { name: 'Siguiente' });
-		expect(nextButton.disabled).toBe(false);
-		await fireEvent.click(nextButton);
+		const loadMoreButton = screen.getByTestId('events-load-more');
+		await fireEvent.click(loadMoreButton);
 
 		expect(await screen.findByRole('link', { name: 'Evento 2' })).toBeTruthy();
-		expect(loadEvents).toHaveBeenCalledWith({ page: 1 });
-		expect(loadEvents).toHaveBeenCalledWith({ page: 2 });
+		expect(loadEvents).toHaveBeenCalledWith({ page: 1, pageSize: 12 });
+		expect(loadEvents).toHaveBeenCalledWith({ page: 2, pageSize: 12 });
+	});
+
+	it('renders ad cards and tracks clicks with injected adapter', async () => {
+		const trackEvent = vi.fn();
+		render(EventsPage, {
+			trackEvent,
+			loadEvents: () =>
+				Promise.resolve({
+					events: [{ id: 'evt_1', title: 'Evento 1', eventUrl: '/eventos/?id=evt_1', coverImageUrl: '/1.jpg' }],
+					feed: [
+						{
+							type: 'event',
+							event: {
+								id: 'evt_1',
+								title: 'Evento 1',
+								eventUrl: '/eventos/?id=evt_1',
+								coverImageUrl: '/1.jpg'
+							}
+						},
+						{
+							type: 'ad',
+							ad: {
+								id: 'ad_1',
+								name: 'sponsor.jpg',
+								href: 'https://sponsor.test',
+								target: '_blank',
+								imageUrl: '/assets/images/ads/sponsor.jpg'
+							}
+						}
+					],
+					pagination: {
+						page: 1,
+						pageSize: 12,
+						totalItems: 1,
+						totalPages: 1,
+						hasPreviousPage: false,
+						hasNextPage: false
+					},
+					progressive: { nextPage: null, canLoadMore: false }
+				})
+		});
+
+		expect(await screen.findByTestId('events-list')).toBeTruthy();
+		expect(screen.getByTestId('events-ad-item')).toBeTruthy();
+
+		await fireEvent.click(screen.getByRole('link', { name: 'Evento 1' }));
+		await fireEvent.click(screen.getByRole('link', { name: 'sponsor.jpg' }));
+
+		expect(trackEvent).toHaveBeenCalledWith({
+			action: 'Eventos',
+			category: 'Galeria',
+			label: 'Evento 1'
+		});
+		expect(trackEvent).toHaveBeenCalledWith({
+			action: 'Publicidades',
+			category: 'Galeria',
+			label: 'sponsor.jpg'
+		});
 	});
 });

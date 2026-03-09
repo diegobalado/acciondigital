@@ -3,11 +3,20 @@
 	import { APP_TITLE } from '../../app/config/migration';
 	import MediaCard from '../../shared/components/MediaCard.svelte';
 	import { loadEventsCatalog } from './eventsApi';
+	import { createEventsClickTracker, trackEventsClickEvent } from './eventsTracking';
+	import { mergeProgressiveFeed } from './eventsPagination';
 
 	export let loadEvents = loadEventsCatalog;
+	export let pageSize = 12;
+	export let trackEvent = trackEventsClickEvent;
+	export let createTracker = createEventsClickTracker;
 
 	let status = 'loading';
-	let events = [];
+	let feed = [];
+	let progressive = {
+		nextPage: null,
+		canLoadMore: false
+	};
 	let pagination = {
 		page: 1,
 		pageSize: 12,
@@ -17,21 +26,54 @@
 		hasNextPage: false
 	};
 
-	async function requestPage(page) {
+	$: tracker = createTracker({ trackEvent });
+
+	async function requestPage(page, append = false) {
 		status = 'loading';
 		try {
-			const result = await loadEvents({ page });
-			events = result.events;
+			const result = await loadEvents({ page, pageSize });
+			feed = mergeProgressiveFeed(feed, result.feed, append);
 			pagination = result.pagination;
-			status = events.length > 0 ? 'ready' : 'empty';
+			progressive = result.progressive;
+			status = feed.length > 0 ? 'ready' : 'empty';
 		} catch {
 			status = 'error';
 		}
 	}
 
 	onMount(async () => {
-		await requestPage(1);
+		await requestPage(1, false);
 	});
+
+	function getCardProps(item) {
+		if (item.type === 'event') {
+			return {
+				variant: 'event',
+				href: item.event.eventUrl || '#',
+				title: item.event.title,
+				label: item.event.title,
+				imageUrl: item.event.coverImageUrl,
+				target: '_self'
+			};
+		}
+
+		return {
+			variant: 'ad',
+			href: item.ad?.href || '#',
+			title: item.ad?.name || 'Publicidad',
+			label: item.ad?.name || 'Publicidad',
+			imageUrl: item.ad?.imageUrl || '',
+			target: item.ad?.target || '_self'
+		};
+	}
+
+	async function loadMore() {
+		if (!progressive.canLoadMore || !progressive.nextPage) {
+			return;
+		}
+
+		await requestPage(progressive.nextPage, true);
+	}
 </script>
 
 <main class="events-shell">
@@ -51,35 +93,19 @@
 			Pagina {pagination.page} de {pagination.totalPages} | Total: {pagination.totalItems}
 		</p>
 		<ul class="events-grid" data-testid="events-list">
-			{#each events as event}
-				<li>
-					<MediaCard
-						variant="event"
-						href={event.eventUrl || '#'}
-						title={event.title}
-						label={event.title}
-						imageUrl={event.coverImageUrl}
-						target="_self"
-					/>
+			{#each feed as item}
+				<li data-testid={item.type === 'ad' ? 'events-ad-item' : undefined}>
+					<MediaCard {...getCardProps(item)} trackingPayload={item} onTrack={tracker.trackFeedClick} />
 				</li>
 			{/each}
 		</ul>
-		<nav class="events-pagination" aria-label="Paginacion de eventos">
-			<button
-				type="button"
-				on:click={() => requestPage(pagination.page - 1)}
-				disabled={!pagination.hasPreviousPage}
-			>
-				Anterior
-			</button>
-			<button
-				type="button"
-				on:click={() => requestPage(pagination.page + 1)}
-				disabled={!pagination.hasNextPage}
-			>
-				Siguiente
-			</button>
-		</nav>
+		{#if progressive.canLoadMore}
+			<nav class="events-pagination" aria-label="Paginacion progresiva de eventos">
+				<button type="button" on:click={loadMore} data-testid="events-load-more">
+					Cargar mas
+				</button>
+			</nav>
+		{/if}
 	{/if}
 </main>
 

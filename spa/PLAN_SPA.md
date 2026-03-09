@@ -110,6 +110,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- preparar contrato para paginado progresivo (base de infinite scroll)
 	- agregar tracking desacoplado de clics en cards de eventos
 	- cubrir nuevos helpers con tests unitarios
+6. Iteracion cerrada el 2026-03-08 (Fase 3.2):
+	- feed mixto de `eventos` (eventos + ads) con helper dedicado
+	- tracking desacoplado para cards de `eventos` y publicidades
+	- paginado progresivo base con contrato `progressive` y boton `Cargar mas`
+	- tests unitarios de feed, tracking, paginacion y pagina `EventsPage`
+7. Proxima iteracion sugerida (Fase 3.3):
+	- reemplazar boton `Cargar mas` por disparador de scroll (infinite scroll)
+	- incorporar placeholders/skeleton durante carga incremental
+	- validar deduplicacion de items al anexar paginas
+	- tests de comportamiento incremental y edge cases de final de listado
 
 ### Fase 3 - Eventos/Galeria
 

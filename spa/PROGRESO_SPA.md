@@ -2,6 +2,42 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 7 - Eventos ads+tracking+progresivo (Fase 3.2)
+
+- Fecha: 2026-03-08
+- Branch: `spa-svelte-migration`
+- Objetivo: incorporar ads y tracking en eventos, y preparar base de paginado progresivo.
+
+### Hecho
+
+- Nuevos modulos en `src/features/events/`:
+	- `eventsFeed.js` para feed mixto (eventos + ads)
+	- `eventsTracking.js` para tracking desacoplado de clics
+	- `eventsPagination.js` con helper de merge para carga progresiva
+- `eventsApi.js` extendida:
+	- mapeo de ads legacy
+	- retorno de `feed` mixto por pagina
+	- contrato `progressive` (`nextPage`, `canLoadMore`)
+- `EventsPage.svelte` actualizada:
+	- render de feed mixto via `MediaCard`
+	- tracking inyectable de clics en eventos/ads
+	- paginacion progresiva base con boton `Cargar mas`
+- Tests unitarios agregados/actualizados:
+	- `eventsFeed.test.js`
+	- `eventsTracking.test.js`
+	- `eventsPagination.test.js`
+	- `eventsApi.test.js`
+	- `EventsPage.test.js`
+
+### Verificacion
+
+- `pnpm test`: OK (13 files, 40 tests).
+- `pnpm build`: OK.
+
+### Proximo paso
+
+- Fase 3.3: migrar de boton `Cargar mas` a infinite scroll y cubrir edge cases de anexado.
+
 ## Iteracion 6 - Eventos base (Fase 3.1)
 
 - Fecha: 2026-03-08
