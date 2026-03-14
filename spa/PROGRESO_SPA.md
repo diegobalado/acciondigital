@@ -2,6 +2,36 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 13 - Carrito UI + submit checkout base (Fase 5.2)
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: integrar servicios de carrito en UI de eventos y conectar accion de checkout al bridge legacy.
+
+### Hecho
+
+- `EventsPage.svelte` actualizada:
+	- panel de carrito con resumen de items/total
+	- acciones de carrito en UI: `Agregar al carrito`, `Quitar`, cambio de cantidad
+	- submit `Ir al checkout` conectado a `createLegacyCheckoutPayload` + `submitLegacyCheckoutPayload`
+	- manejo de estado de submit (`isCheckoutPending`) y error de checkout
+- `checkoutBridge.js` extendida:
+	- helper `submitLegacyCheckoutPayload` con adaptador inyectable para tests
+	- fallback browser con `form POST` hacia `/checkout/index.php`
+- Tests agregados/actualizados:
+	- `EventsPage.test.js` cubre acciones de carrito y submit con bridge inyectado
+	- `checkoutBridge.test.js` cubre submitter custom y fallback DOM
+
+### Verificacion
+
+- Validacion estatico/sintactica de archivos modificados: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 5.3: llevar carrito al nivel de fotos por evento y completar paridad de campos de checkout.
+
 ## Iteracion 12 - Carrito service + checkout bridge (Fase 5.1)
 
 - Fecha: 2026-03-14

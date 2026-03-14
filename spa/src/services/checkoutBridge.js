@@ -33,3 +33,36 @@ export function createLegacyCheckoutPayload(cartItems = [], options = {}) {
 		totals
 	};
 }
+
+export async function submitLegacyCheckoutPayload(payload, options = {}) {
+	const submitter = options.submitter;
+	if (typeof submitter === 'function') {
+		return submitter(payload);
+	}
+
+	if (typeof document === 'undefined') {
+		return payload;
+	}
+
+	const form = document.createElement('form');
+	form.method = 'POST';
+	form.action = payload.endpoint || LEGACY_CHECKOUT_ENDPOINT;
+	form.style.display = 'none';
+
+	const productsInput = document.createElement('input');
+	productsInput.type = 'hidden';
+	productsInput.name = 'products';
+	productsInput.value = JSON.stringify(payload.body?.products || []);
+
+	const totalPriceInput = document.createElement('input');
+	totalPriceInput.type = 'hidden';
+	totalPriceInput.name = 'totalPrice';
+	totalPriceInput.value = String(payload.body?.totalPrice ?? 0);
+
+	form.appendChild(productsInput);
+	form.appendChild(totalPriceInput);
+	document.body.appendChild(form);
+	form.submit();
+
+	return payload;
+}

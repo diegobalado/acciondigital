@@ -179,6 +179,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- mostrar resumen de carrito y acciones de remove/update
 	- conectar submit de checkout al bridge de payload legacy
 	- cubrir flujo de integracion UI + servicio con tests
+17. Iteracion cerrada el 2026-03-14 (Fase 5.2):
+	- carrito integrado en `EventsPage` con acciones `agregar`, `quitar` y `cantidad`
+	- resumen de carrito y total derivados desde `cartService`
+	- accion `Ir al checkout` conectada al `checkoutBridge` legacy
+	- tests de integracion UI + bridge agregados en `EventsPage` y `checkoutBridge`
+18. Proxima iteracion sugerida (Fase 5.3):
+	- integrar carrito en pagina de fotos por evento (nivel imagen)
+	- mapear campos `summary/ph/type` con mayor paridad legacy
+	- robustecer submit legacy en backend bridge (form-data/transport real)
+	- ampliar tests end-to-end de flujo compra SPA->checkout
 
 ### Fase 3 - Eventos/Galeria
 
