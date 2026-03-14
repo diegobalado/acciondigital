@@ -169,6 +169,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- definir contrato de items y mapeo a payload de checkout legacy
 	- agregar pruebas de reglas base de carrito (agregar/remover/cantidad)
 	- preparar puente inicial hacia checkout PHP existente
+15. Iteracion cerrada el 2026-03-14 (Fase 5.1):
+	- servicio base de carrito encapsulado en `src/services/cartService.js`
+	- contrato de item y reglas base (`add/remove/update quantity`) implementadas
+	- puente a checkout legacy en `src/services/checkoutBridge.js`
+	- tests unitarios agregados para reglas de carrito y payload a `/checkout/index.php`
+16. Proxima iteracion sugerida (Fase 5.2):
+	- integrar carrito SPA en UI de grilla de fotos/eventos
+	- mostrar resumen de carrito y acciones de remove/update
+	- conectar submit de checkout al bridge de payload legacy
+	- cubrir flujo de integracion UI + servicio con tests
 
 ### Fase 3 - Eventos/Galeria
 
@@ -185,9 +195,9 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 ### Fase 5 - Carrito/Checkout
 
-- [ ] Encapsular logica de carrito en servicios SPA.
+- [x] Encapsular logica de carrito en servicios SPA.
 - [ ] Mantener integracion con checkout PHP existente.
-- [ ] Tests unitarios de payloads y reglas de compra.
+- [x] Tests unitarios de payloads y reglas de compra.
 
 ### Fase 6 - Secciones secundarias
 

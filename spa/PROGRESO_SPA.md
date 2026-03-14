@@ -2,6 +2,35 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 12 - Carrito service + checkout bridge (Fase 5.1)
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: encapsular logica base de carrito y preparar puente de payload hacia checkout PHP legacy.
+
+### Hecho
+
+- Nuevo servicio `src/services/cartService.js`:
+	- contrato normalizado de item de carrito
+	- helpers de estado: `addCartItem`, `removeCartItem`, `updateCartItemQuantity`
+	- calculo de totales con regla promo legacy (cantidad >= 5 => total 0)
+- Nuevo servicio `src/services/checkoutBridge.js`:
+	- mapeo de items SPA al formato esperado por `/checkout/index.php`
+	- constructor de payload `POST` legacy (`products`, `totalPrice`)
+- Tests unitarios agregados:
+	- `src/services/cartService.test.js`
+	- `src/services/checkoutBridge.test.js`
+
+### Verificacion
+
+- Validacion estatico/sintactica de archivos nuevos: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 5.2: integrar servicios de carrito en UI SPA y enlazar accion de checkout.
+
 ## Iteracion 11 - Busqueda mirror+sin clasificar (Fase 4.2)
 
 - Fecha: 2026-03-14
