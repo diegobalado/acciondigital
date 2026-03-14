@@ -31,6 +31,21 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 	- Proximo paso
 7. Al finalizar iteracion: `git add` + `git commit` + `git push`.
 
+## Directivas de ejecucion de comandos (tokens)
+
+1. Para optimizar consumo de tokens, priorizar ejecucion manual local de:
+	- `pnpm test`
+	- `pnpm build`
+	- comandos de Git (`git status`, `git commit`, `git push`, etc.)
+2. En el chat, reportar resultados en formato resumido:
+	- `pnpm test OK` / `pnpm build OK`
+	- o errores puntuales con archivo, test y mensaje principal
+3. Compartir solo logs relevantes cuando haya fallos (evitar pegar salidas completas largas).
+4. El agente ejecutara comandos directamente solo cuando sea necesario para:
+	- diagnosticar un fallo que requiera contexto adicional
+	- validar un fix puntual antes de cerrar iteracion
+	- cumplir una solicitud explicita del usuario
+
 ## Definicion de iteracion (DoD)
 
 Una iteracion se considera cerrada solo si cumple todo lo siguiente:
@@ -140,6 +155,10 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- contemplar variaciones de datasource por `mirror` para busqueda
 	- agregar tracking desacoplado de acciones de busqueda
 	- ampliar tests con casos de mirror/sin clasificar
+12. Iteracion cerrada el 2026-03-14 (UI/Tailwind gradual):
+	- limpieza incremental de estilos repetidos en `HomePage` y `EventsPage`
+	- migracion de layout/spacing/typography a clases utilitarias Tailwind
+	- reduccion de CSS local redundante manteniendo funcionalidad existente
 
 ### Fase 3 - Eventos/Galeria
 

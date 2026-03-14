@@ -2,6 +2,32 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 10 - Limpieza UI con Tailwind (gradual)
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: mover estilos repetidos de Home/Eventos a clases utilitarias Tailwind sin alterar comportamiento.
+
+### Hecho
+
+- `HomePage.svelte` refactorizada:
+	- layout base, espaciados y textos migrados a utilidades Tailwind
+	- eliminacion del bloque `<style>` local redundante
+- `EventsPage.svelte` refactorizada:
+	- formulario de busqueda, resumen, grilla e infinite status migrados a utilidades Tailwind
+	- skeletons simplificados con `animate-pulse`
+	- eliminacion de CSS local repetitivo
+
+### Verificacion
+
+- Validacion estatico/sintactica de componentes actualizados: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 4.2: continuar paridad de buscador legacy (`sin clasificar` + mirror).
+
 ## Iteracion 9 - Busqueda bib/numero base (Fase 4.1)
 
 - Fecha: 2026-03-14

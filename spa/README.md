@@ -28,6 +28,24 @@ Fallback sin instalacion global de pnpm:
 - Mantener un solo package manager en la rama para evitar conflictos de lockfile.
 - Archivo lock oficial: `pnpm-lock.yaml`.
 
+## Estilos (Tailwind CSS)
+
+Tailwind CSS v4 esta integrado via plugin de Vite.
+
+Pasos para activarlo localmente:
+
+- `pnpm install`
+- `pnpm dev`
+
+Referencia rapida de uso en componentes Svelte:
+
+```svelte
+<section class="mx-auto max-w-5xl px-4 py-8">
+	<h2 class="text-2xl font-semibold tracking-tight">Eventos</h2>
+	<p class="mt-2 text-sm text-zinc-600">Listado migrado desde legacy.</p>
+</section>
+```
+
 ---
 
 Base template details:

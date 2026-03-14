@@ -155,24 +155,32 @@
 	}
 </script>
 
-<main class="events-shell">
-	<header>
-		<h1>{APP_TITLE}</h1>
-		<h2>Eventos</h2>
+<main class="mx-auto max-w-[960px] px-4 py-8">
+	<header class="mb-4">
+		<h1 class="m-0 text-3xl leading-tight">{APP_TITLE}</h1>
+		<h2 class="m-0 text-[1.3rem] opacity-85">Eventos</h2>
 	</header>
-	<form class="events-search" on:submit|preventDefault={submitSearch} data-testid="events-search-form">
-		<label for="events-search-input">Buscar por bib/numero</label>
-		<div class="events-search-controls">
+	<form class="mb-4 grid gap-2" on:submit|preventDefault={submitSearch} data-testid="events-search-form">
+		<label class="text-sm opacity-85" for="events-search-input">Buscar por bib/numero</label>
+		<div class="flex flex-wrap gap-2">
 			<input
+				class="basis-[220px] flex-1 rounded-md border border-zinc-300 px-[0.65rem] py-[0.55rem]"
 				id="events-search-input"
 				type="search"
 				bind:value={searchQuery}
 				placeholder="Ej: 145"
 				data-testid="events-search-input"
 			/>
-			<button type="submit" data-testid="events-search-submit">Buscar</button>
+			<button class="cursor-pointer rounded-md border border-zinc-300 bg-white px-3 py-[0.55rem]" type="submit" data-testid="events-search-submit">Buscar</button>
 			{#if hasSearchQuery}
-				<button type="button" on:click={clearSearch} data-testid="events-search-clear">Limpiar</button>
+				<button
+					class="cursor-pointer rounded-md border border-zinc-300 bg-white px-3 py-[0.55rem]"
+					type="button"
+					on:click={clearSearch}
+					data-testid="events-search-clear"
+				>
+					Limpiar
+				</button>
 			{/if}
 		</div>
 	</form>
@@ -190,8 +198,8 @@
 			{/if}
 		</p>
 	{:else}
-		<p class="events-summary" data-testid="events-summary">{searchSummary}</p>
-		<ul class="events-grid" data-testid="events-list">
+		<p class="mb-3 text-[0.95rem] opacity-80" data-testid="events-summary">{searchSummary}</p>
+		<ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3 p-0" data-testid="events-list">
 			{#each visibleFeed as item}
 				<li data-testid={item.type === 'ad' ? 'events-ad-item' : undefined}>
 					<MediaCard {...getCardProps(item)} trackingPayload={item} onTrack={tracker.trackFeedClick} />
@@ -199,148 +207,19 @@
 			{/each}
 			{#if isLoadingMore}
 				{#each [0, 1, 2] as skeletonIndex (skeletonIndex)}
-					<li class="events-skeleton-item" data-testid="events-skeleton-item" aria-hidden="true">
-						<div class="events-skeleton-thumb"></div>
-						<div class="events-skeleton-line events-skeleton-line-main"></div>
-						<div class="events-skeleton-line events-skeleton-line-sub"></div>
+					<li class="grid gap-2 rounded-lg border border-zinc-200 bg-zinc-50 p-3" data-testid="events-skeleton-item" aria-hidden="true">
+						<div class="h-[120px] animate-pulse rounded-md bg-zinc-200"></div>
+						<div class="h-2 w-[82%] animate-pulse rounded bg-zinc-200"></div>
+						<div class="h-2 w-[58%] animate-pulse rounded bg-zinc-200"></div>
 					</li>
 				{/each}
 			{/if}
 		</ul>
 		{#if !hasSearchQuery && progressive.canLoadMore}
-			<div class="events-infinite" data-testid="events-infinite-status" aria-live="polite">
+			<div class="mt-4 grid justify-items-center text-[0.95rem] opacity-80" data-testid="events-infinite-status" aria-live="polite">
 				<p>{loadMoreLabel}</p>
-				<div class="events-infinite-sentinel" data-testid="events-infinite-sentinel" use:onInfiniteScrollSentinel></div>
+				<div class="h-px w-full" data-testid="events-infinite-sentinel" use:onInfiniteScrollSentinel></div>
 			</div>
 		{/if}
 	{/if}
 </main>
-
-<style>
-	.events-shell {
-		margin: 0 auto;
-		max-width: 960px;
-		padding: 2rem 1rem;
-	}
-
-	header {
-		margin-bottom: 1rem;
-	}
-
-	.events-search {
-		display: grid;
-		gap: 0.45rem;
-		margin-bottom: 1rem;
-	}
-
-	.events-search label {
-		font-size: 0.9rem;
-		opacity: 0.85;
-	}
-
-	.events-search-controls {
-		display: flex;
-		gap: 0.5rem;
-		flex-wrap: wrap;
-	}
-
-	.events-search-controls input {
-		flex: 1 1 220px;
-		padding: 0.55rem 0.65rem;
-		border-radius: 0.4rem;
-		border: 1px solid #c9c9c9;
-	}
-
-	.events-search-controls button {
-		padding: 0.55rem 0.7rem;
-		border-radius: 0.4rem;
-		border: 1px solid #b8b8b8;
-		background: #fff;
-		cursor: pointer;
-	}
-
-	h1,
-	h2 {
-		margin: 0;
-	}
-
-	h2 {
-		font-size: 1.3rem;
-		opacity: 0.85;
-	}
-
-	.events-summary {
-		margin: 0 0 0.75rem;
-		font-size: 0.95rem;
-		opacity: 0.8;
-	}
-
-	.events-grid {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		gap: 0.75rem;
-		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-	}
-
-	.events-grid li {
-		margin: 0;
-	}
-
-	.events-infinite {
-		display: grid;
-		justify-items: center;
-		margin-top: 1rem;
-		font-size: 0.95rem;
-		opacity: 0.82;
-	}
-
-	.events-infinite-sentinel {
-		width: 100%;
-		height: 1px;
-	}
-
-	.events-skeleton-item {
-		padding: 0.75rem;
-		border: 1px solid #ebebeb;
-		border-radius: 0.6rem;
-		background: #fafafa;
-		display: grid;
-		gap: 0.45rem;
-	}
-
-	.events-skeleton-thumb {
-		height: 120px;
-		border-radius: 0.45rem;
-		background: linear-gradient(90deg, #efefef 25%, #f7f7f7 50%, #efefef 75%);
-		background-size: 250% 100%;
-		animation: events-skeleton-pulse 1.1s linear infinite;
-	}
-
-	.events-skeleton-line {
-		height: 0.6rem;
-		border-radius: 0.4rem;
-		background: linear-gradient(90deg, #efefef 25%, #f7f7f7 50%, #efefef 75%);
-		background-size: 250% 100%;
-		animation: events-skeleton-pulse 1.1s linear infinite;
-	}
-
-	.events-skeleton-line-main {
-		width: 82%;
-	}
-
-	.events-skeleton-line-sub {
-		width: 58%;
-	}
-
-	@keyframes events-skeleton-pulse {
-		from {
-			background-position: 100% 0;
-		}
-
-		to {
-			background-position: -100% 0;
-		}
-	}
-</style>

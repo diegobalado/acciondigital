@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import tailwindcss from '@tailwindcss/vite'
 
 function getContentType(filePath) {
   const extension = path.extname(filePath).toLowerCase()
@@ -56,7 +57,7 @@ function legacyAssetsBridge() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [svelte(), legacyAssetsBridge()],
+  plugins: [svelte(), tailwindcss(), legacyAssetsBridge()],
   resolve: {
     conditions: ['browser']
   },
