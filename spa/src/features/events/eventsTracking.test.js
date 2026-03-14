@@ -26,4 +26,36 @@ describe('createEventsClickTracker', () => {
 			label: 'ad-banner.jpg'
 		});
 	});
+
+	it('tracks search submit and result actions', () => {
+		const trackEvent = vi.fn();
+		const tracker = createEventsClickTracker({ trackEvent });
+
+		tracker.trackSearchSubmitted('145');
+		tracker.trackSearchResult('145', true);
+
+		expect(trackEvent).toHaveBeenCalledWith({
+			action: 'Filtros',
+			category: 'Evento',
+			label: 'Busqueda: 145'
+		});
+		expect(trackEvent).toHaveBeenCalledWith({
+			action: 'Filtros',
+			category: 'Evento',
+			label: 'Busqueda con resultados: 145'
+		});
+	});
+
+	it('tracks search cleared action', () => {
+		const trackEvent = vi.fn();
+		const tracker = createEventsClickTracker({ trackEvent });
+
+		tracker.trackSearchCleared();
+
+		expect(trackEvent).toHaveBeenCalledWith({
+			action: 'Filtros',
+			category: 'Evento',
+			label: 'Busqueda limpiada'
+		});
+	});
 });

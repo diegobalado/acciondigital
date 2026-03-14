@@ -159,6 +159,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- limpieza incremental de estilos repetidos en `HomePage` y `EventsPage`
 	- migracion de layout/spacing/typography a clases utilitarias Tailwind
 	- reduccion de CSS local redundante manteniendo funcionalidad existente
+13. Iteracion cerrada el 2026-03-14 (Fase 4.2):
+	- soporte `mirror=home5` en datasource de catalogo y busqueda de eventos
+	- compatibilidad de alias `sin clasificar` (`untagged`) en buscador
+	- tracking desacoplado de acciones de busqueda (submit/result/clear)
+	- tests unitarios ampliados para mirror/sin clasificar/tracking
+14. Proxima iteracion sugerida (Fase 5.1):
+	- iniciar encapsulacion de carrito en servicios SPA
+	- definir contrato de items y mapeo a payload de checkout legacy
+	- agregar pruebas de reglas base de carrito (agregar/remover/cantidad)
+	- preparar puente inicial hacia checkout PHP existente
 
 ### Fase 3 - Eventos/Galeria
 
@@ -169,9 +179,9 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 ### Fase 4 - Busqueda
 
-- [ ] Migrar buscador (por numero y sin clasificar).
-- [ ] Preservar comportamiento actual en eventos y mirror.
-- [ ] Tests unitarios de filtros y edge cases.
+- [x] Migrar buscador (por numero y sin clasificar).
+- [x] Preservar comportamiento actual en eventos y mirror.
+- [x] Tests unitarios de filtros y edge cases.
 
 ### Fase 5 - Carrito/Checkout
 

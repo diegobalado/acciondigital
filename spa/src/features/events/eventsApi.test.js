@@ -1,4 +1,9 @@
-import { EVENTS_CATALOG_DATASOURCE_URL, loadEventsCatalog, searchEventsCatalog } from './eventsApi';
+import {
+	EVENTS_CATALOG_DATASOURCE_URL,
+	EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL,
+	loadEventsCatalog,
+	searchEventsCatalog
+} from './eventsApi';
 import { describe, expect, it, vi } from 'vitest';
 
 describe('loadEventsCatalog', () => {
@@ -79,6 +84,27 @@ describe('loadEventsCatalog', () => {
 		]);
 		expect(result.feed[result.feed.length - 1].type).toBe('ad');
 	});
+
+	it('uses mirror datasource when search includes mirror=home5', async () => {
+		const dataClient = vi.fn().mockResolvedValue({ eventos: [{ ID: 'evt_1', text: 'Evento 1' }] });
+
+		await loadEventsCatalog({ dataClient, search: '?mirror=home5' });
+
+		expect(dataClient).toHaveBeenCalledWith(EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL);
+	});
+
+	it('falls back to default datasource when mirror catalog is unavailable', async () => {
+		const dataClient = vi
+			.fn()
+			.mockRejectedValueOnce(new Error('404'))
+			.mockResolvedValueOnce({ eventos: [{ ID: 'evt_1', text: 'Evento 1' }] });
+
+		const result = await loadEventsCatalog({ dataClient, search: '?mirror=home5' });
+
+		expect(dataClient).toHaveBeenNthCalledWith(1, EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL);
+		expect(dataClient).toHaveBeenNthCalledWith(2, EVENTS_CATALOG_DATASOURCE_URL);
+		expect(result.datasourceUrl).toBe(EVENTS_CATALOG_DATASOURCE_URL);
+	});
 });
 
 describe('searchEventsCatalog', () => {
@@ -116,5 +142,25 @@ describe('searchEventsCatalog', () => {
 
 		expect(result.events).toEqual([]);
 		expect(dataClient).not.toHaveBeenCalled();
+	});
+
+	it('returns untagged mode for sin clasificar alias without requesting datasource', async () => {
+		const dataClient = vi.fn();
+
+		const result = await searchEventsCatalog({ dataClient, query: 'sin clasificar' });
+
+		expect(result.isUntagged).toBe(true);
+		expect(result.events).toEqual([]);
+		expect(dataClient).not.toHaveBeenCalled();
+	});
+
+	it('searches using mirror datasource when mirror=home5 is present', async () => {
+		const dataClient = vi.fn().mockResolvedValue({
+			eventos: [{ ID: 'evt_145', text: 'Maraton 145' }]
+		});
+
+		await searchEventsCatalog({ dataClient, query: '145', search: '?mirror=home5' });
+
+		expect(dataClient).toHaveBeenCalledWith(EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL);
 	});
 });

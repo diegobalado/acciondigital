@@ -3,11 +3,12 @@ export function trackEventsClickEvent({ action, category, label }) {
 		return;
 	}
 
-	if (typeof window.gtag !== 'function') {
+	const gtag = window['gtag'];
+	if (typeof gtag !== 'function') {
 		return;
 	}
 
-	window.gtag('event', action, {
+	gtag('event', action, {
 		event_category: category,
 		event_label: label
 	});
@@ -39,7 +40,34 @@ export function createEventsClickTracker(options = {}) {
 		}
 	}
 
+	function trackSearchSubmitted(query) {
+		trackEvent({
+			action: 'Filtros',
+			category: 'Evento',
+			label: query ? `Busqueda: ${query}` : 'Busqueda vacia'
+		});
+	}
+
+	function trackSearchResult(query, hasResults) {
+		trackEvent({
+			action: 'Filtros',
+			category: 'Evento',
+			label: hasResults ? `Busqueda con resultados: ${query}` : `Busqueda sin resultados: ${query}`
+		});
+	}
+
+	function trackSearchCleared() {
+		trackEvent({
+			action: 'Filtros',
+			category: 'Evento',
+			label: 'Busqueda limpiada'
+		});
+	}
+
 	return {
-		trackFeedClick
+		trackFeedClick,
+		trackSearchSubmitted,
+		trackSearchResult,
+		trackSearchCleared
 	};
 }

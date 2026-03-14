@@ -18,6 +18,7 @@
 	let searchQuery = '';
 	let searchStatus = 'idle';
 	let searchResults = [];
+	let isUntaggedSearch = false;
 	let activeQuery = '';
 	$: hasSearchQuery = activeQuery.length > 0;
 	$: visibleFeed = hasSearchQuery
@@ -43,6 +44,14 @@
 	$: tracker = createTracker({ trackEvent });
 	$: loadMoreLabel = isLoadingMore ? 'Cargando mas eventos...' : 'Desplazate para cargar mas';
 
+	function getLocationSearch() {
+		if (typeof window === 'undefined') {
+			return '';
+		}
+
+		return window.location.search || '';
+	}
+
 	async function requestPage(page, append = false) {
 		if (append) {
 			if (isLoadingMore) {
@@ -54,7 +63,13 @@
 		}
 
 		try {
-			const result = await loadEvents({ page, pageSize });
+			const requestOptions = { page, pageSize };
+			const locationSearch = getLocationSearch();
+			if (locationSearch) {
+				requestOptions.search = locationSearch;
+			}
+
+			const result = await loadEvents(requestOptions);
 			feed = mergeProgressiveFeed(feed, result.feed, append);
 			pagination = result.pagination;
 			progressive = result.progressive;
@@ -70,9 +85,12 @@
 
 	async function submitSearch() {
 		const normalizedQuery = searchQuery.trim();
+		tracker.trackSearchSubmitted(normalizedQuery);
+
 		if (!normalizedQuery) {
 			activeQuery = '';
 			searchResults = [];
+			isUntaggedSearch = false;
 			searchStatus = 'idle';
 			return;
 		}
@@ -81,18 +99,29 @@
 		activeQuery = normalizedQuery;
 
 		try {
-			const result = await searchEvents({ query: normalizedQuery });
+			const requestOptions = { query: normalizedQuery };
+			const locationSearch = getLocationSearch();
+			if (locationSearch) {
+				requestOptions.search = locationSearch;
+			}
+
+			const result = await searchEvents(requestOptions);
 			searchResults = Array.isArray(result?.events) ? result.events : [];
+			isUntaggedSearch = Boolean(result?.isUntagged);
 			searchStatus = searchResults.length > 0 ? 'ready' : 'empty';
+			tracker.trackSearchResult(normalizedQuery, searchResults.length > 0);
 		} catch {
+			isUntaggedSearch = false;
 			searchStatus = 'error';
 		}
 	}
 
 	function clearSearch() {
+		tracker.trackSearchCleared();
 		searchQuery = '';
 		activeQuery = '';
 		searchResults = [];
+		isUntaggedSearch = false;
 		searchStatus = 'idle';
 	}
 
@@ -192,7 +221,11 @@
 	{:else if visibleStatus === 'empty'}
 		<p data-testid="events-empty">
 			{#if hasSearchQuery}
-				No hay resultados para la busqueda actual.
+				{#if isUntaggedSearch}
+					La busqueda "sin clasificar" no aplica al catalogo de eventos.
+				{:else}
+					No hay resultados para la busqueda actual.
+				{/if}
 			{:else}
 				No hay eventos disponibles por el momento.
 			{/if}

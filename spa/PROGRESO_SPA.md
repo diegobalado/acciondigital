@@ -2,6 +2,40 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 11 - Busqueda mirror+sin clasificar (Fase 4.2)
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: completar paridad base de buscador en eventos para mirror y alias legacy de "sin clasificar".
+
+### Hecho
+
+- `eventsApi.js` extendida:
+	- resolucion de datasource por `mirror=home5` para catalogo y busqueda
+	- fallback a `galeria.json` cuando el catalogo mirror no esta disponible
+	- soporte de alias `sin clasificar`/`untagged` en busqueda desacoplada
+- `EventsPage.svelte` actualizada:
+	- propagacion de `location.search` a carga y busqueda para respetar mirror
+	- estado de UI especifico para busqueda `sin clasificar`
+	- tracking desacoplado de busqueda (`submit`, `resultado`, `limpiar`)
+- `eventsTracking.js` y tests ampliados:
+	- metodos de tracking para flujo de busqueda
+	- cobertura de eventos analytics de busqueda
+- Tests unitarios agregados/actualizados:
+	- `eventsApi.test.js` (mirror + fallback + alias sin clasificar)
+	- `eventsTracking.test.js` (tracking de busqueda)
+	- `EventsPage.test.js` (mensaje y tracking para `sin clasificar`)
+
+### Verificacion
+
+- Validacion estatico/sintactica de archivos modificados: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 5.1: iniciar encapsulacion de carrito/checkout en servicios SPA.
+
 ## Iteracion 10 - Limpieza UI con Tailwind (gradual)
 
 - Fecha: 2026-03-14

@@ -3,6 +3,7 @@ import { mapLegacyCatalogEvent } from './eventsModelMapper';
 import { buildEventsFeed } from './eventsFeed';
 
 export const EVENTS_CATALOG_DATASOURCE_URL = '/assets/datasources/galeria.json';
+export const EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL = '/assets/datasources/mirror/home-5/galeria.5.json';
 
 function mapLegacyEventAd(ad, index) {
 	const href = ad?.href || '#';
@@ -29,6 +30,27 @@ function normalizeSearchTerm(value) {
 	return String(value ?? '')
 		.trim()
 		.toLowerCase();
+}
+
+function isMirrorHome5Search(search) {
+	const params = new URLSearchParams(String(search || ''));
+	return params.get('mirror') === 'home5';
+}
+
+function isUntaggedQuery(query) {
+	return query === 'untagged' || query === 'sin clasificar' || query === 'sin-clasificar';
+}
+
+function resolveEventsCatalogDatasource(options = {}) {
+	if (options.datasourceUrl) {
+		return options.datasourceUrl;
+	}
+
+	if (isMirrorHome5Search(options.search)) {
+		return EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL;
+	}
+
+	return EVENTS_CATALOG_DATASOURCE_URL;
 }
 
 function normalizeDigits(value) {
@@ -79,9 +101,21 @@ export async function loadEventsCatalog(options = {}) {
 	const dataClient = options.dataClient || fetchLegacyJson;
 	const page = toPositiveInt(options.page ?? 1, 1);
 	const pageSize = toPositiveInt(options.pageSize ?? 12, 12);
-	const datasourceUrl = options.datasourceUrl || EVENTS_CATALOG_DATASOURCE_URL;
+	const resolvedDatasourceUrl = resolveEventsCatalogDatasource(options);
 
-	const payload = await dataClient(datasourceUrl);
+	let payload;
+	let datasourceUrl = resolvedDatasourceUrl;
+	try {
+		payload = await dataClient(resolvedDatasourceUrl);
+	} catch (error) {
+		if (resolvedDatasourceUrl === EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL && !options.datasourceUrl) {
+			datasourceUrl = EVENTS_CATALOG_DATASOURCE_URL;
+			payload = await dataClient(EVENTS_CATALOG_DATASOURCE_URL);
+		} else {
+			throw error;
+		}
+	}
+
 	const { events, ads } = mapCatalogPayload(payload);
 
 	const totalItems = events.length;
@@ -113,12 +147,21 @@ export async function loadEventsCatalog(options = {}) {
 
 export async function searchEventsCatalog(options = {}) {
 	const dataClient = options.dataClient || fetchLegacyJson;
-	const datasourceUrl = options.datasourceUrl || EVENTS_CATALOG_DATASOURCE_URL;
+	const datasourceUrl = resolveEventsCatalogDatasource(options);
 	const query = normalizeSearchTerm(options.query);
 
 	if (!query) {
 		return {
 			query,
+			isUntagged: false,
+			events: []
+		};
+	}
+
+	if (isUntaggedQuery(query)) {
+		return {
+			query,
+			isUntagged: true,
 			events: []
 		};
 	}
@@ -128,6 +171,7 @@ export async function searchEventsCatalog(options = {}) {
 
 	return {
 		query,
+		isUntagged: false,
 		events: events.filter((eventItem) => matchesBibOrNumber(eventItem, query))
 	};
 }

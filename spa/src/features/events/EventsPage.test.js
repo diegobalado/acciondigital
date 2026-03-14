@@ -395,4 +395,53 @@ describe('EventsPage', () => {
 		expect(await screen.findByRole('link', { name: 'Evento 1' })).toBeTruthy();
 		expect(screen.queryByTestId('events-search-clear')).toBeNull();
 	});
+
+	it('shows untagged guidance message and tracks search actions', async () => {
+		const trackEvent = vi.fn();
+		render(EventsPage, {
+			trackEvent,
+			searchEvents: () => Promise.resolve({ isUntagged: true, events: [] }),
+			loadEvents: () =>
+				Promise.resolve({
+					events: [{ id: 'evt_1', title: 'Evento 1', eventUrl: '/eventos/?id=evt_1', coverImageUrl: '/1.jpg' }],
+					feed: [
+						{
+							type: 'event',
+							event: {
+								id: 'evt_1',
+								title: 'Evento 1',
+								eventUrl: '/eventos/?id=evt_1',
+								coverImageUrl: '/1.jpg'
+							}
+						}
+					],
+					pagination: {
+						page: 1,
+						pageSize: 12,
+						totalItems: 1,
+						totalPages: 1,
+						hasPreviousPage: false,
+						hasNextPage: false
+					},
+					progressive: { nextPage: null, canLoadMore: false }
+				})
+		});
+
+		expect(await screen.findByTestId('events-list')).toBeTruthy();
+		await fireEvent.input(screen.getByTestId('events-search-input'), { target: { value: 'sin clasificar' } });
+		await fireEvent.submit(screen.getByTestId('events-search-form'));
+
+		expect(await screen.findByTestId('events-empty')).toBeTruthy();
+		expect(screen.getByTestId('events-empty').textContent).toContain('no aplica al catalogo de eventos');
+		expect(trackEvent).toHaveBeenCalledWith({
+			action: 'Filtros',
+			category: 'Evento',
+			label: 'Busqueda: sin clasificar'
+		});
+		expect(trackEvent).toHaveBeenCalledWith({
+			action: 'Filtros',
+			category: 'Evento',
+			label: 'Busqueda sin resultados: sin clasificar'
+		});
+	});
 });
