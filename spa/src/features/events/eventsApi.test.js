@@ -1,4 +1,5 @@
-import { EVENTS_CATALOG_DATASOURCE_URL, loadEventsCatalog } from './eventsApi';
+import { EVENTS_CATALOG_DATASOURCE_URL, loadEventsCatalog, searchEventsCatalog } from './eventsApi';
+import { describe, expect, it, vi } from 'vitest';
 
 describe('loadEventsCatalog', () => {
 	it('loads default datasource and returns first page', async () => {
@@ -77,5 +78,43 @@ describe('loadEventsCatalog', () => {
 			}
 		]);
 		expect(result.feed[result.feed.length - 1].type).toBe('ad');
+	});
+});
+
+describe('searchEventsCatalog', () => {
+	it('returns matching events by text query', async () => {
+		const dataClient = vi.fn().mockResolvedValue({
+			eventos: [
+				{ ID: 'evt_145', text: 'Maraton 145' },
+				{ ID: 'evt_260', text: 'Rally 260' }
+			]
+		});
+
+		const result = await searchEventsCatalog({ dataClient, query: 'rally' });
+
+		expect(dataClient).toHaveBeenCalledWith(EVENTS_CATALOG_DATASOURCE_URL);
+		expect(result.events.map((item) => item.id)).toEqual(['evt_260']);
+	});
+
+	it('returns matching events by numeric bib-like query', async () => {
+		const dataClient = vi.fn().mockResolvedValue({
+			eventos: [
+				{ ID: 'evt_145', text: 'Corredor 145' },
+				{ ID: 'evt_514', text: 'Corredor 514' }
+			]
+		});
+
+		const result = await searchEventsCatalog({ dataClient, query: '145' });
+
+		expect(result.events.map((item) => item.id)).toEqual(['evt_145']);
+	});
+
+	it('returns empty array for blank query without requesting datasource', async () => {
+		const dataClient = vi.fn();
+
+		const result = await searchEventsCatalog({ dataClient, query: '   ' });
+
+		expect(result.events).toEqual([]);
+		expect(dataClient).not.toHaveBeenCalled();
 	});
 });

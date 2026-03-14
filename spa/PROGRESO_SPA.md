@@ -2,6 +2,64 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 9 - Busqueda bib/numero base (Fase 4.1)
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: iniciar migracion de buscador de eventos por bib/numero con API desacoplada y estados de UI.
+
+### Hecho
+
+- `eventsApi.js` extendida con `searchEventsCatalog`:
+	- busqueda desacoplada sobre datasource legacy de catalogo
+	- matching por texto y tokens numericos (bib/numero) con comparacion exacta
+- `EventsPage.svelte` actualizada:
+	- formulario de busqueda (`Buscar`/`Limpiar`) integrado en pagina de eventos
+	- estados de UI de busqueda: `idle`, `loading`, `empty`, `error`
+	- resumen dinamico de resultados con query activa
+	- coexistencia con infinite scroll del catalogo cuando no hay busqueda activa
+- Tests unitarios agregados/actualizados:
+	- `eventsApi.test.js` cubre busqueda por texto, por numero y query vacia
+	- `EventsPage.test.js` cubre flujo de busqueda, empty de busqueda y reset con `Limpiar`
+
+### Verificacion
+
+- `pnpm test`: OK (13 files, 49 tests).
+- `pnpm build`: OK.
+
+### Proximo paso
+
+- Fase 4.2: completar paridad legacy de busqueda (`sin clasificar` + variantes mirror).
+
+## Iteracion 8 - Eventos infinite scroll+skeletons+dedup (Fase 3.3)
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: reemplazar boton progresivo por infinite scroll y robustecer anexado incremental.
+
+### Hecho
+
+- `EventsPage.svelte` actualizada:
+	- reemplazo de boton `Cargar mas` por sentinel con `IntersectionObserver`
+	- placeholders/skeleton visibles durante la carga incremental
+	- proteccion contra solicitudes concurrentes en `loadMore`
+- `eventsPagination.js` mejorada:
+	- deduplicacion al anexar feed progresivo (eventos/ads) para evitar repetidos
+- Tests unitarios ampliados:
+	- `EventsPage.test.js` cubre carga por interseccion del sentinel
+	- `EventsPage.test.js` cubre estado incremental con skeletons
+	- `eventsPagination.test.js` cubre deduplicacion de eventos y ads
+
+### Verificacion
+
+- Validacion estatico/sintactica en archivos modificados: OK (`get_errors`, sin problemas).
+- `pnpm test`: pendiente (ejecucion omitida desde VS Code).
+- `pnpm build`: pendiente (ejecucion omitida desde VS Code).
+
+### Proximo paso
+
+- Fase 4.1: iniciar migracion de buscador (`bib/numero`) con API desacoplada y estados de UI.
+
 ## Iteracion 7 - Eventos ads+tracking+progresivo (Fase 3.2)
 
 - Fecha: 2026-03-08

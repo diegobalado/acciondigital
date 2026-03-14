@@ -120,13 +120,33 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- incorporar placeholders/skeleton durante carga incremental
 	- validar deduplicacion de items al anexar paginas
 	- tests de comportamiento incremental y edge cases de final de listado
+8. Iteracion cerrada el 2026-03-14 (Fase 3.3):
+	- `EventsPage` migro de boton a `infinite scroll` con `IntersectionObserver`
+	- placeholders/skeleton agregados durante carga incremental de paginas
+	- deduplicacion de items implementada al anexar feed progresivo
+	- tests unitarios ampliados para flujo incremental y edge cases de merge
+9. Proxima iteracion sugerida (Fase 4.1):
+	- iniciar migracion de busqueda por `bib/numero` sobre catalogo de eventos
+	- definir API de busqueda desacoplada para datasource legacy inicial
+	- incorporar estado UI de busqueda (idle/loading/empty/error)
+	- tests unitarios de filtros y edge cases de entrada
+10. Iteracion cerrada el 2026-03-14 (Fase 4.1):
+	- API desacoplada de busqueda inicial en eventos (`searchEventsCatalog`)
+	- UI de busqueda por `bib/numero` integrada en `EventsPage`
+	- estados de busqueda implementados: `idle/loading/empty/error`
+	- tests unitarios agregados para API y flujo de UI de busqueda
+11. Proxima iteracion sugerida (Fase 4.2):
+	- incorporar comportamiento `sin clasificar` y paridad de filtros del legacy
+	- contemplar variaciones de datasource por `mirror` para busqueda
+	- agregar tracking desacoplado de acciones de busqueda
+	- ampliar tests con casos de mirror/sin clasificar
 
 ### Fase 3 - Eventos/Galeria
 
-- [ ] Migrar pagina de eventos y grilla de fotos.
-- [ ] Migrar paginacion/infinite scroll.
-- [ ] Migrar insercion de ads.
-- [ ] Tests unitarios de helpers de paginado/render.
+- [x] Migrar pagina de eventos y grilla de fotos.
+- [x] Migrar paginacion/infinite scroll.
+- [x] Migrar insercion de ads.
+- [x] Tests unitarios de helpers de paginado/render.
 
 ### Fase 4 - Busqueda
 

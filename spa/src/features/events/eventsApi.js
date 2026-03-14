@@ -25,6 +25,56 @@ function toPositiveInt(value, fallback) {
 	return parsed;
 }
 
+function normalizeSearchTerm(value) {
+	return String(value ?? '')
+		.trim()
+		.toLowerCase();
+}
+
+function normalizeDigits(value) {
+	return String(value ?? '').replace(/\D+/g, '');
+}
+
+function extractDigitTokens(value) {
+	const matches = String(value ?? '').match(/\d+/g);
+	return Array.isArray(matches) ? matches : [];
+}
+
+function mapCatalogPayload(payload) {
+	const legacyEvents = Array.isArray(payload?.eventos) ? payload.eventos : [];
+	const events = legacyEvents.map(mapLegacyCatalogEvent);
+	const ads = Array.isArray(payload?.ads) ? payload.ads.map(mapLegacyEventAd) : [];
+
+	return {
+		events,
+		ads
+	};
+}
+
+function matchesBibOrNumber(eventItem, query) {
+	const normalizedQuery = normalizeSearchTerm(query);
+	if (!normalizedQuery) {
+		return false;
+	}
+
+	const queryDigits = normalizeDigits(normalizedQuery);
+	const title = normalizeSearchTerm(eventItem?.title);
+	const id = normalizeSearchTerm(eventItem?.id);
+	const eventUrl = normalizeSearchTerm(eventItem?.eventUrl);
+	const combinedText = `${title} ${id} ${eventUrl}`;
+
+	if (combinedText.includes(normalizedQuery)) {
+		return true;
+	}
+
+	if (!queryDigits) {
+		return false;
+	}
+
+	const candidateDigitTokens = extractDigitTokens(combinedText);
+	return candidateDigitTokens.some((token) => token === queryDigits);
+}
+
 export async function loadEventsCatalog(options = {}) {
 	const dataClient = options.dataClient || fetchLegacyJson;
 	const page = toPositiveInt(options.page ?? 1, 1);
@@ -32,9 +82,7 @@ export async function loadEventsCatalog(options = {}) {
 	const datasourceUrl = options.datasourceUrl || EVENTS_CATALOG_DATASOURCE_URL;
 
 	const payload = await dataClient(datasourceUrl);
-	const legacyEvents = Array.isArray(payload?.eventos) ? payload.eventos : [];
-	const events = legacyEvents.map(mapLegacyCatalogEvent);
-	const ads = Array.isArray(payload?.ads) ? payload.ads.map(mapLegacyEventAd) : [];
+	const { events, ads } = mapCatalogPayload(payload);
 
 	const totalItems = events.length;
 	const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
@@ -60,5 +108,26 @@ export async function loadEventsCatalog(options = {}) {
 			nextPage: currentPage < totalPages ? currentPage + 1 : null,
 			canLoadMore: currentPage < totalPages
 		}
+	};
+}
+
+export async function searchEventsCatalog(options = {}) {
+	const dataClient = options.dataClient || fetchLegacyJson;
+	const datasourceUrl = options.datasourceUrl || EVENTS_CATALOG_DATASOURCE_URL;
+	const query = normalizeSearchTerm(options.query);
+
+	if (!query) {
+		return {
+			query,
+			events: []
+		};
+	}
+
+	const payload = await dataClient(datasourceUrl);
+	const { events } = mapCatalogPayload(payload);
+
+	return {
+		query,
+		events: events.filter((eventItem) => matchesBibOrNumber(eventItem, query))
 	};
 }
