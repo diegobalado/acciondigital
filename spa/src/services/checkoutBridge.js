@@ -49,18 +49,24 @@ export async function submitLegacyCheckoutPayload(payload, options = {}) {
 	form.action = payload.endpoint || LEGACY_CHECKOUT_ENDPOINT;
 	form.style.display = 'none';
 
-	const productsInput = document.createElement('input');
-	productsInput.type = 'hidden';
-	productsInput.name = 'products';
-	productsInput.value = JSON.stringify(payload.body?.products || []);
-
 	const totalPriceInput = document.createElement('input');
 	totalPriceInput.type = 'hidden';
 	totalPriceInput.name = 'totalPrice';
 	totalPriceInput.value = String(payload.body?.totalPrice ?? 0);
 
-	form.appendChild(productsInput);
 	form.appendChild(totalPriceInput);
+
+	const products = Array.isArray(payload.body?.products) ? payload.body.products : [];
+	products.forEach((product, index) => {
+		Object.entries(product).forEach(([key, value]) => {
+			const input = document.createElement('input');
+			input.type = 'hidden';
+			input.name = `products[${index}][${key}]`;
+			input.value = String(value ?? '');
+			form.appendChild(input);
+		});
+	});
+
 	document.body.appendChild(form);
 	form.submit();
 

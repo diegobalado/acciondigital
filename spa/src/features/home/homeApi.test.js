@@ -4,6 +4,7 @@ import {
 	loadHomeContent,
 	resolveHomeDatasourceUrl
 } from './homeApi';
+import { LOCAL_EVENTS_CATALOG_URL } from '../events/eventsApi';
 
 describe('resolveHomeDatasourceUrl', () => {
 	it('returns mirror datasource for mirror=home5', () => {
@@ -77,5 +78,28 @@ describe('loadHomeContent', () => {
 			}
 		]);
 		expect(result.feed).toEqual([{ type: 'event', event: result.events[0] }]);
+	});
+
+	it('prefers local filesystem-backed events when available', async () => {
+		const dataClient = vi.fn().mockImplementation((url) => {
+			if (url === HOME_DATASOURCE_URL) {
+				return Promise.resolve({ eventos: [{ ID: 'legacy_evt', text: 'Legacy event' }] });
+			}
+
+			if (url === LOCAL_EVENTS_CATALOG_URL) {
+				return Promise.resolve({
+					eventos: [
+						{ ID: '294_MarcoFest_13_12_25', text: 'MarcoFest 13 12 25', image: '/assets/images/eventos/294_MarcoFest_13_12_25/thumbs/portada.jpg' }
+					]
+				});
+			}
+
+			return Promise.reject(new Error(`Unexpected URL: ${url}`));
+		});
+
+		const result = await loadHomeContent({ dataClient });
+
+		expect(result.events.map((item) => item.id)).toEqual(['294_MarcoFest_13_12_25']);
+		expect(result.events[0].thumbnailUrl).toBe('/assets/images/eventos/294_MarcoFest_13_12_25/thumbs/portada.jpg');
 	});
 });

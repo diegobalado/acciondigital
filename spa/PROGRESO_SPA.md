@@ -2,6 +2,128 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 17 - Ajuste de grilla en galeria
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: asegurar visualizacion en grilla responsive en la pagina de galeria.
+
+### Hecho
+
+- `EventGalleryPage.svelte` ajustada para usar clases de grilla explicitas en `gallery-list`:
+	- `grid-cols-1` en mobile
+	- `sm:grid-cols-2`, `lg:grid-cols-3`, `xl:grid-cols-4`
+- Cards de foto acotadas en mobile para evitar efecto de lista de ancho completo.
+- Correccion de alcance: `HomePage.svelte` tambien ajustada para renderizar el feed en grilla responsive (no lista vertical).
+
+### Verificacion
+
+- Validacion estatico/sintactica del archivo modificado: OK (`get_errors`).
+- Verificacion visual manual: pendiente en navegador (`pnpm dev`).
+
+### Proximo paso
+
+- Confirmar visualmente el comportamiento en mobile/desktop y continuar con Fase 6.1 (`amigos`).
+
+## Iteracion 16 - Fallback local de eventos/galerias para testing
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: permitir navegar y abrir eventos reales desde la SPA usando el contenido disponible en la carpeta padre durante desarrollo local.
+
+### Hecho
+
+- `vite.config.js` extendido con endpoints locales de desarrollo:
+	- `/__legacy/events-index.json` lista galerias reales desde `../assets/images/eventos`
+	- `/__legacy/event-gallery.json?id=...` construye una galeria a partir del filesystem cuando no existe JSON legacy
+- Fallback local integrado en:
+	- `src/features/events/eventsApi.js` para catalogo y busqueda
+	- `src/features/events/eventGalleryApi.js` para detalle de galeria
+	- `src/features/home/homeApi.js` para que Home tambien enlace a eventos realmente navegables cuando existan
+- Tests unitarios ampliados:
+	- `eventsApi.test.js`
+	- `eventGalleryApi.test.js`
+	- `homeApi.test.js`
+
+### Verificacion
+
+- Validacion estatico/sintactica: pendiente de ejecutar tras editar.
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Verificar navegacion manual en `pnpm dev` sobre un evento real del filesystem y luego retomar Fase 6.1 (`amigos`).
+
+## Iteracion 15 - Consolidacion UI Tailwind compartida
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: reducir duplicacion visual entre Home/Eventos/Galeria con una capa pequena de clases compartidas sobre Tailwind.
+
+### Hecho
+
+- Nuevo modulo `src/shared/ui/classes.js`:
+	- tokens de clases para layout, formularios, estados, paneles y acciones frecuentes
+	- reutilizacion simple via imports sin introducir una abstraccion pesada de componentes
+- `MediaCard.svelte` migrada:
+	- eliminacion del bloque `<style>` local
+	- clases visuales expresadas con utilidades Tailwind
+- Limpieza incremental aplicada en:
+	- `HomePage.svelte`
+	- `EventsPage.svelte`
+	- `EventGalleryPage.svelte`
+	- unificacion de contenedores, estados `loading/error/empty`, botones, paneles y grillas
+
+### Verificacion
+
+- Validacion estatico/sintactica de archivos modificados: pendiente (`get_errors` tras editar).
+- `pnpm test`: ya validado manualmente antes de esta iteracion; conviene rerun manual corto al cerrar.
+- `pnpm build`: ya validado manualmente antes de esta iteracion; conviene rerun manual corto al cerrar.
+
+### Proximo paso
+
+- Fase 6.1: iniciar migracion de `amigos` reutilizando esta base visual compartida.
+
+## Iteracion 14 - Galeria por evento + checkout legacy real (Fase 5.3)
+
+- Fecha: 2026-03-14
+- Branch: `spa-svelte-migration`
+- Objetivo: llevar carrito al nivel de fotos por evento y completar submit legacy compatible con PHP.
+
+### Hecho
+
+- Nueva API `src/features/events/eventGalleryApi.js`:
+	- carga de datasource por evento con soporte `mirror=home5`
+	- mapeo de fotos legacy (`code`, `bibs`, `thumbnailUrl`, `fullImageUrl`)
+	- filtro por bib/numero y alias `sin clasificar`
+	- paginado progresivo base de fotos
+- Nueva pagina `src/features/events/EventGalleryPage.svelte`:
+	- ruta SPA por query `?id=` o `?g=` dentro de `/eventos`
+	- busqueda de fotos por bib/untagged
+	- carrito de fotos con `summary`, `ph`, `type` alineados a checkout legacy
+	- submit al checkout via bridge legado
+- `checkoutBridge.js` mejorada:
+	- `submitLegacyCheckoutPayload` genera `form POST` con campos nested `products[index][field]`
+	- compatibilidad real con `/checkout/index.php` en PHP
+- Ajustes de navegacion:
+	- `App.svelte` ahora distingue catalogo de eventos vs galeria por evento
+	- `HomePage` y `EventsPage` preservan `mirror` al navegar a detalle
+- Tests nuevos/actualizados:
+	- `eventGalleryApi.test.js`
+	- `EventGalleryPage.test.js`
+	- `checkoutBridge.test.js` actualizado para submit nested
+
+### Verificacion
+
+- Validacion estatico/sintactica de archivos modificados: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 6.1: iniciar migracion de `amigos`.
+
 ## Iteracion 13 - Carrito UI + submit checkout base (Fase 5.2)
 
 - Fecha: 2026-03-14

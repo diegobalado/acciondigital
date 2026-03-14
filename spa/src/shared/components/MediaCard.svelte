@@ -6,64 +6,36 @@
 	export let imageUrl = '';
 	export let target = '_self';
 	export let trackingPayload = null;
-	export let onTrack = () => {};
+	export let onTrack = (_payload) => {};
+	$: mediaCardClass =
+		variant === 'ad'
+			? 'overflow-hidden rounded-lg border border-zinc-300 bg-sky-50'
+			: 'overflow-hidden rounded-lg border border-zinc-300 bg-white';
+	const mediaCardLinkClass = 'block text-inherit no-underline';
+	const mediaCardImageClass = 'block aspect-[4/3] w-full object-cover';
+	const mediaCardLabelClass = 'block p-3 text-[0.95rem] font-semibold text-sky-900';
 
 	function handleClick() {
 		onTrack(trackingPayload);
 	}
 </script>
 
-<article class={`media-card media-card--${variant}`} data-testid="media-card">
+<article class={mediaCardClass} data-testid="media-card">
 	<a
-		class="media-card-link"
+		class={mediaCardLinkClass}
 		href={href || '#'}
 		target={target}
 		rel={target === '_blank' ? 'noreferrer noopener' : undefined}
 		on:click={handleClick}
 	>
 		{#if imageUrl}
-			<img class="media-card-image" src={imageUrl} alt="" loading="lazy" />
+			<img class={mediaCardImageClass} src={imageUrl} alt="" loading="lazy" />
 		{/if}
 		{#if label}
-			<span class="media-card-label">{label}</span>
+			<span class={mediaCardLabelClass}>{label}</span>
 		{/if}
 		{#if !label && title}
-			<span class="media-card-label">{title}</span>
+			<span class={mediaCardLabelClass}>{title}</span>
 		{/if}
 	</a>
 </article>
-
-<style>
-	.media-card {
-		border: 1px solid #d7d7d7;
-		border-radius: 0.5rem;
-		overflow: hidden;
-		background: #fff;
-	}
-
-	.media-card--ad {
-		background: #f2f7fb;
-	}
-
-	.media-card-link {
-		display: block;
-		text-decoration: none;
-		color: inherit;
-	}
-
-	.media-card-image {
-		display: block;
-		width: 100%;
-		height: auto;
-		aspect-ratio: 4 / 3;
-		object-fit: cover;
-	}
-
-	.media-card-label {
-		display: block;
-		padding: 0.75rem;
-		font-weight: 600;
-		font-size: 0.95rem;
-		color: #0d4a84;
-	}
-</style>

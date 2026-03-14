@@ -4,6 +4,16 @@
 	import { loadHomeContent } from './homeApi';
 	import MediaCard from '../../shared/components/MediaCard.svelte';
 	import { createHomeClickTracker, trackHomeClickEvent } from './homeTracking';
+	import {
+		cardGridClass,
+		narrowPageShellClass,
+		pageTitleClass,
+		secondaryTextClass,
+		spaciousPageHeaderClass,
+		statusMessageClass,
+		subtleTextClass,
+		summaryTextClass
+	} from '../../shared/ui/classes';
 
 	export let loadHome = loadHomeContent;
 	export let trackEvent = trackHomeClickEvent;
@@ -14,6 +24,28 @@
 	let feed = [];
 	let status = 'loading';
 	$: tracker = createTracker({ trackEvent });
+
+	function withCurrentSearch(href) {
+		if (!href || typeof window === 'undefined' || !window.location.search) {
+			return href;
+		}
+
+		const currentParams = new URLSearchParams(window.location.search);
+		if (!currentParams.has('mirror')) {
+			return href;
+		}
+
+		const [baseHref, existingSearch = ''] = href.split('?');
+		const mergedParams = new URLSearchParams(existingSearch);
+		currentParams.forEach((value, key) => {
+			if (!mergedParams.has(key)) {
+				mergedParams.set(key, value);
+			}
+		});
+
+		const nextSearch = mergedParams.toString();
+		return nextSearch ? `${baseHref}?${nextSearch}` : baseHref;
+	}
 
 	onMount(async () => {
 		try {
@@ -31,7 +63,7 @@
 		if (item.type === 'event') {
 			return {
 				variant: 'event',
-				href: item.event.eventUrl || '#',
+				href: withCurrentSearch(item.event.eventUrl || '#'),
 				title: item.event.title,
 				label: item.event.title,
 				imageUrl: item.event.thumbnailUrl || item.event.imageUrl || '',
@@ -50,23 +82,23 @@
 	}
 </script>
 
-<main class="mx-auto max-w-[960px] px-4 py-8">
-	<header class="mb-5">
-		<h1 class="m-0 text-[2rem] leading-tight">{APP_TITLE}</h1>
-		<p class="mt-2">{APP_SUBTITLE}</p>
+<main class={narrowPageShellClass}>
+	<header class={spaciousPageHeaderClass}>
+		<h1 class={pageTitleClass}>{APP_TITLE}</h1>
+		<p class={secondaryTextClass}>{APP_SUBTITLE}</p>
 	</header>
 
 	{#if status === 'loading'}
-		<p class="mt-2" data-testid="home-loading">Cargando eventos...</p>
+		<p class={statusMessageClass} data-testid="home-loading">Cargando eventos...</p>
 	{:else if status === 'error'}
-		<p class="mt-2" data-testid="home-error">No se pudo cargar el inicio.</p>
+		<p class={statusMessageClass} data-testid="home-error">No se pudo cargar el inicio.</p>
 	{:else if status === 'empty'}
-		<p class="mt-2" data-testid="home-empty">No hay eventos disponibles por el momento.</p>
+		<p class={statusMessageClass} data-testid="home-empty">No hay eventos disponibles por el momento.</p>
 	{:else}
-		<p class="mb-3 text-sm opacity-80" data-testid="home-summary">
+		<p class={summaryTextClass} data-testid="home-summary">
 			Eventos: {events.length} | Ads: {ads.length}
 		</p>
-		<ul class="m-0 grid list-none gap-3 p-0" data-testid="home-events-list">
+		<ul class={cardGridClass} data-testid="home-events-list">
 			{#each feed as item}
 				<li
 					class={`grid gap-1 ${item.type === 'ad' ? 'rounded-lg bg-sky-50' : ''}`}
@@ -78,7 +110,7 @@
 						onTrack={tracker.trackFeedClick}
 					/>
 					{#if item.type === 'event' && item.event.photographer}
-						<small class="opacity-75">Foto: {item.event.photographer}</small>
+						<small class={subtleTextClass}>Foto: {item.event.photographer}</small>
 					{/if}
 				</li>
 			{/each}

@@ -4,6 +4,7 @@ import { buildEventsFeed } from './eventsFeed';
 
 export const EVENTS_CATALOG_DATASOURCE_URL = '/assets/datasources/galeria.json';
 export const EVENTS_CATALOG_MIRROR_HOME5_DATASOURCE_URL = '/assets/datasources/mirror/home-5/galeria.5.json';
+export const LOCAL_EVENTS_CATALOG_URL = '/__legacy/events-index.json';
 
 function mapLegacyEventAd(ad, index) {
 	const href = ad?.href || '#';
@@ -73,6 +74,14 @@ function mapCatalogPayload(payload) {
 	};
 }
 
+async function tryLoadLocalCatalogPayload(dataClient) {
+	try {
+		return await dataClient(LOCAL_EVENTS_CATALOG_URL);
+	} catch {
+		return null;
+	}
+}
+
 function matchesBibOrNumber(eventItem, query) {
 	const normalizedQuery = normalizeSearchTerm(query);
 	if (!normalizedQuery) {
@@ -117,13 +126,16 @@ export async function loadEventsCatalog(options = {}) {
 	}
 
 	const { events, ads } = mapCatalogPayload(payload);
+	const localPayload = await tryLoadLocalCatalogPayload(dataClient);
+	const localCatalog = localPayload ? mapCatalogPayload(localPayload) : null;
+	const catalogEvents = localCatalog?.events?.length ? localCatalog.events : events;
 
-	const totalItems = events.length;
+	const totalItems = catalogEvents.length;
 	const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
 	const currentPage = Math.min(page, totalPages);
 	const start = (currentPage - 1) * pageSize;
 	const end = start + pageSize;
-	const pageItems = events.slice(start, end);
+	const pageItems = catalogEvents.slice(start, end);
 
 	return {
 		datasourceUrl,
@@ -168,10 +180,13 @@ export async function searchEventsCatalog(options = {}) {
 
 	const payload = await dataClient(datasourceUrl);
 	const { events } = mapCatalogPayload(payload);
+	const localPayload = await tryLoadLocalCatalogPayload(dataClient);
+	const localCatalog = localPayload ? mapCatalogPayload(localPayload) : null;
+	const catalogEvents = localCatalog?.events?.length ? localCatalog.events : events;
 
 	return {
 		query,
 		isUntagged: false,
-		events: events.filter((eventItem) => matchesBibOrNumber(eventItem, query))
+		events: catalogEvents.filter((eventItem) => matchesBibOrNumber(eventItem, query))
 	};
 }

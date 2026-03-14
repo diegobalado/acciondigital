@@ -74,6 +74,9 @@ describe('checkoutBridge', () => {
 
 		const forms = document.querySelectorAll('form[action="/checkout/index.php"]');
 		expect(forms.length).toBeGreaterThan(0);
+		expect(document.querySelector('input[name="products[0][id]"]')?.getAttribute('value')).toBe('1');
+		expect(document.querySelector('input[name="products[0][summary]"]')?.getAttribute('value')).toBe('a');
+		expect(document.querySelector('input[name="totalPrice"]')?.getAttribute('value')).toBe('1000');
 		expect(window.HTMLFormElement.prototype.submit).toHaveBeenCalled();
 
 		window.HTMLFormElement.prototype.submit = originalSubmit;

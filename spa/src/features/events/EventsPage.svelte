@@ -10,6 +10,26 @@
 		createLegacyCheckoutPayload,
 		submitLegacyCheckoutPayload
 	} from '../../services/checkoutBridge';
+	import {
+		actionButtonClass,
+		buttonClass,
+		cardGridClass,
+		cartItemClass,
+		compactButtonClass,
+		errorTextClass,
+		fieldLabelClass,
+		formStackClass,
+		infiniteStatusClass,
+		narrowPageShellClass,
+		pageHeaderClass,
+		pageSubtitleClass,
+		pageTitleClass,
+		panelClass,
+		statusMessageClass,
+		subtleTextClass,
+		summaryTextClass,
+		textInputClass
+	} from '../../shared/ui/classes';
 
 	/** @type {any} */
 	export let loadEvents = null;
@@ -66,6 +86,29 @@
 		}
 
 		return window.location.search || '';
+	}
+
+	function withCurrentSearch(href) {
+		const locationSearch = getLocationSearch();
+		if (!href || !locationSearch) {
+			return href;
+		}
+
+		const currentParams = new URLSearchParams(locationSearch);
+		if (!currentParams.has('mirror')) {
+			return href;
+		}
+
+		const [baseHref, existingSearch = ''] = href.split('?');
+		const mergedParams = new URLSearchParams(existingSearch);
+		currentParams.forEach((value, key) => {
+			if (!mergedParams.has(key)) {
+				mergedParams.set(key, value);
+			}
+		});
+
+		const nextSearch = mergedParams.toString();
+		return nextSearch ? `${baseHref}?${nextSearch}` : baseHref;
 	}
 
 	async function requestPage(page, append = false) {
@@ -151,7 +194,7 @@
 		if (item.type === 'event') {
 			return {
 				variant: 'event',
-				href: item.event.eventUrl || '#',
+				href: withCurrentSearch(item.event.eventUrl || '#'),
 				title: item.event.title,
 				label: item.event.title,
 				imageUrl: item.event.coverImageUrl,
@@ -248,26 +291,26 @@
 	}
 </script>
 
-<main class="mx-auto max-w-[960px] px-4 py-8">
-	<header class="mb-4">
-		<h1 class="m-0 text-3xl leading-tight">{APP_TITLE}</h1>
-		<h2 class="m-0 text-[1.3rem] opacity-85">Eventos</h2>
+<main class={narrowPageShellClass}>
+	<header class={pageHeaderClass}>
+		<h1 class={pageTitleClass}>{APP_TITLE}</h1>
+		<h2 class={pageSubtitleClass}>Eventos</h2>
 	</header>
-	<form class="mb-4 grid gap-2" on:submit|preventDefault={submitSearch} data-testid="events-search-form">
-		<label class="text-sm opacity-85" for="events-search-input">Buscar por bib/numero</label>
+	<form class={formStackClass} on:submit|preventDefault={submitSearch} data-testid="events-search-form">
+		<label class={fieldLabelClass} for="events-search-input">Buscar por bib/numero</label>
 		<div class="flex flex-wrap gap-2">
 			<input
-				class="basis-[220px] flex-1 rounded-md border border-zinc-300 px-[0.65rem] py-[0.55rem]"
+				class={textInputClass}
 				id="events-search-input"
 				type="search"
 				bind:value={searchQuery}
 				placeholder="Ej: 145"
 				data-testid="events-search-input"
 			/>
-			<button class="cursor-pointer rounded-md border border-zinc-300 bg-white px-3 py-[0.55rem]" type="submit" data-testid="events-search-submit">Buscar</button>
+			<button class={buttonClass} type="submit" data-testid="events-search-submit">Buscar</button>
 			{#if hasSearchQuery}
 				<button
-					class="cursor-pointer rounded-md border border-zinc-300 bg-white px-3 py-[0.55rem]"
+					class={buttonClass}
 					type="button"
 					on:click={clearSearch}
 					data-testid="events-search-clear"
@@ -278,7 +321,7 @@
 		</div>
 	</form>
 
-	<section class="mb-4 rounded-lg border border-zinc-200 bg-zinc-50 p-3" data-testid="events-cart-panel">
+	<section class={panelClass} data-testid="events-cart-panel">
 		<h3 class="m-0 text-base font-semibold">Carrito</h3>
 		<p class="mt-1 text-sm opacity-80" data-testid="events-cart-summary">
 			Items: {cartTotals.totalQuantity} | Total: ${cartTotals.totalPrice}
@@ -286,9 +329,9 @@
 		{#if cartItems.length > 0}
 			<ul class="mt-2 grid gap-2" data-testid="events-cart-list">
 				{#each cartItems as item (item.id + '-' + item.event)}
-					<li class="grid gap-1 rounded border border-zinc-200 bg-white p-2 text-sm" data-testid="events-cart-item">
+					<li class={cartItemClass} data-testid="events-cart-item">
 						<strong>{item.name}</strong>
-						<span class="opacity-75">Foto: {item.summary}</span>
+						<span class={subtleTextClass}>Foto: {item.summary}</span>
 						<div class="flex items-center gap-2">
 							<label>
 								Cantidad
@@ -302,7 +345,7 @@
 								/>
 							</label>
 							<button
-								class="cursor-pointer rounded border border-zinc-300 bg-white px-2 py-1"
+								class={compactButtonClass}
 								type="button"
 								on:click={() => removeFromCart(item)}
 								data-testid="events-cart-remove"
@@ -316,7 +359,7 @@
 		{/if}
 		<div class="mt-3 flex items-center gap-2">
 			<button
-				class="cursor-pointer rounded-md border border-zinc-300 bg-white px-3 py-2 disabled:cursor-not-allowed disabled:opacity-60"
+					class={actionButtonClass}
 				type="button"
 				disabled={cartItems.length === 0 || isCheckoutPending}
 				on:click={submitCartCheckout}
@@ -325,17 +368,17 @@
 				{isCheckoutPending ? 'Procesando...' : 'Ir al checkout'}
 			</button>
 			{#if checkoutError}
-				<span class="text-sm text-red-700" data-testid="events-cart-checkout-error">{checkoutError}</span>
+					<span class={errorTextClass} data-testid="events-cart-checkout-error">{checkoutError}</span>
 			{/if}
 		</div>
 	</section>
 
 	{#if visibleStatus === 'loading'}
-		<p data-testid="events-loading">Cargando catalogo de eventos...</p>
+			<p class={statusMessageClass} data-testid="events-loading">Cargando catalogo de eventos...</p>
 	{:else if visibleStatus === 'error'}
-		<p data-testid="events-error">No se pudo cargar el catalogo de eventos.</p>
+			<p class={statusMessageClass} data-testid="events-error">No se pudo cargar el catalogo de eventos.</p>
 	{:else if visibleStatus === 'empty'}
-		<p data-testid="events-empty">
+			<p class={statusMessageClass} data-testid="events-empty">
 			{#if hasSearchQuery}
 				{#if isUntaggedSearch}
 					La busqueda "sin clasificar" no aplica al catalogo de eventos.
@@ -347,14 +390,14 @@
 			{/if}
 		</p>
 	{:else}
-		<p class="mb-3 text-[0.95rem] opacity-80" data-testid="events-summary">{searchSummary}</p>
-		<ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3 p-0" data-testid="events-list">
+		<p class={summaryTextClass} data-testid="events-summary">{searchSummary}</p>
+		<ul class={cardGridClass} data-testid="events-list">
 			{#each visibleFeed as item}
 				<li data-testid={item.type === 'ad' ? 'events-ad-item' : undefined}>
 					<MediaCard {...getCardProps(item)} trackingPayload={item} onTrack={tracker.trackFeedClick} />
 					{#if item.type === 'event'}
 						<button
-							class="mt-2 w-full cursor-pointer rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm"
+							class={`mt-2 w-full ${actionButtonClass}`}
 							type="button"
 							on:click={() => addEventToCart(item.event)}
 							data-testid="events-add-to-cart"
@@ -375,7 +418,7 @@
 			{/if}
 		</ul>
 		{#if !hasSearchQuery && progressive.canLoadMore}
-			<div class="mt-4 grid justify-items-center text-[0.95rem] opacity-80" data-testid="events-infinite-status" aria-live="polite">
+			<div class={infiniteStatusClass} data-testid="events-infinite-status" aria-live="polite">
 				<p>{loadMoreLabel}</p>
 				<div class="h-px w-full" data-testid="events-infinite-sentinel" use:onInfiniteScrollSentinel></div>
 			</div>

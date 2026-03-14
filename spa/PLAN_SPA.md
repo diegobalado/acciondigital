@@ -189,6 +189,24 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- mapear campos `summary/ph/type` con mayor paridad legacy
 	- robustecer submit legacy en backend bridge (form-data/transport real)
 	- ampliar tests end-to-end de flujo compra SPA->checkout
+19. Iteracion cerrada el 2026-03-14 (Fase 5.3):
+	- nueva pagina de galeria por evento con carga paginada de fotos y busqueda por bib/untagged
+	- carrito integrado a nivel imagen con campos `summary/ph/type` alineados a legacy
+	- `checkoutBridge` robustecida con submit real via `form POST` nested compatible con PHP
+	- tests unitarios/integracion agregados para API, UI de galeria y bridge legacy
+20. Iteracion cerrada el 2026-03-14 (UI/Tailwind compartida):
+	- nueva capa minima `src/shared/ui/classes.js` para layout/form/panel/status/actions
+	- `MediaCard` alineada a Tailwind y sin CSS local redundante
+	- limpieza incremental extendida a `HomePage`, `EventsPage` y `EventGalleryPage`
+21. Iteracion cerrada el 2026-03-14 (fallback local de galerias para testing):
+	- endpoints dev-only en Vite para indexar eventos reales desde `../assets/images/eventos`
+	- fallback local aplicado a Home, catalogo de eventos y detalle de galeria
+	- navegacion SPA preparada para testear con assets realmente presentes en la carpeta padre
+22. Proxima iteracion sugerida (Fase 6.1):
+	- iniciar migracion de seccion `amigos`
+	- definir consumo de datasource y estructura de cards/seccion
+	- preservar estilo visual consistente con SPA actual
+	- agregar tests unitarios de render/estados basicos
 
 ### Fase 3 - Eventos/Galeria
 
@@ -206,7 +224,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 ### Fase 5 - Carrito/Checkout
 
 - [x] Encapsular logica de carrito en servicios SPA.
-- [ ] Mantener integracion con checkout PHP existente.
+- [x] Mantener integracion con checkout PHP existente.
 - [x] Tests unitarios de payloads y reglas de compra.
 
 ### Fase 6 - Secciones secundarias
