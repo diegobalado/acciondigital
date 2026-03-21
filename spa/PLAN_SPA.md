@@ -225,6 +225,11 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- definir mapper/API de preguntas frecuentes y estados base de UI
 	- mantener consistencia visual con `shared/ui/classes.js`
 	- agregar tests unitarios de render/estados y casos vacios
+25. Proxima iteracion sugerida (Fase 6.3):
+	- implementar lightbox sencillo en galeria de evento (abrir/cerrar, anterior/siguiente)
+	- soportar cierre por `Escape` y click en backdrop
+	- mantener compatibilidad con carrito y carga progresiva actual
+	- agregar tests unitarios del flujo de lightbox
 
 ### Fase 3 - Eventos/Galeria
 
@@ -251,6 +256,12 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 - [ ] Migrar faq.
 - [ ] Migrar contacto.
 - [ ] Tests unitarios de componentes clave.
+
+### Fase 6.3 - UX Galeria (Lightbox)
+
+- [ ] Implementar lightbox simple en `EventGalleryPage`.
+- [ ] Soportar navegacion de fotos (`anterior/siguiente`) y cierre por teclado.
+- [ ] Tests unitarios del flujo de apertura/navegacion/cierre.
 
 ### Fase 7 - Auth
 

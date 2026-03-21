@@ -83,4 +83,33 @@ describe('EventGalleryPage', () => {
 			type: 'Galeria'
 		});
 	});
+
+	it('opens lightbox and navigates between photos', async () => {
+		setLocationSearch('?id=evt_1');
+
+		render(EventGalleryPage, {
+			loadGallery: () =>
+				Promise.resolve({
+					event: { id: 'evt_1', title: 'Evento 1', price: 1500, ph: 'JPF' },
+					photos: [
+						{ id: 'A-145', code: 'A-145', bibs: ['145'], thumbnailUrl: '/a.jpg', fullImageUrl: '/a-full.jpg' },
+						{ id: 'A-146', code: 'A-146', bibs: ['146'], thumbnailUrl: '/b.jpg', fullImageUrl: '/b-full.jpg' }
+					],
+					pagination: { page: 1, pageSize: 60, totalItems: 2, totalPages: 1, hasPreviousPage: false, hasNextPage: false },
+					progressive: { nextPage: null, canLoadMore: false }
+				})
+		});
+
+		expect(await screen.findByTestId('gallery-list')).toBeTruthy();
+		await fireEvent.click(screen.getByRole('button', { name: 'Ver foto A-145' }));
+
+		expect(screen.getByTestId('gallery-lightbox')).toBeTruthy();
+		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-145');
+
+		await fireEvent.click(screen.getByTestId('gallery-lightbox-next'));
+		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-146');
+
+		await fireEvent.keyDown(window, { key: 'Escape' });
+		expect(screen.queryByTestId('gallery-lightbox')).toBeNull();
+	});
 });
