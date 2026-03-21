@@ -2,6 +2,35 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 18 - Amigos base (Fase 6.1)
+
+- Fecha: 2026-03-15
+- Branch: `spa-svelte-migration`
+- Objetivo: iniciar migracion de `amigos` con ruta SPA, carga desacoplada y estados base de UI.
+
+### Hecho
+
+- Nueva feature `src/features/amigos/`:
+	- `amigosModelMapper.js` para normalizar contrato legacy -> SPA
+	- `amigosApi.js` con carga desde `/assets/datasources/amigos.json` y fallback embedded al contenido legacy conocido
+	- `AmigosPage.svelte` con estados `loading/error/empty/ready` y cards de paginas amigas
+- Ruteo SPA actualizado en `App.svelte`:
+	- soporte de `/amigos` y `/amigos/`
+- Tests unitarios agregados:
+	- `amigosModelMapper.test.js`
+	- `amigosApi.test.js`
+	- `AmigosPage.test.js`
+
+### Verificacion
+
+- Validacion estatico/sintactica: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Ejecutar validaciones manuales (`pnpm test` y `pnpm build`) y verificar navegacion visual en `/amigos` con `pnpm dev`.
+
 ## Iteracion 17 - Ajuste de grilla en galeria
 
 - Fecha: 2026-03-14

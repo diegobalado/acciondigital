@@ -70,6 +70,16 @@ Move image storage to **object storage + CDN**.
 
 ---
 
+## Architecture Decisions
+
+### UI Component Library
+- **Selected: DaisyUI 5** — Tailwind 4 native plugin, zero runtime JS, pure CSS classes.
+- Rationale: minimal setup cost, no interference with existing Svelte components, works as styling layer on top of existing `shared/ui/classes.js` patterns.
+- **shadcn-svelte** reserved for future phases requiring accessible interactive primitives (modals, drawers, complex payment forms).
+- Decision date: 2026-03-21.
+
+---
+
 # Photo Storage Structure
 
 All event photos follow this structure:

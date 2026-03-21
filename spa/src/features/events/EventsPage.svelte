@@ -336,7 +336,7 @@
 							<label>
 								Cantidad
 								<input
-									class="ml-1 w-16 rounded border border-zinc-300 px-1 py-0.5"
+										class="input input-bordered input-xs ml-1 w-16"
 									type="number"
 									min="1"
 									value={item.quantity}
@@ -374,11 +374,13 @@
 	</section>
 
 	{#if visibleStatus === 'loading'}
-			<p class={statusMessageClass} data-testid="events-loading">Cargando catalogo de eventos...</p>
+		<div class="mt-8 flex justify-center" data-testid="events-loading">
+			<span class="loading loading-spinner loading-lg"></span>
+		</div>
 	{:else if visibleStatus === 'error'}
-			<p class={statusMessageClass} data-testid="events-error">No se pudo cargar el catalogo de eventos.</p>
+		<div class="alert alert-error mt-4" data-testid="events-error">No se pudo cargar el catalogo de eventos.</div>
 	{:else if visibleStatus === 'empty'}
-			<p class={statusMessageClass} data-testid="events-empty">
+		<div class="alert mt-4" data-testid="events-empty">
 			{#if hasSearchQuery}
 				{#if isUntaggedSearch}
 					La busqueda "sin clasificar" no aplica al catalogo de eventos.
@@ -388,7 +390,7 @@
 			{:else}
 				No hay eventos disponibles por el momento.
 			{/if}
-		</p>
+		</div>
 	{:else}
 		<p class={summaryTextClass} data-testid="events-summary">{searchSummary}</p>
 		<ul class={cardGridClass} data-testid="events-list">
@@ -409,10 +411,12 @@
 			{/each}
 			{#if isLoadingMore}
 				{#each [0, 1, 2] as skeletonIndex (skeletonIndex)}
-					<li class="grid gap-2 rounded-lg border border-zinc-200 bg-zinc-50 p-3" data-testid="events-skeleton-item" aria-hidden="true">
-						<div class="h-[120px] animate-pulse rounded-md bg-zinc-200"></div>
-						<div class="h-2 w-[82%] animate-pulse rounded bg-zinc-200"></div>
-						<div class="h-2 w-[58%] animate-pulse rounded bg-zinc-200"></div>
+					<li class="card bg-base-200" data-testid="events-skeleton-item" aria-hidden="true">
+						<div class="skeleton h-[120px] w-full rounded-b-none"></div>
+						<div class="card-body gap-2 p-3">
+							<div class="skeleton h-2 w-[82%]"></div>
+							<div class="skeleton h-2 w-[58%]"></div>
+						</div>
 					</li>
 				{/each}
 			{/if}

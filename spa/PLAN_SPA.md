@@ -7,6 +7,14 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 - Crear una SPA moderna en `spa/` manteniendo la app legacy operativa durante la migracion.
 - Migrar por features/paginas, con paridad funcional y pruebas unitarias.
 
+## Decisiones de arquitectura
+
+### Librería de componentes UI
+- **Seleccionada: DaisyUI 5** (plugin de Tailwind 4, dev dependency).
+- Criterios: compatibilidad nativa con Tailwind 4, cero JS en runtime, instalación trivial, no interfiere con componentes Svelte existentes.
+- **shadcn-svelte** queda reservado para fases futuras si se necesitan componentes interactivos accesibles (modals, drawers, formularios complejos).
+- Fecha de decisión: 2026-03-21.
+
 ## Reglas de trabajo
 
 1. Cada iteracion debe tener alcance pequeno y verificable.
@@ -207,6 +215,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- definir consumo de datasource y estructura de cards/seccion
 	- preservar estilo visual consistente con SPA actual
 	- agregar tests unitarios de render/estados basicos
+23. Iteracion iniciada el 2026-03-15 (Fase 6.1):
+	- feature `amigos` creada con `amigosApi`, `amigosModelMapper` y `AmigosPage`
+	- ruta `/amigos` integrada en `App.svelte`
+	- tests unitarios base agregados para mapper, API y pagina
+	- pendiente cierre de iteracion tras validacion manual (`pnpm test` + `pnpm build`)
+24. Proxima iteracion sugerida (Fase 6.2):
+	- iniciar migracion de seccion `faq`
+	- definir mapper/API de preguntas frecuentes y estados base de UI
+	- mantener consistencia visual con `shared/ui/classes.js`
+	- agregar tests unitarios de render/estados y casos vacios
 
 ### Fase 3 - Eventos/Galeria
 

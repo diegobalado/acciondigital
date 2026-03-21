@@ -20,6 +20,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^4.0.18
         version: 4.0.18(vitest@4.0.18(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1))
+      daisyui:
+        specifier: ^5.5.19
+        version: 5.5.19
       jsdom:
         specifier: ^28.1.0
         version: 28.1.0
@@ -680,6 +683,9 @@ packages:
   cssstyle@6.2.0:
     resolution: {integrity: sha512-Fm5NvhYathRnXNVndkUsCCuR63DCLVVwGOOwQw782coXFi5HhkXdu289l59HlXZBawsyNccXfWRYvLzcDCdDig==}
     engines: {node: '>=20'}
+
+  daisyui@5.5.19:
+    resolution: {integrity: sha512-pbFAkl1VCEh/MPCeclKL61I/MqRIFFhNU7yiXoDDRapXN4/qNCoMxeCCswyxEEhqL5eiTTfwHvucFtOE71C9sA==}
 
   data-urls@7.0.0:
     resolution: {integrity: sha512-23XHcCF+coGYevirZceTVD7NdJOqVn+49IHyxgszm+JIiHLoB2TkmPtsYkNWT1pvRSGkc35L6NHs0yHkN2SumA==}
@@ -1619,6 +1625,8 @@ snapshots:
       '@csstools/css-syntax-patches-for-csstree': 1.1.0
       css-tree: 3.2.1
       lru-cache: 11.2.6
+
+  daisyui@5.5.19: {}
 
   data-urls@7.0.0:
     dependencies:

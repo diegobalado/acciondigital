@@ -9,11 +9,11 @@
 	export let onTrack = (_payload) => {};
 	$: mediaCardClass =
 		variant === 'ad'
-			? 'overflow-hidden rounded-lg border border-zinc-300 bg-sky-50'
-			: 'overflow-hidden rounded-lg border border-zinc-300 bg-white';
+			? 'card overflow-hidden border border-base-300 bg-sky-50'
+			: 'card overflow-hidden border border-base-300 bg-base-100';
 	const mediaCardLinkClass = 'block text-inherit no-underline';
 	const mediaCardImageClass = 'block aspect-[4/3] w-full object-cover';
-	const mediaCardLabelClass = 'block p-3 text-[0.95rem] font-semibold text-sky-900';
+	const mediaCardLabelClass = 'card-body p-3 text-[0.95rem] font-semibold text-sky-900';
 
 	function handleClick() {
 		onTrack(trackingPayload);

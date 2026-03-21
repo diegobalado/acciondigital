@@ -89,11 +89,13 @@
 	</header>
 
 	{#if status === 'loading'}
-		<p class={statusMessageClass} data-testid="home-loading">Cargando eventos...</p>
+		<div class="mt-8 flex justify-center" data-testid="home-loading">
+			<span class="loading loading-spinner loading-lg"></span>
+		</div>
 	{:else if status === 'error'}
-		<p class={statusMessageClass} data-testid="home-error">No se pudo cargar el inicio.</p>
+		<div class="alert alert-error mt-4" data-testid="home-error">No se pudo cargar el inicio.</div>
 	{:else if status === 'empty'}
-		<p class={statusMessageClass} data-testid="home-empty">No hay eventos disponibles por el momento.</p>
+		<div class="alert mt-4" data-testid="home-empty">No hay eventos disponibles por el momento.</div>
 	{:else}
 		<p class={summaryTextClass} data-testid="home-summary">
 			Eventos: {events.length} | Ads: {ads.length}

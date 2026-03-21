@@ -222,7 +222,7 @@
 						<div class="flex items-center gap-2">
 							<label>
 								Cantidad
-								<input class="ml-1 w-16 rounded border border-zinc-300 px-1 py-0.5" type="number" min="1" value={item.quantity} on:change={(event) => changeCartQuantity(item, event.currentTarget.value)} data-testid="gallery-cart-quantity" />
+								<input class="input input-bordered input-xs ml-1 w-16" type="number" min="1" value={item.quantity} on:change={(event) => changeCartQuantity(item, event.currentTarget.value)} data-testid="gallery-cart-quantity" />
 							</label>
 							<button class={compactButtonClass} type="button" on:click={() => removeFromCart(item)} data-testid="gallery-cart-remove">Quitar</button>
 						</div>
@@ -239,11 +239,13 @@
 	</section>
 
 	{#if status === 'loading'}
-		<p class={statusMessageClass} data-testid="gallery-loading">Cargando fotos del evento...</p>
+		<div class="mt-8 flex justify-center" data-testid="gallery-loading">
+			<span class="loading loading-spinner loading-lg"></span>
+		</div>
 	{:else if status === 'error'}
-		<p class={statusMessageClass} data-testid="gallery-error">No se pudo cargar la galeria del evento.</p>
+		<div class="alert alert-error mt-4" data-testid="gallery-error">No se pudo cargar la galeria del evento.</div>
 	{:else if status === 'empty'}
-		<p class={statusMessageClass} data-testid="gallery-empty">No hay fotos disponibles para este evento o filtro.</p>
+		<div class="alert mt-4" data-testid="gallery-empty">No hay fotos disponibles para este evento o filtro.</div>
 	{:else}
 		<p class={summaryTextClass} data-testid="gallery-summary">{gallerySummary}</p>
 		<ul
@@ -253,7 +255,7 @@
 			{#each photos as photo (photo.id)}
 				<li class={`${photoCardClass} max-w-[340px] sm:max-w-none`}>
 					<a href={photo.fullImageUrl} target="_blank" rel="noreferrer noopener">
-						<img class="block aspect-[4/3] w-full rounded-md object-cover" src={photo.thumbnailUrl} alt="" loading="lazy" />
+					<img class="block aspect-[4/3] w-full rounded-md object-cover" src={photo.thumbnailUrl} alt="" loading="lazy" />
 					</a>
 					<p class="mt-2 text-sm font-medium">{photo.code}</p>
 					{#if photo.bibs.length > 0}
