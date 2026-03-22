@@ -296,6 +296,17 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- iniciar hardening de navegacion SPA (fallback 404 visual + enlaces de retorno)
 	- revisar accesibilidad de navegacion y encabezados (`aria-current`, landmarks, foco)
 	- agregar tests unitarios de rutas desconocidas y estados de navegacion
+38. Iteracion cerrada el 2026-03-22 (Fase 7.1 - Hardening navegacion):
+	- nueva pagina `src/features/not-found/NotFoundPage.svelte` para rutas desconocidas
+	- `APP_ROUTES` extendido con `NOT_FOUND` y resolver de rutas actualizado
+	- `App.svelte` ahora renderiza `NotFoundPage` con enlace de retorno preservando `mirror`
+	- mejoras de accesibilidad en `SpaNav`: skip-link y label explicita de marca
+	- landmark principal en `App.svelte` para destino de skip-link
+	- tests unitarios agregados/actualizados para rutas desconocidas, estado de navegacion y not-found
+39. Proxima iteracion sugerida (Fase 8.1):
+	- validar paridad visual/funcional completa contra legacy por seccion
+	- ejecutar pasada de accesibilidad (teclado + landmarks + nombres accesibles) en flujo real
+	- revisar gaps de cobertura y completar pruebas de integracion prioritarias
 
 ### Fase 3 - Eventos/Galeria
 
@@ -337,6 +348,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 ### Fase 8 - Hardening
 
+- [x] Verificar fallback robusto de navegacion (rutas desconocidas + retorno).
 - [ ] Verificar paridad funcional contra legacy.
 - [ ] Revisar cobertura y completar gaps.
 - [ ] Preparar deploy de SPA (GitHub Pages / cloud target).

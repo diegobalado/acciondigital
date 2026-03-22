@@ -18,9 +18,9 @@ describe('resolveAppRoute', () => {
 		expect(resolveAppRoute({ pathname: '/contacto', search: '' })).toBe(APP_ROUTES.CONTACTO);
 	});
 
-	it('falls back to home for unknown paths', () => {
+	it('returns not-found for unknown paths and keeps home for root', () => {
 		expect(resolveAppRoute({ pathname: '/', search: '' })).toBe(APP_ROUTES.HOME);
-		expect(resolveAppRoute({ pathname: '/otra', search: '' })).toBe(APP_ROUTES.HOME);
+		expect(resolveAppRoute({ pathname: '/otra', search: '' })).toBe(APP_ROUTES.NOT_FOUND);
 	});
 });
 

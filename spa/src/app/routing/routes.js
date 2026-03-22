@@ -4,7 +4,8 @@ export const APP_ROUTES = Object.freeze({
 	EVENT_GALLERY: 'event-gallery',
 	AMIGOS: 'amigos',
 	FAQ: 'faq',
-	CONTACTO: 'contacto'
+	CONTACTO: 'contacto',
+	NOT_FOUND: 'not-found'
 });
 
 function normalizePathname(pathname = '/') {
@@ -40,7 +41,7 @@ export function resolveAppRoute(locationLike = {}) {
 		return APP_ROUTES.CONTACTO;
 	}
 
-	return APP_ROUTES.HOME;
+	return pathname === '/' ? APP_ROUTES.HOME : APP_ROUTES.NOT_FOUND;
 }
 
 export function resolveAppRouteFromWindow(currentWindowLike = null) {

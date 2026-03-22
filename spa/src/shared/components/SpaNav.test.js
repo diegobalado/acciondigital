@@ -25,4 +25,11 @@ describe('SpaNav', () => {
 		const faqLink = screen.getByTestId('spa-nav-link-faq');
 		expect(faqLink.getAttribute('href')).toBe('/faq/?mirror=home5');
 	});
+
+	it('renders skip link to main content landmark', () => {
+		render(SpaNav, { currentRoute: APP_ROUTES.HOME, currentSearch: '' });
+
+		const skipLink = screen.getByRole('link', { name: 'Saltar al contenido principal' });
+		expect(skipLink.getAttribute('href')).toBe('#spa-main-content');
+	});
 });

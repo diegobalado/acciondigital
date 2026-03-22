@@ -2,6 +2,42 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 26 - Hardening de navegacion (Fase 7.1)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: robustecer la navegacion SPA frente a rutas desconocidas y mejorar accesibilidad base.
+
+### Hecho
+
+- Nuevo fallback de rutas desconocidas:
+	- `src/features/not-found/NotFoundPage.svelte` con CTA de retorno
+	- `src/features/not-found/NotFoundPage.test.js`
+- Contrato de ruteo actualizado:
+	- `src/app/routing/routes.js` incorpora `APP_ROUTES.NOT_FOUND`
+	- `resolveAppRoute` devuelve `NOT_FOUND` en paths no soportados (manteniendo `/` como `HOME`)
+	- tests actualizados en `src/app/routing/routes.test.js`
+- Integracion en `App.svelte`:
+	- render de `NotFoundPage` para rutas desconocidas
+	- enlace de retorno construido con `buildNavHref('/', currentSearch)` para preservar `mirror`
+	- landmark principal `#spa-main-content` para accesibilidad de navegacion
+- Accesibilidad en navegacion global:
+	- `SpaNav.svelte` agrega skip-link `Saltar al contenido principal`
+	- label explicita en enlace de marca
+	- tests ampliados en `SpaNav.test.js`
+- Pruebas de integracion de ruteo:
+	- nuevo `src/App.test.js` con cobertura de `home`, `not-found` y estado activo en galeria
+
+### Verificacion
+
+- Validacion estatico/sintactica: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 8.1: paridad funcional/visual contra legacy y cierre de gaps de cobertura.
+
 ## Iteracion 25 - Layout compartido de paginas (Fase 6.6)
 
 - Fecha: 2026-03-22
