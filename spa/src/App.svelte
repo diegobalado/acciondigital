@@ -3,10 +3,12 @@
 	import EventsPage from './features/events/EventsPage.svelte';
 	import EventGalleryPage from './features/events/EventGalleryPage.svelte';
 	import AmigosPage from './features/amigos/AmigosPage.svelte';
+	import FaqPage from './features/faq/FaqPage.svelte';
 
 	const routePath = typeof window !== 'undefined' ? window.location.pathname : '/';
 	const isEventsRoute = routePath === '/eventos' || routePath === '/eventos/';
 	const isAmigosRoute = routePath === '/amigos' || routePath === '/amigos/';
+	const isFaqRoute = routePath === '/faq' || routePath === '/faq/';
 	const routeSearch = typeof window !== 'undefined' ? window.location.search : '';
 	const routeParams = new URLSearchParams(routeSearch);
 	const hasSelectedEvent = routeParams.has('g') || routeParams.has('id');
@@ -20,6 +22,8 @@
 	{/if}
 {:else if isAmigosRoute}
 	<AmigosPage />
+{:else if isFaqRoute}
+	<FaqPage />
 {:else}
 	<HomePage />
 {/if}

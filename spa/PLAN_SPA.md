@@ -246,6 +246,17 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- lightbox de galeria actualizado para usar iconos `ChevronLeft`, `ChevronRight` y `X`
 	- directiva en `AGENTS.md`: nuevos iconos con `lucide-svelte`
 	- directiva en `AGENTS.md`: nuevos componentes UI con TailwindCSS + DaisyUI
+28. Iteracion iniciada el 2026-03-22 (Fase 6.2):
+	- nueva feature `faq` creada con `faqApi`, `faqModelMapper` y `FaqPage`
+	- ruta `/faq` integrada en `App.svelte`
+	- FAQ con estados `loading/error/empty/ready` y acordeon basico en UI
+	- tests unitarios base agregados para mapper, API y pagina
+	- pendiente cierre de iteracion tras validacion manual (`pnpm test` + `pnpm build`)
+29. Proxima iteracion sugerida (Fase 6.4):
+	- iniciar migracion de seccion `contacto`
+	- definir mapper/API para datos de contacto y canales de consulta
+	- mantener consistencia visual con `shared/ui/classes.js`
+	- agregar tests unitarios de render/estados y acciones basicas
 
 ### Fase 3 - Eventos/Galeria
 
@@ -269,7 +280,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 ### Fase 6 - Secciones secundarias
 
 - [ ] Migrar amigos.
-- [ ] Migrar faq.
+- [x] Migrar faq.
 - [ ] Migrar contacto.
 - [ ] Tests unitarios de componentes clave.
 

@@ -2,6 +2,35 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 21 - FAQ base (Fase 6.2)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: iniciar migracion de `faq` con ruta SPA, carga desacoplada y estados base de UI.
+
+### Hecho
+
+- Nueva feature `src/features/faq/`:
+	- `faqModelMapper.js` para normalizar contrato legacy -> SPA
+	- `faqApi.js` con carga desde `/assets/datasources/faq.json` y fallback embedded al contenido FAQ legacy
+	- `FaqPage.svelte` con estados `loading/error/empty/ready` y acordeon basico de preguntas
+- Ruteo SPA actualizado en `App.svelte`:
+	- soporte de `/faq` y `/faq/`
+- Tests unitarios agregados:
+	- `faqModelMapper.test.js`
+	- `faqApi.test.js`
+	- `FaqPage.test.js`
+
+### Verificacion
+
+- Validacion estatico/sintactica: pendiente (`get_errors` tras editar).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Ejecutar validaciones manuales (`pnpm test` y `pnpm build`) y continuar con Fase 6.4 (`contacto`).
+
 ## Iteracion 20 - Estandar de iconos con Lucide (Fase 6.3 UI)
 
 - Fecha: 2026-03-21
