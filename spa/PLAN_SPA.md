@@ -287,6 +287,15 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- reducir repeticion de encabezados (`APP_TITLE`, subtitulos, spacing)
 	- validar consistencia responsive en Home/Eventos/Galeria/Secciones secundarias
 	- agregar tests unitarios del layout base (render y slots)
+36. Iteracion cerrada el 2026-03-22 (Fase 6.6 - Layout compartido):
+	- nuevo componente `src/shared/components/PageLayout.svelte` para shell + header reutilizable
+	- migracion de `HomePage`, `EventsPage`, `EventGalleryPage`, `AmigosPage`, `FaqPage` y `ContactoPage`
+	- soporte de header por slot para vistas con encabezado custom (Eventos/Galeria)
+	- tests unitarios agregados: `PageLayout.test.js` + harness de slots `PageLayoutSlotHarness.svelte`
+37. Proxima iteracion sugerida (Fase 7.1):
+	- iniciar hardening de navegacion SPA (fallback 404 visual + enlaces de retorno)
+	- revisar accesibilidad de navegacion y encabezados (`aria-current`, landmarks, foco)
+	- agregar tests unitarios de rutas desconocidas y estados de navegacion
 
 ### Fase 3 - Eventos/Galeria
 

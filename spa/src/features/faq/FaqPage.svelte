@@ -1,11 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import { loadFaqContent } from './faqApi';
+	import PageLayout from '../../shared/components/PageLayout.svelte';
 	import {
-		narrowPageShellClass,
-		pageTitleClass,
-		secondaryTextClass,
-		spaciousPageHeaderClass,
 		statusMessageClass,
 		summaryTextClass
 	} from '../../shared/ui/classes';
@@ -31,11 +28,7 @@
 	}
 </script>
 
-<main class={narrowPageShellClass}>
-	<header class={spaciousPageHeaderClass}>
-		<h1 class={pageTitleClass}>Preguntas Frecuentes</h1>
-		<p class={secondaryTextClass}>Guia rapida para buscar, comprar y recibir tus fotos.</p>
-	</header>
+<PageLayout title="Preguntas Frecuentes" subtitle="Guia rapida para buscar, comprar y recibir tus fotos.">
 
 	{#if status === 'loading'}
 		<p class={statusMessageClass} data-testid="faq-loading">Cargando preguntas frecuentes...</p>
@@ -64,4 +57,4 @@
 			{/each}
 		</ul>
 	{/if}
-</main>
+</PageLayout>

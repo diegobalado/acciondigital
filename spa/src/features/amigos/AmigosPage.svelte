@@ -1,12 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import { loadAmigosContent } from './amigosApi';
+	import PageLayout from '../../shared/components/PageLayout.svelte';
 	import {
 		cardGridClass,
-		narrowPageShellClass,
-		pageTitleClass,
-		secondaryTextClass,
-		spaciousPageHeaderClass,
 		statusMessageClass,
 		summaryTextClass
 	} from '../../shared/ui/classes';
@@ -27,11 +24,7 @@
 	});
 </script>
 
-<main class={narrowPageShellClass}>
-	<header class={spaciousPageHeaderClass}>
-		<h1 class={pageTitleClass}>Paginas Amigas</h1>
-		<p class={secondaryTextClass}>Proyectos y marcas vinculadas a Accion Digital.</p>
-	</header>
+<PageLayout title="Paginas Amigas" subtitle="Proyectos y marcas vinculadas a Accion Digital.">
 
 	{#if status === 'loading'}
 		<p class={statusMessageClass} data-testid="amigos-loading">Cargando paginas amigas...</p>
@@ -75,4 +68,4 @@
 			{/each}
 		</ul>
 	{/if}
-</main>
+</PageLayout>

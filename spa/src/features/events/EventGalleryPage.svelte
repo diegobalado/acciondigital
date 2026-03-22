@@ -2,6 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { ChevronLeft, ChevronRight, X } from 'lucide-svelte';
 	import { APP_TITLE } from '../../app/config/migration';
+	import PageLayout from '../../shared/components/PageLayout.svelte';
 	import { addCartItem, calculateCartTotals, removeCartItem, updateCartItemQuantity } from '../../services/cartService';
 	import {
 		createLegacyCheckoutPayload,
@@ -241,14 +242,14 @@
 	});
 </script>
 
-<main class={widePageShellClass}>
-	<header class={pageHeaderClass}>
+<PageLayout shell="wide" headerVariant="compact">
+	<svelte:fragment slot="header">
 		<h1 class={pageTitleClass}>{APP_TITLE}</h1>
 		<h2 class={pageSubtitleClass}>{eventData?.title || 'Galeria del evento'}</h2>
 		{#if eventData?.ph}
 			<p class={secondaryTextClass}>Fotografo/a: {eventData.ph}</p>
 		{/if}
-	</header>
+	</svelte:fragment>
 
 	<form class={formStackClass} on:submit|preventDefault={handleGallerySearch} data-testid="gallery-search-form">
 		<label class={fieldLabelClass} for="gallery-search-input">Buscar foto por bib/numero</label>
@@ -336,7 +337,7 @@
 			</div>
 		{/if}
 	{/if}
-</main>
+</PageLayout>
 
 {#if selectedPhoto}
 	<div

@@ -1,13 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import { loadContactoContent } from './contactoApi';
-	import {
-		narrowPageShellClass,
-		pageTitleClass,
-		secondaryTextClass,
-		spaciousPageHeaderClass,
-		statusMessageClass
-	} from '../../shared/ui/classes';
+	import PageLayout from '../../shared/components/PageLayout.svelte';
+	import { statusMessageClass } from '../../shared/ui/classes';
 
 	export let loadContacto = loadContactoContent;
 
@@ -25,11 +20,7 @@
 	});
 </script>
 
-<main class={narrowPageShellClass}>
-	<header class={spaciousPageHeaderClass}>
-		<h1 class={pageTitleClass}>Contacto</h1>
-		<p class={secondaryTextClass}>Canales de contacto y formulario del sitio legacy.</p>
-	</header>
+<PageLayout title="Contacto" subtitle="Canales de contacto y formulario del sitio legacy.">
 
 	{#if status === 'loading'}
 		<p class={statusMessageClass} data-testid="contacto-loading">Cargando informacion de contacto...</p>
@@ -87,4 +78,4 @@
 			</article>
 		</section>
 	{/if}
-</main>
+</PageLayout>

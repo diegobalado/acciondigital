@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { APP_TITLE } from '../../app/config/migration';
 	import MediaCard from '../../shared/components/MediaCard.svelte';
+	import PageLayout from '../../shared/components/PageLayout.svelte';
 	import { loadEventsCatalog, searchEventsCatalog } from './eventsApi';
 	import { createEventsClickTracker, trackEventsClickEvent } from './eventsTracking';
 	import { mergeProgressiveFeed } from './eventsPagination';
@@ -20,8 +21,6 @@
 		fieldLabelClass,
 		formStackClass,
 		infiniteStatusClass,
-		narrowPageShellClass,
-		pageHeaderClass,
 		pageSubtitleClass,
 		pageTitleClass,
 		panelClass,
@@ -291,11 +290,11 @@
 	}
 </script>
 
-<main class={narrowPageShellClass}>
-	<header class={pageHeaderClass}>
+<PageLayout shell="narrow" headerVariant="compact">
+	<svelte:fragment slot="header">
 		<h1 class={pageTitleClass}>{APP_TITLE}</h1>
 		<h2 class={pageSubtitleClass}>Eventos</h2>
-	</header>
+	</svelte:fragment>
 	<form class={formStackClass} on:submit|preventDefault={submitSearch} data-testid="events-search-form">
 		<label class={fieldLabelClass} for="events-search-input">Buscar por bib/numero</label>
 		<div class="flex flex-wrap gap-2">
@@ -428,4 +427,4 @@
 			</div>
 		{/if}
 	{/if}
-</main>
+</PageLayout>

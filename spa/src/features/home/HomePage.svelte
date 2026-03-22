@@ -3,13 +3,10 @@
 	import { APP_SUBTITLE, APP_TITLE } from '../../app/config/migration';
 	import { loadHomeContent } from './homeApi';
 	import MediaCard from '../../shared/components/MediaCard.svelte';
+	import PageLayout from '../../shared/components/PageLayout.svelte';
 	import { createHomeClickTracker, trackHomeClickEvent } from './homeTracking';
 	import {
 		cardGridClass,
-		narrowPageShellClass,
-		pageTitleClass,
-		secondaryTextClass,
-		spaciousPageHeaderClass,
 		statusMessageClass,
 		subtleTextClass,
 		summaryTextClass
@@ -82,11 +79,7 @@
 	}
 </script>
 
-<main class={narrowPageShellClass}>
-	<header class={spaciousPageHeaderClass}>
-		<h1 class={pageTitleClass}>{APP_TITLE}</h1>
-		<p class={secondaryTextClass}>{APP_SUBTITLE}</p>
-	</header>
+<PageLayout title={APP_TITLE} subtitle={APP_SUBTITLE}>
 
 	{#if status === 'loading'}
 		<div class="mt-8 flex justify-center" data-testid="home-loading">
@@ -118,4 +111,4 @@
 			{/each}
 		</ul>
 	{/if}
-</main>
+</PageLayout>

@@ -2,6 +2,39 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 25 - Layout compartido de paginas (Fase 6.6)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: terminar unificacion de shell/header entre vistas para reducir repeticion y facilitar mantenimiento.
+
+### Hecho
+
+- Nuevo componente `src/shared/components/PageLayout.svelte`:
+	- shell reutilizable (`narrow`/`wide`)
+	- header configurable (`compact`/`spacious`)
+	- soporte de header por slot para vistas con contenido personalizado
+- Migracion de vistas a layout compartido:
+	- `src/features/home/HomePage.svelte`
+	- `src/features/events/EventsPage.svelte`
+	- `src/features/events/EventGalleryPage.svelte`
+	- `src/features/amigos/AmigosPage.svelte`
+	- `src/features/faq/FaqPage.svelte`
+	- `src/features/contacto/ContactoPage.svelte`
+- Tests unitarios agregados:
+	- `src/shared/components/PageLayout.test.js`
+	- `src/shared/components/PageLayoutSlotHarness.svelte` (harness para validar slots)
+
+### Verificacion
+
+- Validacion estatico/sintactica: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 7.1: hardening de navegacion SPA (rutas desconocidas, accesibilidad y tests de robustez).
+
 ## Iteracion 24 - Navegacion compartida SPA (Fase 6.5)
 
 - Fecha: 2026-03-22
