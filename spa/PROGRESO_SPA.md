@@ -2,6 +2,35 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 22 - Contacto base (Fase 6.4)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: iniciar migracion de `contacto` con ruta SPA, carga desacoplada y estados base de UI.
+
+### Hecho
+
+- Nueva feature `src/features/contacto/`:
+	- `contactoModelMapper.js` para normalizar contrato legacy -> SPA
+	- `contactoApi.js` con carga desde `/assets/datasources/contacto.json` y fallback embedded al contenido legacy de `contacto/index.php`
+	- `ContactoPage.svelte` con estados `loading/error/empty/ready`, enlaces sociales y formulario apuntando al endpoint legacy
+- Ruteo SPA actualizado en `App.svelte`:
+	- soporte de `/contacto` y `/contacto/`
+- Tests unitarios agregados:
+	- `contactoModelMapper.test.js`
+	- `contactoApi.test.js`
+	- `ContactoPage.test.js`
+
+### Verificacion
+
+- Validacion estatico/sintactica: pendiente (`get_errors` tras editar).
+- `pnpm test`: OK (ejecucion manual usuario).
+- `pnpm build`: OK (ejecucion manual usuario).
+
+### Proximo paso
+
+- Continuar con Fase 6.5: navegacion compartida SPA para secciones secundarias.
+
 ## Iteracion 21 - FAQ base (Fase 6.2)
 
 - Fecha: 2026-03-22

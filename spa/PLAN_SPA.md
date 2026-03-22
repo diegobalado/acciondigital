@@ -25,7 +25,7 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 
 1. Cada iteracion debe tener alcance pequeno y verificable.
 2. Cada iteracion debe actualizar este plan y `PROGRESO_SPA.md`.
-3. Cada iteracion debe cerrar con commit en `spa-svelte-migration`.
+3. La gestion de commits/push se realiza manualmente por el usuario.
 4. Cada feature relevante migrada debe incluir tests unitarios.
 5. Priorizar mantenibilidad antes que optimizacion.
 
@@ -34,7 +34,7 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 1. Trabajar siempre sobre la branch `spa-svelte-migration`.
 2. Mantener la migracion aislada dentro de `spa/` salvo necesidad explicita de integrar con legacy.
 3. No romper el sitio legacy durante la migracion.
-4. Cada iteracion debe ser pequena, verificable y con commit propio.
+4. Cada iteracion debe ser pequena y verificable.
 5. En cada iteracion correr validaciones minimas en `spa/`:
 	- `pnpm test`
 	- `pnpm build`
@@ -43,7 +43,7 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 	- Tests agregados/actualizados
 	- Resultado de verificaciones
 	- Proximo paso
-7. Al finalizar iteracion: `git add` + `git commit` + `git push`.
+7. Git (`status/commit/push`) queda fuera del flujo del agente y se ejecuta manualmente.
 
 ## Directivas de ejecucion de comandos (tokens)
 
@@ -68,7 +68,6 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 2. Tests unitarios relevantes creados/ajustados.
 3. `PLAN_SPA.md` y `PROGRESO_SPA.md` actualizados.
 4. `pnpm test` y `pnpm build` en verde.
-5. Commit y push en `spa-svelte-migration`.
 
 ## Estado actual de arranque
 
@@ -257,6 +256,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- definir mapper/API para datos de contacto y canales de consulta
 	- mantener consistencia visual con `shared/ui/classes.js`
 	- agregar tests unitarios de render/estados y acciones basicas
+30. Iteracion iniciada el 2026-03-22 (Fase 6.4):
+	- nueva feature `contacto` creada con `contactoApi`, `contactoModelMapper` y `ContactoPage`
+	- ruta `/contacto` integrada en `App.svelte`
+	- vista de contacto con estados `loading/error/empty/ready`, enlaces sociales y formulario hacia endpoint legacy
+	- tests unitarios base agregados para mapper, API y pagina
+	- pendiente cierre de iteracion tras validacion manual (`pnpm test` + `pnpm build`)
+31. Proxima iteracion sugerida (Fase 6.5):
+	- definir barra de navegacion compartida SPA para secciones secundarias (`inicio/eventos/amigos/faq/contacto`)
+	- mantener propagacion de `mirror` en enlaces que lo requieran
+	- agregar tests unitarios de navegacion minima por ruta
 
 ### Fase 3 - Eventos/Galeria
 
@@ -281,7 +290,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 - [ ] Migrar amigos.
 - [x] Migrar faq.
-- [ ] Migrar contacto.
+- [x] Migrar contacto.
 - [ ] Tests unitarios de componentes clave.
 
 ### Fase 6.3 - UX Galeria (Lightbox)
