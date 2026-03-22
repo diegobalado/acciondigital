@@ -2,6 +2,34 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 23 - Refactor de ruteo SPA (infra)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: reducir complejidad de `App.svelte` centralizando el matching de rutas sin introducir libreria externa.
+
+### Hecho
+
+- Nuevo modulo de ruteo `src/app/routing/routes.js`:
+	- contrato `APP_ROUTES`
+	- resolver `resolveAppRoute` para `pathname + search`
+	- helper `resolveAppRouteFromWindow`
+- `App.svelte` simplificado:
+	- deja de usar multiples flags por pathname
+	- renderiza vistas por route key (`home/events/event-gallery/amigos/faq/contacto`)
+- Tests unitarios agregados:
+	- `src/app/routing/routes.test.js` con casos de rutas conocidas, fallback y query de galeria (`?id`/`?g`)
+
+### Verificacion
+
+- Validacion estatico/sintactica: pendiente (`get_errors` tras editar).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 6.5: implementar barra de navegacion compartida SPA apoyada en el contrato de rutas centralizado.
+
 ## Iteracion 22 - Contacto base (Fase 6.4)
 
 - Fecha: 2026-03-22

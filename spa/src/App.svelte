@@ -5,28 +5,20 @@
 	import AmigosPage from './features/amigos/AmigosPage.svelte';
 	import FaqPage from './features/faq/FaqPage.svelte';
 	import ContactoPage from './features/contacto/ContactoPage.svelte';
+	import { APP_ROUTES, resolveAppRouteFromWindow } from './app/routing/routes';
 
-	const routePath = typeof window !== 'undefined' ? window.location.pathname : '/';
-	const isEventsRoute = routePath === '/eventos' || routePath === '/eventos/';
-	const isAmigosRoute = routePath === '/amigos' || routePath === '/amigos/';
-	const isFaqRoute = routePath === '/faq' || routePath === '/faq/';
-	const isContactoRoute = routePath === '/contacto' || routePath === '/contacto/';
-	const routeSearch = typeof window !== 'undefined' ? window.location.search : '';
-	const routeParams = new URLSearchParams(routeSearch);
-	const hasSelectedEvent = routeParams.has('g') || routeParams.has('id');
+		const route = resolveAppRouteFromWindow();
 </script>
 
-{#if isEventsRoute}
-	{#if hasSelectedEvent}
+	{#if route === APP_ROUTES.EVENT_GALLERY}
 		<EventGalleryPage />
-	{:else}
+	{:else if route === APP_ROUTES.EVENTS}
 		<EventsPage />
-	{/if}
-{:else if isAmigosRoute}
+	{:else if route === APP_ROUTES.AMIGOS}
 	<AmigosPage />
-{:else if isFaqRoute}
+	{:else if route === APP_ROUTES.FAQ}
 	<FaqPage />
-{:else if isContactoRoute}
+	{:else if route === APP_ROUTES.CONTACTO}
 	<ContactoPage />
 {:else}
 	<HomePage />

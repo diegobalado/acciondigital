@@ -266,6 +266,16 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- definir barra de navegacion compartida SPA para secciones secundarias (`inicio/eventos/amigos/faq/contacto`)
 	- mantener propagacion de `mirror` en enlaces que lo requieran
 	- agregar tests unitarios de navegacion minima por ruta
+32. Iteracion iniciada el 2026-03-22 (Refactor ruteo SPA):
+	- logica de rutas movida de `App.svelte` a `src/app/routing/routes.js`
+	- contrato centralizado de rutas con `APP_ROUTES` y resolver `resolveAppRoute`
+	- tests unitarios agregados en `src/app/routing/routes.test.js`
+	- `App.svelte` simplificado para render por route key en lugar de `if` por pathname
+33. Proxima iteracion sugerida (Fase 6.5):
+	- implementar barra de navegacion compartida SPA para secciones secundarias (`inicio/eventos/amigos/faq/contacto`)
+	- reutilizar contrato de `APP_ROUTES` para resaltar seccion activa
+	- mantener propagacion de `mirror` en enlaces que lo requieran
+	- agregar tests unitarios de navegacion minima por ruta
 
 ### Fase 3 - Eventos/Galeria
 
@@ -288,7 +298,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 ### Fase 6 - Secciones secundarias
 
-- [ ] Migrar amigos.
+- [x] Migrar amigos.
 - [x] Migrar faq.
 - [x] Migrar contacto.
 - [ ] Tests unitarios de componentes clave.
