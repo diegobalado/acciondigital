@@ -2,6 +2,38 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 24 - Navegacion compartida SPA (Fase 6.5)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: completar navegacion transversal entre secciones con estado activo y propagacion de `mirror`.
+
+### Hecho
+
+- Nuevo modulo `src/app/routing/navigation.js`:
+	- contrato `SPA_NAV_ITEMS` para secciones principales
+	- helper `buildNavHref` para preservar `mirror=home5` en enlaces internos
+	- helper `isNavItemActive` para resolver seccion activa por route key
+- Nuevo componente `src/shared/components/SpaNav.svelte`:
+	- barra de navegacion compartida para `inicio/eventos/amigos/faq/contacto`
+	- estado activo visual y `aria-current="page"`
+- Integracion en `App.svelte`:
+	- `SpaNav` renderizada de forma global para todas las rutas SPA
+	- uso de `currentSearch` para conservar `mirror` durante la navegacion
+- Tests unitarios agregados:
+	- `src/app/routing/navigation.test.js`
+	- `src/shared/components/SpaNav.test.js`
+
+### Verificacion
+
+- Validacion estatico/sintactica: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 6.6: extraer layout compartido para reducir repeticion de shell/header entre vistas.
+
 ## Iteracion 23 - Refactor de ruteo SPA (infra)
 
 - Fecha: 2026-03-22

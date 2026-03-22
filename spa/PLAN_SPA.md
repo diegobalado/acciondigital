@@ -276,6 +276,17 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- reutilizar contrato de `APP_ROUTES` para resaltar seccion activa
 	- mantener propagacion de `mirror` en enlaces que lo requieran
 	- agregar tests unitarios de navegacion minima por ruta
+34. Iteracion cerrada el 2026-03-22 (Fase 6.5 - Navegacion compartida):
+	- nuevo modulo `src/app/routing/navigation.js` con contrato `SPA_NAV_ITEMS`
+	- helper `buildNavHref` para propagar `mirror` en navegacion interna
+	- componente `src/shared/components/SpaNav.svelte` integrado a nivel `App.svelte`
+	- estado activo de seccion resuelto por `APP_ROUTES` (incluye `event-gallery` dentro de `Eventos`)
+	- tests unitarios agregados para utilidades y componente de navegacion
+35. Proxima iteracion sugerida (Fase 6.6):
+	- extraer layout compartido de pagina para unificar shell/header entre vistas
+	- reducir repeticion de encabezados (`APP_TITLE`, subtitulos, spacing)
+	- validar consistencia responsive en Home/Eventos/Galeria/Secciones secundarias
+	- agregar tests unitarios del layout base (render y slots)
 
 ### Fase 3 - Eventos/Galeria
 
@@ -301,7 +312,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 - [x] Migrar amigos.
 - [x] Migrar faq.
 - [x] Migrar contacto.
-- [ ] Tests unitarios de componentes clave.
+- [x] Tests unitarios de componentes clave.
 
 ### Fase 6.3 - UX Galeria (Lightbox)
 
