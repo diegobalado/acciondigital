@@ -240,3 +240,8 @@ CDN caching for JSON indexes
 image format conversion (webp/avif)
 
 serverless search endpoints
+
+## UI Rules
+
+- New icons must use `lucide-svelte`.
+- New UI components must use TailwindCSS utilities and DaisyUI classes as the default styling approach.

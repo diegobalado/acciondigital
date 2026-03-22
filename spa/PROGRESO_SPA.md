@@ -2,6 +2,34 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 20 - Estandar de iconos con Lucide (Fase 6.3 UI)
+
+- Fecha: 2026-03-21
+- Branch: `spa-svelte-migration`
+- Objetivo: definir libreria oficial de iconos e integrarla en lightbox de galeria.
+
+### Hecho
+
+- Dependencia `lucide-svelte` instalada en `spa/package.json`.
+- `EventGalleryPage.svelte` actualizado para usar iconos Lucide en lightbox:
+	- `ChevronLeft` (anterior)
+	- `ChevronRight` (siguiente)
+	- `X` (cerrar)
+- `PLAN_SPA.md` actualizado con decision de arquitectura para libreria de iconos.
+- `AGENTS.md` actualizado con reglas de desarrollo UI:
+	- todos los nuevos iconos deben usar `lucide-svelte`
+	- todos los nuevos componentes deben usar TailwindCSS + DaisyUI
+
+### Verificacion
+
+- Validacion estatico/sintactica: pendiente (`get_errors` tras editar).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Ejecutar validaciones manuales (`pnpm test` y `pnpm build`) y continuar con Fase 6.2 (`faq`).
+
 ## Iteracion 19 - Lightbox en galeria (Fase 6.3)
 
 - Fecha: 2026-03-21

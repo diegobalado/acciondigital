@@ -1,5 +1,6 @@
 <script>
 	import { onMount, tick } from 'svelte';
+	import { ChevronLeft, ChevronRight, X } from 'lucide-svelte';
 	import { APP_TITLE } from '../../app/config/migration';
 	import { addCartItem, calculateCartTotals, removeCartItem, updateCartItemQuantity } from '../../services/cartService';
 	import {
@@ -353,16 +354,17 @@
 			<div class="mb-2 flex items-center justify-between">
 				<p class="text-sm font-semibold" data-testid="gallery-lightbox-code">{selectedPhoto.code}</p>
 				<button class={compactButtonClass} type="button" on:click={closeLightbox} aria-label="Cerrar lightbox">
-					Cerrar
+					<X size={16} aria-hidden="true" />
+					<span class="sr-only">Cerrar</span>
 				</button>
 			</div>
 			<div class="grid grid-cols-[auto_1fr_auto] items-center gap-2">
 				<button class="btn btn-circle btn-sm" type="button" on:click={showPreviousPhoto} data-testid="gallery-lightbox-prev" aria-label="Foto anterior">
-					&lt;
+					<ChevronLeft size={18} aria-hidden="true" />
 				</button>
 				<img class="max-h-[80vh] w-full rounded-md object-contain" src={selectedPhoto.fullImageUrl || selectedPhoto.thumbnailUrl} alt={`Foto ${selectedPhoto.code}`} />
 				<button class="btn btn-circle btn-sm" type="button" on:click={showNextPhoto} data-testid="gallery-lightbox-next" aria-label="Foto siguiente">
-					&gt;
+					<ChevronRight size={18} aria-hidden="true" />
 				</button>
 			</div>
 		</div>

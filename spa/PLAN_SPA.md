@@ -15,6 +15,12 @@ Documento de referencia para migrar de forma incremental el frontend legacy a un
 - **shadcn-svelte** queda reservado para fases futuras si se necesitan componentes interactivos accesibles (modals, drawers, formularios complejos).
 - Fecha de decisión: 2026-03-21.
 
+### Libreria de iconos
+- **Seleccionada: lucide-svelte**.
+- Criterios: componentes Svelte nativos, tree-shaking eficiente con Vite, API simple y consistente para iconografia de UI.
+- Regla de adopcion: nuevos iconos deben implementarse con `lucide-svelte`.
+- Fecha de decision: 2026-03-21.
+
 ## Reglas de trabajo
 
 1. Cada iteracion debe tener alcance pequeno y verificable.
@@ -235,6 +241,11 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- navegacion por teclado validada (`ArrowLeft`, `ArrowRight`, `Escape`) y cierre por backdrop
 	- compatibilidad mantenida con carrito y carga progresiva existente
 	- tests unitarios ampliados para flujo completo de lightbox
+27. Iteracion cerrada el 2026-03-21 (Fase 6.3 UI):
+	- `lucide-svelte` incorporada como libreria oficial de iconos en `spa/`
+	- lightbox de galeria actualizado para usar iconos `ChevronLeft`, `ChevronRight` y `X`
+	- directiva en `AGENTS.md`: nuevos iconos con `lucide-svelte`
+	- directiva en `AGENTS.md`: nuevos componentes UI con TailwindCSS + DaisyUI
 
 ### Fase 3 - Eventos/Galeria
 
