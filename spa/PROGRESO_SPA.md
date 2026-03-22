@@ -2,6 +2,34 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 19 - Lightbox en galeria (Fase 6.3)
+
+- Fecha: 2026-03-21
+- Branch: `spa-svelte-migration`
+- Objetivo: completar UX de lightbox en galeria de evento y cubrir flujo con tests unitarios.
+
+### Hecho
+
+- Lightbox de `EventGalleryPage` validado en flujo completo:
+	- apertura por click sobre miniatura
+	- navegacion `anterior/siguiente`
+	- cierre por boton y por `Escape`
+	- cierre por click en backdrop y no cierre al click sobre contenido interno
+- Tests de `EventGalleryPage.test.js` ampliados para cubrir:
+	- navegacion por teclado (`ArrowLeft`/`ArrowRight`)
+	- navegacion por botones (`prev`/`next`) y wrap-around
+	- cierre por boton, backdrop y teclado
+
+### Verificacion
+
+- Validacion estatico/sintactica: pendiente (`get_errors` tras editar).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Ejecutar validaciones manuales (`pnpm test` y `pnpm build`) y continuar con Fase 6.2 (`faq`) o cierre de pendientes de Fase 6.1.
+
 ## Iteracion 18 - Amigos base (Fase 6.1)
 
 - Fecha: 2026-03-15

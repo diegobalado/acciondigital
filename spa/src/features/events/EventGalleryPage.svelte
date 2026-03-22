@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { APP_TITLE } from '../../app/config/migration';
 	import { addCartItem, calculateCartTotals, removeCartItem, updateCartItemQuantity } from '../../services/cartService';
 	import {
@@ -46,6 +46,7 @@
 	let isCheckoutPending = false;
 	let cartItems = [];
 	let selectedPhotoIndex = -1;
+	let lightboxElement = null;
 	let progressive = { nextPage: null, canLoadMore: false };
 	let pagination = { page: 1, pageSize, totalItems: 0, totalPages: 1, hasPreviousPage: false, hasNextPage: false };
 	$: cartTotals = calculateCartTotals(cartItems);
@@ -136,8 +137,10 @@
 		checkoutError = '';
 	}
 
-	function openLightboxAt(index) {
+	async function openLightboxAt(index) {
 		selectedPhotoIndex = index;
+		await tick();
+		lightboxElement?.focus();
 	}
 
 	function closeLightbox() {
@@ -236,9 +239,6 @@
 		await requestGallery(1, false);
 	});
 </script>
-
-<svelte:window on:keydown={handleLightboxKeydown} />
-
 
 <main class={widePageShellClass}>
 	<header class={pageHeaderClass}>
@@ -345,6 +345,7 @@
 		aria-label="Lightbox de foto"
 		data-testid="gallery-lightbox"
 		tabindex="0"
+		bind:this={lightboxElement}
 		on:click={handleLightboxBackdropClick}
 		on:keydown={handleLightboxKeydown}
 	>
@@ -355,7 +356,7 @@
 					Cerrar
 				</button>
 			</div>
-			<div class="grid grid-cols-[auto,1fr,auto] items-center gap-2">
+			<div class="grid grid-cols-[auto_1fr_auto] items-center gap-2">
 				<button class="btn btn-circle btn-sm" type="button" on:click={showPreviousPhoto} data-testid="gallery-lightbox-prev" aria-label="Foto anterior">
 					&lt;
 				</button>

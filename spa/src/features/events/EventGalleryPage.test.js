@@ -106,10 +106,37 @@ describe('EventGalleryPage', () => {
 		expect(screen.getByTestId('gallery-lightbox')).toBeTruthy();
 		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-145');
 
+		await fireEvent.keyDown(screen.getByTestId('gallery-lightbox'), { key: 'ArrowRight' });
+		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-146');
+
+		await fireEvent.keyDown(screen.getByTestId('gallery-lightbox'), { key: 'ArrowLeft' });
+		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-145');
+
 		await fireEvent.click(screen.getByTestId('gallery-lightbox-next'));
 		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-146');
 
-		await fireEvent.keyDown(window, { key: 'Escape' });
+		await fireEvent.click(screen.getByTestId('gallery-lightbox-prev'));
+		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-145');
+
+		await fireEvent.click(screen.getByRole('button', { name: 'Foto anterior' }));
+		expect(screen.getByTestId('gallery-lightbox-code').textContent).toBe('A-146');
+
+		await fireEvent.click(screen.getByRole('button', { name: 'Cerrar lightbox' }));
+		expect(screen.queryByTestId('gallery-lightbox')).toBeNull();
+
+		await fireEvent.click(screen.getByRole('button', { name: 'Ver foto A-145' }));
+		expect(screen.getByTestId('gallery-lightbox')).toBeTruthy();
+
+		await fireEvent.click(screen.getByAltText('Foto A-145'));
+		expect(screen.getByTestId('gallery-lightbox')).toBeTruthy();
+
+		await fireEvent.click(screen.getByTestId('gallery-lightbox'));
+		expect(screen.queryByTestId('gallery-lightbox')).toBeNull();
+
+		await fireEvent.click(screen.getByRole('button', { name: 'Ver foto A-145' }));
+		expect(screen.getByTestId('gallery-lightbox')).toBeTruthy();
+
+		await fireEvent.keyDown(screen.getByTestId('gallery-lightbox'), { key: 'Escape' });
 		expect(screen.queryByTestId('gallery-lightbox')).toBeNull();
 	});
 });

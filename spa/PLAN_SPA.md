@@ -230,6 +230,11 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- soportar cierre por `Escape` y click en backdrop
 	- mantener compatibilidad con carrito y carga progresiva actual
 	- agregar tests unitarios del flujo de lightbox
+26. Iteracion cerrada el 2026-03-21 (Fase 6.3):
+	- lightbox de galeria consolidado en `EventGalleryPage` (abrir/cerrar, anterior/siguiente)
+	- navegacion por teclado validada (`ArrowLeft`, `ArrowRight`, `Escape`) y cierre por backdrop
+	- compatibilidad mantenida con carrito y carga progresiva existente
+	- tests unitarios ampliados para flujo completo de lightbox
 
 ### Fase 3 - Eventos/Galeria
 
@@ -259,9 +264,9 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 
 ### Fase 6.3 - UX Galeria (Lightbox)
 
-- [ ] Implementar lightbox simple en `EventGalleryPage`.
-- [ ] Soportar navegacion de fotos (`anterior/siguiente`) y cierre por teclado.
-- [ ] Tests unitarios del flujo de apertura/navegacion/cierre.
+- [x] Implementar lightbox simple en `EventGalleryPage`.
+- [x] Soportar navegacion de fotos (`anterior/siguiente`) y cierre por teclado.
+- [x] Tests unitarios del flujo de apertura/navegacion/cierre.
 
 ### Fase 7 - Auth
 
