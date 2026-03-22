@@ -2,6 +2,7 @@ export const APP_ROUTES = Object.freeze({
 	HOME: 'home',
 	EVENTS: 'events',
 	EVENT_GALLERY: 'event-gallery',
+	CART: 'cart',
 	AMIGOS: 'amigos',
 	FAQ: 'faq',
 	CONTACTO: 'contacto',
@@ -31,6 +32,10 @@ export function resolveAppRoute(locationLike = {}) {
 
 	if (pathname === '/amigos') {
 		return APP_ROUTES.AMIGOS;
+	}
+
+	if (pathname === '/carrito') {
+		return APP_ROUTES.CART;
 	}
 
 	if (pathname === '/faq') {

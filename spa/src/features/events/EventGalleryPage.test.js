@@ -1,12 +1,18 @@
 import { fireEvent, render, screen } from '@testing-library/svelte';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import EventGalleryPage from './EventGalleryPage.svelte';
+import { cartTotalsStore, clearCart } from '../../services/cartStore';
+import { get } from 'svelte/store';
 
 function setLocationSearch(search) {
 	window.history.replaceState({}, '', `/eventos/${search}`);
 }
 
 describe('EventGalleryPage', () => {
+	afterEach(() => {
+		clearCart();
+	});
+
 	it('loads event gallery from query param and renders photos', async () => {
 		setLocationSearch('?id=evt_1');
 
@@ -54,12 +60,10 @@ describe('EventGalleryPage', () => {
 		expect(await screen.findByText('B')).toBeTruthy();
 	});
 
-	it('adds photos to cart and submits checkout through injected adapter', async () => {
+	it('adds photos to global cart from gallery actions', async () => {
 		setLocationSearch('?id=evt_1');
-		const submitCheckout = vi.fn().mockResolvedValue({ ok: true });
 
 		render(EventGalleryPage, {
-			submitCheckout,
 			loadGallery: () =>
 				Promise.resolve({
 					event: { id: 'evt_1', title: 'Evento 1', price: 1500, ph: 'JPF' },
@@ -70,18 +74,11 @@ describe('EventGalleryPage', () => {
 		});
 
 		expect(await screen.findByTestId('gallery-list')).toBeTruthy();
+		expect(screen.getByTestId('gallery-cart-hint').textContent).toContain('0 item');
 		await fireEvent.click(screen.getByTestId('gallery-add-to-cart'));
-		expect(screen.getByTestId('gallery-cart-summary').textContent).toContain('Items: 1');
-		expect(screen.getByTestId('gallery-cart-summary').textContent).toContain('1500');
-
-		await fireEvent.click(screen.getByTestId('gallery-cart-checkout'));
-		expect(submitCheckout).toHaveBeenCalledTimes(1);
-		expect(submitCheckout.mock.calls[0][0].body.products[0]).toMatchObject({
-			id: 'A-145',
-			summary: 'foto_A-145',
-			ph: 'JPF',
-			type: 'Galeria'
-		});
+		expect(screen.getByTestId('gallery-cart-hint').textContent).toContain('1 item');
+		expect(get(cartTotalsStore).totalQuantity).toBe(1);
+		expect(get(cartTotalsStore).subtotal).toBe(1500);
 	});
 
 	it('opens lightbox and navigates between photos', async () => {

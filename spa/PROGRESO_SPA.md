@@ -2,6 +2,81 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 28 - Ajuste UX de carrito global (sin panel persistente)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: evitar duplicidad de UX de carrito removiendo el panel embebido en vistas de eventos/galeria.
+
+### Hecho
+
+- `src/features/events/EventsPage.svelte`:
+	- eliminado panel de carrito persistente (lista, cantidad, remove, checkout)
+	- mantenida accion `Agregar al carrito` por card
+	- agregado hint de carrito global (`events-cart-hint`)
+- `src/features/events/EventGalleryPage.svelte`:
+	- eliminado panel de carrito persistente
+	- mantenida accion `Agregar al carrito` por foto
+	- agregado hint de carrito global (`gallery-cart-hint`)
+- Tests ajustados:
+	- `src/features/events/EventsPage.test.js`
+	- `src/features/events/EventGalleryPage.test.js`
+	- validacion de carrito via store global en lugar de panel local
+
+### Verificacion
+
+- Validacion estatico/sintactica: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 8.1: paridad funcional/visual contra legacy y cierre de gaps de cobertura.
+
+## Iteracion 27 - Carrito global en navegacion (Fase 5.4)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: exponer el carrito como opcion principal de navegacion con popup de resumen y pagina completa de gestion.
+
+### Hecho
+
+- Nuevo store global `src/services/cartStore.js`:
+	- estado compartido de carrito (`cartItemsStore`, `cartTotalsStore`)
+	- acciones globales (`add/remove/update/clear`)
+	- submit de checkout unificado (`submitCartCheckout`)
+- Nueva pagina de carrito completo `src/features/cart/CartPage.svelte`:
+	- listado de items, cambio de cantidad, quitar item, vaciar carrito
+	- accion de checkout legacy desde vista dedicada
+- Navegacion actualizada en `src/shared/components/SpaNav.svelte`:
+	- opcion `Carrito` en barra principal
+	- popup con resumen de items/total y preview
+	- CTA `Ver carrito completo` hacia `/carrito/`
+- Ruteo actualizado:
+	- `APP_ROUTES.CART` en `src/app/routing/routes.js`
+	- render de `CartPage` en `src/App.svelte`
+- Integracion de carrito global en features existentes:
+	- `src/features/events/EventsPage.svelte`
+	- `src/features/events/EventGalleryPage.svelte`
+	- ambos flujos ahora alimentan/consumen el mismo carrito compartido
+- Tests agregados/actualizados:
+	- `src/services/cartStore.test.js`
+	- `src/features/cart/CartPage.test.js`
+	- `src/shared/components/SpaNav.test.js` (popup + link a pagina de carrito)
+	- `src/app/routing/routes.test.js` (ruta `/carrito/`)
+	- `src/App.test.js` (render de ruta carrito)
+	- `EventsPage.test.js` y `EventGalleryPage.test.js` ajustados para store global
+
+### Verificacion
+
+- Validacion estatico/sintactica: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Fase 8.1: paridad funcional/visual contra legacy y cierre de gaps de cobertura.
+
 ## Iteracion 26 - Hardening de navegacion (Fase 7.1)
 
 - Fecha: 2026-03-22

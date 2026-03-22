@@ -14,6 +14,7 @@ describe('resolveAppRoute', () => {
 
 	it('resolves secondary pages', () => {
 		expect(resolveAppRoute({ pathname: '/amigos', search: '' })).toBe(APP_ROUTES.AMIGOS);
+		expect(resolveAppRoute({ pathname: '/carrito/', search: '' })).toBe(APP_ROUTES.CART);
 		expect(resolveAppRoute({ pathname: '/faq/', search: '' })).toBe(APP_ROUTES.FAQ);
 		expect(resolveAppRoute({ pathname: '/contacto', search: '' })).toBe(APP_ROUTES.CONTACTO);
 	});

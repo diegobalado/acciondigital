@@ -3,39 +3,29 @@
 	import { ChevronLeft, ChevronRight, X } from 'lucide-svelte';
 	import { APP_TITLE } from '../../app/config/migration';
 	import PageLayout from '../../shared/components/PageLayout.svelte';
-	import { addCartItem, calculateCartTotals, removeCartItem, updateCartItemQuantity } from '../../services/cartService';
 	import {
-		createLegacyCheckoutPayload,
-		submitLegacyCheckoutPayload
-	} from '../../services/checkoutBridge';
+		addItemToCart,
+		cartTotalsStore,
+	} from '../../services/cartStore';
 	import { EVENT_GALLERY_PAGE_SIZE, loadEventGallery } from './eventGalleryApi';
 	import {
 		actionButtonClass,
 		buttonClass,
-		cartItemClass,
 		compactButtonClass,
-		errorTextClass,
 		fieldLabelClass,
 		formStackClass,
-		pageHeaderClass,
 		pageSubtitleClass,
 		pageTitleClass,
-		panelClass,
 		photoCardClass,
 		secondaryTextClass,
 		statusMessageClass,
 		subtleTextClass,
 		summaryTextClass,
-		textInputClass,
-		widePageShellClass
+		textInputClass
 	} from '../../shared/ui/classes';
 
 	/** @type {any} */
 	export let loadGallery = null;
-	/** @type {any} */
-	export let createCheckoutPayload = null;
-	/** @type {any} */
-	export let submitCheckout = null;
 	export let pageSize = EVENT_GALLERY_PAGE_SIZE;
 
 	let status = 'loading';
@@ -44,14 +34,10 @@
 	let galleryQuery = '';
 	let activeQuery = '';
 	let isLoadingMore = false;
-	let checkoutError = '';
-	let isCheckoutPending = false;
-	let cartItems = [];
 	let selectedPhotoIndex = -1;
 	let lightboxElement = null;
 	let progressive = { nextPage: null, canLoadMore: false };
 	let pagination = { page: 1, pageSize, totalItems: 0, totalPages: 1, hasPreviousPage: false, hasNextPage: false };
-	$: cartTotals = calculateCartTotals(cartItems);
 	$: selectedPhoto = selectedPhotoIndex >= 0 && selectedPhotoIndex < photos.length ? photos[selectedPhotoIndex] : null;
 	$: gallerySummary = activeQuery
 		? `Fotos filtradas por "${activeQuery}": ${pagination.totalItems}`
@@ -135,8 +121,7 @@
 	}
 
 	function addPhotoToCart(photo) {
-		cartItems = addCartItem(cartItems, toCartItem(photo));
-		checkoutError = '';
+		addItemToCart(toCartItem(photo));
 	}
 
 	async function openLightboxAt(index) {
@@ -191,13 +176,6 @@
 		}
 	}
 
-	function removeFromCart(item) {
-		cartItems = removeCartItem(cartItems, { id: item.id, event: item.event });
-	}
-
-	function changeCartQuantity(item, quantity) {
-		cartItems = updateCartItemQuantity(cartItems, { id: item.id, event: item.event }, quantity);
-	}
 
 	async function handleGallerySearch() {
 		activeQuery = galleryQuery.trim();
@@ -216,25 +194,6 @@
 		}
 
 		await requestGallery(progressive.nextPage, true);
-	}
-
-	async function handleCheckout() {
-		if (cartItems.length === 0 || isCheckoutPending) {
-			return;
-		}
-
-		isCheckoutPending = true;
-		checkoutError = '';
-		try {
-			const createPayloadFn = createCheckoutPayload || createLegacyCheckoutPayload;
-			const submitCheckoutFn = submitCheckout || submitLegacyCheckoutPayload;
-			const payload = createPayloadFn(cartItems);
-			await submitCheckoutFn(payload);
-		} catch {
-			checkoutError = 'No se pudo iniciar el checkout. Intenta nuevamente.';
-		} finally {
-			isCheckoutPending = false;
-		}
 	}
 
 	onMount(async () => {
@@ -269,33 +228,9 @@
 		</div>
 	</form>
 
-	<section class={panelClass} data-testid="gallery-cart-panel">
-		<h3 class="m-0 text-base font-semibold">Carrito de fotos</h3>
-		<p class="mt-1 text-sm opacity-80" data-testid="gallery-cart-summary">Items: {cartTotals.totalQuantity} | Total: ${cartTotals.totalPrice}</p>
-		{#if cartItems.length > 0}
-			<ul class="mt-2 grid gap-2" data-testid="gallery-cart-list">
-				{#each cartItems as item (item.id + '-' + item.event)}
-					<li class={cartItemClass} data-testid="gallery-cart-item">
-						<strong>{item.name}</strong>
-						<span class={subtleTextClass}>{item.summary}</span>
-						<div class="flex items-center gap-2">
-							<label>
-								Cantidad
-								<input class="input input-bordered input-xs ml-1 w-16" type="number" min="1" value={item.quantity} on:change={(event) => changeCartQuantity(item, event.currentTarget.value)} data-testid="gallery-cart-quantity" />
-							</label>
-							<button class={compactButtonClass} type="button" on:click={() => removeFromCart(item)} data-testid="gallery-cart-remove">Quitar</button>
-						</div>
-					</li>
-				{/each}
-			</ul>
-		{/if}
-		<div class="mt-3 flex items-center gap-2">
-			<button class={actionButtonClass} type="button" disabled={cartItems.length === 0 || isCheckoutPending} on:click={handleCheckout} data-testid="gallery-cart-checkout">{isCheckoutPending ? 'Procesando...' : 'Ir al checkout'}</button>
-			{#if checkoutError}
-				<span class={errorTextClass} data-testid="gallery-cart-error">{checkoutError}</span>
-			{/if}
-		</div>
-	</section>
+	<p class={summaryTextClass} data-testid="gallery-cart-hint">
+		Carrito global: {$cartTotalsStore.totalQuantity} item(s). Usa la opcion Carrito para revisar el resumen completo.
+	</p>
 
 	{#if status === 'loading'}
 		<div class="mt-8 flex justify-center" data-testid="gallery-loading">

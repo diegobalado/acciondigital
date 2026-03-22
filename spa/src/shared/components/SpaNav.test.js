@@ -1,9 +1,15 @@
 import { render, screen } from '@testing-library/svelte';
-import { describe, expect, it } from 'vitest';
+import { fireEvent } from '@testing-library/svelte';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { APP_ROUTES } from '../../app/routing/routes';
+import { addItemToCart, clearCart } from '../../services/cartStore';
 import SpaNav from './SpaNav.svelte';
 
 describe('SpaNav', () => {
+	beforeEach(() => {
+		clearCart();
+	});
+
 	it('renders all nav links', () => {
 		render(SpaNav, { currentRoute: APP_ROUTES.HOME, currentSearch: '' });
 
@@ -11,6 +17,7 @@ describe('SpaNav', () => {
 		expect(screen.getByTestId('spa-nav-link-inicio')).toBeTruthy();
 		expect(screen.getByTestId('spa-nav-link-eventos')).toBeTruthy();
 		expect(screen.getByTestId('spa-nav-link-amigos')).toBeTruthy();
+		expect(screen.getByTestId('spa-nav-cart-toggle')).toBeTruthy();
 		expect(screen.getByTestId('spa-nav-link-faq')).toBeTruthy();
 		expect(screen.getByTestId('spa-nav-link-contacto')).toBeTruthy();
 	});
@@ -24,6 +31,16 @@ describe('SpaNav', () => {
 
 		const faqLink = screen.getByTestId('spa-nav-link-faq');
 		expect(faqLink.getAttribute('href')).toBe('/faq/?mirror=home5');
+	});
+
+	it('opens cart popup and links to full cart page', async () => {
+		addItemToCart({ id: 'pic_1', event: 'evt_1', name: 'Evento 1', summary: 'foto_1', price: 1000, quantity: 2 });
+		render(SpaNav, { currentRoute: APP_ROUTES.HOME, currentSearch: '?mirror=home5' });
+
+		await fireEvent.click(screen.getByTestId('spa-nav-cart-toggle'));
+		expect(screen.getByTestId('spa-nav-cart-popup')).toBeTruthy();
+		expect(screen.getByTestId('spa-nav-cart-summary').textContent).toContain('Items: 2');
+		expect(screen.getByTestId('spa-nav-open-cart-page').getAttribute('href')).toBe('/carrito/?mirror=home5');
 	});
 
 	it('renders skip link to main content landmark', () => {

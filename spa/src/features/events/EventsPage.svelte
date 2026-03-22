@@ -6,26 +6,20 @@
 	import { loadEventsCatalog, searchEventsCatalog } from './eventsApi';
 	import { createEventsClickTracker, trackEventsClickEvent } from './eventsTracking';
 	import { mergeProgressiveFeed } from './eventsPagination';
-	import { addCartItem, calculateCartTotals, removeCartItem, updateCartItemQuantity } from '../../services/cartService';
 	import {
-		createLegacyCheckoutPayload,
-		submitLegacyCheckoutPayload
-	} from '../../services/checkoutBridge';
+		addItemToCart,
+		cartTotalsStore
+	} from '../../services/cartStore';
 	import {
 		actionButtonClass,
 		buttonClass,
 		cardGridClass,
-		cartItemClass,
-		compactButtonClass,
-		errorTextClass,
 		fieldLabelClass,
 		formStackClass,
 		infiniteStatusClass,
 		pageSubtitleClass,
 		pageTitleClass,
-		panelClass,
 		statusMessageClass,
-		subtleTextClass,
 		summaryTextClass,
 		textInputClass
 	} from '../../shared/ui/classes';
@@ -37,10 +31,6 @@
 	export let pageSize = 12;
 	export let trackEvent = trackEventsClickEvent;
 	export let createTracker = createEventsClickTracker;
-	/** @type {any} */
-	export let createCheckoutPayload = null;
-	/** @type {any} */
-	export let submitCheckout = null;
 	export let eventCartUnitPrice = 1000;
 
 	let status = 'loading';
@@ -51,10 +41,6 @@
 	let searchResults = [];
 	let isUntaggedSearch = false;
 	let activeQuery = '';
-	let cartItems = [];
-	let isCheckoutPending = false;
-	let checkoutError = '';
-	$: cartTotals = calculateCartTotals(cartItems);
 	$: hasSearchQuery = activeQuery.length > 0;
 	$: visibleFeed = hasSearchQuery
 		? searchResults.map((event) => ({ type: 'event', event }))
@@ -226,35 +212,7 @@
 	}
 
 	function addEventToCart(eventItem) {
-		cartItems = addCartItem(cartItems, toCartItemFromEvent(eventItem));
-		checkoutError = '';
-	}
-
-	function removeFromCart(item) {
-		cartItems = removeCartItem(cartItems, { id: item.id, event: item.event });
-	}
-
-	function changeCartQuantity(item, quantity) {
-		cartItems = updateCartItemQuantity(cartItems, { id: item.id, event: item.event }, quantity);
-	}
-
-	async function submitCartCheckout() {
-		if (cartItems.length === 0 || isCheckoutPending) {
-			return;
-		}
-
-		isCheckoutPending = true;
-		checkoutError = '';
-		try {
-			const createPayloadFn = createCheckoutPayload || createLegacyCheckoutPayload;
-			const submitCheckoutFn = submitCheckout || submitLegacyCheckoutPayload;
-			const payload = createPayloadFn(cartItems);
-			await submitCheckoutFn(payload);
-		} catch {
-			checkoutError = 'No se pudo iniciar el checkout. Intenta nuevamente.';
-		} finally {
-			isCheckoutPending = false;
-		}
+		addItemToCart(toCartItemFromEvent(eventItem));
 	}
 
 	function onInfiniteScrollSentinel(node) {
@@ -319,58 +277,9 @@
 			{/if}
 		</div>
 	</form>
-
-	<section class={panelClass} data-testid="events-cart-panel">
-		<h3 class="m-0 text-base font-semibold">Carrito</h3>
-		<p class="mt-1 text-sm opacity-80" data-testid="events-cart-summary">
-			Items: {cartTotals.totalQuantity} | Total: ${cartTotals.totalPrice}
-		</p>
-		{#if cartItems.length > 0}
-			<ul class="mt-2 grid gap-2" data-testid="events-cart-list">
-				{#each cartItems as item (item.id + '-' + item.event)}
-					<li class={cartItemClass} data-testid="events-cart-item">
-						<strong>{item.name}</strong>
-						<span class={subtleTextClass}>Foto: {item.summary}</span>
-						<div class="flex items-center gap-2">
-							<label>
-								Cantidad
-								<input
-										class="input input-bordered input-xs ml-1 w-16"
-									type="number"
-									min="1"
-									value={item.quantity}
-									on:change={(event) => changeCartQuantity(item, event.currentTarget.value)}
-									data-testid="events-cart-quantity"
-								/>
-							</label>
-							<button
-								class={compactButtonClass}
-								type="button"
-								on:click={() => removeFromCart(item)}
-								data-testid="events-cart-remove"
-							>
-								Quitar
-							</button>
-						</div>
-					</li>
-				{/each}
-			</ul>
-		{/if}
-		<div class="mt-3 flex items-center gap-2">
-			<button
-					class={actionButtonClass}
-				type="button"
-				disabled={cartItems.length === 0 || isCheckoutPending}
-				on:click={submitCartCheckout}
-				data-testid="events-cart-checkout"
-			>
-				{isCheckoutPending ? 'Procesando...' : 'Ir al checkout'}
-			</button>
-			{#if checkoutError}
-					<span class={errorTextClass} data-testid="events-cart-checkout-error">{checkoutError}</span>
-			{/if}
-		</div>
-	</section>
+	<p class={summaryTextClass} data-testid="events-cart-hint">
+		Carrito global: {$cartTotalsStore.totalQuantity} item(s). Revisa el popup de Carrito o la pagina completa.
+	</p>
 
 	{#if visibleStatus === 'loading'}
 		<div class="mt-8 flex justify-center" data-testid="events-loading">

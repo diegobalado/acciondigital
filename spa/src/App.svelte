@@ -2,6 +2,7 @@
 	import HomePage from './features/home/HomePage.svelte';
 	import EventsPage from './features/events/EventsPage.svelte';
 	import EventGalleryPage from './features/events/EventGalleryPage.svelte';
+	import CartPage from './features/cart/CartPage.svelte';
 	import AmigosPage from './features/amigos/AmigosPage.svelte';
 	import FaqPage from './features/faq/FaqPage.svelte';
 	import ContactoPage from './features/contacto/ContactoPage.svelte';
@@ -24,6 +25,8 @@
 			<EventsPage />
 		{:else if route === APP_ROUTES.AMIGOS}
 			<AmigosPage />
+		{:else if route === APP_ROUTES.CART}
+			<CartPage />
 		{:else if route === APP_ROUTES.FAQ}
 			<FaqPage />
 		{:else if route === APP_ROUTES.CONTACTO}

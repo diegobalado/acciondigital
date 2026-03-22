@@ -9,6 +9,7 @@ export const SPA_NAV_ITEMS = Object.freeze([
 		routes: [APP_ROUTES.EVENTS, APP_ROUTES.EVENT_GALLERY]
 	},
 	{ id: 'amigos', label: 'Amigos', href: '/amigos/', routes: [APP_ROUTES.AMIGOS] },
+	{ id: 'carrito', label: 'Carrito', href: '/carrito/', routes: [APP_ROUTES.CART] },
 	{ id: 'faq', label: 'Ayuda', href: '/faq/', routes: [APP_ROUTES.FAQ] },
 	{ id: 'contacto', label: 'Contacto', href: '/contacto/', routes: [APP_ROUTES.CONTACTO] }
 ]);

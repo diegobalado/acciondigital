@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import EventsPage from './EventsPage.svelte';
+import { clearCart, cartTotalsStore } from '../../services/cartStore';
+import { get } from 'svelte/store';
 
 function createDeferred() {
 	/** @type {(value: any) => void} */
@@ -48,6 +50,7 @@ function createIntersectionObserverMock() {
 describe('EventsPage', () => {
 	afterEach(() => {
 		delete globalThis.IntersectionObserver;
+		clearCart();
 	});
 
 	it('shows loading state while requesting events', async () => {
@@ -445,7 +448,7 @@ describe('EventsPage', () => {
 		});
 	});
 
-	it('adds events to cart and allows remove/update quantity', async () => {
+	it('adds events to global cart and updates shared totals', async () => {
 		render(EventsPage, {
 			loadEvents: () =>
 				Promise.resolve({
@@ -474,54 +477,13 @@ describe('EventsPage', () => {
 		});
 
 		expect(await screen.findByTestId('events-list')).toBeTruthy();
+		expect(screen.getByTestId('events-cart-hint').textContent).toContain('0 item');
 		await fireEvent.click(screen.getByTestId('events-add-to-cart'));
+		expect(screen.getByTestId('events-cart-hint').textContent).toContain('1 item');
+		expect(get(cartTotalsStore).totalQuantity).toBe(1);
 
-		expect(await screen.findByTestId('events-cart-list')).toBeTruthy();
-		expect(screen.getByTestId('events-cart-summary').textContent).toContain('Items: 1');
-
-		await fireEvent.change(screen.getByTestId('events-cart-quantity'), { target: { value: '3' } });
-		expect(screen.getByTestId('events-cart-summary').textContent).toContain('Items: 3');
-
-		await fireEvent.click(screen.getByTestId('events-cart-remove'));
-		expect(screen.queryByTestId('events-cart-list')).toBeNull();
-	});
-
-	it('submits checkout through injected bridge adapter', async () => {
-		const submitCheckout = vi.fn().mockResolvedValue({ ok: true });
-		render(EventsPage, {
-			submitCheckout,
-			loadEvents: () =>
-				Promise.resolve({
-					events: [{ id: 'evt_1', title: 'Evento 1', eventUrl: '/eventos/?id=evt_1', coverImageUrl: '/1.jpg' }],
-					feed: [
-						{
-							type: 'event',
-							event: {
-								id: 'evt_1',
-								title: 'Evento 1',
-								eventUrl: '/eventos/?id=evt_1',
-								coverImageUrl: '/1.jpg'
-							}
-						}
-					],
-					pagination: {
-						page: 1,
-						pageSize: 12,
-						totalItems: 1,
-						totalPages: 1,
-						hasPreviousPage: false,
-						hasNextPage: false
-					},
-					progressive: { nextPage: null, canLoadMore: false }
-				})
-		});
-
-		expect(await screen.findByTestId('events-list')).toBeTruthy();
 		await fireEvent.click(screen.getByTestId('events-add-to-cart'));
-		await fireEvent.click(screen.getByTestId('events-cart-checkout'));
-
-		expect(submitCheckout).toHaveBeenCalledTimes(1);
-		expect(submitCheckout.mock.calls[0][0].endpoint).toBe('/checkout/index.php');
-		expect(submitCheckout.mock.calls[0][0].body.products[0].id).toBe('evt_1');
+		expect(screen.getByTestId('events-cart-hint').textContent).toContain('2 item');
+		expect(get(cartTotalsStore).totalQuantity).toBe(2);
 	});
 });

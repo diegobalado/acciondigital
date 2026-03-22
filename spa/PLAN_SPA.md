@@ -307,6 +307,22 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- validar paridad visual/funcional completa contra legacy por seccion
 	- ejecutar pasada de accesibilidad (teclado + landmarks + nombres accesibles) en flujo real
 	- revisar gaps de cobertura y completar pruebas de integracion prioritarias
+40. Iteracion cerrada el 2026-03-22 (Fase 5.4 - Carrito en navegacion):
+	- nuevo store global `src/services/cartStore.js` para compartir carrito entre secciones
+	- nueva pagina `src/features/cart/CartPage.svelte` para flujo de carrito completo
+	- `SpaNav.svelte` ahora incluye opcion `Carrito` con popup/resumen y acceso a `/carrito/`
+	- rutas extendidas con `APP_ROUTES.CART` y soporte de `/carrito/` en `App.svelte`
+	- `EventsPage` y `EventGalleryPage` migradas a carrito global para estado unificado
+	- tests unitarios/integracion agregados para store, pagina de carrito, nav popup y ruteo de carrito
+41. Proxima iteracion sugerida (Fase 8.1):
+	- validar paridad visual/funcional completa contra legacy por seccion
+	- ejecutar pasada de accesibilidad (teclado + landmarks + nombres accesibles) en flujo real
+	- revisar gaps de cobertura y completar pruebas de integracion prioritarias
+42. Ajuste UX aplicado el 2026-03-22 (Carrito global sin panel persistente):
+	- removidos paneles de carrito embebidos en `EventsPage` y `EventGalleryPage`
+	- se mantiene solo accion `Agregar al carrito` en cards/fotos
+	- gestion completa del carrito concentrada en `SpaNav` (popup) y `/carrito/`
+	- tests de eventos/galeria ajustados para validar estado via carrito global
 
 ### Fase 3 - Eventos/Galeria
 
@@ -326,6 +342,7 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 - [x] Encapsular logica de carrito en servicios SPA.
 - [x] Mantener integracion con checkout PHP existente.
 - [x] Tests unitarios de payloads y reglas de compra.
+- [x] Exponer carrito global en navegacion (popup + pagina completa).
 
 ### Fase 6 - Secciones secundarias
 

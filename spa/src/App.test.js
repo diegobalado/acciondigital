@@ -33,4 +33,11 @@ describe('App routing integration', () => {
 		const eventosLink = await screen.findByTestId('spa-nav-link-eventos');
 		expect(eventosLink.getAttribute('aria-current')).toBe('page');
 	});
+
+	it('renders cart page route', async () => {
+		setLocation('/carrito/');
+		render(App);
+
+		expect(await screen.findByTestId('cart-page-summary')).toBeTruthy();
+	});
 });
