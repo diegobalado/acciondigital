@@ -10,7 +10,27 @@ import {
 	submitLegacyCheckoutPayload
 } from './checkoutBridge';
 
-const cartItemsStore = writable([]);
+const CART_STORAGE_KEY = 'ad_cart';
+
+function loadCartFromStorage() {
+	try {
+		if (typeof localStorage === 'undefined') return [];
+		const raw = localStorage.getItem(CART_STORAGE_KEY);
+		return raw ? JSON.parse(raw) : [];
+	} catch {
+		return [];
+	}
+}
+
+const cartItemsStore = writable(loadCartFromStorage());
+
+cartItemsStore.subscribe((items) => {
+	try {
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+		}
+	} catch { /* storage unavailable */ }
+});
 
 export { cartItemsStore };
 

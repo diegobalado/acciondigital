@@ -49,12 +49,18 @@
 	}
 	$: loadMoreLabel = isLoadingMore ? 'Cargando mas fotos...' : 'Desplazate para cargar mas fotos';
 
+	// Reactive lookup sets — Svelte tracks these directly so buttons update immediately.
+	$: currentEventId = eventData?.id || getSelectedEventId();
+	$: cartPhotoKeys = new Set($cartItemsStore.map((item) => `${item.id}::${item.event}`));
+	$: selectedPhotoInCart =
+		selectedPhoto != null && cartPhotoKeys.has(`${selectedPhoto.id}::${currentEventId}`);
+
 	function isPhotoAlreadyInCart(photo) {
 		if (!photo) {
 			return false;
 		}
 
-		return $cartItemsStore.some((item) => item.id === photo.id && item.event === (eventData?.id || getSelectedEventId()));
+		return cartPhotoKeys.has(`${photo.id}::${currentEventId}`);
 	}
 
 	function getLocationSearch() {
@@ -320,10 +326,10 @@
 						class={`mt-2 w-full ${actionButtonClass}`}
 						type="button"
 						on:click={() => addPhotoToCart(photo)}
-						disabled={isPhotoAlreadyInCart(photo)}
+						disabled={cartPhotoKeys.has(`${photo.id}::${currentEventId}`)}
 						data-testid="gallery-add-to-cart"
 					>
-						{isPhotoAlreadyInCart(photo) ? 'Ya agregada' : 'Agregar al carrito'}
+						{cartPhotoKeys.has(`${photo.id}::${currentEventId}`) ? 'Ya agregada' : 'Agregar al carrito'}
 					</button>
 				</li>
 			{/each}
@@ -383,10 +389,10 @@
 					type="button"
 					class={actionButtonClass}
 					on:click={() => addPhotoToCart(selectedPhoto)}
-					disabled={isPhotoAlreadyInCart(selectedPhoto)}
+					disabled={selectedPhotoInCart}
 					data-testid="gallery-lightbox-add-to-cart"
 				>
-					{isPhotoAlreadyInCart(selectedPhoto) ? 'Ya agregada' : 'Agregar al carrito'}
+					{selectedPhotoInCart ? 'Ya agregada' : 'Agregar al carrito'}
 				</button>
 			</div>
 		</div>
