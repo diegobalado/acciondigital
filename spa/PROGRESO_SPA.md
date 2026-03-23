@@ -2,6 +2,69 @@
 
 Registro iterativo de avances de la migracion SPA.
 
+## Iteracion 30 - Refinamiento de galeria y carrito global
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: pulir UX de galeria eliminando duplicidad de carrito y mejorando navegacion de listado largo.
+
+### Hecho
+
+- `src/features/events/EventsPage.svelte`:
+	- removido texto de hint de carrito bajo buscador
+- `src/features/events/EventGalleryPage.svelte`:
+	- removido texto de hint de carrito bajo buscador
+	- restriccion de alta unica por foto desde galeria/lightbox (evita duplicados por click repetido)
+	- nuevo boton `Agregar al carrito` en lightbox (`gallery-lightbox-add-to-cart`)
+	- infinite scroll implementado con sentinel + `IntersectionObserver`
+	- nuevo boton flotante `Ir arriba` con icono `ChevronUp`
+- Tests actualizados/extendidos:
+	- `EventGalleryPage.test.js`:
+		- add unico desde grilla
+		- add desde lightbox
+		- carga incremental por infinite scroll
+		- visibilidad y accion de boton `Ir arriba`
+	- `EventsPage.test.js`:
+		- ajustado para no depender de texto de carrito removido
+
+### Verificacion
+
+- Validacion estatico/sintactica: OK (`get_errors`).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Completar checklist `PARIDAD_CHECKLIST.md` en QA manual y cerrar Fase 8.1.
+
+## Iteracion 29 - Paridad y cobertura base (Fase 8.1)
+
+- Fecha: 2026-03-22
+- Branch: `spa-svelte-migration`
+- Objetivo: fortalecer hardening final con evidencia de paridad y pruebas de integracion cross-page.
+
+### Hecho
+
+- Nuevo checklist de QA manual: `PARIDAD_CHECKLIST.md`.
+- Nuevo test de integracion de carrito cross-page:
+	- `src/features/cart/cartFlow.integration.test.js`
+	- valida flujo: agregar en `EventsPage` -> ver en popup `SpaNav` -> ver en `CartPage`.
+- Mejora de accesibilidad en `SpaNav`:
+	- popup de carrito ahora cierra con `Escape`.
+- Robustez de tests:
+	- `SpaNav.test.js` ampliado con caso `Escape`.
+	- `App.test.js` limpia store global de carrito en `afterEach`.
+
+### Verificacion
+
+- Validacion estatico/sintactica: pendiente (`get_errors` tras editar).
+- `pnpm test`: pendiente de ejecucion manual.
+- `pnpm build`: pendiente de ejecucion manual.
+
+### Proximo paso
+
+- Completar checklist `PARIDAD_CHECKLIST.md` con QA manual de todas las secciones y cerrar Fase 8.1.
+
 ## Iteracion 28 - Ajuste UX de carrito global (sin panel persistente)
 
 - Fecha: 2026-03-22

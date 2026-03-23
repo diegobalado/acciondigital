@@ -323,6 +323,18 @@ Una iteracion se considera cerrada solo si cumple todo lo siguiente:
 	- se mantiene solo accion `Agregar al carrito` en cards/fotos
 	- gestion completa del carrito concentrada en `SpaNav` (popup) y `/carrito/`
 	- tests de eventos/galeria ajustados para validar estado via carrito global
+43. Iteracion iniciada el 2026-03-22 (Fase 8.1 - Paridad y cobertura):
+	- agregado checklist manual de paridad en `PARIDAD_CHECKLIST.md`
+	- nuevo test de integracion cross-page de carrito: `src/features/cart/cartFlow.integration.test.js`
+	- mejora a11y en popup de carrito: cierre por `Escape` en `SpaNav`
+	- tests `SpaNav` y `App` endurecidos para aislar estado global entre casos
+44. Ajuste UX aplicado el 2026-03-22 (Galeria + carrito global):
+	- removido texto de carrito bajo buscador en `EventsPage` y `EventGalleryPage`
+	- `EventGalleryPage` ahora permite agregar cada foto solo una vez desde galeria/lightbox
+	- agregado boton `Agregar al carrito` dentro del lightbox de galeria
+	- reemplazado boton `Cargar mas fotos` por infinite scroll con `IntersectionObserver`
+	- agregado boton flotante `Ir arriba` con icono `ChevronUp` cuando hay scroll profundo
+	- tests de eventos/galeria actualizados para nueva UX
 
 ### Fase 3 - Eventos/Galeria
 

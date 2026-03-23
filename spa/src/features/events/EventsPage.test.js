@@ -477,13 +477,10 @@ describe('EventsPage', () => {
 		});
 
 		expect(await screen.findByTestId('events-list')).toBeTruthy();
-		expect(screen.getByTestId('events-cart-hint').textContent).toContain('0 item');
 		await fireEvent.click(screen.getByTestId('events-add-to-cart'));
-		expect(screen.getByTestId('events-cart-hint').textContent).toContain('1 item');
 		expect(get(cartTotalsStore).totalQuantity).toBe(1);
 
 		await fireEvent.click(screen.getByTestId('events-add-to-cart'));
-		expect(screen.getByTestId('events-cart-hint').textContent).toContain('2 item');
 		expect(get(cartTotalsStore).totalQuantity).toBe(2);
 	});
 });

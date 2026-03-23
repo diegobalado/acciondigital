@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/svelte';
 import { afterEach, describe, expect, it } from 'vitest';
 import App from './App.svelte';
+import { clearCart } from './services/cartStore';
 
 function setLocation(pathname, search = '') {
 	window.history.replaceState({}, '', `${pathname}${search}`);
@@ -9,6 +10,7 @@ function setLocation(pathname, search = '') {
 describe('App routing integration', () => {
 	afterEach(() => {
 		window.history.replaceState({}, '', '/');
+		clearCart();
 	});
 
 	it('renders home page on root route', async () => {

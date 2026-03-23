@@ -14,7 +14,15 @@
 	function closeCartPopup() {
 		isCartPopupOpen = false;
 	}
+
+	function handleWindowKeydown(event) {
+		if (event.key === 'Escape' && isCartPopupOpen) {
+			closeCartPopup();
+		}
+	}
 </script>
+
+<svelte:window on:keydown={handleWindowKeydown} />
 
 <a href="#spa-main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded-md focus:bg-base-100 focus:px-3 focus:py-2">Saltar al contenido principal</a>
 

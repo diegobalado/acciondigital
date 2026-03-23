@@ -43,6 +43,17 @@ describe('SpaNav', () => {
 		expect(screen.getByTestId('spa-nav-open-cart-page').getAttribute('href')).toBe('/carrito/?mirror=home5');
 	});
 
+	it('closes cart popup when Escape is pressed', async () => {
+		addItemToCart({ id: 'pic_1', event: 'evt_1', name: 'Evento 1', summary: 'foto_1', price: 1000, quantity: 1 });
+		render(SpaNav, { currentRoute: APP_ROUTES.HOME, currentSearch: '' });
+
+		await fireEvent.click(screen.getByTestId('spa-nav-cart-toggle'));
+		expect(screen.getByTestId('spa-nav-cart-popup')).toBeTruthy();
+
+		await fireEvent.keyDown(window, { key: 'Escape' });
+		expect(screen.queryByTestId('spa-nav-cart-popup')).toBeNull();
+	});
+
 	it('renders skip link to main content landmark', () => {
 		render(SpaNav, { currentRoute: APP_ROUTES.HOME, currentSearch: '' });
 

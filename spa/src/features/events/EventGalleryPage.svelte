@@ -1,10 +1,11 @@
 <script>
 	import { onMount, tick } from 'svelte';
-	import { ChevronLeft, ChevronRight, X } from 'lucide-svelte';
+	import { ChevronLeft, ChevronRight, ChevronUp, X } from 'lucide-svelte';
 	import { APP_TITLE } from '../../app/config/migration';
 	import PageLayout from '../../shared/components/PageLayout.svelte';
 	import {
 		addItemToCart,
+		cartItemsStore,
 		cartTotalsStore,
 	} from '../../services/cartStore';
 	import { EVENT_GALLERY_PAGE_SIZE, loadEventGallery } from './eventGalleryApi';
@@ -36,6 +37,7 @@
 	let isLoadingMore = false;
 	let selectedPhotoIndex = -1;
 	let lightboxElement = null;
+	let isBackToTopVisible = false;
 	let progressive = { nextPage: null, canLoadMore: false };
 	let pagination = { page: 1, pageSize, totalItems: 0, totalPages: 1, hasPreviousPage: false, hasNextPage: false };
 	$: selectedPhoto = selectedPhotoIndex >= 0 && selectedPhotoIndex < photos.length ? photos[selectedPhotoIndex] : null;
@@ -44,6 +46,15 @@
 		: `Fotos: ${pagination.totalItems}`;
 	$: if (selectedPhotoIndex >= photos.length) {
 		selectedPhotoIndex = -1;
+	}
+	$: loadMoreLabel = isLoadingMore ? 'Cargando mas fotos...' : 'Desplazate para cargar mas fotos';
+
+	function isPhotoAlreadyInCart(photo) {
+		if (!photo) {
+			return false;
+		}
+
+		return $cartItemsStore.some((item) => item.id === photo.id && item.event === (eventData?.id || getSelectedEventId()));
 	}
 
 	function getLocationSearch() {
@@ -121,6 +132,10 @@
 	}
 
 	function addPhotoToCart(photo) {
+		if (isPhotoAlreadyInCart(photo)) {
+			return;
+		}
+
 		addItemToCart(toCartItem(photo));
 	}
 
@@ -176,6 +191,22 @@
 		}
 	}
 
+	function handleWindowScroll() {
+		if (typeof window === 'undefined') {
+			return;
+		}
+
+		isBackToTopVisible = window.scrollY > 720;
+	}
+
+	function scrollToTop() {
+		if (typeof window === 'undefined') {
+			return;
+		}
+
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
 
 	async function handleGallerySearch() {
 		activeQuery = galleryQuery.trim();
@@ -196,10 +227,37 @@
 		await requestGallery(progressive.nextPage, true);
 	}
 
+	function onInfiniteScrollSentinel(node) {
+		if (typeof IntersectionObserver !== 'function') {
+			return {};
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const hasIntersectingEntry = entries.some((entry) => entry.isIntersecting);
+				if (hasIntersectingEntry) {
+					void loadMore();
+				}
+			},
+			{ rootMargin: '220px 0px' }
+		);
+
+		observer.observe(node);
+
+		return {
+			destroy() {
+				observer.disconnect();
+			}
+		};
+	}
+
 	onMount(async () => {
 		await requestGallery(1, false);
+		handleWindowScroll();
 	});
 </script>
+
+<svelte:window on:scroll={handleWindowScroll} />
 
 <PageLayout shell="wide" headerVariant="compact">
 	<svelte:fragment slot="header">
@@ -227,10 +285,6 @@
 			{/if}
 		</div>
 	</form>
-
-	<p class={summaryTextClass} data-testid="gallery-cart-hint">
-		Carrito global: {$cartTotalsStore.totalQuantity} item(s). Usa la opcion Carrito para revisar el resumen completo.
-	</p>
 
 	{#if status === 'loading'}
 		<div class="mt-8 flex justify-center" data-testid="gallery-loading">
@@ -262,17 +316,38 @@
 					{:else}
 						<p class={`text-xs ${subtleTextClass}`}>Sin clasificar</p>
 					{/if}
-					<button class={`mt-2 w-full ${actionButtonClass}`} type="button" on:click={() => addPhotoToCart(photo)} data-testid="gallery-add-to-cart">Agregar al carrito</button>
+					<button
+						class={`mt-2 w-full ${actionButtonClass}`}
+						type="button"
+						on:click={() => addPhotoToCart(photo)}
+						disabled={isPhotoAlreadyInCart(photo)}
+						data-testid="gallery-add-to-cart"
+					>
+						{isPhotoAlreadyInCart(photo) ? 'Ya agregada' : 'Agregar al carrito'}
+					</button>
 				</li>
 			{/each}
 		</ul>
 		{#if progressive.canLoadMore}
-			<div class="mt-4 flex justify-center">
-				<button class={actionButtonClass} type="button" disabled={isLoadingMore} on:click={loadMore} data-testid="gallery-load-more">{isLoadingMore ? 'Cargando...' : 'Cargar mas fotos'}</button>
+			<div class="mt-4 grid justify-items-center text-sm opacity-70" data-testid="gallery-infinite-status" aria-live="polite">
+				<p>{loadMoreLabel}</p>
+				<div class="h-px w-full" data-testid="gallery-infinite-sentinel" use:onInfiniteScrollSentinel></div>
 			</div>
 		{/if}
 	{/if}
 </PageLayout>
+
+{#if isBackToTopVisible}
+	<button
+		type="button"
+		class="btn btn-circle fixed bottom-4 right-4 z-40"
+		on:click={scrollToTop}
+		aria-label="Ir arriba"
+		data-testid="gallery-back-to-top"
+	>
+		<ChevronUp size={18} aria-hidden="true" />
+	</button>
+{/if}
 
 {#if selectedPhoto}
 	<div
@@ -301,6 +376,17 @@
 				<img class="max-h-[80vh] w-full rounded-md object-contain" src={selectedPhoto.fullImageUrl || selectedPhoto.thumbnailUrl} alt={`Foto ${selectedPhoto.code}`} />
 				<button class="btn btn-circle btn-sm" type="button" on:click={showNextPhoto} data-testid="gallery-lightbox-next" aria-label="Foto siguiente">
 					<ChevronRight size={18} aria-hidden="true" />
+				</button>
+			</div>
+			<div class="mt-3 flex justify-end">
+				<button
+					type="button"
+					class={actionButtonClass}
+					on:click={() => addPhotoToCart(selectedPhoto)}
+					disabled={isPhotoAlreadyInCart(selectedPhoto)}
+					data-testid="gallery-lightbox-add-to-cart"
+				>
+					{isPhotoAlreadyInCart(selectedPhoto) ? 'Ya agregada' : 'Agregar al carrito'}
 				</button>
 			</div>
 		</div>

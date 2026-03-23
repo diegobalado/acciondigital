@@ -7,8 +7,7 @@
 	import { createEventsClickTracker, trackEventsClickEvent } from './eventsTracking';
 	import { mergeProgressiveFeed } from './eventsPagination';
 	import {
-		addItemToCart,
-		cartTotalsStore
+		addItemToCart
 	} from '../../services/cartStore';
 	import {
 		actionButtonClass,
@@ -277,9 +276,6 @@
 			{/if}
 		</div>
 	</form>
-	<p class={summaryTextClass} data-testid="events-cart-hint">
-		Carrito global: {$cartTotalsStore.totalQuantity} item(s). Revisa el popup de Carrito o la pagina completa.
-	</p>
 
 	{#if visibleStatus === 'loading'}
 		<div class="mt-8 flex justify-center" data-testid="events-loading">
