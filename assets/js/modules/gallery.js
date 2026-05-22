@@ -274,3 +274,8 @@ $(document).ready(function () {
 	loadGallery();
 	$('select#ph').on('change', event => loadGallery(event.target.value));
 });
+
+$(document).on('contextmenu', '.mfp-wrap img', function (e) {
+	e.preventDefault();
+	return false;
+});

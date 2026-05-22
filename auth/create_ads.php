@@ -97,7 +97,7 @@
 									if (!is_dir($adFile))
 										array_push($ads, $adFile);
 								}
-								usort($ads, function ($a, $b) { return strcasecmp($a, $b); });
+								//usort($ads, function ($a, $b) { return strcasecmp($a, $b); });
 
 								foreach ($ads as $ad) {
 									?>
